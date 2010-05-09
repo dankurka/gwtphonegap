@@ -8,6 +8,7 @@
     <artifactId>gwt-phonegap</artifactId>
     <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
+    <name>gwt-phonegap</name>
     <modules>
         <module>gwt-phonegap-iphone-widgets</module>
     </modules>
