@@ -8,6 +8,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <name>gwt-phonegap-iphone-widgets</name>
 
     <artifactId>gwt-phonegap-iphone-widgets</artifactId>
     <version>0.0.1-SNAPSHOT</version>
