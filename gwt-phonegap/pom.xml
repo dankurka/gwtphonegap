@@ -11,6 +11,7 @@
     <name>gwt-phonegap</name>
     <modules>
         <module>gwt-phonegap-iphone</module>
+        <module>untitled</module>
     </modules>
 
     <properties>
