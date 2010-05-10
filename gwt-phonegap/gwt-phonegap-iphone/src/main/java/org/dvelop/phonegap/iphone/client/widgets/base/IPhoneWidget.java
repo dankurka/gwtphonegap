@@ -1,6 +1,6 @@
-package com.dvelop.phonegap.iphone.client.widgets.base;
+package org.dvelop.phonegap.iphone.client.widgets.base;
 
-import com.dvelop.phonegap.iphone.client.util.IPhoneUtil;
+import org.dvelop.phonegap.iphone.client.util.IPhoneUtil;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -99,25 +99,25 @@ public class IPhoneWidget extends Widget {
 
     private native void registerTouchEvents() /*-{
 		var instance = this;
-		var element = this.@com.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget::getElement()();
+		var element = this.@org.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget::getElement()();
 
 		element.ontouchstart = function(e){
-			instance.@com.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget::onDomTouchStart()();
+			instance.@org.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget::onDomTouchStart()();
 		};
 
 		element.ontouchmove = function(e){
-			instance.@com.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget::onDomTouchMove()();
+			instance.@org.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget::onDomTouchMove()();
 		};
 
 		element.ontouchend = function(e){
-			instance.@com.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget::onDomTouchEnd()();
+			instance.@org.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget::onDomTouchEnd()();
 		};
 
 	}-*/;
 
     private native void unregisterTouchEvents() /*-{
 		var instance = this;
-		var element = this.@com.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget::getElement()();
+		var element = this.@org.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget::getElement()();
 		element.ontouchstart = null;
 		element.ontouchmove = null;
 		element.ontouchend = null;
@@ -125,19 +125,19 @@ public class IPhoneWidget extends Widget {
 
     private native void registerTransistionEndDomEvent() /*-{
         var instance = this;
-		var element = this.@com.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget::getElement()();
+		var element = this.@org.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget::getElement()();
 
         try
 		{
 
 
 			var callBack = function(e){
-				instance.@com.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget::onDomTransitionEnded()();
+				instance.@org.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget::onDomTransitionEnded()();
 			};
 
 			element.addEventListener('webkitTransitionEnd', callBack, false);
 
-            instance.@com.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget::transitionCallbackEndFunction = callback;
+            instance.@org.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget::transitionCallbackEndFunction = callback;
 		}
 		catch (exception)
 		{
@@ -146,8 +146,8 @@ public class IPhoneWidget extends Widget {
 
     private native void unregisterTransitionEndDomEvent() /*-{
         var instance = this;
-		var element = this.@com.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget::getElement()();
-        element.removeEventListener('webkitTransitionEnd', instance.@com.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget::transitionCallbackEndFunction, false);
+		var element = this.@org.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget::getElement()();
+        element.removeEventListener('webkitTransitionEnd', instance.@org.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget::transitionCallbackEndFunction, false);
     }-*/;
 
 }

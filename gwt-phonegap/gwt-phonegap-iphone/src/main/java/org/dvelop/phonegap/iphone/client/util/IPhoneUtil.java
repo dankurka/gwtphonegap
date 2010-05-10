@@ -1,4 +1,4 @@
-package com.dvelop.phonegap.iphone.client.util;
+package org.dvelop.phonegap.iphone.client.util;
 
 import com.google.gwt.dom.client.Element;
 

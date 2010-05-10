@@ -1,4 +1,4 @@
-package com.dvelop.phonegap.iphone.client.resources;
+package org.dvelop.phonegap.iphone.client.resources;
 
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.CssResource;

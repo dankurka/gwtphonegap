@@ -1,4 +1,4 @@
-package com.dvelop.phonegap.iphone.client.widgets.base;
+package org.dvelop.phonegap.iphone.client.widgets.base;
 
 import com.google.gwt.event.shared.EventHandler;
 

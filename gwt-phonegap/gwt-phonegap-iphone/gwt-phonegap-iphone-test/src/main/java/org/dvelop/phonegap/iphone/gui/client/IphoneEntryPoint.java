@@ -2,6 +2,8 @@ package org.dvelop.phonegap.iphone.gui.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.RootPanel;
+import org.dvelop.phonegap.iphone.client.widgets.header.HeaderPanel;
 
 /**
  * User: daniel kurka
@@ -11,5 +13,7 @@ import com.google.gwt.user.client.Window;
 public class IphoneEntryPoint implements EntryPoint{
     public void onModuleLoad() {
         Window.alert("test");
+
+        RootPanel.get().add(new HeaderPanel());
     }
 }
