@@ -3,34 +3,24 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>gwt-phonegap</artifactId>
+        <artifactId>gwt-phonegap-iphone</artifactId>
         <groupId>org.dvelop.phonegap</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <packaging>pom</packaging>
-    <name>gwt-phonegap-iphone</name>
-    <modules>
-        <module>gwt-phonegap-iphone-test</module>
-    </modules>
 
-    <artifactId>gwt-phonegap-iphone</artifactId>
+    <artifactId>gwt-phonegap-iphone-test</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
 
     <dependencies>
         <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-user</artifactId>
+            <groupId>org.dvelop.phonegap</groupId>
+             <artifactId>gwt-phonegap-iphone</artifactId>
+               <version>0.0.1-SNAPSHOT</version>
 
         </dependency>
-
-
-        <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-servlet</artifactId>
-
-        </dependency>
-
     </dependencies>
+
+
 </project>

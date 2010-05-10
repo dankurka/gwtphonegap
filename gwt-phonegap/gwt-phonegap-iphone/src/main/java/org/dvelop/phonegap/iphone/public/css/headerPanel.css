@@ -1,0 +1,8 @@
+@sprite #header {
+    gwt-image: "headerMiddle";
+
+    position: relative;
+    height: 40px;
+    background-image: url('headerMiddle');
+    border-bottom: 1px solid rgb(45, 54, 66);
+}

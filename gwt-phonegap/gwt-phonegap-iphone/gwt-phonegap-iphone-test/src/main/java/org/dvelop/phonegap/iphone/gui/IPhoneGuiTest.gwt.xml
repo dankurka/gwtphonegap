@@ -1,0 +1,10 @@
+<module>
+    <inherits name='com.google.gwt.user.User'/>
+    <inherits name="org.dvelop.phonegap.iphone.IPhone" ></inherits>
+
+
+    <!-- only compile for webkit browser i.e. mobile safari-->
+    <set-property name="user.agent" value="safari"/>
+
+    <entry-point class="org.dvelop.phonegap.iphone.gui.client.IphoneEntryPoint" />
+</module>
