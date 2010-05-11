@@ -53,7 +53,7 @@ public class HeaderPanel extends Composite {
         HeaderPanelResourceBundle.INSTANCE.css().ensureInjected();
         css = HeaderPanelResourceBundle.INSTANCE.css();
         main = new FlowPanel();
-        main.getElement().setId("header");
+        main.setStyleName(css.headerClass());
 
         activeBackButton = new BackButton();
         //configureActiveButtonEvent();

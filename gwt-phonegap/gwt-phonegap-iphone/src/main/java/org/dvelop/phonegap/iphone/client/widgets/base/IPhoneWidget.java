@@ -38,7 +38,7 @@ public class IPhoneWidget extends Widget {
 
     private void setUpEventsHooks() {
         if (this.isAttached()) {
-            if (IPhoneUtil.hasTouchEvent(this.getElement())) {
+            if (IPhoneUtil.hasTouchEvent()) {
                 registerTouchEvents();
             } else {
                 //this is done for others browser than apple mobile (test in hosted mode)
@@ -56,7 +56,7 @@ public class IPhoneWidget extends Widget {
 
     private void tearDownEventHooks() {
 
-        if (IPhoneUtil.hasTouchEvent(this.getElement())) {
+        if (IPhoneUtil.hasTouchEvent()) {
             unregisterTouchEvents();
         } else {
             handlerRegistration.removeHandler();

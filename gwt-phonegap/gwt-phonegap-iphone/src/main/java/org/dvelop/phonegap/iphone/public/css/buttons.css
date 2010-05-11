@@ -1,0 +1,7 @@
+.refreshButton{
+	background-image: url('img/UIButtonBarRefresh.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 40px;
+	height: 40px;
+}

@@ -54,4 +54,7 @@ public interface HeaderPanelCss extends CssResource {
     @ClassName("titleStopAnimate")
     String titleStopAnimate();
 
+    @ClassName("header")
+    String headerClass();
+
 }

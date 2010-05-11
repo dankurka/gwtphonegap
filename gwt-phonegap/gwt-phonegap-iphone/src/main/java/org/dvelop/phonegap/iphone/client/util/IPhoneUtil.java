@@ -9,7 +9,7 @@ import com.google.gwt.dom.client.Element;
  */
 public class IPhoneUtil {
 
-    public static native boolean hasTouchEvent(Element e) /*-{
+    private static native boolean nativeHasTouchEvent() /*-{
 		var ua = navigator.userAgent.toLowerCase();
 
 		if (ua.indexOf("safari") != -1 && ua.indexOf("mobile") != -1 && ua.indexOf("applewebkit") != -1)
@@ -21,4 +21,13 @@ public class IPhoneUtil {
 			return false;
 		}
 	}-*/;
+
+    private static Boolean hasTouchEvents = null;
+
+    public static boolean hasTouchEvent() {
+        if(hasTouchEvents == null){
+            hasTouchEvents = Boolean.valueOf(nativeHasTouchEvent());
+        }
+        return hasTouchEvents.booleanValue();
+    }
 }

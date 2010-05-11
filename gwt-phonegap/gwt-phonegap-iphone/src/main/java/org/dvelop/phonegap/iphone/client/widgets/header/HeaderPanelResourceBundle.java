@@ -14,9 +14,6 @@ public interface HeaderPanelResourceBundle extends ClientBundle{
 
     public static final HeaderPanelResourceBundle INSTANCE = GWT.create(HeaderPanelResourceBundle.class);
 
-    @ImageResource.ImageOptions(repeatStyle = ImageResource.RepeatStyle.Horizontal)    
-    @ClientBundle.Source("org/dvelop/phonegap/iphone/public/img/header_middle.png")
-    ImageResource headerMiddle();
    
     @ClientBundle.Source("org/dvelop/phonegap/iphone/public/css/headerPanel.css")
     HeaderPanelCss css();
