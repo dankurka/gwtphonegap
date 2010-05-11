@@ -1,0 +1,18 @@
+* {
+    -webkit-user-select: none;
+    -webkit-text-size-adjust: none;
+}
+
+.instructions {
+    -webkit-user-select: text;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: Helvetica;
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
+    background-image: url('img/background_stripes.png');
+    background-repeat: repeat;
+}

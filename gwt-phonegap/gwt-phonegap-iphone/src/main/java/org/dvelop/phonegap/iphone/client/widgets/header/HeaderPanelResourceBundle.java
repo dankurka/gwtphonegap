@@ -1,7 +1,7 @@
-package org.dvelop.phonegap.iphone.client.resources;
+package org.dvelop.phonegap.iphone.client.widgets.header;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
-import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.resources.client.ImageResource;
 
 
@@ -12,11 +12,14 @@ import com.google.gwt.resources.client.ImageResource;
  */
 public interface HeaderPanelResourceBundle extends ClientBundle{
 
+    public static final HeaderPanelResourceBundle INSTANCE = GWT.create(HeaderPanelResourceBundle.class);
+
+    @ImageResource.ImageOptions(repeatStyle = ImageResource.RepeatStyle.Horizontal)    
     @ClientBundle.Source("org/dvelop/phonegap/iphone/public/img/header_middle.png")
     ImageResource headerMiddle();
-
+   
     @ClientBundle.Source("org/dvelop/phonegap/iphone/public/css/headerPanel.css")
-    CssResource css();
+    HeaderPanelCss css();
 
 
 }

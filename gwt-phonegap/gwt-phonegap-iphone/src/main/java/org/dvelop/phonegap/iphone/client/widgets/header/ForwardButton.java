@@ -4,16 +4,16 @@ import com.google.gwt.user.client.ui.HasText;
 import org.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget;
 
 /**
- * Created by IntelliJ IDEA.
- * User: kurt
+ *
+ * User: daniel kurka
  * Date: 20.02.2010
  * Time: 16:42:54
- * To change this template use File | Settings | File Templates.
  */
 public class ForwardButton extends IPhoneWidget implements HasText {
     public ForwardButton() {
         super("div");
-        setStyleName("forwardButton");
+        HeaderPanelResourceBundle.INSTANCE.css().ensureInjected();
+        setStyleName(HeaderPanelResourceBundle.INSTANCE.css().forwardButtonClass());
     }
 
     public String getText() {

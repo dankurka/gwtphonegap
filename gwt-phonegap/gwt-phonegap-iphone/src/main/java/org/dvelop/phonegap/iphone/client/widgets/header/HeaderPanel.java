@@ -28,6 +28,8 @@ public class HeaderPanel extends Composite {
     private ForwardButton inactiveForwardButton;
     private HandlerRegistration forwardButtonHandler;
 
+    HeaderPanelCss css;
+
     public Title getActiveTitle() {
         return activeTitle;
     }
@@ -37,10 +39,10 @@ public class HeaderPanel extends Composite {
     private FlowPanel main;
 
     public void setHasBackButton(boolean hasButton) {
-        activeBackButton.removeStyleName("pos-right");
-        activeBackButton.removeStyleName("pos-left");
+        activeBackButton.removeStyleName(css.backButtonPosRight());
+        activeBackButton.removeStyleName(css.backButtonPosLeft());
         if (!hasButton) {
-            activeBackButton.addStyleName("pos-left");
+            activeBackButton.addStyleName(css.backButtonPosLeft());
         }
         hasBackButton = hasButton;
     }
@@ -48,6 +50,8 @@ public class HeaderPanel extends Composite {
     private boolean hasBackButton;
 
     public HeaderPanel() {
+        HeaderPanelResourceBundle.INSTANCE.css().ensureInjected();
+        css = HeaderPanelResourceBundle.INSTANCE.css();
         main = new FlowPanel();
         main.getElement().setId("header");
 
@@ -56,13 +60,13 @@ public class HeaderPanel extends Composite {
         main.add(activeBackButton);
         inactiveBackButton = new BackButton();
         main.add(inactiveBackButton);
-        inactiveBackButton.addStyleName("pos-left");
+        inactiveBackButton.addStyleName(css.backButtonPosLeft());
 
         activeTitle = new Title();
         main.add(activeTitle);
 
         inactiveTitle = new Title();
-        inactiveTitle.addStyleName("pos-left");
+        inactiveTitle.addStyleName(css.titlePosLeft());
         main.add(inactiveTitle);
 
         activeForwardButton = new ForwardButton();
@@ -71,7 +75,7 @@ public class HeaderPanel extends Composite {
 
         inactiveForwardButton = new ForwardButton();
         inactiveForwardButton.setText("testinactive");
-        inactiveForwardButton.addStyleName("pos-right");
+        inactiveForwardButton.addStyleName(css.forwardButtonPosRight());
         main.add(inactiveForwardButton);
 
         initWidget(main);
@@ -90,34 +94,34 @@ public class HeaderPanel extends Composite {
     }
 
     private void removePositionStyles() {
-        inactiveBackButton.removeStyleName("pos-right");
-        inactiveBackButton.removeStyleName("pos-left");
-        inactiveBackButton.removeStyleName("animate-off");
-        inactiveBackButton.removeStyleName("animate-on");
+        inactiveBackButton.removeStyleName(css.backButtonPosRight());
+        inactiveBackButton.removeStyleName(css.backButtonPosLeft());
+        inactiveBackButton.removeStyleName(css.backButtonStartAnimate());
+        inactiveBackButton.removeStyleName(css.backButtonStopAnimate());
 
-        activeBackButton.removeStyleName("pos-right");
-        activeBackButton.removeStyleName("pos-left");
-        activeBackButton.removeStyleName("animate-off");
-        activeBackButton.removeStyleName("animate-on");
+        activeBackButton.removeStyleName(css.backButtonPosRight());
+        activeBackButton.removeStyleName(css.backButtonPosLeft());
+        activeBackButton.removeStyleName(css.backButtonStartAnimate());
+        activeBackButton.removeStyleName(css.backButtonStopAnimate());
 
 
-        activeForwardButton.removeStyleName("pos-right");
-        activeForwardButton.removeStyleName("pos-left");
-        activeForwardButton.removeStyleName("animate-off");
-        activeForwardButton.removeStyleName("animate-on");
+        activeForwardButton.removeStyleName(css.forwardButtonPosRight());
+        activeForwardButton.removeStyleName(css.forwardButtonPosLeft());
+        activeForwardButton.removeStyleName(css.forwardButtonStopAnimate());
+        activeForwardButton.removeStyleName(css.forwardButtonStartAnimate());
 
-        inactiveForwardButton.removeStyleName("pos-right");
-        inactiveForwardButton.removeStyleName("pos-left");
-        inactiveForwardButton.removeStyleName("animate-off");
-        inactiveForwardButton.removeStyleName("animate-on");
+        inactiveForwardButton.removeStyleName(css.forwardButtonPosRight());
+        inactiveForwardButton.removeStyleName(css.forwardButtonPosLeft());
+        inactiveForwardButton.removeStyleName(css.forwardButtonStopAnimate());
+        inactiveForwardButton.removeStyleName(css.forwardButtonStartAnimate());
 
-        inactiveTitle.removeStyleName("pos-left");
-        inactiveTitle.removeStyleName("pos-right");
-        inactiveTitle.removeStyleName("animate-off");
+        inactiveTitle.removeStyleName(css.titlePosLeft());
+        inactiveTitle.removeStyleName(css.titlePosRight());
+        inactiveTitle.removeStyleName(css.titleStopAnimate());
 
-        activeTitle.removeStyleName("pos-left");
-        activeTitle.removeStyleName("pos-right");
-        activeTitle.removeStyleName("animate-off");
+        activeTitle.removeStyleName(css.titlePosLeft());
+        activeTitle.removeStyleName(css.titlePosRight());
+        activeTitle.removeStyleName(css.titleStopAnimate());
     }
 
     public void moveForward(final HeaderPanelAnimation info) {
@@ -126,11 +130,11 @@ public class HeaderPanel extends Composite {
 
         final BackButton oldBackButton = activeBackButton;
         if (!hasBackButton) {
-            oldBackButton.addStyleName("pos-left");
+            oldBackButton.addStyleName(css.backButtonPosLeft());
         }
         final BackButton newBackButton = inactiveBackButton;
-        newBackButton.addStyleName("animate-off");
-        newBackButton.addStyleName("pos-right");
+        newBackButton.addStyleName(css.backButtonStopAnimate());
+        newBackButton.addStyleName(css.backButtonPosRight());
 
         if (info.isBackButton()) {
             newBackButton.setText(info.getBackButtonText());
@@ -139,11 +143,11 @@ public class HeaderPanel extends Composite {
 
         final ForwardButton oldForwardButton = activeForwardButton;
         if (!hasForwardButton) {
-            oldForwardButton.addStyleName("pos-left");
+            oldForwardButton.addStyleName(css.forwardButtonPosLeft());
         }
         final ForwardButton newForwardButton = inactiveForwardButton;
-        newForwardButton.addStyleName("animate-off");
-        newForwardButton.addStyleName("pos-right");
+        newForwardButton.addStyleName(css.forwardButtonStopAnimate());
+        newForwardButton.addStyleName(css.forwardButtonPosRight());
         if (info.isForwardButton()) {
             newForwardButton.setText(info.getForwardButtonText());
         }
@@ -153,42 +157,42 @@ public class HeaderPanel extends Composite {
         final Title oldTitle = activeTitle;
 
 
-        newTitle.addStyleName("pos-right");
-        newTitle.addStyleName("animate-off");
+        newTitle.addStyleName(css.titlePosRight());
+        newTitle.addStyleName(css.titleStopAnimate());
         newTitle.setText(info.getTitle());
 
 
         DeferredCommand.addCommand(new Command() {
             public void execute() {
                 if (hasBackButton) {
-                    oldBackButton.addStyleName("pos-left");
-                    oldBackButton.addStyleName("animate-on");
+                    oldBackButton.addStyleName(css.backButtonPosLeft());
+                    oldBackButton.addStyleName(css.backButtonStartAnimate());
                 }
 
                 if (info.isBackButton()) {
-                    newBackButton.removeStyleName("animate-off");
-                    newBackButton.removeStyleName("pos-right");
-                    newBackButton.addStyleName("animate-on");
+                    newBackButton.removeStyleName(css.backButtonStopAnimate());
+                    newBackButton.removeStyleName(css.backButtonPosRight());
+                    newBackButton.addStyleName(css.backButtonStartAnimate());
                 }
 
                 if (hasForwardButton) {
-                    oldForwardButton.addStyleName("pos-left");
-                    oldForwardButton.addStyleName("animate-on");
+                    oldForwardButton.addStyleName(css.forwardButtonPosLeft());
+                    oldForwardButton.addStyleName(css.forwardButtonStartAnimate());
                 }
 
                 if (info.isForwardButton()) {
-                    newForwardButton.removeStyleName("animate-off");
-                    newForwardButton.removeStyleName("pos-right");
-                    newForwardButton.addStyleName("animate-on");
+                    newForwardButton.removeStyleName(css.forwardButtonStopAnimate());
+                    newForwardButton.removeStyleName(css.forwardButtonPosRight());
+                    newForwardButton.addStyleName(css.forwardButtonStartAnimate());
                 }
 
 
-                oldTitle.addStyleName("pos-left");
-                oldTitle.addStyleName("animate-on");
+                oldTitle.addStyleName(css.titlePosLeft());
+                oldTitle.addStyleName(css.titleStartAnimate());
 
-                newTitle.removeStyleName("pos-right");
-                newTitle.removeStyleName("animate-off");
-                newTitle.addStyleName("animate-on");
+                newTitle.removeStyleName(css.titlePosRight());
+                newTitle.removeStyleName(css.titleStopAnimate());
+                newTitle.addStyleName(css.titleStartAnimate());
 
 
             }
@@ -273,11 +277,11 @@ public class HeaderPanel extends Composite {
 
         final BackButton oldBackButton = activeBackButton;
         if (!hasBackButton) {
-            oldBackButton.addStyleName("pos-right");
+            oldBackButton.addStyleName(css.backButtonPosRight());
         }
         final BackButton newBackButton = inactiveBackButton;
-        newBackButton.addStyleName("animate-off");
-        newBackButton.addStyleName("pos-left");
+        newBackButton.addStyleName(css.backButtonStopAnimate());
+        newBackButton.addStyleName(css.backButtonPosLeft());
         if (info.isBackButton()) {
             newBackButton.setText(info.getBackButtonText());
         }
@@ -285,12 +289,12 @@ public class HeaderPanel extends Composite {
 
         final ForwardButton oldForwardButton = activeForwardButton;
         if (!hasForwardButton) {
-            oldForwardButton.addStyleName("pos-left");
+            oldForwardButton.addStyleName(css.forwardButtonPosLeft());
 
         }
         final ForwardButton newForwardButton = inactiveForwardButton;
-        newForwardButton.addStyleName("animate-off");
-        newForwardButton.addStyleName("pos-left");
+        newForwardButton.addStyleName(css.forwardButtonStopAnimate());
+        newForwardButton.addStyleName(css.forwardButtonPosLeft());
         if (info.isForwardButton()) {
             newForwardButton.setText(info.getForwardButtonText());
         }
@@ -299,39 +303,39 @@ public class HeaderPanel extends Composite {
         final Title newTitle = inactiveTitle;
         final Title oldTitle = activeTitle;
 
-        newTitle.addStyleName("pos-left");
-        newTitle.addStyleName("animate-off");
+        newTitle.addStyleName(css.titlePosLeft());
+        newTitle.addStyleName(css.titleStopAnimate());
         newTitle.setText(info.getTitle());
 
 
         DeferredCommand.addCommand(new Command() {
             public void execute() {
                 if (hasBackButton) {
-                    oldBackButton.addStyleName("pos-right");
-                    oldBackButton.addStyleName("animate-on");
+                    oldBackButton.addStyleName(css.backButtonPosRight());
+                    oldBackButton.addStyleName(css.backButtonStartAnimate());
                 }
                 if (info.isBackButton()) {
-                    newBackButton.removeStyleName("animate-off");
-                    newBackButton.removeStyleName("pos-left");
-                    newBackButton.addStyleName("animate-on");
+                    newBackButton.removeStyleName(css.backButtonStopAnimate());
+                    newBackButton.removeStyleName(css.backButtonPosLeft());
+                    newBackButton.addStyleName(css.backButtonStartAnimate());
                 }
 
                 if (hasForwardButton) {
-                    oldForwardButton.addStyleName("pos-right");
-                    oldForwardButton.addStyleName("animate-on");
+                    oldForwardButton.addStyleName(css.forwardButtonPosRight());
+                    oldForwardButton.addStyleName(css.forwardButtonStartAnimate());
                 }
                 if (info.isForwardButton()) {
-                    newForwardButton.removeStyleName("animate-off");
-                    newForwardButton.removeStyleName("pos-left");
-                    newForwardButton.addStyleName("animate-on");
+                    newForwardButton.removeStyleName(css.forwardButtonStopAnimate());
+                    newForwardButton.removeStyleName(css.forwardButtonPosLeft());
+                    newForwardButton.addStyleName(css.forwardButtonStartAnimate());
                 }
 
 
-                oldTitle.addStyleName("pos-right");
-                oldTitle.addStyleName("animate-on");
-                newTitle.removeStyleName("pos-left");
-                newTitle.removeStyleName("animate-off");
-                newTitle.addStyleName("animate-on");
+                oldTitle.addStyleName(css.titlePosRight());
+                oldTitle.addStyleName(css.titleStartAnimate());
+                newTitle.removeStyleName(css.titlePosLeft());
+                newTitle.removeStyleName(css.titleStopAnimate());
+                newTitle.addStyleName(css.titleStartAnimate());
 
 
             }
@@ -356,11 +360,11 @@ public class HeaderPanel extends Composite {
 
 
     public void setHasForwardButton(boolean hasForwardButton) {
-        activeForwardButton.removeStyleName("pos-right");
-        activeForwardButton.removeStyleName("pos-left");
+        activeForwardButton.removeStyleName(css.forwardButtonPosRight());
+        activeForwardButton.removeStyleName(css.forwardButtonPosLeft());
 
         if (!hasForwardButton) {
-            activeForwardButton.addStyleName("pos-right");
+            activeForwardButton.addStyleName(css.forwardButtonPosRight());
         }
         this.hasForwardButton = hasForwardButton;
     }

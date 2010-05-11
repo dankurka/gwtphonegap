@@ -5,17 +5,18 @@ import org.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget;
 
 
 /**
- * Created by IntelliJ IDEA.
- * User: kurt
+ *
+ * User: daniel kurka
  * Date: 17.02.2010
  * Time: 22:47:36
- * To change this template use File | Settings | File Templates.
+ *
  */
 public class Title extends IPhoneWidget implements HasText {
 
     public Title() {
         super("div");
-        setStyleName("title");
+        HeaderPanelResourceBundle.INSTANCE.css().ensureInjected();
+        setStyleName(HeaderPanelResourceBundle.INSTANCE.css().titleClass());
     }
 
     public String getText() {

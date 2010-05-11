@@ -5,17 +5,16 @@ import org.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget;
 
 
 /**
- * Created by IntelliJ IDEA.
- * User: kurt
+ * User: daniel kurka
  * Date: 17.02.2010
  * Time: 22:42:30
- * To change this template use File | Settings | File Templates.
  */
 public class BackButton extends IPhoneWidget implements HasText{
 
     public BackButton() {
         super("div");
-        setStyleName("backButton");
+        HeaderPanelResourceBundle.INSTANCE.css().ensureInjected();
+        setStyleName(HeaderPanelResourceBundle.INSTANCE.css().backButtonClass());
     }
 
     public String getText() {
