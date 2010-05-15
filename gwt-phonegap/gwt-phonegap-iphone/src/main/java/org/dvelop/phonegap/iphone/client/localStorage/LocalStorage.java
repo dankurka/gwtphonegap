@@ -4,6 +4,10 @@ package org.dvelop.phonegap.iphone.client.localStorage;
  * User: daniel kurka
  * Date: 15.05.2010
  * Time: 14:08:31
+ *
+ * implemented based on apples documentation located at:
+ * http://developer.apple.com/safari/library/documentation/iPhone/Conceptual/SafariJSDatabaseGuide/Introduction/Introduction.html
+ *
  */
 public class LocalStorage {
 
