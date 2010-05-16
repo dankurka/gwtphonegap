@@ -55,11 +55,11 @@ public class LocalStorage {
         localStorage.setItem(key, value);
     }-*/;
 
-    private native String getItem(String key) /*-{
+    public native String getItem(String key) /*-{
         return localStorage.getItem(key);
     }-*/;
 
-    private native void removeItem(String key) /*-{
+    public native void removeItem(String key) /*-{
         localStorage.removeItem(key);
     }-*/;
 
