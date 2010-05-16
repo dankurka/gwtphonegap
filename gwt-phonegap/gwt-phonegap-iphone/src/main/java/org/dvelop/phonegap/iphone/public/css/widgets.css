@@ -1,0 +1,25 @@
+.progressIndicator {
+    /*background: #663300 url("img/spinner.gif") no-repeat fixed center center;*/
+    opacity: 0.5;
+    width: 320px;
+    height: 460px;
+    background-image:  url("img/wait30trans.gif");
+    background-repeat: no-repeat;
+	background-position: center;
+    background-color: #EEEEEE;
+    text-align: center;
+    z-index: 10;
+
+    
+
+}
+
+.progressIndicatorText {
+    
+
+    -webkit-transform: translate(0px, 180px);
+    
+
+
+
+}
