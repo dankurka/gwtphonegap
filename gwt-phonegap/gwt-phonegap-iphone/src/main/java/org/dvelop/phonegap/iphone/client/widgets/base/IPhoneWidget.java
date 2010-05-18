@@ -8,6 +8,10 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Widget;
+import org.dvelop.phonegap.iphone.client.widgets.event.gesture.GestureChangeEvent;
+import org.dvelop.phonegap.iphone.client.widgets.event.gesture.GestureEndEvent;
+import org.dvelop.phonegap.iphone.client.widgets.event.gesture.GestureStartEvent;
+import org.dvelop.phonegap.iphone.client.widgets.event.gesture.NativeGestureEvent;
 
 /**
  * Created by IntelliJ IDEA.
@@ -148,6 +152,44 @@ public class IPhoneWidget extends Widget {
         var instance = this;
 		var element = this.@org.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget::getElement()();
         element.removeEventListener('webkitTransitionEnd', instance.@org.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget::transitionCallbackEndFunction, false);
+    }-*/;
+
+    protected void onDomGestureStart(NativeGestureEvent event) {
+        fireEvent(new GestureStartEvent(event));
+    }
+
+    protected void onDomGestureChange(NativeGestureEvent event) {
+        fireEvent(new GestureChangeEvent(event));
+    }
+
+    protected void onDomGestureEnd(NativeGestureEvent event) {
+        fireEvent(new GestureEndEvent(event));
+    }
+
+
+    private native void registerGestureEvents() /*-{
+        var instance = this;
+		var element = this.@org.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget::getElement()();
+
+        element.ongesturestart = function(e){
+        instance.@org.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget::onDomGestureStart(Lorg/dvelop/phonegap/iphone/client/widgets/event/gesture/NativeGestureEvent;)(e);
+        };
+
+        element.ongesturechange = function(e){
+        instance.@org.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget::onDomGestureChange(Lorg/dvelop/phonegap/iphone/client/widgets/event/gesture/NativeGestureEvent;)(e);
+        };
+
+        element.ongestureend = function(e){
+        instance.@org.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget::onDomGestureEnd(Lorg/dvelop/phonegap/iphone/client/widgets/event/gesture/NativeGestureEvent;)(e);
+        };
+    }-*/;
+
+    private native void unregisterGestureEvents() /*-{
+        var instance = this;
+		var element = this.@org.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget::getElement()();
+        element.ongesturestart = null;
+        element.ongesturechange = null;
+        element.ongestureend = null;
     }-*/;
 
 }
