@@ -1,4 +1,4 @@
-package org.dvelop.phonegap.iphone.client.widgets.event;
+package org.dvelop.phonegap.iphone.client.widgets.event.gesture;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.EventTarget;
