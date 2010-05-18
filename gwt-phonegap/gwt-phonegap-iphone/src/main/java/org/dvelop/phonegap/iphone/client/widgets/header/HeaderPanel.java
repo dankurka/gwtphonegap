@@ -216,7 +216,7 @@ public class HeaderPanel extends Composite {
             activeButtonHandler.removeHandler();
         }
 
-        activeButtonHandler = activeBackButton.addHandler(new TouchHandler() {
+        activeButtonHandler = activeBackButton.addTouchHandler(new TouchHandler() {
             public void onTouch(TouchEvent event) {
 
                 fireBackButtonTouched(event);
@@ -227,7 +227,7 @@ public class HeaderPanel extends Composite {
             forwardButtonHandler.removeHandler();
         }
 
-        forwardButtonHandler = activeForwardButton.addHandler(new TouchHandler() {
+        forwardButtonHandler = activeForwardButton.addTouchHandler(new TouchHandler() {
             public void onTouch(TouchEvent event) {
                 fireForwardButtonTouched(event);
 

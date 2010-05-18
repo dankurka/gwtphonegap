@@ -2,6 +2,7 @@ package org.dvelop.phonegap.iphone.client.widgets.header;
 
 import com.google.gwt.user.client.ui.HasText;
 import org.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget;
+import org.dvelop.phonegap.iphone.client.widgets.base.TouchableIPhoneWidget;
 
 /**
  *
@@ -9,7 +10,7 @@ import org.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget;
  * Date: 20.02.2010
  * Time: 16:42:54
  */
-public class ForwardButton extends IPhoneWidget implements HasText {
+public class ForwardButton extends TouchableIPhoneWidget implements HasText {
     public ForwardButton() {
         super("div");
         HeaderPanelResourceBundle.INSTANCE.css().ensureInjected();

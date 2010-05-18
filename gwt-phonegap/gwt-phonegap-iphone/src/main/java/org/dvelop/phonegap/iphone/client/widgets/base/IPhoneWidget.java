@@ -21,8 +21,6 @@ import org.dvelop.phonegap.iphone.client.widgets.event.transition.TransitionEndH
  * Time: 23:59:44
  */
 public class IPhoneWidget extends Widget {
-
-    private boolean touchMoved;
     private HandlerRegistration handlerRegistration;
 
 
@@ -65,11 +63,6 @@ public class IPhoneWidget extends Widget {
     protected HandlerRegistration addGestureEndHandler(GestureEndHandler gestureEndHandler) {
         return addHandler(gestureEndHandler, GestureEndEvent.getType());
 
-    }
-
-
-    public final HandlerRegistration addHandler(TouchHandler handler) {
-        return this.addHandler(handler, (GwtEvent.Type<TouchHandler>) TouchEvent.getType());
     }
 
 

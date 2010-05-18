@@ -2,6 +2,7 @@ package org.dvelop.phonegap.iphone.client.widgets.header;
 
 import com.google.gwt.user.client.ui.HasText;
 import org.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget;
+import org.dvelop.phonegap.iphone.client.widgets.base.TouchableIPhoneWidget;
 
 
 /**
@@ -9,7 +10,7 @@ import org.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget;
  * Date: 17.02.2010
  * Time: 22:42:30
  */
-public class BackButton extends IPhoneWidget implements HasText{
+public class BackButton extends TouchableIPhoneWidget implements HasText{
 
     public BackButton() {
         super("div");

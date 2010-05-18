@@ -19,13 +19,13 @@ public class MultipleHandlerRegistration implements HandlerRegistration {
         registrationMap = new HashMap<GwtEvent.Type<?>, HandlerRegistration>();
     }
 
-    protected void putHandlerRegistration(GwtEvent.Type<?> type, HandlerRegistration registration) {
+    public void putHandlerRegistration(GwtEvent.Type<?> type, HandlerRegistration registration) {
         assert registrationMap != null : "registration map must not be null - removeHandler() has already been called";
         assert !registrationMap.containsKey(type) : "type can only be put once (" + type + ")";
         registrationMap.put(type, registration);
     }
 
-    protected HandlerRegistration getHandlerRegistration(GwtEvent.Type<?> type){
+    public HandlerRegistration getHandlerRegistration(GwtEvent.Type<?> type){
         assert registrationMap != null : "registration map must not be null - removeHandler() has already been called";
         return registrationMap.get(type);
     }

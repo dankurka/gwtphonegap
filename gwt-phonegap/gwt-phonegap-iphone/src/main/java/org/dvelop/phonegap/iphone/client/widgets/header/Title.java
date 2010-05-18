@@ -2,6 +2,7 @@ package org.dvelop.phonegap.iphone.client.widgets.header;
 
 import com.google.gwt.user.client.ui.HasText;
 import org.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget;
+import org.dvelop.phonegap.iphone.client.widgets.base.TouchableIPhoneWidget;
 
 
 /**
@@ -11,7 +12,7 @@ import org.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget;
  * Time: 22:47:36
  *
  */
-public class Title extends IPhoneWidget implements HasText {
+public class Title extends TouchableIPhoneWidget implements HasText {
 
     public Title() {
         super("div");
