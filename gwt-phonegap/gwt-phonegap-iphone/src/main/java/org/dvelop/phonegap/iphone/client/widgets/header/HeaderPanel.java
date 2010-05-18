@@ -7,6 +7,8 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import org.dvelop.phonegap.iphone.client.widgets.base.TouchEvent;
 import org.dvelop.phonegap.iphone.client.widgets.base.TouchHandler;
+import org.dvelop.phonegap.iphone.client.widgets.event.MultipleHandlerRegistration;
+import org.dvelop.phonegap.iphone.client.widgets.event.touch.SimpleTouchHandler;
 
 
 import java.util.LinkedList;
@@ -28,7 +30,7 @@ public class HeaderPanel extends Composite {
     private ForwardButton inactiveForwardButton;
     private HandlerRegistration forwardButtonHandler;
 
-    HeaderPanelCss css;
+    private HeaderPanelCss css;
 
     public Title getActiveTitle() {
         return activeTitle;
@@ -79,8 +81,6 @@ public class HeaderPanel extends Composite {
         main.add(inactiveForwardButton);
 
         initWidget(main);
-
-        setUpEventListenerOnActiveButtons();
 
 
     }
@@ -207,67 +207,20 @@ public class HeaderPanel extends Composite {
         inactiveForwardButton = oldForwardButton;
         activeForwardButton = newForwardButton;
 
-
-        setUpEventListenerOnActiveButtons();
     }
 
-    private void setUpEventListenerOnActiveButtons() {
-        if (activeButtonHandler != null) {
-            activeButtonHandler.removeHandler();
-        }
-
-        activeButtonHandler = activeBackButton.addTouchHandler(new TouchHandler() {
-            public void onTouch(TouchEvent event) {
-
-                fireBackButtonTouched(event);
-            }
-        });
-
-        if (forwardButtonHandler != null) {
-            forwardButtonHandler.removeHandler();
-        }
-
-        forwardButtonHandler = activeForwardButton.addTouchHandler(new TouchHandler() {
-            public void onTouch(TouchEvent event) {
-                fireForwardButtonTouched(event);
-
-            }
-        });
-
+    public HandlerRegistration addBackButtonTouchHandler(SimpleTouchHandler simpleTouchHandler) {
+        MultipleHandlerRegistration multipleHandlerRegistration = new MultipleHandlerRegistration();
+        multipleHandlerRegistration.addHandlerRegistration(activeBackButton.addSimpleTouchHandler(simpleTouchHandler));
+        multipleHandlerRegistration.addHandlerRegistration(inactiveBackButton.addSimpleTouchHandler(simpleTouchHandler));
+        return multipleHandlerRegistration;
     }
 
-
-    private LinkedList<TouchHandler> backButtonListeners = new LinkedList<TouchHandler>();
-    private LinkedList<TouchHandler> forwardButtonListeners = new LinkedList<TouchHandler>();
-
-    public void addBackButtonListener(TouchHandler handler) {
-        if (!backButtonListeners.contains(handler))
-            backButtonListeners.add(handler);
-    }
-
-    public void removeBackButtonListener(TouchHandler handler) {
-        backButtonListeners.remove(handler);
-    }
-
-    public void addForwardButtonListener(TouchHandler handler) {
-        if (!forwardButtonListeners.contains(handler))
-            forwardButtonListeners.add(handler);
-    }
-
-    public void removeForwardButtonListener(TouchHandler handler) {
-        forwardButtonListeners.remove(handler);
-    }
-
-    private void fireBackButtonTouched(TouchEvent event) {
-        for (TouchHandler h : backButtonListeners) {
-            h.onTouch(event);
-        }
-    }
-
-    private void fireForwardButtonTouched(TouchEvent event) {
-        for (TouchHandler h : forwardButtonListeners) {
-            h.onTouch(event);
-        }
+    public HandlerRegistration addForwardButtonTouchHandler(SimpleTouchHandler simpleTouchHandler) {
+        MultipleHandlerRegistration multipleHandlerRegistration = new MultipleHandlerRegistration();
+        multipleHandlerRegistration.addHandlerRegistration(activeForwardButton.addSimpleTouchHandler(simpleTouchHandler));
+        multipleHandlerRegistration.addHandlerRegistration(inactiveForwardButton.addSimpleTouchHandler(simpleTouchHandler));
+        return multipleHandlerRegistration;
     }
 
 
@@ -349,10 +302,6 @@ public class HeaderPanel extends Composite {
 
         inactiveForwardButton = oldForwardButton;
         activeForwardButton = newForwardButton;
-
-
-        setUpEventListenerOnActiveButtons();
-
 
     }
 

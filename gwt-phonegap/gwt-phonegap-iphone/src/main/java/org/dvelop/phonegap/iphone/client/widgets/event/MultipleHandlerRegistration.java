@@ -3,9 +3,7 @@ package org.dvelop.phonegap.iphone.client.widgets.event;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * User: martin christ
@@ -13,30 +11,25 @@ import java.util.Map;
  * Time: 01:50:13
  */
 public class MultipleHandlerRegistration implements HandlerRegistration {
-    private Map<GwtEvent.Type<?>, HandlerRegistration> registrationMap;
+    private List<HandlerRegistration> registrationList;
 
     public MultipleHandlerRegistration() {
-        registrationMap = new HashMap<GwtEvent.Type<?>, HandlerRegistration>();
+        registrationList = new ArrayList<HandlerRegistration>();
     }
 
-    public void putHandlerRegistration(GwtEvent.Type<?> type, HandlerRegistration registration) {
-        assert registrationMap != null : "registration map must not be null - removeHandler() has already been called";
-        assert !registrationMap.containsKey(type) : "type can only be put once (" + type + ")";
-        registrationMap.put(type, registration);
+    public void addHandlerRegistration(HandlerRegistration registration) {
+        assert registrationList != null : "registration map must not be null - removeHandler() has already been called";
+        registrationList.add(registration);
     }
 
-    public HandlerRegistration getHandlerRegistration(GwtEvent.Type<?> type){
-        assert registrationMap != null : "registration map must not be null - removeHandler() has already been called";
-        return registrationMap.get(type);
-    }
 
     public void removeHandler() {
-        assert registrationMap != null : "registration map must not be null - removeHandler() has already been called";
-        Collection<HandlerRegistration> registrations = registrationMap.values();
-        for (HandlerRegistration registration : registrations) {
+        assert registrationList != null : "registration map must not be null - removeHandler() has already been called";
+
+        for (HandlerRegistration registration : registrationList) {
             registration.removeHandler();
         }
-        registrationMap.clear();
-        registrationMap = null;
+        registrationList.clear();
+        registrationList = null;
     }
 }

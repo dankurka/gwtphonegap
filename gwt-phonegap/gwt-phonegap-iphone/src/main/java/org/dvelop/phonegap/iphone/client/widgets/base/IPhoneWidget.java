@@ -8,8 +8,10 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Widget;
+import org.dvelop.phonegap.iphone.client.widgets.event.MultipleHandlerRegistration;
 import org.dvelop.phonegap.iphone.client.widgets.event.gesture.*;
 import org.dvelop.phonegap.iphone.client.widgets.event.touch.*;
+import org.dvelop.phonegap.iphone.client.widgets.event.touch.TouchHandler;
 import org.dvelop.phonegap.iphone.client.widgets.event.transition.NativeTransitionEvent;
 import org.dvelop.phonegap.iphone.client.widgets.event.transition.TransitionEndEvent;
 import org.dvelop.phonegap.iphone.client.widgets.event.transition.TransitionEndHandler;
@@ -50,6 +52,15 @@ public class IPhoneWidget extends Widget {
 
     }
 
+    protected HandlerRegistration addTouchHandler(TouchHandler touchHandler) {
+        MultipleHandlerRegistration registration = new MultipleHandlerRegistration();
+        registration.addHandlerRegistration(addTouchStartHandler(touchHandler));
+        registration.addHandlerRegistration(addTouchMoveHandler(touchHandler));
+        registration.addHandlerRegistration(addTouchCancelHandler(touchHandler));
+        registration.addHandlerRegistration(addTouchEndHandler(touchHandler));
+        return registration;
+    }
+
     protected HandlerRegistration addGestureStartHandler(GestureStartHandler gestureStartHandler) {
         return addHandler(gestureStartHandler, GestureStartEvent.getType());
 
@@ -63,6 +74,16 @@ public class IPhoneWidget extends Widget {
     protected HandlerRegistration addGestureEndHandler(GestureEndHandler gestureEndHandler) {
         return addHandler(gestureEndHandler, GestureEndEvent.getType());
 
+    }
+
+    protected HandlerRegistration addGestureHandler(GestureHandler gestureHandler) {
+        MultipleHandlerRegistration registration = new MultipleHandlerRegistration();
+
+        registration.addHandlerRegistration(addGestureStartHandler(gestureHandler));
+        registration.addHandlerRegistration(addGestureChangeHandler(gestureHandler));
+        registration.addHandlerRegistration(addGestureEndHandler(gestureHandler));
+
+        return registration;
     }
 
 

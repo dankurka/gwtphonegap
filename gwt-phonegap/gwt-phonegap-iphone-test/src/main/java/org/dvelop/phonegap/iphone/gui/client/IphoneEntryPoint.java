@@ -5,6 +5,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import org.dvelop.phonegap.iphone.client.widgets.base.TouchEvent;
 import org.dvelop.phonegap.iphone.client.widgets.base.TouchHandler;
 import org.dvelop.phonegap.iphone.client.widgets.buttons.RefreshButton;
+import org.dvelop.phonegap.iphone.client.widgets.event.touch.SimpleTouchHandler;
 import org.dvelop.phonegap.iphone.client.widgets.footer.FooterPanel;
 import org.dvelop.phonegap.iphone.client.widgets.header.HeaderPanelAnimation;
 import org.dvelop.phonegap.iphone.client.widgets.header.HeaderPanelResourceBundle;
@@ -29,9 +30,10 @@ public class IphoneEntryPoint implements EntryPoint {
         panel.setBackButtonText("back");
         panel.setTitleText("Title");
 
-        panel.addBackButtonListener(new TouchHandler() {
 
-            public void onTouch(TouchEvent event) {
+        panel.addBackButtonTouchHandler(new SimpleTouchHandler() {
+
+            public void onTouch() {
                 HeaderPanelAnimation animation = new HeaderPanelAnimation();
                 animation.setBackButton(true);
                 animation.setBackButtonText("bb");
@@ -40,7 +42,6 @@ public class IphoneEntryPoint implements EntryPoint {
                 animation.setTitle("jo");
 
                 panel.moveBackward(animation);
-
             }
         });
 
