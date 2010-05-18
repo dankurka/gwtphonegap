@@ -75,7 +75,9 @@ public class IPhoneWidget extends Widget {
 
     @Override
     protected void onLoad() {
+        super.onLoad();
         setUpEventsHooks();
+
     }
 
     private void setUpEventsHooks() {
@@ -114,7 +116,9 @@ public class IPhoneWidget extends Widget {
 
     @Override
     protected void onUnload() {
+        super.onUnload();
         tearDownEventHooks();
+
     }
 
 
