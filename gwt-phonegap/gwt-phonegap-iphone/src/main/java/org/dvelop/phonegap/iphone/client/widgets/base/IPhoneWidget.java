@@ -44,6 +44,7 @@ public class IPhoneWidget extends Widget {
         if (this.isAttached()) {
             if (IPhoneUtil.hasTouchEvent()) {
                 registerTouchEvents();
+                registerGestureEvents();
             } else {
                 //this is done for others browser than apple mobile (test in hosted mode)
                 handlerRegistration = this.addDomHandler(new ClickHandler() {
@@ -62,6 +63,7 @@ public class IPhoneWidget extends Widget {
 
         if (IPhoneUtil.hasTouchEvent()) {
             unregisterTouchEvents();
+            unregisterGestureEvents();
         } else {
             handlerRegistration.removeHandler();
         }
