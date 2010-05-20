@@ -32,21 +32,21 @@ public class NativeTouchEvent extends JavaScriptObject {
 
 
 
-	public final native void preventDefault() /*-{
+	public native void preventDefault() /*-{
 		return this.preventDefault();
 	}-*/;
 
 
 
-	public final native int getTouchCount() /*-{
+	public native int getTouchCount() /*-{
 		return this.touches.length;
 	}-*/;
 
-	public final native int getTargetTouchCount() /*-{
+	public native int getTargetTouchCount() /*-{
 		return this.targetTouches.length;
 	}-*/;
 
-	public final native int getChangedTouchCount() /*-{
+	public native int getChangedTouchCount() /*-{
 		return this.changedTouches.length;
 	}-*/;
 
@@ -55,7 +55,7 @@ public class NativeTouchEvent extends JavaScriptObject {
 	 * @param index
 	 * @return
 	 */
-	public final native NativeEvent getTouch(int index) /*-{
+	public native NativeEvent getTouch(int index) /*-{
 		return this.touches[index];
 	}-*/;
 
@@ -64,7 +64,7 @@ public class NativeTouchEvent extends JavaScriptObject {
 	 * @param index
 	 * @return
 	 */
-	public final native NativeEvent getTargetTouch(int index) /*-{
+	public native NativeEvent getTargetTouch(int index) /*-{
 		return this.targetTouches[index];
 	}-*/;
 
@@ -73,7 +73,7 @@ public class NativeTouchEvent extends JavaScriptObject {
 	 * @param index
 	 * @return
 	 */
-	public final native NativeEvent getChangedTouch(int index) /*-{
+	public native NativeEvent getChangedTouch(int index) /*-{
 		return this.changedTouches[index];
 	}-*/;
 
