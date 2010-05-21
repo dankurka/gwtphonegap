@@ -10,7 +10,7 @@ import com.google.gwt.dom.client.NativeEvent;
  * @author mchrist
  * based on: http://www.sitepen.com/blog/2008/07/10/touching-and-gesturing-on-the-iphone/
  */
-public class NativeTouchEvent extends JavaScriptObject {
+public class NativeTouchEvent {
 
 	/**
 	 * must be protected
