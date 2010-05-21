@@ -12,14 +12,14 @@ package org.dvelop.phonegap.iphone.client.localStorage;
 public class LocalStorage {
 
     public LocalStorage() throws NoLocalStoreSupport {
-        if (!testForLocalStorage()) {
+        if (!isSupported()) {
             throw new NoLocalStoreSupport();
         }
 
 
     }
 
-    public static native boolean testForLocalStorage()/*-{
+    public static native boolean isSupported()/*-{
         if(localStorage == null)
         {
             return false;
