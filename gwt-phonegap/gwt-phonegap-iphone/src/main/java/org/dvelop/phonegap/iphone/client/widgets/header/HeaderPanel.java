@@ -49,7 +49,7 @@ public class HeaderPanel extends Composite {
         hasBackButton = hasButton;
     }
 
-    private boolean hasBackButton;
+    private boolean hasBackButton = true;
 
     public HeaderPanel() {
         HeaderPanelResourceBundle.INSTANCE.css().ensureInjected();
@@ -305,7 +305,7 @@ public class HeaderPanel extends Composite {
 
     }
 
-    private boolean hasForwardButton;
+    private boolean hasForwardButton = true;
 
 
     public void setHasForwardButton(boolean hasForwardButton) {

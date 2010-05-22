@@ -1,0 +1,96 @@
+div.listview li:first-child {
+    -webkit-border-top-left-radius: 8px;
+    -webkit-border-top-right-radius: 8px;
+    border: 1px solid rgb(171, 173, 176);
+    border-bottom-width: 0;
+}
+
+div.listview li {
+    height: 32px;
+    list-style-type: none;
+    background-color: white;
+    border-style: solid;
+    border-width: 1px 1px 0px 1px;
+    border-color: rgb(171, 173, 176);
+    margin: 0px;
+    padding-top: 14px;
+    padding-left: 10px;
+    padding-right: 20px; /* ensure that long pieces of text get trimmed */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+    /*
+    this matches the last list item, which needs rounding in the bottom corners
+    and a bottom border
+    */
+div.listview li:last-child {
+    -webkit-border-bottom-left-radius: 8px;
+    -webkit-border-bottom-right-radius: 8px;
+    border: 1px solid rgb(171, 173, 176);
+    margin-bottom: 5px;
+}
+
+    /*
+    list items with the .group class are those that can be tapped to drill
+    further down and therefore need an arrow in the background to indicate that
+    */
+div.listview li.group {
+    background-image: url('img/chevron.png');
+    background-repeat: no-repeat;
+    background-position: 280px 18px;
+}
+
+
+div.listview li div.markerNew {
+
+	position:absolute;
+
+	width: 30px;
+	height: 30px;
+
+    background-image: url('img/UIUnreadIndicator.png');
+    background-repeat: no-repeat;
+    background-position: 0px 12px;
+}
+
+div.listview li div.markerNone {
+    background-image: none;
+}
+
+
+/* this is for the touched state of list items */
+div.listview li.group:active {
+    background-image: url('img/chevron_touched.png'), url('img/item_background_touched.png');
+    background-position: 280px 18px, 0 0;
+    background-repeat: no-repeat, repeat-x;
+    color: white;
+}
+
+div.listview li.multiline {
+    padding-top: 6px;
+    padding-bottom: 8px;
+}
+
+div.listview li div.liueber {
+/*
+    font-size: 18px;
+    font-weight: bold;
+*/
+	margin-left: 18px;
+}
+
+div.listview li div.liunter {
+    font-size: 12px;
+    font-weight: normal;
+	margin-left: 18px;
+}
+
+div.listview ul {
+    width: 300px;
+    padding: 0px;
+    margin: 10px 0px 6px 10px;
+    font-size: 18px;
+    font-weight: bold;
+}

@@ -2,15 +2,17 @@ package org.dvelop.phonegap.iphone.gui.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.RootPanel;
-import org.dvelop.phonegap.iphone.client.widgets.base.TouchEvent;
-import org.dvelop.phonegap.iphone.client.widgets.base.TouchHandler;
 import org.dvelop.phonegap.iphone.client.widgets.buttons.RefreshButton;
 import org.dvelop.phonegap.iphone.client.widgets.event.touch.SimpleTouchHandler;
 import org.dvelop.phonegap.iphone.client.widgets.footer.FooterPanel;
 import org.dvelop.phonegap.iphone.client.widgets.header.HeaderPanelAnimation;
-import org.dvelop.phonegap.iphone.client.widgets.header.HeaderPanelResourceBundle;
 import org.dvelop.phonegap.iphone.client.widgets.header.HeaderPanel;
+import org.dvelop.phonegap.iphone.client.widgets.list.model.ListModel;
+import org.dvelop.phonegap.iphone.client.widgets.list.model.ListModelView;
 import org.dvelop.phonegap.iphone.client.widgets.standard.StandardIphoneBundle;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * User: daniel kurka
@@ -18,40 +20,78 @@ import org.dvelop.phonegap.iphone.client.widgets.standard.StandardIphoneBundle;
  * Time: 23:43:46
  */
 public class IphoneEntryPoint implements EntryPoint {
+    
     public void onModuleLoad() {
-        //Window.alert("test");
-
         StandardIphoneBundle.INSTANCE.css().ensureInjected();
 
-        HeaderPanelResourceBundle.INSTANCE.css().ensureInjected();
+        // generateHeaderPanelDemo( RootPanel.get());
 
-        final HeaderPanel panel = new HeaderPanel();
-
-        panel.setBackButtonText("back");
-        panel.setTitleText("Title");
+        generateListViewPanel( RootPanel.get());
+    }
 
 
-        panel.addBackButtonTouchHandler(new SimpleTouchHandler() {
+    private void generateHeaderPanelDemo(RootPanel rootPanel){
+        final HeaderPanel headerPanel = new HeaderPanel();
+
+        headerPanel.setBackButtonText("back");
+        headerPanel.setTitleText("Title");
+
+        headerPanel.addBackButtonTouchHandler(new SimpleTouchHandler() {
 
             public void onTouch() {
                 HeaderPanelAnimation animation = new HeaderPanelAnimation();
                 animation.setBackButton(true);
-                animation.setBackButtonText("bb");
+                animation.setBackButtonText("first");
                 animation.setForwardButton(true);
-                animation.setForwardButtonText("bla");
-                animation.setTitle("jo");
+                animation.setForwardButtonText("forward");
+                animation.setTitle("Title touched");
 
-                panel.moveBackward(animation);
+                headerPanel.moveBackward(animation);
             }
         });
 
-
-        RootPanel.get().add(panel);
-
+        rootPanel.add(headerPanel);
 
         FooterPanel footerPanel = new FooterPanel();
-        footerPanel.add(new RefreshButton());
 
-        RootPanel.get().add(footerPanel);
+        RefreshButton refreshButton = new RefreshButton();
+        footerPanel.add( refreshButton);
+
+        rootPanel.add(footerPanel);
+    }
+
+
+    public void generateListViewPanel( RootPanel rootPanel) {
+        StandardIphoneBundle.INSTANCE.css().ensureInjected();
+
+        final HeaderPanel headerPanel = new HeaderPanel();
+
+        headerPanel.setTitleText("Title");
+        headerPanel.setHasBackButton(true);
+        headerPanel.setHasForwardButton(false);
+
+        rootPanel.add(headerPanel);
+
+        rootPanel.add(generateListView());
+
+        FooterPanel footerPanel = new FooterPanel();
+        RefreshButton refreshButton = new RefreshButton();
+        footerPanel.add( refreshButton);
+        
+        rootPanel.add(footerPanel);
+    }
+
+    private ListModelView generateListView(){
+        ListModelView view = new ListModelView();
+        List<ListModel> itemsList = new ArrayList<ListModel>();
+
+        itemsList.add(new ListModel("Network", "currently WiFi used"));
+        itemsList.add(new ListModel("Carrier", "Vodafone.de"));
+        itemsList.add(new ListModel("Version", "3.1.3"));
+        itemsList.add(new ListModel("Available", "9,6 GB"));
+        itemsList.add(new ListModel("", ""));
+
+        view.displayItems(itemsList);
+        return view;
     }
 }
