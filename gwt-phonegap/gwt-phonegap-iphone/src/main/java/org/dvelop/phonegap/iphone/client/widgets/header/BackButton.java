@@ -4,6 +4,8 @@ import com.google.gwt.user.client.ui.HasText;
 import org.dvelop.phonegap.iphone.client.widgets.base.IPhoneWidget;
 import org.dvelop.phonegap.iphone.client.widgets.base.SimpleTouchWidget;
 import org.dvelop.phonegap.iphone.client.widgets.base.TouchableIPhoneWidget;
+import org.dvelop.phonegap.iphone.client.widgets.event.HasSimpleTouchHandler;
+import org.dvelop.phonegap.iphone.client.widgets.event.HasTouchHandler;
 
 
 /**

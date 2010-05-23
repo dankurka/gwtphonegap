@@ -7,6 +7,7 @@ import com.google.gwt.dom.client.Document;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.Widget;
+import org.dvelop.phonegap.iphone.client.widgets.event.HasTouchHandler;
 import org.dvelop.phonegap.iphone.client.widgets.event.MultipleHandlerRegistration;
 import org.dvelop.phonegap.iphone.client.widgets.event.gesture.*;
 import org.dvelop.phonegap.iphone.client.widgets.event.touch.*;

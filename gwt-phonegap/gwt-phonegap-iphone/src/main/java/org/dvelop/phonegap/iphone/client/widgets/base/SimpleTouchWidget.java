@@ -1,6 +1,7 @@
 package org.dvelop.phonegap.iphone.client.widgets.base;
 
 import com.google.gwt.event.shared.HandlerRegistration;
+import org.dvelop.phonegap.iphone.client.widgets.event.HasSimpleTouchHandler;
 import org.dvelop.phonegap.iphone.client.widgets.event.TouchToClickHandler;
 import org.dvelop.phonegap.iphone.client.widgets.event.touch.SimpleTouchHandler;
 
@@ -9,7 +10,7 @@ import org.dvelop.phonegap.iphone.client.widgets.event.touch.SimpleTouchHandler;
  * Date: 18.05.2010
  * Time: 23:18:40
  */
-public class SimpleTouchWidget extends IPhoneWidget {
+public class SimpleTouchWidget extends IPhoneWidget implements HasSimpleTouchHandler {
     public SimpleTouchWidget(String tagName) {
         super(tagName);
     }

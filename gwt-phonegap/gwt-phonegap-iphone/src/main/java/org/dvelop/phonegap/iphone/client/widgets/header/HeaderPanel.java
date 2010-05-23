@@ -5,8 +5,10 @@ import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.DeferredCommand;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HasText;
 import org.dvelop.phonegap.iphone.client.widgets.base.TouchEvent;
 import org.dvelop.phonegap.iphone.client.widgets.base.TouchHandler;
+import org.dvelop.phonegap.iphone.client.widgets.event.HasSimpleTouchHandler;
 import org.dvelop.phonegap.iphone.client.widgets.event.MultipleHandlerRegistration;
 import org.dvelop.phonegap.iphone.client.widgets.event.touch.SimpleTouchHandler;
 
@@ -20,7 +22,7 @@ import java.util.LinkedList;
  * Time: 00:01:01
  * To change this template use File | Settings | File Templates.
  */
-public class HeaderPanel extends Composite {
+public class HeaderPanel extends Composite implements HasHeaderPanelAnimation{
 
 
     private HandlerRegistration activeButtonHandler;
@@ -85,6 +87,7 @@ public class HeaderPanel extends Composite {
 
     }
 
+
     public void setBackButtonText(String text) {
         activeBackButton.setText(text);
     }
@@ -124,7 +127,7 @@ public class HeaderPanel extends Composite {
         activeTitle.removeStyleName(css.titleStopAnimate());
     }
 
-    public void moveForward(final HeaderPanelAnimation info) {
+    public void moveForwards(final HeaderPanelAnimation info) {
         removePositionStyles();
 
 
@@ -209,6 +212,44 @@ public class HeaderPanel extends Composite {
 
     }
 
+
+    private class BackButtonWrapper implements HasSimpleTouchHandler {
+
+        public HandlerRegistration addSimpleTouchHandler(SimpleTouchHandler handler) {
+            MultipleHandlerRegistration multipleHandlerRegistration = new MultipleHandlerRegistration();
+            multipleHandlerRegistration.addHandlerRegistration(activeBackButton.addSimpleTouchHandler(handler));
+            multipleHandlerRegistration.addHandlerRegistration(inactiveBackButton.addSimpleTouchHandler(handler));
+            return multipleHandlerRegistration;
+        }
+    }
+
+    private BackButtonWrapper backButtonWrapper = new BackButtonWrapper();
+
+    private class ForwardButtonWrapper implements HasSimpleTouchHandler {
+
+        public HandlerRegistration addSimpleTouchHandler(SimpleTouchHandler handler) {
+            MultipleHandlerRegistration multipleHandlerRegistration = new MultipleHandlerRegistration();
+            multipleHandlerRegistration.addHandlerRegistration(activeForwardButton.addSimpleTouchHandler(handler));
+            multipleHandlerRegistration.addHandlerRegistration(inactiveForwardButton.addSimpleTouchHandler(handler));
+            return multipleHandlerRegistration;
+        }
+    }
+
+    private ForwardButtonWrapper forwardButtonWrapper = new ForwardButtonWrapper();
+
+
+    public HasSimpleTouchHandler getFowardButtonHandler() {
+        return forwardButtonWrapper;
+    }
+
+    public HasSimpleTouchHandler getBackButtonHandler() {
+        return backButtonWrapper;
+    }
+
+
+
+
+
     public HandlerRegistration addBackButtonTouchHandler(SimpleTouchHandler simpleTouchHandler) {
         MultipleHandlerRegistration multipleHandlerRegistration = new MultipleHandlerRegistration();
         multipleHandlerRegistration.addHandlerRegistration(activeBackButton.addSimpleTouchHandler(simpleTouchHandler));
@@ -224,7 +265,7 @@ public class HeaderPanel extends Composite {
     }
 
 
-    public void moveBackward(final HeaderPanelAnimation info) {
+    public void moveBackwards(final HeaderPanelAnimation info) {
         removePositionStyles();
 
 
