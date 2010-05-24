@@ -3,7 +3,7 @@
     -webkit-text-size-adjust: none;
 }
 
-.instructions {
+.selectAble {
     -webkit-user-select: text;
 }
 
@@ -15,4 +15,8 @@ body {
     -webkit-text-size-adjust: none;
     background-image: url('img/background_stripes.png');
     background-repeat: repeat;
+}
+
+.searchField{
+    -webkit-appearance:searchfield;    
 }

@@ -18,7 +18,7 @@ import java.util.Iterator;
  * Date: 24.05.2010
  * Time: 14:24:39
  */
-public class MovingPanel extends Composite implements HasWidgets, HasTransistionEndHandler {
+public class MovingPanel extends Composite implements HasWidgets {
     private FlowPanel main;
 
     public MovingPanel() {

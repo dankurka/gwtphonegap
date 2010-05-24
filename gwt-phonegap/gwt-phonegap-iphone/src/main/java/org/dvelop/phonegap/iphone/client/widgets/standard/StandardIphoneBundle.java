@@ -13,7 +13,6 @@ public interface StandardIphoneBundle extends ClientBundle{
 
      public static final StandardIphoneBundle INSTANCE = GWT.create(StandardIphoneBundle.class);
 
-    @CssResource.NotStrict
     @Source("org/dvelop/phonegap/iphone/public/css/standard.css")
-    CssResource css();
+    StandardIPhoneCssResource css();
 }
