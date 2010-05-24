@@ -14,4 +14,7 @@ public interface StandardIPhoneCssResource extends CssResource {
 
     @CssResource.ClassName("searchField")
     public String searchFieldClass();
+
+     @CssResource.ClassName("roundPage")
+    public String roundPageClass();
 }
