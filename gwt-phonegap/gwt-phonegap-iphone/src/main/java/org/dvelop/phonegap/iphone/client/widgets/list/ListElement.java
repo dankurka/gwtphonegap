@@ -1,9 +1,10 @@
 package org.dvelop.phonegap.iphone.client.widgets.list;
 
 import com.google.gwt.user.client.ui.HasText;
+import org.dvelop.phonegap.iphone.client.widgets.base.SimpleTouchWidget;
 import org.dvelop.phonegap.iphone.client.widgets.base.TouchableIPhoneWidget;
 
-public class ListElement  extends TouchableIPhoneWidget implements HasText {
+public class ListElement  extends SimpleTouchWidget implements HasText {
     public ListElement() {
         super("li");
     }

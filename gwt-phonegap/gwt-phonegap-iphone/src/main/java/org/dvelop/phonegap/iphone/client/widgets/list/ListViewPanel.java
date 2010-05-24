@@ -1,5 +1,7 @@
 package org.dvelop.phonegap.iphone.client.widgets.list;
 
+import com.google.gwt.event.logical.shared.SelectionEvent;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.ComplexPanel;
 import com.google.gwt.user.client.ui.Composite;
@@ -16,7 +18,7 @@ import org.dvelop.phonegap.iphone.client.widgets.standard.StandardIphoneBundle;
  */
 public class ListViewPanel extends Composite {
 
-    FlowPanel main;
+    private FlowPanel main;
     private ListTag listTag;
 
     public ListViewPanel() {
@@ -26,7 +28,7 @@ public class ListViewPanel extends Composite {
         main = new FlowPanel();
 
         String styleName = ListViewPanelCssBundle.INSTANCE.css().listviewClass();
-        main.setStyleName( styleName);
+        main.setStyleName(styleName);
 
         listTag = new ListTag();
         main.add(listTag);
@@ -83,4 +85,6 @@ public class ListViewPanel extends Composite {
             insert(w, getElement(), beforeIndex, true);
         }
     }
+
+
 }
