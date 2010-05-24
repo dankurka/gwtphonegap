@@ -46,7 +46,7 @@ public class IphoneEntryPoint implements EntryPoint {
                 animation.setForwardButtonText("forward");
                 animation.setTitle("Title touched");
 
-                headerPanel.moveBackward(animation);
+                headerPanel.moveBackwards(animation);
             }
         });
 
