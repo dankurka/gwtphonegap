@@ -24,6 +24,9 @@ import org.dvelop.phonegap.iphone.client.widgets.event.transition.TransitionEndH
  */
 public class IPhoneWidget extends Widget {
 
+    protected IPhoneWidget() {
+
+    }
 
     public IPhoneWidget(String tagName) {
         setElement(Document.get().createElement(tagName));
