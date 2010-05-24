@@ -6,6 +6,7 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+import org.dvelop.phonegap.iphone.client.widgets.event.transition.TransitionEndHandler;
 
 import java.util.Iterator;
 
@@ -35,7 +36,25 @@ public class BasicPagePanel extends Composite implements HasMovingPanelAnimation
         main.add(active);
         main.add(inactive);
 
+        //active.addTransistionEndHandler(new TransEndHandler(active));
+        //active.addTransistionEndHandler(new TransEndHandler(inactive));
 
+
+
+    }
+
+    private class TransEndHandler implements TransitionEndHandler{
+
+        private MovingPanel panel;
+
+        public TransEndHandler(MovingPanel panel) {
+            this.panel = panel;
+        }
+
+        public void onWebKitTransitionEndHandler() {
+            if(panel == inactive)
+                panel.clear();
+        }
     }
 
     public MovingPanel getActivePanel() {
