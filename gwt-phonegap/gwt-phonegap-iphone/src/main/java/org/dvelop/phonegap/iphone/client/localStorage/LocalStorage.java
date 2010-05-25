@@ -1,5 +1,7 @@
 package org.dvelop.phonegap.iphone.client.localStorage;
 
+import com.google.gwt.user.client.Window;
+
 /**
  * User: daniel kurka
  * Date: 15.05.2010
@@ -44,8 +46,10 @@ public class LocalStorage {
 
     public void setItem(String key, String value) throws QuotaExceededException {
         try {
+            removeItem(key);
             setItemNative(key, value);
         } catch (Throwable e) {
+            Window.alert(e.toString());
             throw new QuotaExceededException();
         }
     }
