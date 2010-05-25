@@ -41,12 +41,12 @@ public class SimpleList extends Composite implements HasListSelectionHandler {
                 listElement.addStyleName(ListViewPanelCssBundle.INSTANCE.css().multilineClass());
 
                 StringBuffer buffer = new StringBuffer();
-                /*
-                if (model.isNewEntry()) {
-                    buffer.append("<div class='markerNew'></div>");
-                } else
-                */
-                buffer.append("<div class='" + ListViewPanelCssBundle.INSTANCE.css().markerNoneClass() + "'></div>");
+
+                if (model.markUnread()) {
+                    buffer.append("<div class='" + ListViewPanelCssBundle.INSTANCE.css().markerNewClass() + "'></div>");
+                } else {
+                    buffer.append("<div class='" + ListViewPanelCssBundle.INSTANCE.css().markerNoneClass() + "'></div>");
+                }
 
 
                 buffer.append("<div class='" + ListViewPanelCssBundle.INSTANCE.css().liueberClass() + "'>" + model.getTitle() + "</div>");
