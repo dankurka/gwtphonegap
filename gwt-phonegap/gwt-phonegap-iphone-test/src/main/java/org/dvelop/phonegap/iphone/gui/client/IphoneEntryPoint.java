@@ -7,8 +7,7 @@ import org.dvelop.phonegap.iphone.client.widgets.event.touch.SimpleTouchHandler;
 import org.dvelop.phonegap.iphone.client.widgets.footer.FooterPanel;
 import org.dvelop.phonegap.iphone.client.widgets.header.HeaderPanelAnimation;
 import org.dvelop.phonegap.iphone.client.widgets.header.HeaderPanel;
-import org.dvelop.phonegap.iphone.client.widgets.list.model.ListModel;
-import org.dvelop.phonegap.iphone.client.widgets.list.model.ListModelView;
+import org.dvelop.phonegap.iphone.client.widgets.list.SimpleList;
 import org.dvelop.phonegap.iphone.client.widgets.standard.StandardIphoneBundle;
 
 import java.util.ArrayList;
@@ -47,6 +46,9 @@ public class IphoneEntryPoint implements EntryPoint {
                 animation.setTitle("Title touched");
 
                 headerPanel.moveBackwards(animation);
+
+
+                //headerPanel.moveBackward(animation);
             }
         });
 
@@ -72,7 +74,7 @@ public class IphoneEntryPoint implements EntryPoint {
 
         rootPanel.add(headerPanel);
 
-        rootPanel.add(generateListView());
+        //rootPanel.add(generateListView());
 
         FooterPanel footerPanel = new FooterPanel();
         RefreshButton refreshButton = new RefreshButton();
@@ -80,9 +82,9 @@ public class IphoneEntryPoint implements EntryPoint {
         
         rootPanel.add(footerPanel);
     }
-
-    private ListModelView generateListView(){
-        ListModelView view = new ListModelView();
+    /*
+    private SimpleList generateListView(){
+        SimpleList viewSimple = new SimpleList();
         List<ListModel> itemsList = new ArrayList<ListModel>();
 
         itemsList.add(new ListModel("Network", "currently WiFi used"));
@@ -91,7 +93,7 @@ public class IphoneEntryPoint implements EntryPoint {
         itemsList.add(new ListModel("Available", "9,6 GB"));
         itemsList.add(new ListModel("", ""));
 
-        view.displayItems(itemsList);
-        return view;
-    }
+        viewSimple.displayItems(itemsList);
+        return viewSimple;
+    }  */
 }
