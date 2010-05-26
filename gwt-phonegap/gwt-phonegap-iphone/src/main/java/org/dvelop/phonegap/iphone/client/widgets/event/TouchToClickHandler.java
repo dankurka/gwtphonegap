@@ -22,6 +22,7 @@ public class TouchToClickHandler implements TouchHandler {
     }
 
     public void onTouchEnd(TouchEndEvent touchEndEvent) {
+        //touchEndEvent.getNativeTouchEvent().preventDefault();
         if (started) {
             started = false;
             if (!moved) {
@@ -32,15 +33,18 @@ public class TouchToClickHandler implements TouchHandler {
     }
 
     public void onTouchMove(TouchMoveEvent touchMoveEvent) {
+        //touchMoveEvent.getNativeTouchEvent().preventDefault();
         moved = true;
     }
 
     public void onTouchStart(TouchStartEvent touchStartEvent) {
+        //touchStartEvent.getNativeTouchEvent().preventDefault();
         started = true;
         moved = false;
     }
 
     public void onTouchCancel(TouchCancelEvent touchCancelEvent) {
+        //touchCancelEvent.getNativeTouchEvent().preventDefault();
         started = false;
         moved = false;
     }
