@@ -8,7 +8,7 @@ import com.google.gwt.event.shared.GwtEvent;
  * Time: 00:00:51
  */
 public class TouchEvent extends GwtEvent<TouchHandler> {
-    private static final Type<?> TYPE = new Type<TouchHandler>();
+    private static final Type<TouchHandler> TYPE = new Type<TouchHandler>();
 
     private IPhoneWidget source;
 
@@ -18,7 +18,7 @@ public class TouchEvent extends GwtEvent<TouchHandler> {
 
 
     @Override
-    public Type getAssociatedType() {
+    public Type<TouchHandler> getAssociatedType() {
         return TYPE;
     }
 
