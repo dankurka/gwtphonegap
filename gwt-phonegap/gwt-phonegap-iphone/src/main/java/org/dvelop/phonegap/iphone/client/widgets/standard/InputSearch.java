@@ -18,7 +18,9 @@ public class InputSearch extends TextBox {
 
     public InputSearch( String placeholder, int results, boolean incremental){
         super( Document.get().createTextInputElement());
-        super.getElement().setAttribute("type", "search");
+        getElement().setAttribute("type", "search");
+        getElement().setAttribute("autocorrect", "off");
+        getElement().setAttribute("autocapitalize", "off");
 
         if( placeholder != null && !placeholder.equals(""))
             super.getElement().setAttribute("placeholder", placeholder);
