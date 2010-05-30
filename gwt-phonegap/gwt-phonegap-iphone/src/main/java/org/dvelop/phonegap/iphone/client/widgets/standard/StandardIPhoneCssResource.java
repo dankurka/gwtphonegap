@@ -17,4 +17,7 @@ public interface StandardIPhoneCssResource extends CssResource {
 
      @CssResource.ClassName("roundPage")
     public String roundPageClass();
+
+    @CssResource.ClassName("searchbox")
+    public String searchBoxClass();
 }
