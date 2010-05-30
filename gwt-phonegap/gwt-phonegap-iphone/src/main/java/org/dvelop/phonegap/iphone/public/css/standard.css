@@ -15,6 +15,7 @@ body {
     -webkit-text-size-adjust: none;
     background-image: url('img/background_stripes.png');
     background-repeat: repeat;
+    z-index: 0;
 }
 
 .searchField{
