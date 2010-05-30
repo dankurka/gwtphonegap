@@ -11,7 +11,7 @@ import org.dvelop.phonegap.iphone.client.widgets.standard.*;
  * Date: 30.05.2010
  * Time: 18:34:45
  */
-public class SearchBox extends Composite implements HasChangeHandlers, HasText, HasName, HasValue<String>{
+public class SearchBox extends Composite implements HasChangeHandlers, HasText, HasName, HasValue<String>, HasPlaceHolder{
     private TextBox box;
 
     public SearchBox() {
@@ -29,9 +29,21 @@ public class SearchBox extends Composite implements HasChangeHandlers, HasText, 
 
         box = new TextBox();
         box.addStyleName(resource.selectAbleClass());
+
+        box.getElement().setAttribute("autocapitalize", "off");
+        box.getElement().setAttribute("autocorrect", "off");
+
         secondDiv.add(box);
 
 
+    }
+
+    public void setPlaceHolder(String text){
+        box.getElement().setAttribute("placeholder", text);       
+    }
+
+    public String getPlaceHolder(){
+        return box.getElement().getAttribute("placeholder");
     }
 
     public String getText() {
