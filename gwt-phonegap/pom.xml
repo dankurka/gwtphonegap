@@ -16,6 +16,7 @@
 
     <properties>
         <gwt.version>2.0.3</gwt.version>
+        <site.deploymenturl></site.deploymenturl>
     </properties>
 
     <build>
@@ -59,23 +60,5 @@
         </dependencies>
 
     </dependencyManagement>
-
-     <distributionManagement>
-        <repository>
-            <id>artifactory</id>
-            <name>d-velop_app_releases</name>
-            <url>http://artifactory.d-velop.de:8080/nexus/content/repositories/d-velop_app_releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>artifactory</id>
-            <name>d-velop_app_snapshots</name>
-            <url>http://artifactory.d-velop.de:8080/nexus/content/repositories/d-velop_app_snapshots</url>
-        </snapshotRepository>
-
-        <site>
-            <id>webserver</id>
-            <url>${site.deploymenturl}</url>
-        </site>
-    </distributionManagement>
 
 </project>
