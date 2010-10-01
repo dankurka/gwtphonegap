@@ -2,7 +2,7 @@ package de.kurka.phonegap.client.accelerometer;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
-public class Acceleration extends JavaScriptObject {
+public final class Acceleration extends JavaScriptObject {
 
 	protected Acceleration() {
 
