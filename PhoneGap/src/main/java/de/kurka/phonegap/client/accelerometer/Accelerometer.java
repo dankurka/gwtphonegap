@@ -28,7 +28,7 @@ public class Accelerometer {
 		$wnd.navigator.accelerometer.getCurrentAcceleration(successCallback, errorCallback, localOptions);
 	}-*/;
 
-	public native AccelerometerWatcher watchAcceleration(AccelerationCallback accelerationCallback, AccelerationOptions options) /*-{
+	public native AccelerometerWatcher watchAcceleration(AccelerationOptions options, AccelerationCallback accelerationCallback) /*-{
 		var sc = function(data){
 		accelerationCallback.@de.kurka.phonegap.client.accelerometer.AccelerationCallback::onSuccess(Lde/kurka/phonegap/client/accelerometer/Acceleration;)(data);
 		};

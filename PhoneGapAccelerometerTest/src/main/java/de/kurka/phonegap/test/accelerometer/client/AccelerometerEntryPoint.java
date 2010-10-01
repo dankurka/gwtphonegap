@@ -57,7 +57,7 @@ public class AccelerometerEntryPoint implements EntryPoint {
 		final AccelerationOptions options = new AccelerationOptions();
 		options.setFrequency(50);
 
-		watchAcceleration = phoneGap.getAccelerometer().watchAcceleration(new AccelerometerCallbackImpl(accelerometerDisplay), options);
+		watchAcceleration = phoneGap.getAccelerometer().watchAcceleration(options, new AccelerometerCallbackImpl(accelerometerDisplay));
 
 		accelerometerDisplay.getStartStopButton().addClickHandler(new ClickHandler() {
 
@@ -67,7 +67,7 @@ public class AccelerometerEntryPoint implements EntryPoint {
 					phoneGap.getAccelerometer().clearWatch(watchAcceleration);
 					watchAcceleration = null;
 				} else {
-					watchAcceleration = phoneGap.getAccelerometer().watchAcceleration(new AccelerometerCallbackImpl(accelerometerDisplay), options);
+					watchAcceleration = phoneGap.getAccelerometer().watchAcceleration(options, new AccelerometerCallbackImpl(accelerometerDisplay));
 				}
 
 			}
