@@ -1,5 +1,12 @@
 package de.kurka.phonegap.client;
 
+import com.google.gwt.event.shared.HandlerManager;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.Command;
+import com.google.gwt.user.client.DeferredCommand;
+import com.google.gwt.user.client.Timer;
+
+import de.kurka.phonegap.client.accelerometer.Accelerometer;
 import de.kurka.phonegap.client.device.Device;
 
 /**
@@ -12,8 +19,80 @@ public class PhoneGap {
 
 	private Device device;
 
+	private Accelerometer accelerometer;
+
+	private HandlerManager handlerManager = new HandlerManager(null);
+
 	public PhoneGap() {
+
+	}
+
+	public native boolean isPhoneGapReady()/*-{
+		if(typeof($wnd.PhoneGap) == "undefined"){
+		return false;
+		}else{
+		return $wnd.PhoneGap.available;
+		}
+	}-*/;
+
+	public void startPhoneGap(final int timeoutInMs) {
+		final long end = System.currentTimeMillis() + timeoutInMs;
+		if (isPhoneGapReady()) {
+
+			DeferredCommand.addCommand(new Command() {
+
+				@Override
+				public void execute() {
+					firePhoneGapAvaible();
+				}
+
+			});
+
+		} else {
+			Timer timer = new Timer() {
+
+				@Override
+				public void run() {
+					if (isPhoneGapReady()) {
+						firePhoneGapAvaible();
+						return;
+					}
+
+					if (System.currentTimeMillis() - end > 0) {
+						handlerManager.fireEvent(new PhoneGapTimeoutEvent());
+					} else {
+						schedule(10);
+					}
+
+				}
+			};
+
+			timer.schedule(10);
+		}
+	}
+
+	private void firePhoneGapAvaible() {
+		constructModules();
+
+		handlerManager.fireEvent(new PhoneGapAvaibleEvent());
+	}
+
+	private void constructModules() {
 		device = new Device();
+		accelerometer = new Accelerometer();
+
+	}
+
+	public void startPhoneGap() {
+		startPhoneGap(10000);
+	}
+
+	public HandlerRegistration addHandler(PhoneGapAvaibleHandler handler) {
+		return handlerManager.addHandler(PhoneGapAvaibleEvent.TYPE, handler);
+	}
+
+	public HandlerRegistration addHandler(PhoneGapTimeoutHandler handler) {
+		return handlerManager.addHandler(PhoneGapTimeoutEvent.TYPE, handler);
 	}
 
 	/**
@@ -22,5 +101,9 @@ public class PhoneGap {
 	 */
 	public Device getDevice() {
 		return device;
+	}
+
+	public Accelerometer getAccelerometer() {
+		return accelerometer;
 	}
 }

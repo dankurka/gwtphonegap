@@ -12,34 +12,41 @@ public class Accelerometer {
 
 	public native void getCurrentAcceleration(AccelerationCallback accelerationCallback, AccelerationOptions options) /*-{
 		var successCallback = function(data){
-		accelerationCallback.@de.kurka.phonegap.client.file.DirectoryDeleteCallback::onSuccess()();
+		accelerationCallback.@de.kurka.phonegap.client.accelerometer.AccelerationCallback::onSuccess(Lde/kurka/phonegap/client/accelerometer/Acceleration;)(data);
 		};
 
 		var errorCallback = function(){
 		accelerationCallback.@de.kurka.phonegap.client.file.DirectoryDeleteCallback::onFailure()();
 		};
 
+		var freq = options.@de.kurka.phonegap.client.accelerometer.AccelerationOptions::getFrequency()();
+
 		var localOptions = {
-		desiredFrequency:options.@de.kurka.phonegap.client.accelerometer.AccelerationOptions::getFrequency()
+		frequency: freq
 		}
 
 		$wnd.navigator.accelerometer.getCurrentAcceleration(successCallback, errorCallback, localOptions);
 	}-*/;
 
 	public native AccelerometerWatcher watchAcceleration(AccelerationCallback accelerationCallback, AccelerationOptions options) /*-{
-		var successCallback = function(data){
-		accelerationCallback.@de.kurka.phonegap.client.file.DirectoryDeleteCallback::onSuccess()();
+		var sc = function(data){
+		accelerationCallback.@de.kurka.phonegap.client.accelerometer.AccelerationCallback::onSuccess(Lde/kurka/phonegap/client/accelerometer/Acceleration;)(data);
 		};
 
-		var errorCallback = function(){
+		var ec = function(){
 		accelerationCallback.@de.kurka.phonegap.client.file.DirectoryDeleteCallback::onFailure()();
 		};
 
+		var freq = options.@de.kurka.phonegap.client.accelerometer.AccelerationOptions::getFrequency()();
+
 		var localOptions = {
-		desiredFrequency:options.@de.kurka.phonegap.client.accelerometer.AccelerationOptions::getFrequency()
+		frequency: freq
 		}
 
-		$wnd.navigator.accelerometer.watchAcceleration(successCallback, errorCallback, localOptions);
+
+
+
+		$wnd.navigator.accelerometer.watchAcceleration(sc, ec, localOptions);
 	}-*/;
 
 	public native void clearWatch(AccelerometerWatcher watcher) /*-{
