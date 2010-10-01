@@ -8,7 +8,7 @@ package de.kurka.phonegap.client.file;
  */
 public class FileManager {
 
-	public native boolean isFileManagerAvailable() /*-{
+	public native boolean isAvailable() /*-{
 		if(!(typeof($wnd.navigator.fileMgr) == "undefined"))
 		{
 		return true;
