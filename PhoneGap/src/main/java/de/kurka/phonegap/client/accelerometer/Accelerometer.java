@@ -43,10 +43,7 @@ public class Accelerometer {
 		frequency: freq
 		}
 
-
-
-
-		$wnd.navigator.accelerometer.watchAcceleration(sc, ec, localOptions);
+		return $wnd.navigator.accelerometer.watchAcceleration(sc, ec, localOptions);
 	}-*/;
 
 	public native void clearWatch(AccelerometerWatcher watcher) /*-{
