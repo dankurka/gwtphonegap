@@ -9,6 +9,14 @@ package de.kurka.phonegap.client.device;
  * 
  */
 public class Device {
+	
+	public native boolean isAvailable() /*-{
+	if(!(typeof($wnd.device) == "undefined"))
+	{
+	return true;
+	}
+	return false;
+}-*/;
 
 	/**
 	 * Get the device's Universally Unique Identifier (UUID).
@@ -19,11 +27,6 @@ public class Device {
 	 * @return the uuid of the device as a String
 	 */
 	public native String getUuid()/*-{
-		if(typeof($wnd.device) == "undefined")
-		{
-		return "id";
-		}
-
 		return $wnd.device.uuid;
 	}-*/;
 
@@ -44,11 +47,6 @@ public class Device {
 	 * @return the models device name
 	 */
 	public native String getName()/*-{
-		if(typeof($wnd.device) == "undefined")
-		{
-		return "name";
-		}
-
 		return $wnd.device.name;
 	}-*/;
 
@@ -65,11 +63,6 @@ public class Device {
 	 * @return the version of phonegap running on the device
 	 */
 	public native String getPhoneGapVersion()/*-{
-		if(typeof($wnd.device) == "undefined")
-		{
-		return "name";
-		}
-
 		return $wnd.device.phonegap;
 	}-*/;
 
@@ -84,11 +77,6 @@ public class Device {
 	 * @return the device's operating system name
 	 */
 	public native String getPlatform()/*-{
-		if(typeof($wnd.device) == "undefined")
-		{
-		return "name";
-		}
-
 		return $wnd.device.platform;
 	}-*/;
 
@@ -103,11 +91,6 @@ public class Device {
 	 * @return the device's operating system version
 	 */
 	public native String getVersion()/*-{
-		if(typeof($wnd.device) == "undefined")
-		{
-		return "name";
-		}
-
 		return $wnd.device.version;
 	}-*/;
 
