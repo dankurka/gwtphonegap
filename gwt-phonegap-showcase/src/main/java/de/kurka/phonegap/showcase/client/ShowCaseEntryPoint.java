@@ -13,6 +13,8 @@ import de.kurka.phonegap.showcase.client.accelerometer.AccelerometerDisplay;
 import de.kurka.phonegap.showcase.client.accelerometer.AccelerometerPresenter;
 import de.kurka.phonegap.showcase.client.device.DeviceDisplay;
 import de.kurka.phonegap.showcase.client.device.DevicePresenter;
+import de.kurka.phonegap.showcase.client.geolocation.GeolocationDisplay;
+import de.kurka.phonegap.showcase.client.geolocation.GeolocationPresenter;
 
 public class ShowCaseEntryPoint implements EntryPoint {
 
@@ -45,8 +47,9 @@ public class ShowCaseEntryPoint implements EntryPoint {
 	private void startShowCase(PhoneGap phoneGap) {
 
 		DevicePresenter devicePresenter = new DevicePresenter(new DeviceDisplay(), phoneGap);
+		GeolocationPresenter geolocationPresenter = new GeolocationPresenter(new GeolocationDisplay(), phoneGap);
 
-		MainPresenter mainPresenter = new MainPresenter(new MainDisplay(), new AccelerometerPresenter(new AccelerometerDisplay(), phoneGap), devicePresenter);
+		MainPresenter mainPresenter = new MainPresenter(new MainDisplay(), new AccelerometerPresenter(new AccelerometerDisplay(), phoneGap), devicePresenter, geolocationPresenter);
 
 		RootPanel.get().add(mainPresenter.getDisplay().asWidget());
 

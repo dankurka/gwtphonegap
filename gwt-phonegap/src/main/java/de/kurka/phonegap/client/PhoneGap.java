@@ -9,6 +9,7 @@ import com.google.gwt.user.client.Timer;
 import de.kurka.phonegap.client.accelerometer.Accelerometer;
 import de.kurka.phonegap.client.camera.Camera;
 import de.kurka.phonegap.client.device.Device;
+import de.kurka.phonegap.client.geolocation.Geolocation;
 
 /**
  * This class is a wrapper class for phonegap.js
@@ -22,6 +23,7 @@ public class PhoneGap {
 
 	private Accelerometer accelerometer;
 	private Camera camera;
+	private Geolocation geolocation;
 
 	private HandlerManager handlerManager = new HandlerManager(null);
 
@@ -83,6 +85,7 @@ public class PhoneGap {
 		device = new Device();
 		accelerometer = new Accelerometer();
 		camera = new Camera();
+		geolocation = new Geolocation();
 
 	}
 
@@ -112,5 +115,9 @@ public class PhoneGap {
 
 	public Camera getCamera() {
 		return camera;
+	}
+
+	public Geolocation getGeolocation() {
+		return geolocation;
 	}
 }

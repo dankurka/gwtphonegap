@@ -33,10 +33,32 @@ public class Geolocation {
 		};
 
 		var errorCallback = function(){
-		callback.@de.kurka.phonegap.client.geolocation.GeolocationCallback::onFailure()();
+		callback.@de.kurka.phonegap.client.geolocation.GeolocationCallback::onFailure(Lde/kurka/phonegap/client/geolocation/PositionError;)(error);
 		};
 
 		$wnd.navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+	}-*/;
+
+	public native GeolocationWatcher watchPosition(GeolocationOptions options, GeolocationCallback callback)/*-{
+		var successCallback = function(data){
+		callback.@de.kurka.phonegap.client.geolocation.GeolocationCallback::onSuccess(Lde/kurka/phonegap/client/geolocation/Position;)(data);
+		};
+
+		var errorCallback = function(error){
+		callback.@de.kurka.phonegap.client.geolocation.GeolocationCallback::onFailure(Lde/kurka/phonegap/client/geolocation/PositionError;)(error);
+		};
+
+		var freq = options.@de.kurka.phonegap.client.geolocation.GeolocationOptions::getFrequency()();
+
+		var localOptions = {
+		frequency : freq
+		}
+
+		return $wnd.navigator.geolocation.watchPosition(successCallback, errorCallback, localOptions);
+	}-*/;
+
+	public native void clearWatch(GeolocationWatcher watcher) /*-{
+		$wnd.navigator.geolocation.clearWatch(watcher);
 	}-*/;
 
 }

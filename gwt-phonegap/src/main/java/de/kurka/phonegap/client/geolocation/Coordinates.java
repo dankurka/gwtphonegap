@@ -19,8 +19,12 @@ public final class Coordinates extends JavaScriptObject {
 		return this.altitude;
 	}-*/;
 
-	public native double getAccuracy()/*-{
-		return this.accuracy;
+	public native double getHorizontalAccuracy()/*-{
+		return this.accuracy.horizontal;
+	}-*/;
+
+	public native double getVerticalAccuracy()/*-{
+		return this.accuracy.vertical;
 	}-*/;
 
 	public native double getAltitudeAccuracy()/*-{
