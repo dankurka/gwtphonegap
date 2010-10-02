@@ -2,6 +2,14 @@ package de.kurka.phonegap.client.camera;
 
 public class Camera {
 
+	public native boolean isAvailable() /*-{
+		if(!(typeof($wnd.navigator.camera) == "undefined"))
+		{
+		return true;
+		}
+		return false;
+	}-*/;
+
 	/**
 	 * Takes a photo and returns the image as a base64 encoded String.
 	 * 
@@ -18,11 +26,11 @@ public class Camera {
 	 */
 	public native void getPicture(PictureOptions options, PictureCallback callback)/*-{
 		var successCallback = function(data){
-		accelerationCallback.@de.kurka.phonegap.client.camera.PictureCallback::onSuccess(Ljava/lang/String;)(data);
+		callback.@de.kurka.phonegap.client.camera.PictureCallback::onSuccess(Ljava/lang/String;)(data);
 		};
 
 		var errorCallback = function(){
-		accelerationCallback.@de.kurka.phonegap.client.camera.PictureCallback::onFailure()();
+		callback.@de.kurka.phonegap.client.camera.PictureCallback::onFailure()();
 		};
 
 		var qual = options.@de.kurka.phonegap.client.camera.PictureOptions::getQuality()();
@@ -31,7 +39,7 @@ public class Camera {
 		quality: qual
 		}
 
-		$wnd.navigator.accelerometer.getCurrentAcceleration(successCallback, errorCallback, localOptions);
+		$wnd.navigator.camera.getPicture(successCallback, errorCallback, localOptions);
 	}-*/;
 
 }

@@ -7,6 +7,7 @@ import com.google.gwt.user.client.DeferredCommand;
 import com.google.gwt.user.client.Timer;
 
 import de.kurka.phonegap.client.accelerometer.Accelerometer;
+import de.kurka.phonegap.client.camera.Camera;
 import de.kurka.phonegap.client.device.Device;
 
 /**
@@ -20,6 +21,7 @@ public class PhoneGap {
 	private Device device;
 
 	private Accelerometer accelerometer;
+	private Camera camera;
 
 	private HandlerManager handlerManager = new HandlerManager(null);
 
@@ -80,6 +82,7 @@ public class PhoneGap {
 	private void constructModules() {
 		device = new Device();
 		accelerometer = new Accelerometer();
+		camera = new Camera();
 
 	}
 
@@ -105,5 +108,9 @@ public class PhoneGap {
 
 	public Accelerometer getAccelerometer() {
 		return accelerometer;
+	}
+
+	public Camera getCamera() {
+		return camera;
 	}
 }
