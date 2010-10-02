@@ -6,7 +6,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.kurka.phonegap</groupId>
-	<artifactId>gwt-phonegap-accel-test</artifactId>
+	<artifactId>gwt-phonegap-showcase</artifactId>
 	<version>0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>GWT PhoneGap</name>
