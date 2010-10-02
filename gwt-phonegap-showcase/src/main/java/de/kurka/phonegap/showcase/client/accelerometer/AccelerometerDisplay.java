@@ -1,4 +1,4 @@
-package de.kurka.phonegap.test.accelerometer.client;
+package de.kurka.phonegap.showcase.client.accelerometer;
 
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.ui.Button;
@@ -7,8 +7,11 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.Widget;
 
-public class AccelerometerDisplay extends Composite {
+import de.kurka.phonegap.showcase.client.accelerometer.AccelerometerPresenter.Display;
+
+public class AccelerometerDisplay extends Composite implements Display {
 
 	private FlowPanel main;
 	private Grid grid;
@@ -63,6 +66,11 @@ public class AccelerometerDisplay extends Composite {
 
 	public HasClickHandlers getStartStopButton() {
 		return button;
+	}
+
+	@Override
+	public Widget asWidget() {
+		return this;
 	}
 
 }
