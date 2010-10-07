@@ -10,6 +10,7 @@ import de.kurka.phonegap.client.accelerometer.Accelerometer;
 import de.kurka.phonegap.client.camera.Camera;
 import de.kurka.phonegap.client.device.Device;
 import de.kurka.phonegap.client.geolocation.Geolocation;
+import de.kurka.phonegap.client.log.DebugLogger;
 import de.kurka.phonegap.client.network.Network;
 import de.kurka.phonegap.client.notification.Notification;
 
@@ -28,6 +29,7 @@ public class PhoneGap {
 	private Geolocation geolocation;
 	private Network network;
 	private Notification notification;
+	private DebugLogger debugLogger;
 
 	private HandlerManager handlerManager = new HandlerManager(null);
 
@@ -92,6 +94,7 @@ public class PhoneGap {
 		geolocation = new Geolocation();
 		network = new Network();
 		notification = new Notification();
+		debugLogger = new DebugLogger();
 
 	}
 
@@ -133,5 +136,9 @@ public class PhoneGap {
 
 	public Notification getNotification() {
 		return notification;
+	}
+
+	public DebugLogger getDebugLogger() {
+		return debugLogger;
 	}
 }
