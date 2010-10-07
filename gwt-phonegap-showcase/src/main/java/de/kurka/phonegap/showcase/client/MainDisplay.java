@@ -1,5 +1,6 @@
 package de.kurka.phonegap.showcase.client;
 
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -13,6 +14,8 @@ public class MainDisplay implements Display {
 
 	public MainDisplay() {
 		main = new FlowPanel();
+
+		main.getElement().getStyle().setPadding(20, Unit.PX);
 
 		main.add(new HTML("GWT Phonegap Showcase"));
 	}
