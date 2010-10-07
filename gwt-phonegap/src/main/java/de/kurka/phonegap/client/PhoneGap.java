@@ -11,6 +11,7 @@ import de.kurka.phonegap.client.camera.Camera;
 import de.kurka.phonegap.client.device.Device;
 import de.kurka.phonegap.client.geolocation.Geolocation;
 import de.kurka.phonegap.client.network.Network;
+import de.kurka.phonegap.client.notification.Notification;
 
 /**
  * This class is a wrapper class for phonegap.js
@@ -26,6 +27,7 @@ public class PhoneGap {
 	private Camera camera;
 	private Geolocation geolocation;
 	private Network network;
+	private Notification notification;
 
 	private HandlerManager handlerManager = new HandlerManager(null);
 
@@ -89,6 +91,7 @@ public class PhoneGap {
 		camera = new Camera();
 		geolocation = new Geolocation();
 		network = new Network();
+		notification = new Notification();
 
 	}
 
@@ -126,5 +129,9 @@ public class PhoneGap {
 
 	public Network getNetwork() {
 		return network;
+	}
+
+	public Notification getNotification() {
+		return notification;
 	}
 }
