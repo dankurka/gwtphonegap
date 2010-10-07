@@ -10,6 +10,7 @@ import de.kurka.phonegap.client.accelerometer.Accelerometer;
 import de.kurka.phonegap.client.camera.Camera;
 import de.kurka.phonegap.client.device.Device;
 import de.kurka.phonegap.client.geolocation.Geolocation;
+import de.kurka.phonegap.client.network.Network;
 
 /**
  * This class is a wrapper class for phonegap.js
@@ -24,6 +25,7 @@ public class PhoneGap {
 	private Accelerometer accelerometer;
 	private Camera camera;
 	private Geolocation geolocation;
+	private Network network;
 
 	private HandlerManager handlerManager = new HandlerManager(null);
 
@@ -86,6 +88,7 @@ public class PhoneGap {
 		accelerometer = new Accelerometer();
 		camera = new Camera();
 		geolocation = new Geolocation();
+		network = new Network();
 
 	}
 
@@ -119,5 +122,9 @@ public class PhoneGap {
 
 	public Geolocation getGeolocation() {
 		return geolocation;
+	}
+
+	public Network getNetwork() {
+		return network;
 	}
 }
