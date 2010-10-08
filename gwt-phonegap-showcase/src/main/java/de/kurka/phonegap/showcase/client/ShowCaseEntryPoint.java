@@ -56,7 +56,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
 			}
 		});
 
-		phoneGap.startPhoneGap();
+		phoneGap.initializePhoneGap();
 
 	}
 
