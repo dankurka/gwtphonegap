@@ -1,6 +1,7 @@
 package de.kurka.phonegap.showcase.client;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootPanel;
 
@@ -24,12 +25,23 @@ public class ShowCaseEntryPoint implements EntryPoint {
 
 	@Override
 	public void onModuleLoad() {
+
+		GWT.setUncaughtExceptionHandler(new GWT.UncaughtExceptionHandler() {
+
+			@Override
+			public void onUncaughtException(Throwable e) {
+				Window.alert("uncaught: " + e.getLocalizedMessage());
+
+			}
+		});
+
 		final PhoneGap phoneGap = new PhoneGap();
 
 		phoneGap.addHandler(new PhoneGapAvaibleHandler() {
 
 			@Override
 			public void onPhoneGapAvaible(PhoneGapAvaibleEvent event) {
+				Window.alert("starting");
 				startShowCase(phoneGap);
 			}
 
