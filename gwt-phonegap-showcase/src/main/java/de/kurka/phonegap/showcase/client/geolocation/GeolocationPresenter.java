@@ -36,7 +36,8 @@ public class GeolocationPresenter {
 			@Override
 			public void onClick(ClickEvent event) {
 				if (watcher == null) {
-					GeolocationOptions options = new GeolocationOptions(1000);
+					GeolocationOptions options = new GeolocationOptions();
+					options.setFrequency(1000);
 					watcher = phoneGap.getGeolocation().watchPosition(options, new GeoLocationCallbackImpl());
 					display.setButtonText("Stop");
 				} else {
