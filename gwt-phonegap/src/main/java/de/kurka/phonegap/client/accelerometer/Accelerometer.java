@@ -23,8 +23,8 @@ package de.kurka.phonegap.client.accelerometer;
 public class Accelerometer {
 
 	/**
-	 * is the accelerometer module avaible
-	 * @return true if it is avaible
+	 * is the accelerometer module available
+	 * @return true if it is available
 	 */
 	public native boolean isAvailable() /*-{
 		if(!(typeof($wnd.navigator.accelerometer) == "undefined"))
