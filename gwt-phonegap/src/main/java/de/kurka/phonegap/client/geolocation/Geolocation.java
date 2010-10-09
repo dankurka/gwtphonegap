@@ -85,6 +85,7 @@ public class Geolocation {
 	 */
 	public native GeolocationWatcher watchPosition(GeolocationOptions options, GeolocationCallback callback)/*-{
 		var successCallback = function(data){
+
 		callback.@de.kurka.phonegap.client.geolocation.GeolocationCallback::onSuccess(Lde/kurka/phonegap/client/geolocation/Position;)(data);
 		};
 

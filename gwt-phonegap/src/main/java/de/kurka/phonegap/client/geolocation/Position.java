@@ -42,7 +42,6 @@ public final class Position extends JavaScriptObject {
 		return this.coords;
 	}-*/;
 
-	//TODO this is empty on iPhone 4.1 
 	public native double getTimeStamp()/*-{
 		return this.timestamp;
 	}-*/;
