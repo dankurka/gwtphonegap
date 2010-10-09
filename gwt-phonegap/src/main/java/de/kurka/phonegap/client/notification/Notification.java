@@ -110,36 +110,37 @@ public class Notification {
 		$wnd.navigator.notification.beep(count);
 	}-*/;
 
-	/**
-	 * {@link Notification#confirm(String, String, String)}
-	 */
-	public int confirm(String message) {
-		return confirm(message, "Confirm", "Ok,Cancel");
-	}
-
-	/**
-	 * {@link Notification#confirm(String, String, String)}
-	 */
-	public int confirm(String message, String title) {
-		return confirm(message, title, "Ok,Cancel");
-	}
-
-	/**
-	 * Shows a confirmation dialog box.
-	 * 
-	 * <ul>
-	 * 	<li>Android</li>
-	 * 	<li>iPhone</li>
-	 * </ul>
-	 * 
-	 * @param message the message to display
-	 * @param title the dialog title 
-	 * @param buttonLabel
-	 * @return Index of the button clicked (1, 2 or 3).
-	 */
-	public native int confirm(String message, String title, String buttonLabel)/*-{
-		$wnd.navigator.notification.confirm(message, title, buttonLabel);
-	}-*/;
+	//TODO put this back in after bug in confirm is fixed
+	//	/**
+	//	 * {@link Notification#confirm(String, String, String)}
+	//	 */
+	//	public int confirm(String message) {
+	//		return confirm(message, "Confirm", "Ok,Cancel");
+	//	}
+	//
+	//	/**
+	//	 * {@link Notification#confirm(String, String, String)}
+	//	 */
+	//	public int confirm(String message, String title) {
+	//		return confirm(message, title, "Ok,Cancel");
+	//	}
+	//
+	//	/**
+	//	 * Shows a confirmation dialog box.
+	//	 * 
+	//	 * <ul>
+	//	 * 	<li>Android</li>
+	//	 * 	<li>iPhone</li>
+	//	 * </ul>
+	//	 * 
+	//	 * @param message the message to display
+	//	 * @param title the dialog title 
+	//	 * @param buttonLabel
+	//	 * @return Index of the button clicked (1, 2 or 3).
+	//	 */
+	//	public native int confirm(String message, String title, String buttonLabel)/*-{
+	//		$wnd.navigator.notification.confirm(message, title, buttonLabel);
+	//	}-*/;
 
 	/**
 	 * Vibrates the device for the specified amount of time.
