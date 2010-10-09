@@ -17,7 +17,9 @@ package de.kurka.phonegap.client.log;
 
 /**
  * 
- * This class provides access to the debugging console.
+ * This class provides access to the debugging console on iPhone
+ * 
+ * other plattforms don«t seem to be working with phonegap 0.9.1
  * 
  * 
  * @author Daniel Kurka
