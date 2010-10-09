@@ -41,7 +41,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
 
 			@Override
 			public void onPhoneGapAvaible(PhoneGapAvaibleEvent event) {
-				Window.alert("starting");
+
 				startShowCase(phoneGap);
 			}
 
