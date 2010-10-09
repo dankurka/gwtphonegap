@@ -47,6 +47,16 @@ public class NotificationPresenter {
 			}
 		});
 
+		display.getConfirmButton().addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				int confirm = phoneGap.getNotification().confirm("question?", "gwt-phonegap", "yes,no");
+
+				phoneGap.getNotification().alert("you pressed: " + confirm, "gwt-phonegap", "buttonText");
+			}
+		});
+
 	}
 
 	public interface Display {
@@ -56,6 +66,8 @@ public class NotificationPresenter {
 		public HasClickHandlers getBeepButton();
 
 		public HasClickHandlers getAlertButton();
+
+		public HasClickHandlers getConfirmButton();
 
 		public HasClickHandlers getVibrateButton();
 

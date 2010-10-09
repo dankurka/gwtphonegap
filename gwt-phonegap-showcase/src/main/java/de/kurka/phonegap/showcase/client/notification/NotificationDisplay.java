@@ -14,6 +14,7 @@ public class NotificationDisplay implements Display {
 	private Button alertButton;
 	private Button vibrateButton;
 	private Button beepButton;
+	private Button confirmButton;
 
 	public NotificationDisplay() {
 		main = new FlowPanel();
@@ -22,6 +23,10 @@ public class NotificationDisplay implements Display {
 
 		alertButton = new Button("Alert");
 		main.add(alertButton);
+
+		//TODO put button back in after bug is removed from iOS
+		confirmButton = new Button("Confirm");
+		//main.add(confirmButton);
 
 		vibrateButton = new Button("Vibrate");
 		main.add(vibrateButton);
@@ -48,6 +53,14 @@ public class NotificationDisplay implements Display {
 	@Override
 	public Widget asWidget() {
 		return main;
+	}
+
+	/* (non-Javadoc)
+	 * @see de.kurka.phonegap.showcase.client.notification.NotificationPresenter.Display#getConfirmButton()
+	 */
+	@Override
+	public HasClickHandlers getConfirmButton() {
+		return confirmButton;
 	}
 
 }
