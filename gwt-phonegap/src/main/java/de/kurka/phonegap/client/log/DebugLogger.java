@@ -33,15 +33,15 @@ public class DebugLogger {
 		return false;
 	}-*/;
 
-	public static native void info(String message) /*-{
+	public native void info(String message) /*-{
 		$wnd.debug.log(message);
 	}-*/;
 
-	public static native void warn(String message) /*-{
+	public native void warn(String message) /*-{
 		$wnd.debug.warn(message);
 	}-*/;
 
-	public static native void error(String message) /*-{
+	public native void error(String message) /*-{
 		$wnd.debug.error(message);
 	}-*/;
 }
