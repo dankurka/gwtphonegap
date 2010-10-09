@@ -13,47 +13,25 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.phonegap.showcase.client.device;
+package de.kurka.phonegap.showcase.client;
 
 import com.google.gwt.user.client.ui.Widget;
 
-import de.kurka.phonegap.client.PhoneGap;
-
-public class DevicePresenter {
+/**
+ * @author Daniel Kurka
+ *
+ */
+public class AboutPresenter {
 
 	private final Display display;
-	private final PhoneGap phoneGap;
 
-	public DevicePresenter(Display display, PhoneGap phoneGap) {
+	public AboutPresenter(Display display) {
 		this.display = display;
-		this.phoneGap = phoneGap;
-
-		getDeviceInfos();
-
-	}
-
-	private void getDeviceInfos() {
-
-		display.setVersion(phoneGap.getDevice().getVersion());
-		display.setName(phoneGap.getDevice().getName());
-		display.setPhoneGapVersion(phoneGap.getDevice().getPhoneGapVersion());
-		display.setPlatform(phoneGap.getDevice().getPlatform());
-		display.setUUID(phoneGap.getDevice().getUuid());
 
 	}
 
 	public interface Display {
 		public Widget asWidget();
-
-		public void setUUID(String uuid);
-
-		public void setPlatform(String platform);
-
-		public void setPhoneGapVersion(String phoneGapVersion);
-
-		public void setName(String name);
-
-		public void setVersion(String version);
 	}
 
 	public Display getDisplay() {

@@ -15,37 +15,36 @@
  */
 package de.kurka.phonegap.showcase.client;
 
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HasWidgets;
+import com.google.gwt.user.client.ui.DisclosurePanel;
+import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
 
-import de.kurka.phonegap.showcase.client.MainPresenter.Display;
+import de.kurka.phonegap.showcase.client.AboutPresenter.Display;
 
-public class MainDisplay implements Display {
+/**
+ * @author Daniel Kurka
+ *
+ */
+public class AboutDisplay implements Display {
 
-	private FlowPanel main;
+	private DisclosurePanel main;
 
-	public MainDisplay() {
-		main = new FlowPanel();
-		main.setStylePrimaryName("main");
+	/**
+	 * 
+	 */
+	public AboutDisplay() {
+		main = new DisclosurePanel("About");
 
-		HTML html = new HTML("GWT Phonegap Showcase");
-		html.setStyleName("title");
-		main.add(html);
+		HTMLPanel htmlPanel = new HTMLPanel("<p>GWT-PhoneGap is a GWT wrapper for the PhoneGap Javascript API. It lets you write mobile applications in GWT</p> "
+				+ "more infos see <a href='http://code.google.com/p/gwt-phonegap/'>http://code.google.com/p/gwt-phonegap/</a> <br />"
+				+ "written by Daniel Kurka <a href='http://www.daniel-kurka.de'>www.daniel-kurka.de</a>");
 
-		main.add(new HTML("click on the following links to see the different features of gwt-phonegap <br/><br/>"));
+		main.add(htmlPanel);
 
 	}
 
 	@Override
 	public Widget asWidget() {
-
-		return main;
-	}
-
-	@Override
-	public HasWidgets getContainer() {
 		return main;
 	}
 

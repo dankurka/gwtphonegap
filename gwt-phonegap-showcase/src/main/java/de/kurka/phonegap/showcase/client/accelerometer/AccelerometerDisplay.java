@@ -1,8 +1,23 @@
+/*
+ * Copyright 2010 Daniel Kurka
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package de.kurka.phonegap.showcase.client.accelerometer;
 
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.DisclosurePanel;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.HTML;
@@ -11,9 +26,10 @@ import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.phonegap.showcase.client.accelerometer.AccelerometerPresenter.Display;
 
-public class AccelerometerDisplay extends Composite implements Display {
+public class AccelerometerDisplay implements Display {
 
-	private FlowPanel main;
+	private DisclosurePanel main;
+	private FlowPanel content;
 	private Grid grid;
 	private Label xLabel;
 	private Label yLabel;
@@ -22,9 +38,10 @@ public class AccelerometerDisplay extends Composite implements Display {
 
 	public AccelerometerDisplay() {
 
-		main = new FlowPanel();
+		main = new DisclosurePanel("Accelerometer");
+		//main.setHeader(new Label());
 
-		main.add(new Label("GWT-Phonegap Accelerometer Demo"));
+		content = new FlowPanel();
 
 		grid = new Grid(3, 2);
 
@@ -40,12 +57,12 @@ public class AccelerometerDisplay extends Composite implements Display {
 		zLabel = new Label();
 		grid.setWidget(2, 1, zLabel);
 
-		main.add(grid);
+		content.add(grid);
 
 		button = new Button("start/stop");
-		main.add(button);
+		content.add(button);
 
-		initWidget(main);
+		main.add(content);
 
 	}
 
@@ -70,7 +87,7 @@ public class AccelerometerDisplay extends Composite implements Display {
 
 	@Override
 	public Widget asWidget() {
-		return this;
+		return main;
 	}
 
 }

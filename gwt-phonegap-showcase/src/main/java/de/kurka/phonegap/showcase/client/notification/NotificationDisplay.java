@@ -1,7 +1,23 @@
+/*
+ * Copyright 2010 Daniel Kurka
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package de.kurka.phonegap.showcase.client.notification;
 
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.DisclosurePanel;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Widget;
@@ -10,29 +26,34 @@ import de.kurka.phonegap.showcase.client.notification.NotificationPresenter.Disp
 
 public class NotificationDisplay implements Display {
 
-	private FlowPanel main;
+	private DisclosurePanel main;
+	private FlowPanel content;
 	private Button alertButton;
 	private Button vibrateButton;
 	private Button beepButton;
 	private Button confirmButton;
 
 	public NotificationDisplay() {
-		main = new FlowPanel();
+		main = new DisclosurePanel("Notification");
 
-		main.add(new HTML("Notification"));
+		content = new FlowPanel();
+
+		content.add(new HTML("Notification"));
 
 		alertButton = new Button("Alert");
-		main.add(alertButton);
+		content.add(alertButton);
 
 		//TODO put button back in after bug is removed from iOS
 		confirmButton = new Button("Confirm");
 		//main.add(confirmButton);
 
 		vibrateButton = new Button("Vibrate");
-		main.add(vibrateButton);
+		content.add(vibrateButton);
 
 		beepButton = new Button("Beep");
-		main.add(beepButton);
+		content.add(beepButton);
+
+		main.add(content);
 	}
 
 	@Override
