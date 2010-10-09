@@ -51,9 +51,10 @@ public class NotificationPresenter {
 
 			@Override
 			public void onClick(ClickEvent event) {
-				int confirm = phoneGap.getNotification().confirm("question?", "gwt-phonegap", "yes,no");
-
-				phoneGap.getNotification().alert("you pressed: " + confirm, "gwt-phonegap", "buttonText");
+				//TODO put this back in after bug is fixed in Notification.confirm
+				//				int confirm = phoneGap.getNotification().confirm("question?", "gwt-phonegap", "yes,no");
+				//
+				//				phoneGap.getNotification().alert("you pressed: " + confirm, "gwt-phonegap", "buttonText");
 			}
 		});
 
