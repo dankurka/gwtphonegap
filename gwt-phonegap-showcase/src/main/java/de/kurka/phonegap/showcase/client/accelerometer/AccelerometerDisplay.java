@@ -39,7 +39,6 @@ public class AccelerometerDisplay implements Display {
 	public AccelerometerDisplay() {
 
 		main = new DisclosurePanel("Accelerometer");
-		//main.setHeader(new Label());
 
 		content = new FlowPanel();
 
