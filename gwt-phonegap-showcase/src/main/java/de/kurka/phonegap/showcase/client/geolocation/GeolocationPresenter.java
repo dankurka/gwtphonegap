@@ -52,12 +52,12 @@ public class GeolocationPresenter {
 	}
 
 	private native String getKeys(JavaScriptObject obj)/*-{
-														var keys = "";
-														for(var key in obj){
-														keys += key + ";";
-														}
-														return keys;
-														}-*/;
+		var keys = "";
+		for(var key in obj){
+		keys += key + ";";
+		}
+		return keys;
+	}-*/;
 
 	private class GeoLocationCallbackImpl implements GeolocationCallback {
 
@@ -72,6 +72,8 @@ public class GeolocationPresenter {
 			display.setLatitude(position.getCoordinates().getLatitude());
 			display.setLongitude(position.getCoordinates().getLongitude());
 			display.setSpeed(position.getCoordinates().getSpeed());
+
+			display.setTime("" + position.getTimeStamp());
 
 		}
 
@@ -122,6 +124,8 @@ public class GeolocationPresenter {
 		public void setAltitudeAccuracy(double altitudeAccuracy);
 
 		public void setAltitude(double altitude);
+
+		public void setTime(String time);
 
 		public HasClickHandlers getStartStopButton();
 	}
