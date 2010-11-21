@@ -22,22 +22,22 @@ import com.google.gwt.event.shared.GwtEvent;
  * @author Daniel Kurka
  *
  */
-public class PhoneGapAvaibleEvent extends GwtEvent<PhoneGapAvaibleHandler> {
+public class PhoneGapAvailableEvent extends GwtEvent<PhoneGapAvailableHandler> {
 
-	public static final GwtEvent.Type<PhoneGapAvaibleHandler> TYPE = new GwtEvent.Type<PhoneGapAvaibleHandler>();
+	public static final GwtEvent.Type<PhoneGapAvailableHandler> TYPE = new GwtEvent.Type<PhoneGapAvailableHandler>();
 
-	public PhoneGapAvaibleEvent() {
+	public PhoneGapAvailableEvent() {
 
 	}
 
 	@Override
-	public com.google.gwt.event.shared.GwtEvent.Type<PhoneGapAvaibleHandler> getAssociatedType() {
+	public com.google.gwt.event.shared.GwtEvent.Type<PhoneGapAvailableHandler> getAssociatedType() {
 		return TYPE;
 	}
 
 	@Override
-	protected void dispatch(PhoneGapAvaibleHandler handler) {
-		handler.onPhoneGapAvaible(this);
+	protected void dispatch(PhoneGapAvailableHandler handler) {
+		handler.onPhoneGapAvailable(this);
 
 	}
 

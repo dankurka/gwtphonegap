@@ -17,6 +17,6 @@ package de.kurka.phonegap.client;
 
 import com.google.gwt.event.shared.EventHandler;
 
-public interface PhoneGapAvaibleHandler extends EventHandler {
-	public void onPhoneGapAvaible(PhoneGapAvaibleEvent event);
+public interface PhoneGapAvailableHandler extends EventHandler {
+	public void onPhoneGapAvailable(PhoneGapAvailableEvent event);
 }

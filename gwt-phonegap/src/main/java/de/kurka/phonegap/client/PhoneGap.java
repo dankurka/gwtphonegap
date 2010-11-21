@@ -137,8 +137,8 @@ public class PhoneGap {
 	 * @param handler the handler to add
 	 * @return the handler registration
 	 */
-	public HandlerRegistration addHandler(PhoneGapAvaibleHandler handler) {
-		return handlerManager.addHandler(PhoneGapAvaibleEvent.TYPE, handler);
+	public HandlerRegistration addHandler(PhoneGapAvailableHandler handler) {
+		return handlerManager.addHandler(PhoneGapAvailableEvent.TYPE, handler);
 	}
 
 	/**
@@ -209,7 +209,7 @@ public class PhoneGap {
 	private void firePhoneGapAvaible() {
 		constructModules();
 
-		handlerManager.fireEvent(new PhoneGapAvaibleEvent());
+		handlerManager.fireEvent(new PhoneGapAvailableEvent());
 	}
 
 	private void constructModules() {
