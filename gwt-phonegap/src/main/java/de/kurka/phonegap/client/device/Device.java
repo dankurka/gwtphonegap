@@ -90,9 +90,8 @@ public class Device {
 	 * 
 	 * @return the version of phonegap running on the device
 	 */
-	//TODO phonegap docu seems to be wrong
 	public native String getPhoneGapVersion()/*-{
-		return $wnd.device.gap;
+		return $wnd.device.phonegap;
 	}-*/;
 
 	/**
