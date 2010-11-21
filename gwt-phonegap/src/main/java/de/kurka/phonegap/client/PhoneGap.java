@@ -15,10 +15,9 @@
  */
 package de.kurka.phonegap.client;
 
-import com.google.gwt.event.shared.HandlerManager;
+import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.user.client.Command;
-import com.google.gwt.user.client.DeferredCommand;
+import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.user.client.Timer;
 
 import de.kurka.phonegap.client.accelerometer.Accelerometer;
@@ -64,7 +63,7 @@ public class PhoneGap {
 	private Notification notification;
 	private DebugLogger debugLogger;
 
-	private HandlerManager handlerManager = new HandlerManager(null);
+	private EventBus handlerManager = new SimpleEventBus();
 
 	public PhoneGap() {
 
@@ -100,14 +99,7 @@ public class PhoneGap {
 		final long end = System.currentTimeMillis() + timeoutInMs;
 		if (isPhoneGapInitialized()) {
 
-			DeferredCommand.addCommand(new Command() {
-
-				@Override
-				public void execute() {
-					firePhoneGapAvailable();
-				}
-
-			});
+			firePhoneGapAvailable();
 
 		} else {
 			Timer timer = new Timer() {
