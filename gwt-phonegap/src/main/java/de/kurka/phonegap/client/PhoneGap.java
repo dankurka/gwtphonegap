@@ -104,7 +104,7 @@ public class PhoneGap {
 
 				@Override
 				public void execute() {
-					firePhoneGapAvaible();
+					firePhoneGapAvailable();
 				}
 
 			});
@@ -115,7 +115,7 @@ public class PhoneGap {
 				@Override
 				public void run() {
 					if (isPhoneGapInitialized()) {
-						firePhoneGapAvaible();
+						firePhoneGapAvailable();
 						return;
 					}
 
@@ -206,7 +206,7 @@ public class PhoneGap {
 		return debugLogger;
 	}
 
-	private void firePhoneGapAvaible() {
+	private void firePhoneGapAvailable() {
 		constructModules();
 
 		handlerManager.fireEvent(new PhoneGapAvailableEvent());
