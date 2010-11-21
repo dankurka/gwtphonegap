@@ -21,8 +21,8 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootPanel;
 
 import de.kurka.phonegap.client.PhoneGap;
-import de.kurka.phonegap.client.PhoneGapAvaibleEvent;
-import de.kurka.phonegap.client.PhoneGapAvaibleHandler;
+import de.kurka.phonegap.client.PhoneGapAvailableEvent;
+import de.kurka.phonegap.client.PhoneGapAvailableHandler;
 import de.kurka.phonegap.client.PhoneGapTimeoutEvent;
 import de.kurka.phonegap.client.PhoneGapTimeoutHandler;
 import de.kurka.phonegap.showcase.client.accelerometer.AccelerometerDisplay;
@@ -52,14 +52,13 @@ public class ShowCaseEntryPoint implements EntryPoint {
 
 		final PhoneGap phoneGap = new PhoneGap();
 
-		phoneGap.addHandler(new PhoneGapAvaibleHandler() {
+		phoneGap.addHandler(new PhoneGapAvailableHandler() {
 
 			@Override
-			public void onPhoneGapAvaible(PhoneGapAvaibleEvent event) {
-
+			public void onPhoneGapAvailable(PhoneGapAvailableEvent event) {
 				startShowCase(phoneGap);
-			}
 
+			}
 		});
 
 		phoneGap.addHandler(new PhoneGapTimeoutHandler() {
