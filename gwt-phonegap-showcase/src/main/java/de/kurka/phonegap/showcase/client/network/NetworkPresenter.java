@@ -18,13 +18,13 @@ package de.kurka.phonegap.showcase.client.network;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HasHTML;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.phonegap.client.PhoneGap;
 import de.kurka.phonegap.client.network.Network;
-import de.kurka.phonegap.client.network.NetworkReachable;
 import de.kurka.phonegap.client.network.NetworkReachableCallback;
 import de.kurka.phonegap.client.network.NetworkReachableOptions;
 
@@ -67,9 +67,7 @@ public class NetworkPresenter {
 				phoneGap.getNetwork().isNetWorkReachable(options, new NetworkReachableCallback() {
 
 					@Override
-					public void onSuccess(NetworkReachable networkReachable) {
-
-						int networkCode = networkReachable.getLocalWiFiConnectionStatus();
+					public void onSuccess(int networkCode) {
 
 						switch (networkCode) {
 						case Network.NETWORK_STATUS_NOT_REACHABLE:
@@ -86,6 +84,7 @@ public class NetworkPresenter {
 
 						default:
 							display.getOutput().setHTML("error");
+							Window.alert("" + networkCode);
 							break;
 						}
 
