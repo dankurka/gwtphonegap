@@ -54,7 +54,7 @@ public class Network {
 
 		$wnd.callbackPhonegapNetworkReach = function(data){
 		$wnd.callbackPhonegapNetworkReach = null;
-		callback.@de.kurka.phonegap.client.network.NetworkReachableCallback::onSuccess(Lde/kurka/phonegap/client/network/NetworkReachable;)(data);
+		callback.@de.kurka.phonegap.client.network.NetworkReachableCallback::onSuccess(I)(data);
 		};
 
 		$wnd.callbackPhonegapNetworkReach.toString = function(){
