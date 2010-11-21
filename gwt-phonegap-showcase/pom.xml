@@ -47,7 +47,7 @@
 
 
 					<execution>
-						<id>copy compiled GWT JavaScript direct to webapp folder</id>
+						<id>copy compiled GWT JavaScript direct to target folder</id>
 						<phase>test</phase>
 						<configuration>
 							<tasks>
@@ -56,8 +56,11 @@
 									<exclude name="WEB-INF/" />
 									</fileset>
 								</copy>
-
-
+								
+								<copy todir="target/${project.artifactId}-${project.version}-phonebuild" >
+									<fileset dir="target/${project.artifactId}-${project.version}/"> 
+									</fileset>
+								</copy>
 
 							</tasks>
 						</configuration>
