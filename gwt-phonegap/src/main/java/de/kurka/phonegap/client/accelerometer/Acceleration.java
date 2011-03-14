@@ -19,8 +19,9 @@ import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * Contains Accelerometer data captured at a specific point in time.
+ * 
  * @author Daniel Kurka
- *
+ * 
  */
 public final class Acceleration extends JavaScriptObject {
 
@@ -29,7 +30,7 @@ public final class Acceleration extends JavaScriptObject {
 	}
 
 	/**
-	 *  Amount of motion on the x-axis. Range [0, 1] (Number)
+	 * Amount of motion on the x-axis. Range [0, 1] (Number)
 	 * 
 	 * 
 	 */

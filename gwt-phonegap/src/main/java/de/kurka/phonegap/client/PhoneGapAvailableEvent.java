@@ -18,9 +18,11 @@ package de.kurka.phonegap.client;
 import com.google.gwt.event.shared.GwtEvent;
 
 /**
- * This event is fired after PhoneGap is initialized successfully and is ready for usage
+ * This event is fired after PhoneGap is initialized successfully and is ready
+ * for usage
+ * 
  * @author Daniel Kurka
- *
+ * 
  */
 public class PhoneGapAvailableEvent extends GwtEvent<PhoneGapAvailableHandler> {
 

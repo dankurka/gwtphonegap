@@ -75,12 +75,12 @@ public class PhoneGapMobileImpl implements PhoneGap {
 	 */
 	@Override
 	public native boolean isPhoneGapInitialized()/*-{
-													if(typeof($wnd.PhoneGap) == "undefined"){
-													return false;
-													}else{
-													return $wnd.PhoneGap.available;
-													}
-													}-*/;
+		if (typeof ($wnd.PhoneGap) == "undefined") {
+			return false;
+		} else {
+			return $wnd.PhoneGap.available;
+		}
+	}-*/;
 
 	/* (non-Javadoc)
 	 * @see de.kurka.phonegap.client.IPhoneGap#initializePhoneGap()
