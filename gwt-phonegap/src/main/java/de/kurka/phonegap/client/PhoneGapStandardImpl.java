@@ -29,29 +29,7 @@ import de.kurka.phonegap.client.log.DebugLogger;
 import de.kurka.phonegap.client.network.Network;
 import de.kurka.phonegap.client.notification.Notification;
 
-/**
- * This class is a wrapper class for phonegap.js
- * 
- * The implementation is based on {@link http://docs.phonegap.com/}
- * 
- * Available modules are:
- * <ul>
- * <li>Accelerometer</li>
- * <li>Camera</li>
- * <li>Device</li>
- * <li>File</li>
- * <li>Geolocation</li>
- * <li>Log</li>
- * <li>Network</li>
- * <li>Notification</li>
- * </ul>
- * 
- * 
- * 
- * @author Daniel Kurka
- * 
- */
-public class PhoneGapMobileImpl implements PhoneGap {
+public class PhoneGapStandardImpl implements PhoneGap {
 
 	private static final int INIT_TICK = 10;
 
@@ -66,13 +44,10 @@ public class PhoneGapMobileImpl implements PhoneGap {
 
 	private EventBus handlerManager = new SimpleEventBus();
 
-	public PhoneGapMobileImpl() {
+	public PhoneGapStandardImpl() {
 
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.IPhoneGap#isPhoneGapInitialized()
-	 */
 	@Override
 	public native boolean isPhoneGapInitialized()/*-{
 		if (typeof ($wnd.PhoneGap) == "undefined") {
@@ -82,17 +57,11 @@ public class PhoneGapMobileImpl implements PhoneGap {
 		}
 	}-*/;
 
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.IPhoneGap#initializePhoneGap()
-	 */
 	@Override
 	public void initializePhoneGap() {
 		initializePhoneGap(10000);
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.IPhoneGap#initializePhoneGap(int)
-	 */
 	@Override
 	public void initializePhoneGap(final int timeoutInMs) {
 		final long end = System.currentTimeMillis() + timeoutInMs;
@@ -123,73 +92,46 @@ public class PhoneGapMobileImpl implements PhoneGap {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.IPhoneGap#addHandler(de.kurka.phonegap.client.PhoneGapAvailableHandler)
-	 */
 	@Override
 	public HandlerRegistration addHandler(PhoneGapAvailableHandler handler) {
 		return handlerManager.addHandler(PhoneGapAvailableEvent.TYPE, handler);
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.IPhoneGap#addHandler(de.kurka.phonegap.client.PhoneGapTimeoutHandler)
-	 */
 	@Override
 	public HandlerRegistration addHandler(PhoneGapTimeoutHandler handler) {
 		return handlerManager.addHandler(PhoneGapTimeoutEvent.TYPE, handler);
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.IPhoneGap#getDevice()
-	 */
 	@Override
 	public Device getDevice() {
 		return device;
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.IPhoneGap#getAccelerometer()
-	 */
 	@Override
 	public Accelerometer getAccelerometer() {
 		return accelerometer;
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.IPhoneGap#getCamera()
-	 */
 	@Override
 	public Camera getCamera() {
 		return camera;
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.IPhoneGap#getGeolocation()
-	 */
 	@Override
 	public Geolocation getGeolocation() {
 		return geolocation;
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.IPhoneGap#getNetwork()
-	 */
 	@Override
 	public Network getNetwork() {
 		return network;
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.IPhoneGap#getNotification()
-	 */
 	@Override
 	public Notification getNotification() {
 		return notification;
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.IPhoneGap#getDebugLogger()
-	 */
 	@Override
 	public DebugLogger getDebugLogger() {
 		return debugLogger;
@@ -201,14 +143,42 @@ public class PhoneGapMobileImpl implements PhoneGap {
 		handlerManager.fireEvent(new PhoneGapAvailableEvent());
 	}
 
-	private void constructModules() {
-		device = GWT.create(Device.class);
-		accelerometer = GWT.create(Accelerometer.class);
-		camera = GWT.create(Camera.class);
-		geolocation = GWT.create(Geolocation.class);
-		network = GWT.create(Network.class);
-		notification = GWT.create(Notification.class);
-		debugLogger = GWT.create(DebugLogger.class);
+	protected Device constructDevice() {
+		return GWT.create(Device.class);
+	}
+
+	protected Accelerometer constructAccelerometer() {
+		return GWT.create(Accelerometer.class);
+	}
+
+	protected Camera constructCamera() {
+		return GWT.create(Camera.class);
+	}
+
+	protected Geolocation constructGeolocation() {
+		return GWT.create(Geolocation.class);
+	}
+
+	protected Network constructNetwork() {
+		return GWT.create(Network.class);
+	}
+
+	protected Notification constructNotification() {
+		return GWT.create(Notification.class);
+	}
+
+	protected DebugLogger constructDebugLogger() {
+		return GWT.create(DebugLogger.class);
+	}
+
+	protected void constructModules() {
+		device = constructDevice();
+		accelerometer = constructAccelerometer();
+		camera = constructCamera();
+		geolocation = constructGeolocation();
+		network = constructNetwork();
+		notification = constructNotification();
+		debugLogger = constructDebugLogger();
 
 	}
 }

@@ -15,46 +15,26 @@
  */
 package de.kurka.phonegap.client.accelerometer;
 
-import com.google.gwt.core.client.JavaScriptObject;
-
-/**
- * Contains Accelerometer data captured at a specific point in time.
- * 
- * @author Daniel Kurka
- * 
- */
-public final class Acceleration extends JavaScriptObject {
-
-	protected Acceleration() {
-
-	}
+public interface Acceleration {
 
 	/**
 	 * Amount of motion on the x-axis. Range [0, 1] (Number)
 	 * 
 	 * 
 	 */
-	public native double getX()/*-{
-		return this.x;
-	}-*/;
+	public double getX();
 
 	/**
 	 * Amount of motion on the y-axis. Range [0, 1] (Number)
 	 */
-	public native double getY()/*-{
-		return this.y;
-	}-*/;
+	public double getY();
 
 	/**
 	 * Amount of motion on the z-axis. Range [0, 1] (Number)
 	 */
 
-	public native double getZ()/*-{
-		return this.z;
-	}-*/;
+	public double getZ();
 
-	public native double getTimeStamp()/*-{
-		return this.timestamp;
-	}-*/;
+	public double getTimeStamp();
 
 }

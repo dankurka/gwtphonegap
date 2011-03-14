@@ -25,6 +25,28 @@ import de.kurka.phonegap.client.log.DebugLogger;
 import de.kurka.phonegap.client.network.Network;
 import de.kurka.phonegap.client.notification.Notification;
 
+/**
+ * This class is a wrapper class for phonegap.js
+ * 
+ * The implementation is based on {@link http://docs.phonegap.com/}
+ * 
+ * Available modules are:
+ * <ul>
+ * <li>Accelerometer</li>
+ * <li>Camera</li>
+ * <li>Device</li>
+ * <li>File</li>
+ * <li>Geolocation</li>
+ * <li>Log</li>
+ * <li>Network</li>
+ * <li>Notification</li>
+ * </ul>
+ * 
+ * 
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public interface PhoneGap {
 
 	/**
@@ -36,7 +58,7 @@ public interface PhoneGap {
 
 	/**
 	 * Initializes Phonegap with a default timeout see:
-	 * {@link PhoneGapMobileImpl#initializePhoneGap(int)}
+	 * {@link PhoneGapStandardImpl#initializePhoneGap(int)}
 	 */
 	public void initializePhoneGap();
 

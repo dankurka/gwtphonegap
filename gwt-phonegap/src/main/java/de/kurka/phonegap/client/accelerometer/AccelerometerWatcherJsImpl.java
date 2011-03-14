@@ -15,7 +15,10 @@
  */
 package de.kurka.phonegap.client.accelerometer;
 
+import com.google.gwt.core.client.JavaScriptObject;
 
-public interface AccelerometerWatcher {
+public class AccelerometerWatcherJsImpl extends JavaScriptObject implements AccelerometerWatcher {
+	protected AccelerometerWatcherJsImpl() {
 
+	}
 }

@@ -35,6 +35,7 @@ public class AccelerometerDisplay implements Display {
 	private Label yLabel;
 	private Label zLabel;
 	private Button button;
+	private Label timeLabel;
 
 	public AccelerometerDisplay() {
 
@@ -42,11 +43,12 @@ public class AccelerometerDisplay implements Display {
 
 		content = new FlowPanel();
 
-		grid = new Grid(3, 2);
+		grid = new Grid(4, 2);
 
 		grid.setWidget(0, 0, new HTML("X-Axis"));
 		grid.setWidget(1, 0, new HTML("Y-Axis"));
 		grid.setWidget(2, 0, new HTML("Z-Axis"));
+		grid.setWidget(3, 0, new HTML("Time"));
 
 		xLabel = new Label();
 		grid.setWidget(0, 1, xLabel);
@@ -55,6 +57,9 @@ public class AccelerometerDisplay implements Display {
 		grid.setWidget(1, 1, yLabel);
 		zLabel = new Label();
 		grid.setWidget(2, 1, zLabel);
+
+		timeLabel = new Label();
+		grid.setWidget(3, 1, timeLabel);
 
 		content.add(grid);
 
@@ -78,6 +83,10 @@ public class AccelerometerDisplay implements Display {
 	public void setZValue(String string) {
 		zLabel.setText(string);
 
+	}
+
+	public void setTimeValue(String value) {
+		timeLabel.setText(value);
 	}
 
 	public HasClickHandlers getStartStopButton() {

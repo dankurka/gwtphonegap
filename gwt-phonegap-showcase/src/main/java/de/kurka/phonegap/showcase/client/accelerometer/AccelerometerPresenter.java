@@ -50,6 +50,8 @@ public class AccelerometerPresenter {
 		public void setYValue(String string);
 
 		public void setZValue(String string);
+
+		public void setTimeValue(String value);
 	}
 
 	public Display getDisplay() {
@@ -85,6 +87,7 @@ public class AccelerometerPresenter {
 			display.setXValue("" + acceleration.getX());
 			display.setYValue("" + acceleration.getY());
 			display.setZValue("" + acceleration.getZ());
+			display.setTimeValue("" + acceleration.getTimeStamp());
 
 		}
 

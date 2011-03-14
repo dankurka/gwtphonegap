@@ -17,43 +17,33 @@ package de.kurka.phonegap.client.accelerometer;
 
 /**
  * Captures device motion in the x, y, and z direction.
+ * 
  * @author Daniel Kurka
- *
+ * 
  */
 public class AccelerometerMobileImpl implements Accelerometer {
-
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.accelerometer.Accelerometer#isAvailable()
-	 */
-	@Override
-	public native boolean isAvailable() /*-{
-		if(!(typeof($wnd.navigator.accelerometer) == "undefined"))
-		{
-		return true;
-		}
-		return false;
-	}-*/;
 
 	/* (non-Javadoc)
 	 * @see de.kurka.phonegap.client.accelerometer.Accelerometer#getCurrentAcceleration(de.kurka.phonegap.client.accelerometer.AccelerationCallback, de.kurka.phonegap.client.accelerometer.AccelerationOptions)
 	 */
 	@Override
 	public native void getCurrentAcceleration(AccelerationCallback accelerationCallback, AccelerationOptions options) /*-{
-		var successCallback = function(data){
-		$entry(accelerationCallback.@de.kurka.phonegap.client.accelerometer.AccelerationCallback::onSuccess(Lde/kurka/phonegap/client/accelerometer/Acceleration;)(data));
+		var successCallback = function(data) {
+			$entry(accelerationCallback.@de.kurka.phonegap.client.accelerometer.AccelerationCallback::onSuccess(Lde/kurka/phonegap/client/accelerometer/Acceleration;)(data));
 		};
 
-		var errorCallback = function(){
-		$entry(accelerationCallback.@de.kurka.phonegap.client.file.DirectoryDeleteCallback::onFailure()());
+		var errorCallback = function() {
+			$entry(accelerationCallback.@de.kurka.phonegap.client.file.DirectoryDeleteCallback::onFailure()());
 		};
 
 		var freq = options.@de.kurka.phonegap.client.accelerometer.AccelerationOptions::getFrequency()();
 
 		var localOptions = {
-		frequency: freq
+			frequency : freq
 		}
 
-		$wnd.navigator.accelerometer.getCurrentAcceleration(successCallback, errorCallback, localOptions);
+		$wnd.navigator.accelerometer.getCurrentAcceleration(successCallback,
+				errorCallback, localOptions);
 	}-*/;
 
 	/* (non-Javadoc)
@@ -61,21 +51,22 @@ public class AccelerometerMobileImpl implements Accelerometer {
 	 */
 	@Override
 	public native AccelerometerWatcher watchAcceleration(AccelerationOptions options, AccelerationCallback accelerationCallback) /*-{
-		var sc = function(data){
-		accelerationCallback.@de.kurka.phonegap.client.accelerometer.AccelerationCallback::onSuccess(Lde/kurka/phonegap/client/accelerometer/Acceleration;)(data);
+		var sc = function(data) {
+			accelerationCallback.@de.kurka.phonegap.client.accelerometer.AccelerationCallback::onSuccess(Lde/kurka/phonegap/client/accelerometer/Acceleration;)(data);
 		};
 
-		var ec = function(){
-		accelerationCallback.@de.kurka.phonegap.client.file.DirectoryDeleteCallback::onFailure()();
+		var ec = function() {
+			accelerationCallback.@de.kurka.phonegap.client.file.DirectoryDeleteCallback::onFailure()();
 		};
 
 		var freq = options.@de.kurka.phonegap.client.accelerometer.AccelerationOptions::getFrequency()();
 
 		var localOptions = {
-		frequency: freq
+			frequency : freq
 		}
 
-		return $wnd.navigator.accelerometer.watchAcceleration(sc, ec, localOptions);
+		return $wnd.navigator.accelerometer.watchAcceleration(sc, ec,
+				localOptions);
 	}-*/;
 
 	/* (non-Javadoc)

@@ -18,13 +18,6 @@ package de.kurka.phonegap.client.accelerometer;
 public interface Accelerometer {
 
 	/**
-	 * is the accelerometer module available
-	 * 
-	 * @return true if it is available
-	 */
-	public boolean isAvailable();
-
-	/**
 	 * Get the current acceleration along the x, y, and z axis.
 	 * 
 	 * The accelerometer is a motion sensor that detects the change (delta) in

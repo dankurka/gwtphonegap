@@ -15,7 +15,39 @@
  */
 package de.kurka.phonegap.client.accelerometer;
 
+public class AccelerationBrowserImpl implements Acceleration {
 
-public interface AccelerometerWatcher {
+	private final double x;
+	private final double y;
+	private final double z;
+	private final long timestamp;
+
+	public AccelerationBrowserImpl(double x, double y, double z) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+		this.timestamp = System.currentTimeMillis();
+
+	}
+
+	@Override
+	public double getX() {
+		return x;
+	}
+
+	@Override
+	public double getY() {
+		return y;
+	}
+
+	@Override
+	public double getZ() {
+		return z;
+	}
+
+	@Override
+	public double getTimeStamp() {
+		return timestamp;
+	}
 
 }

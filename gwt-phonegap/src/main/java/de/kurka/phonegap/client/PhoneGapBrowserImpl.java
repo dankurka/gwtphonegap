@@ -13,9 +13,13 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.phonegap.client.accelerometer;
+package de.kurka.phonegap.client;
 
 
-public interface AccelerometerWatcher {
+public class PhoneGapBrowserImpl extends PhoneGapStandardImpl {
 
+	@Override
+	public boolean isPhoneGapInitialized() {
+		return true;
+	}
 }
