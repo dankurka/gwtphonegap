@@ -48,9 +48,18 @@
         </all>
     </replace-with>
     
-    
+    <!-- Camera -->
     <replace-with class="de.kurka.phonegap.client.camera.CameraMobileImpl">
         <when-type-is class="de.kurka.phonegap.client.camera.Camera"/>
+        <all>
+            <when-property-is name="phonegap.env" value="yes"/>
+        </all>
+    </replace-with>
+     <replace-with class="de.kurka.phonegap.client.camera.CameraBrowserImpl">
+        <when-type-is class="de.kurka.phonegap.client.camera.Camera"/>
+        <all>
+            <when-property-is name="phonegap.env" value="no"/>
+        </all>
     </replace-with>
     
     <!-- Device -->

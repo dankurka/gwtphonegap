@@ -15,26 +15,11 @@
  */
 package de.kurka.phonegap.client.camera;
 
-public class CameraMobileImpl implements Camera {
+public class CameraBrowserImpl implements Camera {
 
 	@Override
-	public native void getPicture(PictureOptions options, PictureCallback callback)/*-{
-		var successCallback = function(data) {
-			callback.@de.kurka.phonegap.client.camera.PictureCallback::onSuccess(Ljava/lang/String;)(data);
-		};
-
-		var errorCallback = function() {
-			callback.@de.kurka.phonegap.client.camera.PictureCallback::onFailure()();
-		};
-
-		var qual = options.@de.kurka.phonegap.client.camera.PictureOptions::getQuality()();
-
-		var localOptions = {
-			quality : qual
-		}
-
-		$wnd.navigator.camera.getPicture(successCallback, errorCallback,
-				localOptions);
-	}-*/;
+	public void getPicture(PictureOptions options, PictureCallback callback) {
+		callback.onFailure();
+	}
 
 }

@@ -17,8 +17,6 @@ package de.kurka.phonegap.client.camera;
 
 public interface Camera {
 
-	public boolean isAvailable();
-
 	/**
 	 * Takes a photo and returns the image as a base64 encoded String.
 	 * 
