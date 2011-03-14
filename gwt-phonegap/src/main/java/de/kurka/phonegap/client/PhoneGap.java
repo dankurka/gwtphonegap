@@ -14,80 +14,94 @@ public interface PhoneGap {
 
 	/**
 	 * Determine if phonegap is initialized
+	 * 
 	 * @return true if phonegap is initialized
 	 */
-	public abstract boolean isPhoneGapInitialized();
+	public boolean isPhoneGapInitialized();
 
 	/**
-	 * Initializes Phonegap with a default timeout see: {@link PhoneGapMobileImpl#initializePhoneGap(int)}
+	 * Initializes Phonegap with a default timeout see:
+	 * {@link PhoneGapMobileImpl#initializePhoneGap(int)}
 	 */
-	public abstract void initializePhoneGap();
+	public void initializePhoneGap();
 
 	/**
-	 * initialize Phonegap 
+	 * initialize Phonegap
 	 * 
-	 * If Phonegap is initialized successfully within timeout a {@link PhoneGapAvaibleEvent} is fired, else a {@link PhoneGapTimeoutEvent} is fired
+	 * If Phonegap is initialized successfully within timeout a
+	 * {@link PhoneGapAvaibleEvent} is fired, else a
+	 * {@link PhoneGapTimeoutEvent} is fired
 	 * 
-	 * @param timeoutInMs the timeout in milliseconds
+	 * @param timeoutInMs
+	 *            the timeout in milliseconds
 	 */
-	public abstract void initializePhoneGap(final int timeoutInMs);
+	public void initializePhoneGap(final int timeoutInMs);
 
 	/**
 	 * Add a handler for {@link PhoneGapAvaibleEvent}
-	 * @param handler the handler to add
+	 * 
+	 * @param handler
+	 *            the handler to add
 	 * @return the handler registration
 	 */
-	public abstract HandlerRegistration addHandler(
-			PhoneGapAvailableHandler handler);
+	public HandlerRegistration addHandler(PhoneGapAvailableHandler handler);
 
 	/**
 	 * Add a handler for {@link PhoneGapTimeoutEvent}
-	 * @param handler the handler to add
+	 * 
+	 * @param handler
+	 *            the handler to add
 	 * @return the handler registration
 	 */
-	public abstract HandlerRegistration addHandler(
-			PhoneGapTimeoutHandler handler);
+	public HandlerRegistration addHandler(PhoneGapTimeoutHandler handler);
 
 	/**
 	 * get the phonegap device object
+	 * 
 	 * @return the device object containing device specific information
 	 */
-	public abstract Device getDevice();
+	public Device getDevice();
 
 	/**
 	 * get the phonegap accelerometer object
+	 * 
 	 * @return
 	 */
-	public abstract Accelerometer getAccelerometer();
+	public Accelerometer getAccelerometer();
 
 	/**
 	 * get the phonegap camera object
+	 * 
 	 * @return
 	 */
-	public abstract Camera getCamera();
+	public Camera getCamera();
 
 	/**
 	 * get the phonegap geolocation object
+	 * 
 	 * @return
 	 */
-	public abstract Geolocation getGeolocation();
+	public Geolocation getGeolocation();
 
 	/**
 	 * get the phonegap network object
+	 * 
 	 * @return
 	 */
-	public abstract Network getNetwork();
+	public Network getNetwork();
 
 	/**
 	 * get the phonegap notification object
+	 * 
 	 * @return
 	 */
-	public abstract Notification getNotification();
+	public Notification getNotification();
 
 	/**
 	 * get the phonegap debuglogger object
+	 * 
 	 * @return
 	 */
-	public abstract DebugLogger getDebugLogger();
+	public DebugLogger getDebugLogger();
 
 }
