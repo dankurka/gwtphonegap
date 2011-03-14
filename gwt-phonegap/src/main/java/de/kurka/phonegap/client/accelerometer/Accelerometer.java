@@ -1,38 +1,12 @@
-/*
- * Copyright 2010 Daniel Kurka
- * 
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- * 
- * http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
 package de.kurka.phonegap.client.accelerometer;
 
-/**
- * Captures device motion in the x, y, and z direction.
- * @author Daniel Kurka
- *
- */
-public class Accelerometer {
+public interface Accelerometer {
 
 	/**
 	 * is the accelerometer module available
 	 * @return true if it is available
 	 */
-	public native boolean isAvailable() /*-{
-		if(!(typeof($wnd.navigator.accelerometer) == "undefined"))
-		{
-		return true;
-		}
-		return false;
-	}-*/;
+	public abstract boolean isAvailable();
 
 	/**
 	 * Get the current acceleration along the x, y, and z axis.
@@ -50,23 +24,9 @@ public class Accelerometer {
 	 * @param accelerationCallback
 	 * @param options
 	 */
-	public native void getCurrentAcceleration(AccelerationCallback accelerationCallback, AccelerationOptions options) /*-{
-		var successCallback = function(data){
-		$entry(accelerationCallback.@de.kurka.phonegap.client.accelerometer.AccelerationCallback::onSuccess(Lde/kurka/phonegap/client/accelerometer/Acceleration;)(data));
-		};
-
-		var errorCallback = function(){
-		$entry(accelerationCallback.@de.kurka.phonegap.client.file.DirectoryDeleteCallback::onFailure()());
-		};
-
-		var freq = options.@de.kurka.phonegap.client.accelerometer.AccelerationOptions::getFrequency()();
-
-		var localOptions = {
-		frequency: freq
-		}
-
-		$wnd.navigator.accelerometer.getCurrentAcceleration(successCallback, errorCallback, localOptions);
-	}-*/;
+	public abstract void getCurrentAcceleration(
+			AccelerationCallback accelerationCallback,
+			AccelerationOptions options) ;
 
 	/**
 	 * At a regular interval, get the acceleration along the x, y, and z axis.
@@ -98,23 +58,9 @@ public class Accelerometer {
 	 * @param accelerationCallback
 	 * @return
 	 */
-	public native AccelerometerWatcher watchAcceleration(AccelerationOptions options, AccelerationCallback accelerationCallback) /*-{
-		var sc = function(data){
-		accelerationCallback.@de.kurka.phonegap.client.accelerometer.AccelerationCallback::onSuccess(Lde/kurka/phonegap/client/accelerometer/Acceleration;)(data);
-		};
-
-		var ec = function(){
-		accelerationCallback.@de.kurka.phonegap.client.file.DirectoryDeleteCallback::onFailure()();
-		};
-
-		var freq = options.@de.kurka.phonegap.client.accelerometer.AccelerationOptions::getFrequency()();
-
-		var localOptions = {
-		frequency: freq
-		}
-
-		return $wnd.navigator.accelerometer.watchAcceleration(sc, ec, localOptions);
-	}-*/;
+	public abstract AccelerometerWatcher watchAcceleration(
+			AccelerationOptions options,
+			AccelerationCallback accelerationCallback);
 
 	/**
 	 * Stop watching the Acceleration referenced by the watch ID parameter.
@@ -128,7 +74,6 @@ public class Accelerometer {
 	 * @param watcher The Object returned by accelerometer.watchAcceleration.
 	 * 
 	 */
-	public native void clearWatch(AccelerometerWatcher watcher) /*-{
-		$wnd.navigator.accelerometer.clearWatch(watcher);
-	}-*/;
+	public abstract void clearWatch(AccelerometerWatcher watcher);
+
 }

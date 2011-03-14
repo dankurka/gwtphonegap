@@ -50,7 +50,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
 			}
 		});
 
-		final PhoneGap phoneGap = new PhoneGap();
+		final PhoneGap phoneGap = GWT.create(PhoneGap.class);
 
 		phoneGap.addHandler(new PhoneGapAvailableHandler() {
 

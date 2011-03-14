@@ -1,37 +1,8 @@
-/*
- * Copyright 2010 Daniel Kurka
- * 
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- * 
- * http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
 package de.kurka.phonegap.client.device;
 
-/**
- * The Device class represents the Device from the phonegap API:
- * 
- * http://docs.phonegap.com/phonegap_device_device.md.html
- * 
- * @author Daniel Kurka
- * 
- */
-public class Device {
+public interface Device {
 
-	public native boolean isAvailable() /*-{
-		if(!(typeof($wnd.device) == "undefined"))
-		{
-		return true;
-		}
-		return false;
-	}-*/;
+	public abstract boolean isAvailable();
 
 	/**
 	 * Get the device's model name.
@@ -73,9 +44,9 @@ public class Device {
 	 * 
 	 * @return the models device name
 	 */
-	public native String getName()/*-{
-		return $wnd.device.name;
-	}-*/;
+	public abstract String getName()/*-{
+									return $wnd.device.name;
+									}-*/;
 
 	/**
 	 * Get the version of phonegap running on the device.
@@ -90,9 +61,7 @@ public class Device {
 	 * 
 	 * @return the version of phonegap running on the device
 	 */
-	public native String getPhoneGapVersion()/*-{
-		return $wnd.device.phonegap;
-	}-*/;
+	public abstract String getPhoneGapVersion();
 
 	/**
 	 * Get the device's operating system name.
@@ -114,9 +83,7 @@ public class Device {
 	 * 
 	 * @return the device's operating system name
 	 */
-	public native String getPlatform()/*-{
-		return $wnd.device.platform;
-	}-*/;
+	public abstract String getPlatform();
 
 	/**
 	 * Get the device's Universally Unique Identifier (UUID).
@@ -135,9 +102,7 @@ public class Device {
 	 * 
 	 * @return the uuid of the device as a String
 	 */
-	public native String getUuid()/*-{
-		return $wnd.device.uuid;
-	}-*/;
+	public abstract String getUuid();
 
 	/**
 	 * Get the operating system version.
@@ -153,8 +118,6 @@ public class Device {
 	 * 
 	 * @return the device's operating system version
 	 */
-	public native String getVersion()/*-{
-		return $wnd.device.version;
-	}-*/;
+	public abstract String getVersion();
 
 }

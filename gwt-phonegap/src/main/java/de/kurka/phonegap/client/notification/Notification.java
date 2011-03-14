@@ -1,52 +1,22 @@
-/*
- * Copyright 2010 Daniel Kurka
- * 
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- * 
- * http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
 package de.kurka.phonegap.client.notification;
 
-/**
- * Visual, audible, and tactile device notifications.
- * @author Daniel Kurka
- *
- */
-public class Notification {
+public interface Notification {
 
 	/**
 	 * Is the Notification module available
 	 * @return true if its available
 	 */
-	public native boolean isAvailable() /*-{
-		if(!(typeof($wnd.navigator.notification) == "undefined"))
-		{
-		return true;
-		}
-		return false;
-	}-*/;
+	public abstract boolean isAvailable() ;
 
 	/**
-	 * {@link Notification#alert(String, String, String)}
+	 * {@link NotificationMobileImpl#alert(String, String, String)}
 	 */
-	public void alert(String message) {
-		alert(message, "Alert", "Ok");
-	}
+	public abstract void alert(String message);
 
 	/**
-	 * {@link Notification#alert(String, String, String)}
+	 * {@link NotificationMobileImpl#alert(String, String, String)}
 	 */
-	public void alert(String message, String title) {
-		alert(message, title, "Ok");
-	}
+	public abstract void alert(String message, String title);
 
 	/**
 	 * Shows an alert or dialog box.
@@ -67,9 +37,7 @@ public class Notification {
 	 * @param buttonName
 	 * 
 	 */
-	public native void alert(String message, String title, String buttonName)/*-{
-		$wnd.navigator.notification.alert(message, title, buttonName);
-	}-*/;
+	public abstract void alert(String message, String title, String buttonName);
 
 	/**
 	 * The device will play a beep sound.
@@ -106,41 +74,7 @@ public class Notification {
 	 * 
 	 * @param count The number of times to repeat the beep
 	 */
-	public native void beep(int count)/*-{
-		$wnd.navigator.notification.beep(count);
-	}-*/;
-
-	//TODO put this back in after bug in confirm is fixed
-	//	/**
-	//	 * {@link Notification#confirm(String, String, String)}
-	//	 */
-	//	public int confirm(String message) {
-	//		return confirm(message, "Confirm", "Ok,Cancel");
-	//	}
-	//
-	//	/**
-	//	 * {@link Notification#confirm(String, String, String)}
-	//	 */
-	//	public int confirm(String message, String title) {
-	//		return confirm(message, title, "Ok,Cancel");
-	//	}
-	//
-	//	/**
-	//	 * Shows a confirmation dialog box.
-	//	 * 
-	//	 * <ul>
-	//	 * 	<li>Android</li>
-	//	 * 	<li>iPhone</li>
-	//	 * </ul>
-	//	 * 
-	//	 * @param message the message to display
-	//	 * @param title the dialog title 
-	//	 * @param buttonLabel
-	//	 * @return Index of the button clicked (1, 2 or 3).
-	//	 */
-	//	public native int confirm(String message, String title, String buttonLabel)/*-{
-	//		$wnd.navigator.notification.confirm(message, title, buttonLabel);
-	//	}-*/;
+	public abstract void beep(int count);
 
 	/**
 	 * Vibrates the device for the specified amount of time.
@@ -163,7 +97,6 @@ public class Notification {
 	 * 
 	 * @param milliseconds Milliseconds to vibrate the device. 1000 milliseconds equals 1 second
 	 */
-	public native void vibrate(int milliseconds)/*-{
-		$wnd.navigator.notification.vibrate(milliseconds);
-	}-*/;
+	public abstract void vibrate(int milliseconds);
+
 }

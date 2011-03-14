@@ -1,3 +1,40 @@
 <module>
     <inherits name='com.google.gwt.user.User'/>
+    
+     <replace-with class="de.kurka.phonegap.client.PhoneGapMobileImpl">
+        <when-type-is class="de.kurka.phonegap.client.PhoneGap"/>
+    </replace-with>
+    
+    
+    <replace-with class="de.kurka.phonegap.client.accelerometer.AccelerometerMobileImpl">
+        <when-type-is class="de.kurka.phonegap.client.accelerometer.Accelerometer"/>
+    </replace-with>
+    
+    <replace-with class="de.kurka.phonegap.client.camera.CameraMobileImpl">
+        <when-type-is class="de.kurka.phonegap.client.camera.Camera"/>
+    </replace-with>
+    
+    <replace-with class="de.kurka.phonegap.client.device.DeviceMobileImpl">
+        <when-type-is class="de.kurka.phonegap.client.device.Device"/>
+    </replace-with>
+    
+    <replace-with class="de.kurka.phonegap.client.geolocation.GeolocationMobileImpl">
+        <when-type-is class="de.kurka.phonegap.client.geolocation.Geolocation"/>
+    </replace-with>
+    
+    <replace-with class="de.kurka.phonegap.client.log.DebugLoggerMobileImpl">
+        <when-type-is class="de.kurka.phonegap.client.log.DebugLogger"/>
+    </replace-with>
+    
+    <replace-with class="de.kurka.phonegap.client.network.NetworkMobileImpl">
+        <when-type-is class="de.kurka.phonegap.client.network.Network"/>
+    </replace-with>
+    
+    <replace-with class="de.kurka.phonegap.client.notification.NotificationMobileImpl">
+        <when-type-is class="de.kurka.phonegap.client.notification.Notification"/>
+    </replace-with>
+   
+    
+    
+    
 </module>
