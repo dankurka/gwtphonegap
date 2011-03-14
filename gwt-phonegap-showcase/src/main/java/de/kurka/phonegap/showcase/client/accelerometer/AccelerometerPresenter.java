@@ -67,17 +67,12 @@ public class AccelerometerPresenter {
 			@Override
 			public void onClick(ClickEvent event) {
 				if (!running) {
-					Window.alert("start");
 					final AccelerationOptions options = new AccelerationOptions();
 					options.setFrequency(50);
 					watcher = phoneGap.getAccelerometer().watchAcceleration(options, new AccelerometerCallbackImpl());
-					Window.alert("" + watcher);
-					Window.alert("worked");
 					running = true;
 				} else {
-					Window.alert("stop");
 					phoneGap.getAccelerometer().clearWatch(watcher);
-					Window.alert("not running");
 					watcher = null;
 					running = false;
 				}
