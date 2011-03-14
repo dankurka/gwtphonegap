@@ -22,17 +22,17 @@ public interface Notification {
 	 * 
 	 * @return true if its available
 	 */
-	public abstract boolean isAvailable();
+	public boolean isAvailable();
 
 	/**
 	 * {@link NotificationMobileImpl#alert(String, String, String)}
 	 */
-	public abstract void alert(String message);
+	public void alert(String message);
 
 	/**
 	 * {@link NotificationMobileImpl#alert(String, String, String)}
 	 */
-	public abstract void alert(String message, String title);
+	public void alert(String message, String title);
 
 	/**
 	 * Shows an alert or dialog box.
@@ -55,7 +55,7 @@ public interface Notification {
 	 * @param buttonName
 	 * 
 	 */
-	public abstract void alert(String message, String title, String buttonName);
+	public void alert(String message, String title, String buttonName);
 
 	/**
 	 * The device will play a beep sound.
@@ -95,7 +95,7 @@ public interface Notification {
 	 * @param count
 	 *            The number of times to repeat the beep
 	 */
-	public abstract void beep(int count);
+	public void beep(int count);
 
 	/**
 	 * Vibrates the device for the specified amount of time.
@@ -120,6 +120,6 @@ public interface Notification {
 	 *            Milliseconds to vibrate the device. 1000 milliseconds equals 1
 	 *            second
 	 */
-	public abstract void vibrate(int milliseconds);
+	public void vibrate(int milliseconds);
 
 }

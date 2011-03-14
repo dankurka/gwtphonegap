@@ -22,7 +22,7 @@ public interface Geolocation {
 	 * 
 	 * @return true if it is available
 	 */
-	public abstract boolean isAvailable();
+	public boolean isAvailable();
 
 	/**
 	 * calculates the device's current position as a Position object.
@@ -44,7 +44,7 @@ public interface Geolocation {
 	 * @param options
 	 * @param callback
 	 */
-	public abstract void getCurrentPosition(GeolocationCallback callback);
+	public void getCurrentPosition(GeolocationCallback callback);
 
 	/**
 	 * Watches for changes to the device's current position.
@@ -70,7 +70,7 @@ public interface Geolocation {
 	 *         {@link GeolocationMobileImpl#clearWatch(GeolocationWatcher)} to
 	 *         stop watching for changes in position.
 	 */
-	public abstract GeolocationWatcher watchPosition(GeolocationOptions options, GeolocationCallback callback);
+	public GeolocationWatcher watchPosition(GeolocationOptions options, GeolocationCallback callback);
 
 	/**
 	 * top watching for changes to the device's location referenced by the
@@ -85,6 +85,6 @@ public interface Geolocation {
 	 * 
 	 * @param watcher
 	 */
-	public abstract void clearWatch(GeolocationWatcher watcher);
+	public void clearWatch(GeolocationWatcher watcher);
 
 }

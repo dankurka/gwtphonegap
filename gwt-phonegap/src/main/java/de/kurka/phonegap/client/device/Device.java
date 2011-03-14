@@ -17,7 +17,7 @@ package de.kurka.phonegap.client.device;
 
 public interface Device {
 
-	public abstract boolean isAvailable();
+	public boolean isAvailable();
 
 	/**
 	 * Get the device's model name.
