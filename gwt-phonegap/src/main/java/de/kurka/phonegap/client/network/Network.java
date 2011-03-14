@@ -47,33 +47,19 @@ public class Network {
 	 * @param callback
 	 */
 	public native void isNetWorkReachable(NetworkReachableOptions options, NetworkReachableCallback callback)/*-{
-		var myfunction = function(){
-		};
-
-
-
-		$wnd.callbackPhonegapNetworkReach = function(data){
-		$wnd.callbackPhonegapNetworkReach = null;
+		
+		var func = function(data){
 		callback.@de.kurka.phonegap.client.network.NetworkReachableCallback::onSuccess(I)(data);
 		};
 
-		$wnd.callbackPhonegapNetworkReach.toString = function(){
-		return "function callbackPhonegapNetworkReach() {  }";
-		}
-
-
 		var hostname = options.@de.kurka.phonegap.client.network.NetworkReachableOptions::getHostname()();
 		var isIp = options.@de.kurka.phonegap.client.network.NetworkReachableOptions::isIpAddress()();
-
-
 
 		var localOptions = {
 		isIpAddress: isIp
 		};
 
-
-
-		$wnd.navigator.network.isReachable(hostname,$wnd.callbackPhonegapNetworkReach, localOptions);
+		$wnd.navigator.network.isReachable(hostname,func, localOptions);
 	}-*/;
 
 }
