@@ -22,7 +22,7 @@ public interface Accelerometer {
 	 * 
 	 * @return true if it is available
 	 */
-	public abstract boolean isAvailable();
+	public boolean isAvailable();
 
 	/**
 	 * Get the current acceleration along the x, y, and z axis.
@@ -45,7 +45,7 @@ public interface Accelerometer {
 	 * @param accelerationCallback
 	 * @param options
 	 */
-	public abstract void getCurrentAcceleration(AccelerationCallback accelerationCallback, AccelerationOptions options);
+	public void getCurrentAcceleration(AccelerationCallback accelerationCallback, AccelerationOptions options);
 
 	/**
 	 * At a regular interval, get the acceleration along the x, y, and z axis.
@@ -98,7 +98,7 @@ public interface Accelerometer {
 	 * @param accelerationCallback
 	 * @return
 	 */
-	public abstract AccelerometerWatcher watchAcceleration(AccelerationOptions options, AccelerationCallback accelerationCallback);
+	public AccelerometerWatcher watchAcceleration(AccelerationOptions options, AccelerationCallback accelerationCallback);
 
 	/**
 	 * Stop watching the Acceleration referenced by the watch ID parameter.
@@ -113,6 +113,6 @@ public interface Accelerometer {
 	 *            The Object returned by accelerometer.watchAcceleration.
 	 * 
 	 */
-	public abstract void clearWatch(AccelerometerWatcher watcher);
+	public void clearWatch(AccelerometerWatcher watcher);
 
 }
