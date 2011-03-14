@@ -44,9 +44,7 @@ public interface Device {
 	 * 
 	 * @return the models device name
 	 */
-	public abstract String getName()/*-{
-									return $wnd.device.name;
-									}-*/;
+	public abstract String getName();
 
 	/**
 	 * Get the version of phonegap running on the device.
