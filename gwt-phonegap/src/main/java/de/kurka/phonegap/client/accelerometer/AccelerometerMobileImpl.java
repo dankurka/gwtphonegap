@@ -29,11 +29,11 @@ public class AccelerometerMobileImpl implements Accelerometer {
 	@Override
 	public native void getCurrentAcceleration(AccelerationCallback accelerationCallback, AccelerationOptions options) /*-{
 		var successCallback = function(data) {
-			$entry(accelerationCallback.@de.kurka.phonegap.client.accelerometer.AccelerationCallback::onSuccess(Lde/kurka/phonegap/client/accelerometer/Acceleration;)(data));
+			accelerationCallback.@de.kurka.phonegap.client.accelerometer.AccelerationCallback::onSuccess(Lde/kurka/phonegap/client/accelerometer/Acceleration;)(data);
 		};
 
 		var errorCallback = function() {
-			$entry(accelerationCallback.@de.kurka.phonegap.client.file.DirectoryDeleteCallback::onFailure()());
+			accelerationCallback.@de.kurka.phonegap.client.file.DirectoryDeleteCallback::onFailure()();
 		};
 
 		var freq = options.@de.kurka.phonegap.client.accelerometer.AccelerationOptions::getFrequency()();
@@ -63,10 +63,17 @@ public class AccelerometerMobileImpl implements Accelerometer {
 
 		var localOptions = {
 			frequency : freq
-		}
+		};
 
-		return $wnd.navigator.accelerometer.watchAcceleration(sc, ec,
+		var idv = $wnd.navigator.accelerometer.watchAcceleration(sc, ec,
 				localOptions);
+
+		var watcher = {
+			id : idv
+		};
+
+		return watcher;
+
 	}-*/;
 
 	/* (non-Javadoc)
@@ -74,6 +81,10 @@ public class AccelerometerMobileImpl implements Accelerometer {
 	 */
 	@Override
 	public native void clearWatch(AccelerometerWatcher watcher) /*-{
-		$wnd.navigator.accelerometer.clearWatch(watcher);
+		alert(watcher);
+		alert(typeof (watcher));
+		alert(typeof (watcher.id));
+		alert(watcher);
+		$wnd.navigator.accelerometer.clearWatch(watcher.id);
 	}-*/;
 }
