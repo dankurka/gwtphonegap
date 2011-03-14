@@ -22,18 +22,12 @@ import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.user.client.Timer;
 
 import de.kurka.phonegap.client.accelerometer.Accelerometer;
-import de.kurka.phonegap.client.accelerometer.AccelerometerMobileImpl;
 import de.kurka.phonegap.client.camera.Camera;
-import de.kurka.phonegap.client.camera.CameraMobileImpl;
 import de.kurka.phonegap.client.device.Device;
 import de.kurka.phonegap.client.geolocation.Geolocation;
-import de.kurka.phonegap.client.geolocation.GeolocationMobileImpl;
 import de.kurka.phonegap.client.log.DebugLogger;
-import de.kurka.phonegap.client.log.DebugLoggerMobileImpl;
 import de.kurka.phonegap.client.network.Network;
-import de.kurka.phonegap.client.network.NetworkMobileImpl;
 import de.kurka.phonegap.client.notification.Notification;
-import de.kurka.phonegap.client.notification.NotificationMobileImpl;
 
 /**
  * This class is a wrapper class for phonegap.js
@@ -41,17 +35,17 @@ import de.kurka.phonegap.client.notification.NotificationMobileImpl;
  * The implementation is based on {@link http://docs.phonegap.com/}
  * 
  * Available modules are:
- *	<ul>
- * 		<li>Accelerometer</li>
- * 		<li>Camera</li>
- * 		<li>Device</li>
- * 		<li>File</li>
- * 		<li>Geolocation</li>
- * 		<li>Log</li>
- * 		<li>Network</li>
- * 		<li>Notification</li>
- * 	</ul>
- *
+ * <ul>
+ * <li>Accelerometer</li>
+ * <li>Camera</li>
+ * <li>Device</li>
+ * <li>File</li>
+ * <li>Geolocation</li>
+ * <li>Log</li>
+ * <li>Network</li>
+ * <li>Notification</li>
+ * </ul>
+ * 
  * 
  * 
  * @author Daniel Kurka
@@ -81,12 +75,12 @@ public class PhoneGapMobileImpl implements PhoneGap {
 	 */
 	@Override
 	public native boolean isPhoneGapInitialized()/*-{
-		if(typeof($wnd.PhoneGap) == "undefined"){
-		return false;
-		}else{
-		return $wnd.PhoneGap.available;
-		}
-	}-*/;
+													if(typeof($wnd.PhoneGap) == "undefined"){
+													return false;
+													}else{
+													return $wnd.PhoneGap.available;
+													}
+													}-*/;
 
 	/* (non-Javadoc)
 	 * @see de.kurka.phonegap.client.IPhoneGap#initializePhoneGap()
