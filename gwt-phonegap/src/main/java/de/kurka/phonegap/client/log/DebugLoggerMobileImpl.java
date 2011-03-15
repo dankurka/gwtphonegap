@@ -23,21 +23,9 @@ package de.kurka.phonegap.client.log;
  * 
  * 
  * @author Daniel Kurka
- *
+ * 
  */
 public class DebugLoggerMobileImpl implements DebugLogger {
-
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.log.DebugLogger#isAvailable()
-	 */
-	@Override
-	public native boolean isAvailable() /*-{
-		if(!(typeof($wnd.debug) == "undefined"))
-		{
-		return true;
-		}
-		return false;
-	}-*/;
 
 	/* (non-Javadoc)
 	 * @see de.kurka.phonegap.client.log.DebugLogger#info(java.lang.String)

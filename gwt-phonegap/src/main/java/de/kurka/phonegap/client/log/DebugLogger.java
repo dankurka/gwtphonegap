@@ -17,8 +17,6 @@ package de.kurka.phonegap.client.log;
 
 public interface DebugLogger {
 
-	public boolean isAvailable();
-
 	public void info(String message);
 
 	public void warn(String message);
