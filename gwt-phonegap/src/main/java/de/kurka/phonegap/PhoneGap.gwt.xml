@@ -100,8 +100,18 @@
         </all>
     </replace-with>
     
+    <!-- Notification -->
     <replace-with class="de.kurka.phonegap.client.notification.NotificationMobileImpl">
         <when-type-is class="de.kurka.phonegap.client.notification.Notification"/>
+         <all>
+            <when-property-is name="phonegap.env" value="yes"/>
+        </all>
+    </replace-with>
+    <replace-with class="de.kurka.phonegap.client.notification.NotificationBrowserImpl">
+        <when-type-is class="de.kurka.phonegap.client.notification.Notification"/>
+         <all>
+            <when-property-is name="phonegap.env" value="no"/>
+        </all>
     </replace-with>
    
     

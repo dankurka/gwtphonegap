@@ -17,22 +17,11 @@ package de.kurka.phonegap.client.notification;
 
 /**
  * Visual, audible, and tactile device notifications.
+ * 
  * @author Daniel Kurka
- *
+ * 
  */
 public class NotificationMobileImpl implements Notification {
-
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.notification.Notification#isAvailable()
-	 */
-	@Override
-	public native boolean isAvailable() /*-{
-		if(!(typeof($wnd.navigator.notification) == "undefined"))
-		{
-		return true;
-		}
-		return false;
-	}-*/;
 
 	/* (non-Javadoc)
 	 * @see de.kurka.phonegap.client.notification.Notification#alert(java.lang.String)
@@ -66,37 +55,38 @@ public class NotificationMobileImpl implements Notification {
 		$wnd.navigator.notification.beep(count);
 	}-*/;
 
-	//TODO put this back in after bug in confirm is fixed
-	//	/**
-	//	 * {@link Notification#confirm(String, String, String)}
-	//	 */
-	//	public int confirm(String message) {
-	//		return confirm(message, "Confirm", "Ok,Cancel");
-	//	}
+	// TODO put this back in after bug in confirm is fixed
+	// /**
+	// * {@link Notification#confirm(String, String, String)}
+	// */
+	// public int confirm(String message) {
+	// return confirm(message, "Confirm", "Ok,Cancel");
+	// }
 	//
-	//	/**
-	//	 * {@link Notification#confirm(String, String, String)}
-	//	 */
-	//	public int confirm(String message, String title) {
-	//		return confirm(message, title, "Ok,Cancel");
-	//	}
+	// /**
+	// * {@link Notification#confirm(String, String, String)}
+	// */
+	// public int confirm(String message, String title) {
+	// return confirm(message, title, "Ok,Cancel");
+	// }
 	//
-	//	/**
-	//	 * Shows a confirmation dialog box.
-	//	 * 
-	//	 * <ul>
-	//	 * 	<li>Android</li>
-	//	 * 	<li>iPhone</li>
-	//	 * </ul>
-	//	 * 
-	//	 * @param message the message to display
-	//	 * @param title the dialog title 
-	//	 * @param buttonLabel
-	//	 * @return Index of the button clicked (1, 2 or 3).
-	//	 */
-	//	public native int confirm(String message, String title, String buttonLabel)/*-{
-	//		$wnd.navigator.notification.confirm(message, title, buttonLabel);
-	//	}-*/;
+	// /**
+	// * Shows a confirmation dialog box.
+	// *
+	// * <ul>
+	// * <li>Android</li>
+	// * <li>iPhone</li>
+	// * </ul>
+	// *
+	// * @param message the message to display
+	// * @param title the dialog title
+	// * @param buttonLabel
+	// * @return Index of the button clicked (1, 2 or 3).
+	// */
+	// public native int confirm(String message, String title, String
+	// buttonLabel)/*-{
+	// $wnd.navigator.notification.confirm(message, title, buttonLabel);
+	// }-*/;
 
 	/* (non-Javadoc)
 	 * @see de.kurka.phonegap.client.notification.Notification#vibrate(int)

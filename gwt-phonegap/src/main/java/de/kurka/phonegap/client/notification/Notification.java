@@ -18,13 +18,6 @@ package de.kurka.phonegap.client.notification;
 public interface Notification {
 
 	/**
-	 * Is the Notification module available
-	 * 
-	 * @return true if its available
-	 */
-	public boolean isAvailable();
-
-	/**
 	 * {@link NotificationMobileImpl#alert(String, String, String)}
 	 */
 	public void alert(String message);
