@@ -117,26 +117,49 @@ public final class ContactJsoImpl extends JavaScriptObject implements Contact {
 
 	@Override
 	public void setContactAddresses(LightArray<ContactAddress> contactAddresses) {
-		// TODO
+		if (!(contactAddresses instanceof JsLightArray<?>)) {
+			throw new IllegalArgumentException();
+		}
+		JsLightArray<?> jsLightArray = (JsLightArray<?>) contactAddresses;
+		setContactAddressesJso(jsLightArray.getArray());
 
 	}
+
+	private native void setContactAddressesJso(JavaScriptObject obj)/*-{
+		this.addresses = obj;
+	}-*/;
+
+	private native JsArray<ContactAddressJsoImpl> getContactAddressesJso()/*-{
+		return this.addresses;
+	}-*/;
 
 	@Override
 	public LightArray<ContactAddress> getContactAddresses() {
-		// TODO Auto-generated method stub
-		return null;
+		JsArray<ContactAddressJsoImpl> contactAddressesJso = getContactAddressesJso();
+		return new JsLightArray<ContactAddress>(contactAddressesJso);
 	}
+
+	private native void setImsJso(JavaScriptObject obj)/*-{
+		this.ims = obj;
+	}-*/;
 
 	@Override
 	public void setIms(LightArray<ContactField> ims) {
-		// TODO Auto-generated method stub
-
+		if (!(ims instanceof JsLightArray<?>)) {
+			throw new IllegalArgumentException();
+		}
+		JsLightArray<?> jsLightArray = (JsLightArray<?>) ims;
+		setImsJso(jsLightArray.getArray());
 	}
+
+	private native JsArray<ContactFieldJsoImpl> getImsJso()/*-{
+		return this.ims;
+	}-*/;
 
 	@Override
 	public LightArray<ContactField> getIms() {
-		// TODO Auto-generated method stub
-		return null;
+		JsArray<ContactFieldJsoImpl> imsJso = getImsJso();
+		return new JsLightArray<ContactField>(imsJso);
 	}
 
 	@Override
