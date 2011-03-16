@@ -62,11 +62,11 @@ public class MainPresenter {
 
 	public void start() {
 		display.getContainer().add(accelerometerPresenter.getDisplay().asWidget());
+		display.getContainer().add(cameraPresenter.getDisplay().asWidget());
 		display.getContainer().add(devicePresenter.getDisplay().asWidget());
 		display.getContainer().add(geolocationPresenter.getDisplay().asWidget());
 		display.getContainer().add(networkPresenter.getDisplay().asWidget());
 		display.getContainer().add(notificationPresenter.getDisplay().asWidget());
-		display.getContainer().add(cameraPresenter.getDisplay().asWidget());
 		display.getContainer().add(aboutPresenter.getDisplay().asWidget());
 
 	}
