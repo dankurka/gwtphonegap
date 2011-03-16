@@ -28,10 +28,14 @@ public class CameraMobileImpl implements Camera {
 		};
 
 		var qual = options.@de.kurka.phonegap.client.camera.PictureOptions::getQuality()();
+		var dt = options.@de.kurka.phonegap.client.camera.PictureOptions::getDestinationType()();
+		var st = options.@de.kurka.phonegap.client.camera.PictureOptions::getSourceType()();
 
 		var localOptions = {
-			quality : qual
-		}
+			quality : qual,
+			destinationType : dt,
+			sourceType : st
+		};
 
 		$wnd.navigator.camera.getPicture(successCallback, errorCallback,
 				localOptions);

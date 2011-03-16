@@ -50,7 +50,11 @@ public class CameraPresenter {
 
 	private void takePicture() {
 
-		phoneGap.getCamera().getPicture(new PictureOptions(25), new PictureCallback() {
+		PictureOptions options = new PictureOptions(25);
+		options.setDestinationType(PictureOptions.DESTINATION_TYPE_DATA_URL);
+		options.setSourceType(PictureOptions.PICTURE_SOURCE_TYPE_CAMERA);
+
+		phoneGap.getCamera().getPicture(options, new PictureCallback() {
 
 			@Override
 			public void onSuccess(String data) {
