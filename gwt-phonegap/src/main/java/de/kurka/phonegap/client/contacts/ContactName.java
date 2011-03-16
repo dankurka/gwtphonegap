@@ -15,28 +15,95 @@
  */
 package de.kurka.phonegap.client.contacts;
 
+/**
+ * Contains name properties of a Contact object.
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public interface ContactName {
+	/**
+	 * The complete name of the contact. (DOMString)
+	 * 
+	 * @param formatted
+	 */
 	public void setFormatted(String formatted);
 
+	/**
+	 * The complete name of the contact. (DOMString)
+	 * 
+	 * @return
+	 */
 	public String getFormatted();
 
+	/**
+	 * The contacts family name. (DOMString)
+	 * 
+	 * @param name
+	 */
 	public void setFamilyName(String name);
 
+	/**
+	 * The contacts family name. (DOMString)
+	 * 
+	 * @return
+	 */
 	public String getFamilyName();
 
+	/**
+	 * The contacts given name. (DOMString)
+	 * 
+	 * @param name
+	 */
 	public void setGivenName(String name);
 
+	/**
+	 * The contacts given name. (DOMString)
+	 * 
+	 * @param name
+	 * @return
+	 */
 	public String getGivenName(String name);
 
+	/**
+	 * The contacts middle name. (DOMString)
+	 * 
+	 * @param name
+	 */
 	public void setMiddleName(String name);
 
+	/**
+	 * The contacts middle name. (DOMString)
+	 * 
+	 * @return
+	 */
 	public String getMiddleName();
 
+	/**
+	 * The contacts prefix (example Mr. or Dr.) (DOMString)
+	 * 
+	 * @param prefix
+	 */
 	public void setHonoricfPrefix(String prefix);
 
+	/**
+	 * The contacts prefix (example Mr. or Dr.) (DOMString)
+	 * 
+	 * @return
+	 */
 	public String getHonoricPrefix();
 
+	/**
+	 * The contacts suffix (example Esq.). (DOMString)
+	 * 
+	 * @param suffix
+	 */
 	public void setHonoricfSuffix(String suffix);
 
+	/**
+	 * The contacts suffix (example Esq.). (DOMString)
+	 * 
+	 * @return
+	 */
 	public String getHonoricSuffix();
 }
