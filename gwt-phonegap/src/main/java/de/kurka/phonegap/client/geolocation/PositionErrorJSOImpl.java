@@ -15,27 +15,32 @@
  */
 package de.kurka.phonegap.client.geolocation;
 
-public interface PositionError {
+import com.google.gwt.core.client.JavaScriptObject;
 
-	public static final int PERMISSION_DENIED = 0;
-	public static final int POSITION_UNAVAILABLE = 1;
-	public static final int TIMEOUT = 2;
+/**
+ * A PositionError object is returned to the geolocationError callback when an error occurs.
+ * @author Daniel Kurka
+ *
+ */
+public final class PositionErrorJSOImpl extends JavaScriptObject implements PositionError {
 
-	/**
-	 * One of the predefined error codes listed in this class.
-	 * 
-	 * @return
+	protected PositionErrorJSOImpl() {
+
+	}
+
+	/* (non-Javadoc)
+	 * @see de.kurka.phonegap.client.geolocation.PostionError#getCode()
 	 */
-	public int getCode()/*-{
+	@Override
+	public native int getCode()/*-{
 		return this.code;
 	}-*/;
 
-	/**
-	 * Error message describing the details of the error encountered.
-	 * 
-	 * @return
+	/* (non-Javadoc)
+	 * @see de.kurka.phonegap.client.geolocation.PostionError#getMessage()
 	 */
-	public String getMessage()/*-{
+	@Override
+	public native String getMessage()/*-{
 		return this.message;
 	}-*/;
 

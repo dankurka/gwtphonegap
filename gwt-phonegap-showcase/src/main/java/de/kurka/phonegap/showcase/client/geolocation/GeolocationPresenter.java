@@ -35,6 +35,7 @@ public class GeolocationPresenter {
 	private final Display display;
 
 	private GeolocationWatcher watcher;
+	private boolean running = false;
 
 	public GeolocationPresenter(Display display, PhoneGap phoneGap) {
 		this.display = display;
@@ -50,15 +51,17 @@ public class GeolocationPresenter {
 
 			@Override
 			public void onClick(ClickEvent event) {
-				if (watcher == null) {
+				if (!running) {
 					GeolocationOptions options = new GeolocationOptions();
 					options.setFrequency(1000);
 					watcher = phoneGap.getGeolocation().watchPosition(options, new GeoLocationCallbackImpl());
 					display.setButtonText("Stop");
+					running = true;
 				} else {
 					phoneGap.getGeolocation().clearWatch(watcher);
 					watcher = null;
 					display.setButtonText("Start");
+					running = false;
 				}
 
 			}
@@ -68,8 +71,8 @@ public class GeolocationPresenter {
 
 	private native String getKeys(JavaScriptObject obj)/*-{
 		var keys = "";
-		for(var key in obj){
-		keys += key + ";";
+		for ( var key in obj) {
+			keys += key + ";";
 		}
 		return keys;
 	}-*/;
@@ -109,10 +112,12 @@ public class GeolocationPresenter {
 				break;
 			}
 
-			if (watcher != null) {
+			if (running) {
 				phoneGap.getGeolocation().clearWatch(watcher);
 				watcher = null;
 				display.setButtonText("Start");
+				running = false;
+
 			}
 
 		}

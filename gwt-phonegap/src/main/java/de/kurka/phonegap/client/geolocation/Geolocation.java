@@ -18,13 +18,6 @@ package de.kurka.phonegap.client.geolocation;
 public interface Geolocation {
 
 	/**
-	 * is the geolocation module available
-	 * 
-	 * @return true if it is available
-	 */
-	public boolean isAvailable();
-
-	/**
 	 * calculates the device's current position as a Position object.
 	 * 
 	 * Function geolocation.getCurrentPositon is an asynchronous function. It

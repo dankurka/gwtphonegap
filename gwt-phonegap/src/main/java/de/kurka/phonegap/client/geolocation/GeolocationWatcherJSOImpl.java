@@ -15,28 +15,10 @@
  */
 package de.kurka.phonegap.client.geolocation;
 
-public interface PositionError {
+import com.google.gwt.core.client.JavaScriptObject;
 
-	public static final int PERMISSION_DENIED = 0;
-	public static final int POSITION_UNAVAILABLE = 1;
-	public static final int TIMEOUT = 2;
+public final class GeolocationWatcherJSOImpl extends JavaScriptObject implements GeolocationWatcher {
+	protected GeolocationWatcherJSOImpl() {
 
-	/**
-	 * One of the predefined error codes listed in this class.
-	 * 
-	 * @return
-	 */
-	public int getCode()/*-{
-		return this.code;
-	}-*/;
-
-	/**
-	 * Error message describing the details of the error encountered.
-	 * 
-	 * @return
-	 */
-	public String getMessage()/*-{
-		return this.message;
-	}-*/;
-
+	}
 }

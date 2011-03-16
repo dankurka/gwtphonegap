@@ -15,28 +15,24 @@
  */
 package de.kurka.phonegap.client.geolocation;
 
-public interface PositionError {
+public class PostionErrorJavaImpl implements PositionError {
 
-	public static final int PERMISSION_DENIED = 0;
-	public static final int POSITION_UNAVAILABLE = 1;
-	public static final int TIMEOUT = 2;
+	private final String message;
+	private final int code;
 
-	/**
-	 * One of the predefined error codes listed in this class.
-	 * 
-	 * @return
-	 */
-	public int getCode()/*-{
-		return this.code;
-	}-*/;
+	public PostionErrorJavaImpl(int code, String message) {
+		this.code = code;
+		this.message = message;
+	}
 
-	/**
-	 * Error message describing the details of the error encountered.
-	 * 
-	 * @return
-	 */
-	public String getMessage()/*-{
-		return this.message;
-	}-*/;
+	@Override
+	public int getCode() {
+		return code;
+	}
+
+	@Override
+	public String getMessage() {
+		return message;
+	}
 
 }
