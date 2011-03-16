@@ -15,16 +15,52 @@
  */
 package de.kurka.phonegap.client.contacts;
 
+/**
+ * Contains organization properties of a Contact object.
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public interface ContactOrganisation {
+	/**
+	 * The name of the organization. (DOMString)
+	 * 
+	 * @param name
+	 */
 	public void setName(String name);
 
+	/**
+	 * The name of the organization. (DOMString)
+	 * 
+	 * @return
+	 */
 	public String getName();
 
+	/**
+	 * The department the contract works for. (DOMString)
+	 * 
+	 * @param department
+	 */
 	public void setDepartment(String department);
 
+	/**
+	 * The department the contract works for. (DOMString)
+	 * 
+	 * @return
+	 */
 	public String getDepartment();
 
+	/**
+	 * The contacts title at the organization. (DOMString)
+	 * 
+	 * @param title
+	 */
 	public void setTitle(String title);
 
+	/**
+	 * The contacts title at the organization. (DOMString)
+	 * 
+	 * @return
+	 */
 	public String getTitle();
 }
