@@ -30,10 +30,9 @@ import de.kurka.phonegap.client.contacts.Contacts;
 public class ContactsJsoImpl implements Contacts {
 
 	@Override
-	public Contact create() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public native Contact create() /*-{
+		return $wnd.navigator.contacts.create();
+	}-*/;
 
 	@Override
 	public void find(LightArray<String> fields, ContactFindCallback callback, ContactFindOptions contactFindOptions) {
