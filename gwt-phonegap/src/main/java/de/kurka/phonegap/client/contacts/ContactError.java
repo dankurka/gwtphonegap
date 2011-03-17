@@ -15,10 +15,15 @@
  */
 package de.kurka.phonegap.client.contacts;
 
-public interface ContactFactory {
-	public ContactField createContactField(String type, String value, boolean pref);
+public interface ContactError {
+	public static final int UNKNOWN_ERROR = 0;
+	public static final int INVALID_ARGUMENT_ERROR = 1;
+	public static final int NOT_FOUND_ERROR = 2;
+	public static final int TIMEOUT_ERROR = 3;
+	public static final int PENDING_OPERATION_ERROR = 4;
+	public static final int IO_ERROR = 5;
+	public static final int NOT_SUPPORTED_ERROR = 6;
+	public static final int PERMISSION_DENIED_ERROR = 7;
 
-	public ContactOrganisation createContactOrganisation(String name, String department, String title);
-
-	public ContactAddress createContactAddress(String formatted, String streetAddress, String locality, String region, String postalCode, String country);
+	public int getCode();
 }

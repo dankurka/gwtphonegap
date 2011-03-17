@@ -15,9 +15,47 @@
  */
 package de.kurka.phonegap.client.contacts;
 
+import de.kurka.gwt.collection.shared.LightArray;
+
 public interface Contacts {
 	public Contact create();
 
-	public void find();
+	/**
+	 * Queries the device contacts database and returns one or more Contact
+	 * objects, each containing the fields specified.
+	 * 
+	 * contacts.find is an asynchronous function that queries the device
+	 * contacts database and returns an array of Contact objects. The resulting
+	 * objects are passed to the contactSuccess callback function specified by
+	 * the contactSuccess parameter.
+	 * 
+	 * Users must specify the contact fields to be used as a search qualifier in
+	 * the contactFields parameter. Only the fields specified in the
+	 * contactFields parameter will be returned as properties of the Contact
+	 * objects that are passed to the contactSuccess callback function. A
+	 * zero-length contactFields parameter will result in an array of Contact
+	 * objects with only the id property populated.
+	 * 
+	 * The contactFindOptions.filter string can be used as a search filter when
+	 * querying the contacts database. If provided, a case-insensitive, partial
+	 * value match is applied to each field specified in the contactFields
+	 * parameter. If a match is found in a comparison with any of the specified
+	 * fields, the contact is returned.
+	 * 
+	 * Parameters
+	 * 
+	 * contactFields: Contact fields to be used as search qualifier. Only these
+	 * fields will have values in the resulting Contact objects. (DOMString[])
+	 * [Required] contactSuccess: Success callback function that is invoked with
+	 * the contacts returned from the contacts database. [Required]
+	 * contactError: Error callback function. Invoked when error occurs.
+	 * [Optional] contactFindOptions: Search options to filter contacts.
+	 * [Optional]
+	 * 
+	 * @param field
+	 * @param callback
+	 * @param contactFindOptions
+	 */
+	public void find(LightArray<String> fields, ContactFindCallback callback, ContactFindOptions contactFindOptions);
 
 }

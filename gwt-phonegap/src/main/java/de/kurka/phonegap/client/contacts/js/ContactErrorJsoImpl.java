@@ -13,12 +13,19 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.phonegap.client.contacts;
+package de.kurka.phonegap.client.contacts.js;
 
-public interface ContactFactory {
-	public ContactField createContactField(String type, String value, boolean pref);
+import de.kurka.phonegap.client.contacts.ContactError;
 
-	public ContactOrganisation createContactOrganisation(String name, String department, String title);
+public final class ContactErrorJsoImpl implements ContactError {
 
-	public ContactAddress createContactAddress(String formatted, String streetAddress, String locality, String region, String postalCode, String country);
+	protected ContactErrorJsoImpl() {
+
+	}
+
+	@Override
+	public native int getCode() /*-{
+		return this.code;
+	}-*/;
+
 }

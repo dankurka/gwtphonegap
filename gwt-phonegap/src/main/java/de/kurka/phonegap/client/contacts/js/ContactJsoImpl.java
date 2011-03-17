@@ -162,119 +162,166 @@ public final class ContactJsoImpl extends JavaScriptObject implements Contact {
 		return new JsLightArray<ContactField>(imsJso);
 	}
 
+	private native void setOrganisationsJso(JavaScriptObject obj)/*-{
+		this.organizations = obj;
+	}-*/;
+
 	@Override
 	public void setOrganisations(LightArray<ContactOrganisation> organisations) {
-		// TODO Auto-generated method stub
+		if (!(organisations instanceof JsLightArray<?>)) {
+			throw new IllegalArgumentException();
+		}
+		JsLightArray<?> jsLightArray = (JsLightArray<?>) organisations;
+		setOrganisationsJso(jsLightArray.getArray());
 
 	}
+
+	private native JsArray<ContactOrganisationJsoImpl> getOrganisationsJso()/*-{
+		return this.organizations;
+	}-*/;
 
 	@Override
 	public LightArray<ContactOrganisation> getOrganisations() {
-		// TODO Auto-generated method stub
-		return null;
+		JsArray<ContactOrganisationJsoImpl> organisationsJso = getOrganisationsJso();
+		return new JsLightArray<ContactOrganisation>(organisationsJso);
 	}
 
 	@Override
-	public String getRevision() {
-		// TODO Auto-generated method stub
-		return null;
+	public native String getRevision() /*-{
+		return this.revision;
+	}-*/;
+
+	private static Date createDate(double time) {
+		return new Date((long) time);
 	}
 
 	@Override
-	public Date getBirthDay() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public native Date getBirthDay() /*-{
+		var time = this.birthday.getTime();
+		return @de.kurka.phonegap.client.contacts.js.ContactJsoImpl::createDate(D)(time);
+	}-*/;
 
 	@Override
 	public void setBirthDay(Date birthday) {
-		// TODO Auto-generated method stub
+		setBirthDayJso(birthday.getTime());
 
 	}
+
+	private native void setBirthDayJso(double time)/*-{
+		this.birthday = new Date(time);
+	}-*/;
 
 	@Override
-	public void setGender(String gender) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public String getGender() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public native void setGender(String gender) /*-{
+		this.gender = gender;
+	}-*/;
 
 	@Override
-	public void setNote(String note) {
-		// TODO Auto-generated method stub
-
-	}
+	public native String getGender() /*-{
+		return this.gender;
+	}-*/;
 
 	@Override
-	public String getNote() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public native void setNote(String note) /*-{
+		this.note = note;
+	}-*/;
+
+	@Override
+	public native String getNote() /*-{
+		return this.note;
+	}-*/;
+
+	private native void setPhotosJso(JavaScriptObject obj)/*-{
+		this.photos = obj;
+	}-*/;
 
 	@Override
 	public void setPhotos(LightArray<ContactField> photos) {
-		// TODO Auto-generated method stub
+		if (!(photos instanceof JsLightArray<?>)) {
+			throw new IllegalArgumentException();
+		}
+		JsLightArray<?> jsLightArray = (JsLightArray<?>) photos;
+		setPhotosJso(jsLightArray.getArray());
 
 	}
+
+	private native JsArray<ContactFieldJsoImpl> getPhotosJso()/*-{
+		return this.photos;
+	}-*/;
 
 	@Override
 	public LightArray<ContactField> getPhotos() {
-		// TODO Auto-generated method stub
-		return null;
+		JsArray<ContactFieldJsoImpl> photosJso = getPhotosJso();
+		return new JsLightArray<ContactField>(photosJso);
 	}
+
+	private native void setCategoriesJso(JavaScriptObject obj)/*-{
+		this.categories = obj;
+	}-*/;
 
 	@Override
 	public void setCategories(LightArray<ContactField> categories) {
-		// TODO Auto-generated method stub
+		if (!(categories instanceof JsLightArray<?>)) {
+			throw new IllegalArgumentException();
+		}
+		JsLightArray<?> jsLightArray = (JsLightArray<?>) categories;
+		setCategoriesJso(jsLightArray.getArray());
 
 	}
+
+	private native JsArray<ContactFieldJsoImpl> getCategoriesJso()/*-{
+		return this.categories;
+	}-*/;
 
 	@Override
 	public LightArray<ContactField> getCategories() {
-		// TODO Auto-generated method stub
-		return null;
+		JsArray<ContactFieldJsoImpl> categoriesJso = getCategoriesJso();
+		return new JsLightArray<ContactField>(categoriesJso);
 	}
+
+	private native void setUrlsJso(JavaScriptObject obj)/*-{
+		this.urls = obj;
+	}-*/;
 
 	@Override
 	public void setUrls(LightArray<ContactField> urls) {
-		// TODO Auto-generated method stub
+		if (!(urls instanceof JsLightArray<?>)) {
+			throw new IllegalArgumentException();
+		}
+		JsLightArray<?> jsLightArray = (JsLightArray<?>) urls;
+		setUrlsJso(jsLightArray.getArray());
 
 	}
+
+	private native JsArray<ContactFieldJsoImpl> getUrlsJso()/*-{
+		return this.urls;
+	}-*/;
 
 	@Override
 	public LightArray<ContactField> getUrls() {
-		// TODO Auto-generated method stub
-		return null;
+		JsArray<ContactFieldJsoImpl> urlsJso = getUrlsJso();
+		return new JsLightArray<ContactField>(urlsJso);
 	}
 
 	@Override
-	public void setTimeZone(String zone) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public String getTimeZone() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public native void setTimeZone(String zone) /*-{
+		this.timezone = zone;
+	}-*/;
 
 	@Override
-	public void remove() {
-		// TODO Auto-generated method stub
-
-	}
+	public native String getTimeZone() /*-{
+		return this.timezone;
+	}-*/;
 
 	@Override
-	public void save() {
-		// TODO Auto-generated method stub
+	public native void remove() /*-{
+		this.remove();
+	}-*/;
 
-	}
+	@Override
+	public native void save() /*-{
+		this.save();
+	}-*/;
 
 	public native Contact clone()/*-{
 		return this.clone();
