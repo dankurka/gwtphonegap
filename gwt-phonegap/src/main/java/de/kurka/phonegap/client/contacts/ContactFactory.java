@@ -15,9 +15,12 @@
  */
 package de.kurka.phonegap.client.contacts;
 
-public interface Contacts {
-	public Contact create();
+public interface ContactFactory {
+	public ContactField createContactField();
 
-	public void find();
+	public ContactName createContactName();
 
+	public ContactOrganisation createContactOrganisation();
+
+	public ContactAddress createContactAddress();
 }
