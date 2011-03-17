@@ -19,6 +19,7 @@ import com.google.gwt.event.shared.HandlerRegistration;
 
 import de.kurka.phonegap.client.accelerometer.Accelerometer;
 import de.kurka.phonegap.client.camera.Camera;
+import de.kurka.phonegap.client.contacts.Contacts;
 import de.kurka.phonegap.client.device.Device;
 import de.kurka.phonegap.client.geolocation.Geolocation;
 import de.kurka.phonegap.client.log.DebugLogger;
@@ -140,5 +141,7 @@ public interface PhoneGap {
 	 * @return
 	 */
 	public DebugLogger getDebugLogger();
+
+	public Contacts getContacts();
 
 }

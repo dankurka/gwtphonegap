@@ -23,6 +23,7 @@ import com.google.gwt.user.client.Timer;
 
 import de.kurka.phonegap.client.accelerometer.Accelerometer;
 import de.kurka.phonegap.client.camera.Camera;
+import de.kurka.phonegap.client.contacts.Contacts;
 import de.kurka.phonegap.client.device.Device;
 import de.kurka.phonegap.client.geolocation.Geolocation;
 import de.kurka.phonegap.client.log.DebugLogger;
@@ -41,6 +42,7 @@ public class PhoneGapStandardImpl implements PhoneGap {
 	private Network network;
 	private Notification notification;
 	private DebugLogger debugLogger;
+	private Contacts contacts;
 
 	private EventBus handlerManager = new SimpleEventBus();
 
@@ -179,6 +181,16 @@ public class PhoneGapStandardImpl implements PhoneGap {
 		network = constructNetwork();
 		notification = constructNotification();
 		debugLogger = constructDebugLogger();
+		contacts = constructContacts();
 
+	}
+
+	protected Contacts constructContacts() {
+		return GWT.create(Contacts.class);
+	}
+
+	@Override
+	public Contacts getContacts() {
+		return contacts;
 	}
 }
