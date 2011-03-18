@@ -25,6 +25,7 @@ import de.kurka.phonegap.client.geolocation.Geolocation;
 import de.kurka.phonegap.client.log.DebugLogger;
 import de.kurka.phonegap.client.network.Network;
 import de.kurka.phonegap.client.notification.Notification;
+import de.kurka.phonegap.client.plugins.PhoneGapPlugin;
 
 /**
  * This class is a wrapper class for phonegap.js
@@ -143,5 +144,9 @@ public interface PhoneGap {
 	public DebugLogger getDebugLogger();
 
 	public Contacts getContacts();
+
+	public PhoneGapPlugin getPluginById(String name);
+
+	public void loadPlugin(String id, PhoneGapPlugin instance);
 
 }

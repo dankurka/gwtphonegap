@@ -15,6 +15,9 @@
  */
 package de.kurka.phonegap.client;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -29,6 +32,7 @@ import de.kurka.phonegap.client.geolocation.Geolocation;
 import de.kurka.phonegap.client.log.DebugLogger;
 import de.kurka.phonegap.client.network.Network;
 import de.kurka.phonegap.client.notification.Notification;
+import de.kurka.phonegap.client.plugins.PhoneGapPlugin;
 
 public class PhoneGapStandardImpl implements PhoneGap {
 
@@ -43,6 +47,8 @@ public class PhoneGapStandardImpl implements PhoneGap {
 	private Notification notification;
 	private DebugLogger debugLogger;
 	private Contacts contacts;
+
+	private Map<String, PhoneGapPlugin> plugins = new HashMap<String, PhoneGapPlugin>();
 
 	private EventBus handlerManager = new SimpleEventBus();
 
@@ -193,4 +199,19 @@ public class PhoneGapStandardImpl implements PhoneGap {
 	public Contacts getContacts() {
 		return contacts;
 	}
+
+	@Override
+	public PhoneGapPlugin getPluginById(String id) {
+		return plugins.get(id);
+	}
+
+	@Override
+	public void loadPlugin(String id, PhoneGapPlugin instance) {
+		if (plugins.containsKey(id)) {
+			throw new IllegalStateException("id is already in use");
+		}
+
+		plugins.put(id, instance);
+	}
+
 }
