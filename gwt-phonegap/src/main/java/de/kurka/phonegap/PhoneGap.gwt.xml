@@ -130,8 +130,13 @@
     </replace-with>
     
     <!-- Plugins -->
+    <!-- Childbrowser -->
     <replace-with class="de.kurka.phonegap.client.plugins.childbrowser.ChildBrowserPhoneGapImpl">
         <when-type-is class="de.kurka.phonegap.client.plugins.childbrowser.ChildBrowser"/>
+    </replace-with>
+    <!-- Badge -->
+    <replace-with class="de.kurka.phonegap.client.plugins.badge.BadgePhoneGapImpl">
+        <when-type-is class="de.kurka.phonegap.client.plugins.badge.Badge"/>
     </replace-with>
    
     
