@@ -137,6 +137,15 @@
     <!-- Badge -->
     <replace-with class="de.kurka.phonegap.client.plugins.badge.BadgePhoneGapImpl">
         <when-type-is class="de.kurka.phonegap.client.plugins.badge.Badge"/>
+         <all>
+            <when-property-is name="phonegap.env" value="yes"/>
+        </all>
+    </replace-with>
+    <replace-with class="de.kurka.phonegap.client.plugins.badge.BadgeBrowserImpl">
+        <when-type-is class="de.kurka.phonegap.client.plugins.badge.Badge"/>
+         <all>
+            <when-property-is name="phonegap.env" value="no"/>
+        </all>
     </replace-with>
    
     
