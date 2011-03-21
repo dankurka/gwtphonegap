@@ -133,6 +133,15 @@
     <!-- Childbrowser -->
     <replace-with class="de.kurka.phonegap.client.plugins.childbrowser.ChildBrowserPhoneGapImpl">
         <when-type-is class="de.kurka.phonegap.client.plugins.childbrowser.ChildBrowser"/>
+        <all>
+            <when-property-is name="phonegap.env" value="yes"/>
+        </all>
+    </replace-with>
+    <replace-with class="de.kurka.phonegap.client.plugins.childbrowser.ChildBrowserBrowserImpl">
+        <when-type-is class="de.kurka.phonegap.client.plugins.childbrowser.ChildBrowser"/>
+        <all>
+            <when-property-is name="phonegap.env" value="no"/>
+        </all>
     </replace-with>
     <!-- Badge -->
     <replace-with class="de.kurka.phonegap.client.plugins.badge.BadgePhoneGapImpl">
