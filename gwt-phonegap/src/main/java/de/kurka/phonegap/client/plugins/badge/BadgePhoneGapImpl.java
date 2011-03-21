@@ -22,7 +22,7 @@ public class BadgePhoneGapImpl implements Badge {
 	@Override
 	public void initialize() {
 		if (!testForPlugin()) {
-			throw new IllegalStateException("can not find badge pluzgin - did you include badge.js?");
+			throw new IllegalStateException("can not find badge plugin - did you include badge.js?");
 		}
 		initialized = true;
 	}
