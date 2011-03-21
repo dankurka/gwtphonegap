@@ -34,22 +34,22 @@ public class ChildBrowserPhoneGapImpl implements ChildBrowser {
 	}
 
 	public native JavaScriptObject initializeNative() /*-{
-														var instance = this;
-														var cb = $wnd.ChildBrowser.install();
+		var instance = this;
+		var cb = $wnd.ChildBrowser.install();
 
-														cb.onLocationChange = function(loc) {
-														instance.@de.kurka.phonegap.client.plugins.childbrowser.ChildBrowserPhoneGapImpl::onLocationChange(Ljava/lang/String;)(loc);
-														};
-														cb.onClose = function() {
-														instance.@de.kurka.phonegap.client.plugins.childbrowser.ChildBrowserPhoneGapImpl::onClose()();
-														};
-														cb.onOpenExternal = function() {
-														instance.@de.kurka.phonegap.client.plugins.childbrowser.ChildBrowserPhoneGapImpl::onOpenExternal()();
-														};
+		cb.onLocationChange = function(loc) {
+			instance.@de.kurka.phonegap.client.plugins.childbrowser.ChildBrowserPhoneGapImpl::onLocationChange(Ljava/lang/String;)(loc);
+		};
+		cb.onClose = function() {
+			instance.@de.kurka.phonegap.client.plugins.childbrowser.ChildBrowserPhoneGapImpl::onClose()();
+		};
+		cb.onOpenExternal = function() {
+			instance.@de.kurka.phonegap.client.plugins.childbrowser.ChildBrowserPhoneGapImpl::onOpenExternal()();
+		};
 
-														return cb;
+		return cb;
 
-														}-*/;
+	}-*/;
 
 	@Override
 	public void showWebPage(String url) {
@@ -72,10 +72,6 @@ public class ChildBrowserPhoneGapImpl implements ChildBrowser {
 		}
 
 		closeNative(cb);
-
-		// if close is called the plugin does not fire a close event - we fix
-		// this here!
-		onClose();
 	}
 
 	private native void closeNative(JavaScriptObject cb)/*-{
