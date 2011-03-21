@@ -15,6 +15,7 @@
  */
 package de.kurka.phonegap.client.plugins.childbrowser;
 
+import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.dom.client.Style.Position;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -24,11 +25,11 @@ import com.google.gwt.event.dom.client.LoadHandler;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.event.shared.SimpleEventBus;
+import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Frame;
-import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RootPanel;
 
@@ -74,7 +75,7 @@ public class ChildBrowserBrowserImpl implements ChildBrowser {
 
 	private class Browser extends Composite {
 		private Frame frame;
-		private Label label;
+
 		private Button button;
 		private Panel container;
 
@@ -102,12 +103,13 @@ public class ChildBrowserBrowserImpl implements ChildBrowser {
 
 				@Override
 				public void onLoad(LoadEvent event) {
-					onLocationChange(frame.getUrl());
+					onLocationChange(getUrlFromFrame(frame.getElement()));
 
 				}
 			}, LoadEvent.getType());
 
 			frame.getElement().getStyle().setBackgroundColor("white");
+			frame.getElement().getStyle().setOverflow(Overflow.AUTO);
 
 			container.add(frame);
 
@@ -128,8 +130,7 @@ public class ChildBrowserBrowserImpl implements ChildBrowser {
 				}
 			});
 			flowPanel.add(button);
-			label = new Label();
-			flowPanel.add(label);
+
 			container.add(flowPanel);
 
 			initWidget(container);
@@ -137,7 +138,6 @@ public class ChildBrowserBrowserImpl implements ChildBrowser {
 
 		private void navigate(String url){
 			frame.setUrl(url);
-			label.setText(url);
 		}
 
 		/* (non-Javadoc)
@@ -161,6 +161,10 @@ public class ChildBrowserBrowserImpl implements ChildBrowser {
 
 
 	}
+
+	private native String getUrlFromFrame(Element element)/*-{
+		return element.contentWindow.location.href;
+	}-*/;
 
 	private void removePanel() {
 		if (browser != null) {
