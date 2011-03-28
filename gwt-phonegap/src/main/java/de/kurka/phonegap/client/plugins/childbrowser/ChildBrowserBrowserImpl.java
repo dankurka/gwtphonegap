@@ -125,6 +125,7 @@ public class ChildBrowserBrowserImpl implements ChildBrowser {
 
 				@Override
 				public void onClick(ClickEvent event) {
+					close();
 					onClose();
 
 				}
