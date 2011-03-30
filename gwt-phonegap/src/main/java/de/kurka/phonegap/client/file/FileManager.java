@@ -93,13 +93,13 @@ public class FileManager {
 		var fr = new $wnd.FileReader();
 
 		fr.onload = function (data) {
-
-		fileReadCallback.@de.kurka.phonegap.client.file.FileReadCallback::onSuccess(Ljava/lang/String;)(data);
+		console.log(data.target.result);
+		fileReadCallback.@de.kurka.phonegap.client.file.FileReadCallback::onSuccess(Ljava/lang/String;)(data.target.result);
 		};
 
 		fr.onerror = function(stuff)
 		{
-
+		console.log(stuff.target.error.code);
 		fileReadCallback.@de.kurka.phonegap.client.file.FileReadCallback::onFailure()();
 		};
 
