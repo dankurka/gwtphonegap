@@ -1,8 +1,0 @@
-<module>
-    <inherits name='com.google.gwt.user.User'/>
-    <inherits name="com.google.gwt.event.logical.LogicalEvent"/>
-    <inherits name="com.google.gwt.dom.DOM"/>
-    <inherits name="com.google.gwt.user.ClippedImage"/>
-
-
-</module>
