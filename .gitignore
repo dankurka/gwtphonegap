@@ -2,3 +2,8 @@ gwt-phonegap/.classpath
 gwt-phonegap/.project
 gwt-phonegap/.settings/
 gwt-phonegap/target/
+gwt-phonegap-showcase/.classpath
+gwt-phonegap-showcase/.project
+gwt-phonegap-showcase/.settings/
+gwt-phonegap-showcase/target/
+gwt-phonegap/.gwt/
