@@ -8,6 +8,10 @@ import de.kurka.phonegap.client.file.FileEntry;
 
 public final class EntryBaseJsImpl extends JavaScriptObject implements EntryBase {
 
+	protected EntryBaseJsImpl() {
+
+	}
+
 	@Override
 	public native boolean isFile() /*-{
 		return this.isFile;

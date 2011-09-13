@@ -8,6 +8,10 @@ import de.kurka.phonegap.client.file.Metadata;
 
 public class MetaDataJsImpl extends JavaScriptObject implements Metadata {
 
+	protected MetaDataJsImpl() {
+
+	}
+
 	@Override
 	public native Date getModificationTime() /*-{
 		return @de.kurka.phonegap.client.file.js.MetaDataJsImpl::createDate(D)(this.modificationTime.getTime());

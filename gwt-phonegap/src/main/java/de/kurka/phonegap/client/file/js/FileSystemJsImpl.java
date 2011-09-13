@@ -20,7 +20,7 @@ public class FileSystemJsImpl implements FileSystem {
 
 	@Override
 	public native String getName() /*-{
-		var system = @de.kurka.phonegap.client.file.js.FileSystemJsImpl::system;
+		var system = this.@de.kurka.phonegap.client.file.js.FileSystemJsImpl::system;
 		return system.name;
 	}-*/;
 
@@ -30,7 +30,7 @@ public class FileSystemJsImpl implements FileSystem {
 	}
 
 	private native EntryBase getRoot0() /*-{
-		var system = @de.kurka.phonegap.client.file.js.FileSystemJsImpl::system;
+		var system = this.@de.kurka.phonegap.client.file.js.FileSystemJsImpl::system;
 		return system.root;
 	}-*/;
 

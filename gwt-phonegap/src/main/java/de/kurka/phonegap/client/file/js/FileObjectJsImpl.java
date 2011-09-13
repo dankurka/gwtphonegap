@@ -8,6 +8,10 @@ import de.kurka.phonegap.client.file.FileObject;
 
 public final class FileObjectJsImpl extends JavaScriptObject implements FileObject {
 
+	protected FileObjectJsImpl() {
+
+	}
+
 	@Override
 	public native String getName() /*-{
 		return this.name;
