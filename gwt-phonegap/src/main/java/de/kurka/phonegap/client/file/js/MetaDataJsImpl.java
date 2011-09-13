@@ -6,7 +6,7 @@ import com.google.gwt.core.client.JavaScriptObject;
 
 import de.kurka.phonegap.client.file.Metadata;
 
-public class MetaDataJsImpl extends JavaScriptObject implements Metadata {
+public final class MetaDataJsImpl extends JavaScriptObject implements Metadata {
 
 	protected MetaDataJsImpl() {
 
