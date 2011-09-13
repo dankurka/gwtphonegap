@@ -15,6 +15,14 @@
  */
 package de.kurka.phonegap.client.network;
 
+import de.kurka.phonegap.client.connection.Connection;
+
+/**
+ * @deprecated use {@link Connection} 
+ * @author danielkurka
+ *
+ */
+@Deprecated
 public interface Network {
 
 	public static final int NETWORK_STATUS_NOT_REACHABLE = 0;

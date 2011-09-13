@@ -115,6 +115,20 @@
         </all>
     </replace-with>
     
+     <!-- Connection -->
+    <replace-with class="de.kurka.phonegap.client.connection.ConnectionMobileImpl">
+        <when-type-is class="de.kurka.phonegap.client.connection.Connection"/>
+         <all>
+            <when-property-is name="phonegap.env" value="yes"/>
+        </all>
+    </replace-with>
+    <replace-with class="de.kurka.phonegap.client.connection.ConnectionBrowserImpl">
+        <when-type-is class="de.kurka.phonegap.client.connection.Connection"/>
+         <all>
+            <when-property-is name="phonegap.env" value="no"/>
+        </all>
+    </replace-with>
+    
     <!-- Notification -->
     <replace-with class="de.kurka.phonegap.client.notification.NotificationMobileImpl">
         <when-type-is class="de.kurka.phonegap.client.notification.Notification"/>

@@ -19,6 +19,7 @@ import com.google.gwt.event.shared.HandlerRegistration;
 
 import de.kurka.phonegap.client.accelerometer.Accelerometer;
 import de.kurka.phonegap.client.camera.Camera;
+import de.kurka.phonegap.client.connection.Connection;
 import de.kurka.phonegap.client.contacts.Contacts;
 import de.kurka.phonegap.client.device.Device;
 import de.kurka.phonegap.client.file.File;
@@ -125,10 +126,12 @@ public interface PhoneGap {
 
 	/**
 	 * get the phonegap network object
-	 * 
+	 * @deprecated use {@link PhoneGap#getConnection()}
 	 * @return
 	 */
 	public Network getNetwork();
+
+	public Connection getConnection();
 
 	/**
 	 * get the phonegap notification object

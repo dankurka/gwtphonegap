@@ -15,6 +15,9 @@
  */
 package de.kurka.phonegap.showcase.client;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
@@ -29,6 +32,8 @@ import de.kurka.phonegap.showcase.client.accelerometer.AccelerometerDisplay;
 import de.kurka.phonegap.showcase.client.accelerometer.AccelerometerPresenter;
 import de.kurka.phonegap.showcase.client.camera.CameraDisplay;
 import de.kurka.phonegap.showcase.client.camera.CameraPresenter;
+import de.kurka.phonegap.showcase.client.connection.ConnectionDisplay;
+import de.kurka.phonegap.showcase.client.connection.ConnectionPresenter;
 import de.kurka.phonegap.showcase.client.device.DeviceDisplay;
 import de.kurka.phonegap.showcase.client.device.DevicePresenter;
 import de.kurka.phonegap.showcase.client.geolocation.GeolocationDisplay;
@@ -39,6 +44,7 @@ import de.kurka.phonegap.showcase.client.notification.NotificationDisplay;
 import de.kurka.phonegap.showcase.client.notification.NotificationPresenter;
 
 public class ShowCaseEntryPoint implements EntryPoint {
+	private Logger log = Logger.getLogger(getClass().getName());
 
 	@Override
 	public void onModuleLoad() {
@@ -48,7 +54,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
 			@Override
 			public void onUncaughtException(Throwable e) {
 				Window.alert("uncaught: " + e.getLocalizedMessage());
-
+				log.log(Level.SEVERE, "uncaught exception", e);
 			}
 		});
 
@@ -84,9 +90,10 @@ public class ShowCaseEntryPoint implements EntryPoint {
 		NotificationPresenter notificationPresenter = new NotificationPresenter(new NotificationDisplay(), phoneGap);
 		AboutPresenter aboutPresenter = new AboutPresenter(new AboutDisplay());
 		CameraPresenter cameraPresenter = new CameraPresenter(new CameraDisplay(), phoneGap);
+		ConnectionPresenter connectionPresenter = new ConnectionPresenter(new ConnectionDisplay(), phoneGap);
 
 		MainPresenter mainPresenter = new MainPresenter(new MainDisplay(), new AccelerometerPresenter(new AccelerometerDisplay(), phoneGap), devicePresenter, geolocationPresenter, networkPresenter,
-				notificationPresenter, aboutPresenter, cameraPresenter);
+				notificationPresenter, aboutPresenter, cameraPresenter, connectionPresenter);
 
 		RootPanel.get().add(mainPresenter.getDisplay().asWidget());
 
