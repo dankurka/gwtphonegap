@@ -8,3 +8,5 @@ gwt-phonegap-showcase/.settings/
 gwt-phonegap-showcase/target/
 gwt-phonegap/.gwt/
 gwt-phonegap-showcase/war/
+gwt-phonegap-xcode/GWTPhoneGapTest/www/index.html
+gwt-phonegap-xcode/GWTPhoneGapTest/www/showcase/
