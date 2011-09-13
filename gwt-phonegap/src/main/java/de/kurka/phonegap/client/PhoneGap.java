@@ -21,6 +21,7 @@ import de.kurka.phonegap.client.accelerometer.Accelerometer;
 import de.kurka.phonegap.client.camera.Camera;
 import de.kurka.phonegap.client.contacts.Contacts;
 import de.kurka.phonegap.client.device.Device;
+import de.kurka.phonegap.client.file.File;
 import de.kurka.phonegap.client.geolocation.Geolocation;
 import de.kurka.phonegap.client.log.DebugLogger;
 import de.kurka.phonegap.client.network.Network;
@@ -148,5 +149,7 @@ public interface PhoneGap {
 	public PhoneGapPlugin getPluginById(String name);
 
 	public void loadPlugin(String id, PhoneGapPlugin instance);
+
+	public File getFile();
 
 }

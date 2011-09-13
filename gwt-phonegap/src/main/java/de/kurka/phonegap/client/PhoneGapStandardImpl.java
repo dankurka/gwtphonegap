@@ -28,6 +28,7 @@ import de.kurka.phonegap.client.accelerometer.Accelerometer;
 import de.kurka.phonegap.client.camera.Camera;
 import de.kurka.phonegap.client.contacts.Contacts;
 import de.kurka.phonegap.client.device.Device;
+import de.kurka.phonegap.client.file.File;
 import de.kurka.phonegap.client.geolocation.Geolocation;
 import de.kurka.phonegap.client.log.DebugLogger;
 import de.kurka.phonegap.client.network.Network;
@@ -47,6 +48,7 @@ public class PhoneGapStandardImpl implements PhoneGap {
 	private Notification notification;
 	private DebugLogger debugLogger;
 	private Contacts contacts;
+	private File file;
 
 	private Map<String, PhoneGapPlugin> plugins = new HashMap<String, PhoneGapPlugin>();
 
@@ -188,7 +190,12 @@ public class PhoneGapStandardImpl implements PhoneGap {
 		notification = constructNotification();
 		debugLogger = constructDebugLogger();
 		contacts = constructContacts();
+		file = constructFile();
 
+	}
+
+	protected File constructFile() {
+		return GWT.create(File.class);
 	}
 
 	protected Contacts constructContacts() {
@@ -212,6 +219,11 @@ public class PhoneGapStandardImpl implements PhoneGap {
 		}
 
 		plugins.put(id, instance);
+	}
+
+	@Override
+	public File getFile() {
+		return file;
 	}
 
 }
