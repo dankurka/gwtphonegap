@@ -41,7 +41,8 @@ public class NetworkMobileImpl implements Network {
 			isIpAddress : isIp
 		};
 
-		$wnd.navigator.network.isReachable(hostname, func, localOptions);
+		$wnd.navigator.network
+				.isReachable(hostname, $entry(func), localOptions);
 	}-*/;
 
 }

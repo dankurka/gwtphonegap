@@ -21,7 +21,7 @@ public class FileJsImpl implements File {
 			that.@de.kurka.phonegap.client.file.js.FileJsImpl::requestFileSystemOnSuccess(Lde/kurka/phonegap/client/file/FileCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, system);
 		};
 
-		$wnd.requestFileSystem(fileSystemType, size, suc, fail);
+		$wnd.requestFileSystem(fileSystemType, size, $entry(suc), $entry(fail));
 
 	}-*/;
 
@@ -45,7 +45,7 @@ public class FileJsImpl implements File {
 			that.@de.kurka.phonegap.client.file.js.FileJsImpl::resolveLocalFileSystemURIOnSuccess(Lde/kurka/phonegap/client/file/FileCallback;Lde/kurka/phonegap/client/file/js/EntryBaseJsImpl;)(callback, entry);
 		};
 
-		$wnd.resolveLocalFileSystemURI(url, suc, fail);
+		$wnd.resolveLocalFileSystemURI(url, $entry(suc), $entry(fail));
 
 	}-*/;
 

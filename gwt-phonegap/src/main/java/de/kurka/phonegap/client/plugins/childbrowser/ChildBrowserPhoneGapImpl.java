@@ -37,15 +37,15 @@ public class ChildBrowserPhoneGapImpl implements ChildBrowser {
 		var instance = this;
 		var cb = $wnd.ChildBrowser.install();
 
-		cb.onLocationChange = function(loc) {
+		cb.onLocationChange = $entry(function(loc) {
 			instance.@de.kurka.phonegap.client.plugins.childbrowser.ChildBrowserPhoneGapImpl::onLocationChange(Ljava/lang/String;)(loc);
-		};
-		cb.onClose = function() {
+		});
+		cb.onClose = $entry(function() {
 			instance.@de.kurka.phonegap.client.plugins.childbrowser.ChildBrowserPhoneGapImpl::onClose()();
-		};
-		cb.onOpenExternal = function() {
+		});
+		cb.onOpenExternal = $entry(function() {
 			instance.@de.kurka.phonegap.client.plugins.childbrowser.ChildBrowserPhoneGapImpl::onOpenExternal()();
-		};
+		});
 
 		return cb;
 

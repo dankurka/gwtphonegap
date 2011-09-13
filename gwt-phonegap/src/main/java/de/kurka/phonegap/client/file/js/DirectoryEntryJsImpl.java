@@ -44,7 +44,7 @@ public class DirectoryEntryJsImpl implements DirectoryEntry {
 		};
 
 		var entry = (this.@de.kurka.phonegap.client.file.js.DirectoryEntryJsImpl::entry);
-		entry.getMetadata(suc, fail);
+		entry.getMetadata($entry(suc), $entry(fail));
 
 	}-*/;
 
@@ -73,7 +73,7 @@ public class DirectoryEntryJsImpl implements DirectoryEntry {
 
 		var entry = (this.@de.kurka.phonegap.client.file.js.DirectoryEntryJsImpl::entry);
 
-		entry.moveTo(parent, newName, suc, fail);
+		entry.moveTo(parent, newName, $entry(suc), $entry(fail));
 
 	}-*/;
 
@@ -104,7 +104,7 @@ public class DirectoryEntryJsImpl implements DirectoryEntry {
 
 		var entry = (this.@de.kurka.phonegap.client.file.js.DirectoryEntryJsImpl::entry);
 
-		entry.copyTo(parent, newName, suc, fail);
+		entry.copyTo(parent, newName, $entry(suc), $entry(fail));
 
 	}-*/;
 
@@ -136,7 +136,7 @@ public class DirectoryEntryJsImpl implements DirectoryEntry {
 
 		var entry = (this.@de.kurka.phonegap.client.file.js.DirectoryEntryJsImpl::entry);
 
-		entry.remove(suc, fail);
+		entry.remove($entry(suc), $entry(fail));
 
 	}-*/;
 
@@ -162,7 +162,7 @@ public class DirectoryEntryJsImpl implements DirectoryEntry {
 
 		var entry = (this.@de.kurka.phonegap.client.file.js.DirectoryEntryJsImpl::entry);
 
-		entry.getParent(suc, fail);
+		entry.getParent($entry(suc), $entry(fail));
 
 	}-*/;
 
@@ -203,7 +203,7 @@ public class DirectoryEntryJsImpl implements DirectoryEntry {
 
 		var entry = (this.@de.kurka.phonegap.client.file.js.DirectoryEntryJsImpl::entry);
 
-		entry.getDirectory(path, options, suc, fail);
+		entry.getDirectory(path, options, $entry(suc), $entry(fail));
 	}-*/;
 
 	private void onGetDirectoryFailure(FileCallback<DirectoryEntry, FileError> callback, FileError error) {
@@ -233,7 +233,7 @@ public class DirectoryEntryJsImpl implements DirectoryEntry {
 
 		var entry = (this.@de.kurka.phonegap.client.file.js.DirectoryEntryJsImpl::entry);
 
-		entry.getFile(path, options, suc, fail);
+		entry.getFile(path, options, $entry(suc), $entry(fail));
 	}-*/;
 
 	private void onGetFileFailure(FileCallback<FileEntry, FileError> callback, FileError error) {
@@ -259,7 +259,7 @@ public class DirectoryEntryJsImpl implements DirectoryEntry {
 
 		var entry = (this.@de.kurka.phonegap.client.file.js.DirectoryEntryJsImpl::entry);
 
-		entry.removeRecursively(suc, fail);
+		entry.removeRecursively($entry(suc), $entry(fail));
 	}-*/;
 
 	private void onRemoveRecursivelyFailure(FileCallback<Boolean, FileError> callback, FileError error) {

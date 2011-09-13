@@ -58,7 +58,7 @@ public class FileWriterJsImpl implements FileWriter {
 			that.@de.kurka.phonegap.client.file.js.FileWriterJsImpl::onCallBack(Lde/kurka/phonegap/client/file/WriterCallback;)(callback);
 		};
 		var writer = (this.@de.kurka.phonegap.client.file.js.FileWriterJsImpl::writer);
-		writer.onwritestart = cal;
+		writer.onwritestart = $entry(cal);
 	}-*/;
 
 	private void onCallBack(WriterCallback<FileWriter> callback) {
@@ -72,7 +72,7 @@ public class FileWriterJsImpl implements FileWriter {
 			that.@de.kurka.phonegap.client.file.js.FileWriterJsImpl::onCallBack(Lde/kurka/phonegap/client/file/WriterCallback;)(callback);
 		};
 		var writer = (this.@de.kurka.phonegap.client.file.js.FileWriterJsImpl::writer);
-		writer.onprogress = cal;
+		writer.onprogress = $entry(cal);
 	}-*/;
 
 	@Override
@@ -82,7 +82,7 @@ public class FileWriterJsImpl implements FileWriter {
 			that.@de.kurka.phonegap.client.file.js.FileWriterJsImpl::onCallBack(Lde/kurka/phonegap/client/file/WriterCallback;)(callback);
 		};
 		var writer = (this.@de.kurka.phonegap.client.file.js.FileWriterJsImpl::writer);
-		writer.onwrite = cal;
+		writer.onwrite = $entry(cal);
 	}-*/;
 
 	@Override
@@ -92,7 +92,7 @@ public class FileWriterJsImpl implements FileWriter {
 			that.@de.kurka.phonegap.client.file.js.FileWriterJsImpl::onCallBack(Lde/kurka/phonegap/client/file/WriterCallback;)(callback);
 		};
 		var writer = (this.@de.kurka.phonegap.client.file.js.FileWriterJsImpl::writer);
-		writer.onabort = cal;
+		writer.onabort = $entry(cal);
 	}-*/;
 
 	@Override
@@ -102,7 +102,7 @@ public class FileWriterJsImpl implements FileWriter {
 			that.@de.kurka.phonegap.client.file.js.FileWriterJsImpl::onCallBack(Lde/kurka/phonegap/client/file/WriterCallback;)(callback);
 		};
 		var writer = (this.@de.kurka.phonegap.client.file.js.FileWriterJsImpl::writer);
-		writer.onerror = cal;
+		writer.onerror = $entry(cal);
 	}-*/;
 
 	@Override
@@ -112,7 +112,7 @@ public class FileWriterJsImpl implements FileWriter {
 			that.@de.kurka.phonegap.client.file.js.FileWriterJsImpl::onCallBack(Lde/kurka/phonegap/client/file/WriterCallback;)(callback);
 		};
 		var writer = (this.@de.kurka.phonegap.client.file.js.FileWriterJsImpl::writer);
-		writer.onwriteend = cal;
+		writer.onwriteend = $entry(cal);
 	}-*/;
 
 	@Override

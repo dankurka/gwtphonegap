@@ -47,8 +47,8 @@ public class GeolocationMobileImpl implements Geolocation {
 			callback.@de.kurka.phonegap.client.geolocation.GeolocationCallback::onFailure(Lde/kurka/phonegap/client/geolocation/PositionError;)(error);
 		};
 
-		$wnd.navigator.geolocation.getCurrentPosition(successCallback,
-				errorCallback);
+		$wnd.navigator.geolocation.getCurrentPosition($entry(successCallback),
+				$entry(errorCallback));
 	}-*/;
 
 	/* (non-Javadoc)
@@ -81,7 +81,7 @@ public class GeolocationMobileImpl implements Geolocation {
 		}
 
 		var watcherId = $wnd.navigator.geolocation.watchPosition(
-				successCallback, errorCallback, localOptions);
+				$entry(successCallback), $entry(errorCallback), localOptions);
 
 		var watcher = {
 			id : watcherId

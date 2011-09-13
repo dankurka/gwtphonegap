@@ -37,8 +37,8 @@ public class CameraMobileImpl implements Camera {
 			sourceType : st
 		};
 
-		$wnd.navigator.camera.getPicture(successCallback, errorCallback,
-				localOptions);
+		$wnd.navigator.camera.getPicture($entry(successCallback),
+				$entry(errorCallback), localOptions);
 	}-*/;
 
 }

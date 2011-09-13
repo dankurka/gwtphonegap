@@ -32,7 +32,7 @@ public class DirectoryReaderJsImpl implements DirectoryReader {
 
 		var reader = (this.@de.kurka.phonegap.client.file.js.DirectoryReaderJsImpl::reader);
 
-		reader.readEntries(suc, fail);
+		reader.readEntries($entry(suc), $entry(fail));
 
 	}-*/;
 

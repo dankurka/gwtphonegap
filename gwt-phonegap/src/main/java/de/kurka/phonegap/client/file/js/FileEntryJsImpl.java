@@ -41,7 +41,7 @@ public class FileEntryJsImpl implements FileEntry {
 		};
 
 		var entry = (this.@de.kurka.phonegap.client.file.js.DirectoryEntryJsImpl::entry);
-		entry.getMetadata(suc, fail);
+		entry.getMetadata($entry(suc), $entry(fail));
 
 	}-*/;
 
@@ -72,7 +72,7 @@ public class FileEntryJsImpl implements FileEntry {
 
 		var entry = (this.@de.kurka.phonegap.client.file.js.DirectoryEntryJsImpl::entry);
 
-		entry.moveTo(parent, newName, suc, fail);
+		entry.moveTo(parent, newName, $entry(suc), $entry(fail));
 
 	}-*/;
 
@@ -102,7 +102,7 @@ public class FileEntryJsImpl implements FileEntry {
 
 		var entry = (this.@de.kurka.phonegap.client.file.js.DirectoryEntryJsImpl::entry);
 
-		entry.copyTo(parent, newName, suc, fail);
+		entry.copyTo(parent, newName, $entry(suc), $entry(fail));
 
 	}-*/;
 
@@ -134,7 +134,7 @@ public class FileEntryJsImpl implements FileEntry {
 
 		var entry = (this.@de.kurka.phonegap.client.file.js.DirectoryEntryJsImpl::entry);
 
-		entry.remove(suc, fail);
+		entry.remove($entry(suc), $entry(fail));
 
 	}-*/;
 
@@ -159,7 +159,7 @@ public class FileEntryJsImpl implements FileEntry {
 
 		var entry = (this.@de.kurka.phonegap.client.file.js.DirectoryEntryJsImpl::entry);
 
-		entry.getParent(suc, fail);
+		entry.getParent($entry(suc), $entry(fail));
 
 	}-*/;
 
@@ -185,7 +185,7 @@ public class FileEntryJsImpl implements FileEntry {
 
 		var entry = (this.@de.kurka.phonegap.client.file.js.DirectoryEntryJsImpl::entry);
 
-		entry.createWriter(suc, fail);
+		entry.createWriter($entry(suc), $entry(fail));
 
 	}-*/;
 
@@ -210,7 +210,7 @@ public class FileEntryJsImpl implements FileEntry {
 
 		var entry = (this.@de.kurka.phonegap.client.file.js.DirectoryEntryJsImpl::entry);
 
-		entry.file(suc, fail);
+		entry.file($entry(suc), $entry(fail));
 
 	}-*/;
 

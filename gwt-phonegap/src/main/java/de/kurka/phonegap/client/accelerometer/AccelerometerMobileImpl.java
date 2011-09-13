@@ -42,8 +42,8 @@ public class AccelerometerMobileImpl implements Accelerometer {
 			frequency : freq
 		}
 
-		$wnd.navigator.accelerometer.getCurrentAcceleration(successCallback,
-				errorCallback, localOptions);
+		$wnd.navigator.accelerometer.getCurrentAcceleration(
+				$entry(successCallback), $entry(errorCallback), localOptions);
 	}-*/;
 
 	/* (non-Javadoc)
@@ -65,8 +65,8 @@ public class AccelerometerMobileImpl implements Accelerometer {
 			frequency : freq
 		};
 
-		var idv = $wnd.navigator.accelerometer.watchAcceleration(sc, ec,
-				localOptions);
+		var idv = $wnd.navigator.accelerometer.watchAcceleration($entry(sc),
+				$entry(ec), localOptions);
 
 		var watcher = {
 			id : idv

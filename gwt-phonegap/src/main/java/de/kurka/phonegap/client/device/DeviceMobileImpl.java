@@ -30,39 +30,39 @@ public class DeviceMobileImpl implements Device {
 	 */
 	@Override
 	public native String getName()/*-{
-									return $wnd.device.name;
-									}-*/;
+		return $wnd.device.name;
+	}-*/;
 
 	/* (non-Javadoc) 
 	 * @see de.kurka.phonegap.client.device.Device#getPhoneGapVersion()
 	 */
 	@Override
 	public native String getPhoneGapVersion()/*-{
-												return $wnd.device.phonegap;
-												}-*/;
+		return $wnd.device.phonegap;
+	}-*/;
 
 	/* (non-Javadoc)
 	 * @see de.kurka.phonegap.client.device.Device#getPlatform()
 	 */
 	@Override
 	public native String getPlatform()/*-{
-										return $wnd.device.platform;
-										}-*/;
+		return $wnd.device.platform;
+	}-*/;
 
 	/* (non-Javadoc)
 	 * @see de.kurka.phonegap.client.device.Device#getUuid()
 	 */
 	@Override
 	public native String getUuid()/*-{
-									return $wnd.device.uuid;
-									}-*/;
+		return $wnd.device.uuid;
+	}-*/;
 
-	/* (non-Javadoc)
+	/* (non-Javadoc) 
 	 * @see de.kurka.phonegap.client.device.Device#getVersion()
 	 */
 	@Override
 	public native String getVersion()/*-{
-										return $wnd.device.version;
-										}-*/;
+		return $wnd.device.version;
+	}-*/;
 
 }
