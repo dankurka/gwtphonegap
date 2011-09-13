@@ -23,7 +23,6 @@ import de.kurka.phonegap.showcase.client.camera.CameraPresenter;
 import de.kurka.phonegap.showcase.client.connection.ConnectionPresenter;
 import de.kurka.phonegap.showcase.client.device.DevicePresenter;
 import de.kurka.phonegap.showcase.client.geolocation.GeolocationPresenter;
-import de.kurka.phonegap.showcase.client.network.NetworkPresenter;
 import de.kurka.phonegap.showcase.client.notification.NotificationPresenter;
 
 public class MainPresenter {
@@ -32,19 +31,17 @@ public class MainPresenter {
 	private final AccelerometerPresenter accelerometerPresenter;
 	private final DevicePresenter devicePresenter;
 	private final GeolocationPresenter geolocationPresenter;
-	private final NetworkPresenter networkPresenter;
 	private final NotificationPresenter notificationPresenter;
 	private final AboutPresenter aboutPresenter;
 	private final CameraPresenter cameraPresenter;
 	private final ConnectionPresenter connectionPresenter;
 
-	public MainPresenter(Display display, AccelerometerPresenter accelerometerPresenter, DevicePresenter devicePresenter, GeolocationPresenter geolocationPresenter, NetworkPresenter networkPresenter,
+	public MainPresenter(Display display, AccelerometerPresenter accelerometerPresenter, DevicePresenter devicePresenter, GeolocationPresenter geolocationPresenter,
 			NotificationPresenter notificationPresenter, AboutPresenter aboutPresenter, CameraPresenter cameraPresenter, ConnectionPresenter connectionPresenter) {
 		this.display = display;
 		this.accelerometerPresenter = accelerometerPresenter;
 		this.devicePresenter = devicePresenter;
 		this.geolocationPresenter = geolocationPresenter;
-		this.networkPresenter = networkPresenter;
 		this.notificationPresenter = notificationPresenter;
 		this.aboutPresenter = aboutPresenter;
 		this.cameraPresenter = cameraPresenter;
@@ -69,7 +66,6 @@ public class MainPresenter {
 		display.getContainer().add(devicePresenter.getDisplay().asWidget());
 		display.getContainer().add(geolocationPresenter.getDisplay().asWidget());
 		display.getContainer().add(connectionPresenter.getDisplay().asWidget());
-		display.getContainer().add(networkPresenter.getDisplay().asWidget());
 		display.getContainer().add(notificationPresenter.getDisplay().asWidget());
 		display.getContainer().add(aboutPresenter.getDisplay().asWidget());
 

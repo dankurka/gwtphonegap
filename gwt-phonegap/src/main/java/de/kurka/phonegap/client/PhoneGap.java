@@ -25,7 +25,6 @@ import de.kurka.phonegap.client.device.Device;
 import de.kurka.phonegap.client.file.File;
 import de.kurka.phonegap.client.geolocation.Geolocation;
 import de.kurka.phonegap.client.log.DebugLogger;
-import de.kurka.phonegap.client.network.Network;
 import de.kurka.phonegap.client.notification.Notification;
 import de.kurka.phonegap.client.plugins.PhoneGapPlugin;
 
@@ -123,13 +122,6 @@ public interface PhoneGap {
 	 * @return
 	 */
 	public Geolocation getGeolocation();
-
-	/**
-	 * get the phonegap network object
-	 * @deprecated use {@link PhoneGap#getConnection()}
-	 * @return
-	 */
-	public Network getNetwork();
 
 	public Connection getConnection();
 

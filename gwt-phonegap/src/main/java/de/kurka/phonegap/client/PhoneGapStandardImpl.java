@@ -32,7 +32,6 @@ import de.kurka.phonegap.client.device.Device;
 import de.kurka.phonegap.client.file.File;
 import de.kurka.phonegap.client.geolocation.Geolocation;
 import de.kurka.phonegap.client.log.DebugLogger;
-import de.kurka.phonegap.client.network.Network;
 import de.kurka.phonegap.client.notification.Notification;
 import de.kurka.phonegap.client.plugins.PhoneGapPlugin;
 
@@ -45,7 +44,6 @@ public class PhoneGapStandardImpl implements PhoneGap {
 	private Accelerometer accelerometer;
 	private Camera camera;
 	private Geolocation geolocation;
-	private Network network;
 	private Notification notification;
 	private DebugLogger debugLogger;
 	private Contacts contacts;
@@ -135,11 +133,6 @@ public class PhoneGapStandardImpl implements PhoneGap {
 	}
 
 	@Override
-	public Network getNetwork() {
-		return network;
-	}
-
-	@Override
 	public Notification getNotification() {
 		return notification;
 	}
@@ -171,10 +164,6 @@ public class PhoneGapStandardImpl implements PhoneGap {
 		return GWT.create(Geolocation.class);
 	}
 
-	protected Network constructNetwork() {
-		return GWT.create(Network.class);
-	}
-
 	protected Notification constructNotification() {
 		return GWT.create(Notification.class);
 	}
@@ -188,7 +177,6 @@ public class PhoneGapStandardImpl implements PhoneGap {
 		accelerometer = constructAccelerometer();
 		camera = constructCamera();
 		geolocation = constructGeolocation();
-		network = constructNetwork();
 		notification = constructNotification();
 		debugLogger = constructDebugLogger();
 		contacts = constructContacts();

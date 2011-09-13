@@ -99,22 +99,7 @@
     <replace-with class="de.kurka.phonegap.client.log.DebugLoggerMobileImpl">
         <when-type-is class="de.kurka.phonegap.client.log.DebugLogger"/>
     </replace-with>
-    
-    
-    <!-- Network -->
-    <replace-with class="de.kurka.phonegap.client.network.NetworkMobileImpl">
-        <when-type-is class="de.kurka.phonegap.client.network.Network"/>
-         <all>
-            <when-property-is name="phonegap.env" value="yes"/>
-        </all>
-    </replace-with>
-    <replace-with class="de.kurka.phonegap.client.network.NetworkBrowserImpl">
-        <when-type-is class="de.kurka.phonegap.client.network.Network"/>
-         <all>
-            <when-property-is name="phonegap.env" value="no"/>
-        </all>
-    </replace-with>
-    
+      
      <!-- Connection -->
     <replace-with class="de.kurka.phonegap.client.connection.ConnectionMobileImpl">
         <when-type-is class="de.kurka.phonegap.client.connection.Connection"/>
