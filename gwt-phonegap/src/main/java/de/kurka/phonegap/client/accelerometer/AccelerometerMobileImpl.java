@@ -33,7 +33,7 @@ public class AccelerometerMobileImpl implements Accelerometer {
 		};
 
 		var errorCallback = function() {
-			accelerationCallback.@de.kurka.phonegap.client.file.DirectoryDeleteCallback::onFailure()();
+			accelerationCallback.@de.kurka.phonegap.client.accelerometer.AccelerationCallback::onFailure()();
 		};
 
 		var freq = options.@de.kurka.phonegap.client.accelerometer.AccelerationOptions::getFrequency()();
@@ -56,7 +56,7 @@ public class AccelerometerMobileImpl implements Accelerometer {
 		};
 
 		var ec = function() {
-			accelerationCallback.@de.kurka.phonegap.client.file.DirectoryDeleteCallback::onFailure()();
+			accelerationCallback.@de.kurka.phonegap.client.accelerometer.AccelerationCallback::onFailure()();
 		};
 
 		var freq = options.@de.kurka.phonegap.client.accelerometer.AccelerationOptions::getFrequency()();
