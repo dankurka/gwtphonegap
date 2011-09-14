@@ -15,9 +15,13 @@
  */
 package de.kurka.phonegap.showcase.client;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 
+import de.kurka.phonegap.client.PhoneGap;
 import de.kurka.phonegap.showcase.client.accelerometer.AccelerometerPresenter;
 import de.kurka.phonegap.showcase.client.camera.CameraPresenter;
 import de.kurka.phonegap.showcase.client.connection.ConnectionPresenter;
@@ -39,11 +43,13 @@ public class MainPresenter {
 	private final ConnectionPresenter connectionPresenter;
 	private final ContactPresenter contactPresenter;
 	private final EventPresenter eventPresenter;
+	private final PhoneGap phoneGap;
 
-	public MainPresenter(Display display, AccelerometerPresenter accelerometerPresenter, DevicePresenter devicePresenter, GeolocationPresenter geolocationPresenter,
+	public MainPresenter(Display display, PhoneGap phoneGap, AccelerometerPresenter accelerometerPresenter, DevicePresenter devicePresenter, GeolocationPresenter geolocationPresenter,
 			NotificationPresenter notificationPresenter, AboutPresenter aboutPresenter, CameraPresenter cameraPresenter, ConnectionPresenter connectionPresenter, ContactPresenter contactPresenter,
 			EventPresenter eventPresenter) {
 		this.display = display;
+		this.phoneGap = phoneGap;
 		this.accelerometerPresenter = accelerometerPresenter;
 		this.devicePresenter = devicePresenter;
 		this.geolocationPresenter = geolocationPresenter;
@@ -54,12 +60,28 @@ public class MainPresenter {
 		this.contactPresenter = contactPresenter;
 		this.eventPresenter = eventPresenter;
 
+		bind();
+
+	}
+
+	private void bind() {
+		display.getExitButton().addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				phoneGap.exitApp();
+
+			}
+		});
+
 	}
 
 	public interface Display {
 		public Widget asWidget();
 
 		public HasWidgets getContainer();
+
+		public HasClickHandlers getExitButton();
 
 	}
 

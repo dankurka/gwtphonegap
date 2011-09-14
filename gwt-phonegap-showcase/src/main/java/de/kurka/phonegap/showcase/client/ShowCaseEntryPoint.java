@@ -96,7 +96,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
 		ContactPresenter contactPresenter = new ContactPresenter(new ContactDisplay(), phoneGap);
 		EventPresenter eventPresenter = new EventPresenter(new EventDisplay(), phoneGap);
 
-		MainPresenter mainPresenter = new MainPresenter(new MainDisplay(), new AccelerometerPresenter(new AccelerometerDisplay(), phoneGap), devicePresenter, geolocationPresenter,
+		MainPresenter mainPresenter = new MainPresenter(new MainDisplay(), phoneGap, new AccelerometerPresenter(new AccelerometerDisplay(), phoneGap), devicePresenter, geolocationPresenter,
 				notificationPresenter, aboutPresenter, cameraPresenter, connectionPresenter, contactPresenter, eventPresenter);
 
 		RootPanel.get().add(mainPresenter.getDisplay().asWidget());

@@ -15,6 +15,8 @@
  */
 package de.kurka.phonegap.showcase.client;
 
+import com.google.gwt.event.dom.client.HasClickHandlers;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -25,6 +27,7 @@ import de.kurka.phonegap.showcase.client.MainPresenter.Display;
 public class MainDisplay implements Display {
 
 	private FlowPanel main;
+	private Button button;
 
 	public MainDisplay() {
 		main = new FlowPanel();
@@ -35,6 +38,10 @@ public class MainDisplay implements Display {
 		main.add(html);
 
 		main.add(new HTML("click on the following links to see the different features of gwt-phonegap <br/><br/>"));
+
+		button = new Button("Exit App (Android only)");
+
+		main.add(button);
 
 	}
 
@@ -47,6 +54,11 @@ public class MainDisplay implements Display {
 	@Override
 	public HasWidgets getContainer() {
 		return main;
+	}
+
+	@Override
+	public HasClickHandlers getExitButton() {
+		return button;
 	}
 
 }

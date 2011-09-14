@@ -150,4 +150,7 @@ public interface PhoneGap {
 
 	public Event getEvent();
 
+	//testing for android....
+	public boolean exitApp();
+
 }

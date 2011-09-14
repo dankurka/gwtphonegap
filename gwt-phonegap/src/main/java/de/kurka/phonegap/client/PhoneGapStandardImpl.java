@@ -238,4 +238,16 @@ public class PhoneGapStandardImpl implements PhoneGap {
 		return event;
 	}
 
+	@Override
+	public native boolean exitApp() /*-{
+		if ($wnd.navigator.app != null) {
+			if ($wnd.navigator.app.exitApp != null) {
+				$wnd.navigator.app.exitApp();
+				return true;
+			}
+		}
+		return false;
+
+	}-*/;
+
 }
