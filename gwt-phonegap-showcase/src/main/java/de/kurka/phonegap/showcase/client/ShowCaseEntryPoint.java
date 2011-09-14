@@ -34,6 +34,8 @@ import de.kurka.phonegap.showcase.client.camera.CameraDisplay;
 import de.kurka.phonegap.showcase.client.camera.CameraPresenter;
 import de.kurka.phonegap.showcase.client.connection.ConnectionDisplay;
 import de.kurka.phonegap.showcase.client.connection.ConnectionPresenter;
+import de.kurka.phonegap.showcase.client.contact.ContactDisplay;
+import de.kurka.phonegap.showcase.client.contact.ContactPresenter;
 import de.kurka.phonegap.showcase.client.device.DeviceDisplay;
 import de.kurka.phonegap.showcase.client.device.DevicePresenter;
 import de.kurka.phonegap.showcase.client.geolocation.GeolocationDisplay;
@@ -52,6 +54,7 @@ public class ShowCaseEntryPoint implements EntryPoint {
 			@Override
 			public void onUncaughtException(Throwable e) {
 				Window.alert("uncaught: " + e.getLocalizedMessage());
+				Window.alert(e.getMessage());
 				log.log(Level.SEVERE, "uncaught exception", e);
 			}
 		});
@@ -88,9 +91,10 @@ public class ShowCaseEntryPoint implements EntryPoint {
 		AboutPresenter aboutPresenter = new AboutPresenter(new AboutDisplay());
 		CameraPresenter cameraPresenter = new CameraPresenter(new CameraDisplay(), phoneGap);
 		ConnectionPresenter connectionPresenter = new ConnectionPresenter(new ConnectionDisplay(), phoneGap);
+		ContactPresenter contactPresenter = new ContactPresenter(new ContactDisplay(), phoneGap);
 
 		MainPresenter mainPresenter = new MainPresenter(new MainDisplay(), new AccelerometerPresenter(new AccelerometerDisplay(), phoneGap), devicePresenter, geolocationPresenter,
-				notificationPresenter, aboutPresenter, cameraPresenter, connectionPresenter);
+				notificationPresenter, aboutPresenter, cameraPresenter, connectionPresenter, contactPresenter);
 
 		RootPanel.get().add(mainPresenter.getDisplay().asWidget());
 

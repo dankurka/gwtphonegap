@@ -63,7 +63,7 @@ public interface ContactName {
 	 * @param name
 	 * @return
 	 */
-	public String getGivenName(String name);
+	public String getGivenName();
 
 	/**
 	 * The contacts middle name. (DOMString)

@@ -56,6 +56,9 @@ public final class ContactJsoImpl extends JavaScriptObject implements Contact {
 
 	@Override
 	public native ContactName getName() /*-{
+		if (this.name == null) {
+			this.name = new $wnd.ContactName();
+		}
 		return this.name;
 	}-*/;
 
@@ -70,6 +73,9 @@ public final class ContactJsoImpl extends JavaScriptObject implements Contact {
 	}-*/;
 
 	private native JsArray<ContactFieldJsoImpl> getPhoneNumbersJSO()/*-{
+		if (this.phoneNumbers == null) {
+			this.phoneNumbers = [];
+		}
 		return this.phoneNumbers;
 	}-*/;
 
@@ -103,6 +109,9 @@ public final class ContactJsoImpl extends JavaScriptObject implements Contact {
 	}
 
 	private native JsArray<ContactFieldJsoImpl> getEmailsJso()/*-{
+		if (this.emails == null) {
+			this.emails = [];
+		}
 		return this.emails;
 	}-*/;
 
@@ -130,6 +139,9 @@ public final class ContactJsoImpl extends JavaScriptObject implements Contact {
 	}-*/;
 
 	private native JsArray<ContactAddressJsoImpl> getContactAddressesJso()/*-{
+		if (this.addresses == null) {
+			this.addresses = [];
+		}
 		return this.addresses;
 	}-*/;
 
@@ -153,6 +165,9 @@ public final class ContactJsoImpl extends JavaScriptObject implements Contact {
 	}
 
 	private native JsArray<ContactFieldJsoImpl> getImsJso()/*-{
+		if (this.ims == null) {
+			this.ims = [];
+		}
 		return this.ims;
 	}-*/;
 
@@ -177,6 +192,9 @@ public final class ContactJsoImpl extends JavaScriptObject implements Contact {
 	}
 
 	private native JsArray<ContactOrganisationJsoImpl> getOrganisationsJso()/*-{
+		if (this.organizations == null) {
+			this.organizations = [];
+		}
 		return this.organizations;
 	}-*/;
 
@@ -246,6 +264,9 @@ public final class ContactJsoImpl extends JavaScriptObject implements Contact {
 	}
 
 	private native JsArray<ContactFieldJsoImpl> getPhotosJso()/*-{
+		if (this.photos == null) {
+			this.photos = [];
+		}
 		return this.photos;
 	}-*/;
 
@@ -270,6 +291,9 @@ public final class ContactJsoImpl extends JavaScriptObject implements Contact {
 	}
 
 	private native JsArray<ContactFieldJsoImpl> getCategoriesJso()/*-{
+		if (this.categories == null) {
+			this.categories = [];
+		}
 		return this.categories;
 	}-*/;
 
@@ -294,6 +318,9 @@ public final class ContactJsoImpl extends JavaScriptObject implements Contact {
 	}
 
 	private native JsArray<ContactFieldJsoImpl> getUrlsJso()/*-{
+		if (this.urls == null) {
+			this.urls = [];
+		}
 		return this.urls;
 	}-*/;
 

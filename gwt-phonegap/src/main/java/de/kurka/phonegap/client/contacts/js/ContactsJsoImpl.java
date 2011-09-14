@@ -23,6 +23,7 @@ import com.google.gwt.core.client.JsDate;
 import de.kurka.gwt.collection.client.JsLightArray;
 import de.kurka.gwt.collection.shared.LightArray;
 import de.kurka.phonegap.client.contacts.Contact;
+import de.kurka.phonegap.client.contacts.ContactFactory;
 import de.kurka.phonegap.client.contacts.ContactFindCallback;
 import de.kurka.phonegap.client.contacts.ContactFindOptions;
 import de.kurka.phonegap.client.contacts.Contacts;
@@ -74,15 +75,16 @@ public class ContactsJsoImpl implements Contacts {
 			updatedSince : ldate
 		};
 
-		$wnd.navigator.service.contacts.find(fields, sC, eC, options);
+		$wnd.navigator.contacts.find(fields, $entry(sC), $entry(eC), options);
 	}-*/;
 
 	private JsDate createJsDate(Date date) {
-		return createJsDate(date.getTime());
+		return JsDate.create(date.getTime());
 	}
 
-	private native JsDate createJsDate(double time)/*-{
-		return new Date(time);
-	}-*/;
+	@Override
+	public ContactFactory getFacotry() {
+		return new ContactFactoryJsoImpl();
+	}
 
 }

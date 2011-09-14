@@ -24,12 +24,12 @@ public class ContactFactoryJsoImpl implements ContactFactory {
 
 	@Override
 	public native ContactField createContactField(String type, String value, boolean pref) /*-{
-		return new ContactField(type, value, pref);
+		return new $wnd.ContactField(type, value, pref);
 	}-*/;
 
 	@Override
 	public native ContactOrganisation createContactOrganisation(String name, String department, String title) /*-{
-		var co = {};
+		var co = new $wnd.ContactOrganization();
 
 		co.name = name;
 		co.department = department;
@@ -41,7 +41,7 @@ public class ContactFactoryJsoImpl implements ContactFactory {
 
 	@Override
 	public native ContactAddress createContactAddress(String formatted, String streetAddress, String locality, String region, String postalCode, String country) /*-{
-		var ca = {};
+		var ca = new $wnd.ContactAddress();
 
 		ca.formatted = formatted;
 		ca.streetAddress = streetAddress;
