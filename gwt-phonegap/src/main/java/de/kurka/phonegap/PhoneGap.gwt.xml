@@ -82,6 +82,20 @@
         </all>
     </replace-with>
     
+    <!-- Event -->
+    <replace-with class="de.kurka.phonegap.client.event.js.EventJsImpl">
+        <when-type-is class="de.kurka.phonegap.client.event.Event"/>
+         <all>
+            <when-property-is name="phonegap.env" value="yes"/>
+        </all>
+    </replace-with>
+     <replace-with class="de.kurka.phonegap.client.event.js.EventJsImpl">
+        <when-type-is class="de.kurka.phonegap.client.event.Event"/>
+         <all>
+            <when-property-is name="phonegap.env" value="yes"/>
+        </all>
+    </replace-with>
+    
     <!-- Geolocation -->
     <replace-with class="de.kurka.phonegap.client.geolocation.GeolocationMobileImpl">
         <when-type-is class="de.kurka.phonegap.client.geolocation.Geolocation"/>
