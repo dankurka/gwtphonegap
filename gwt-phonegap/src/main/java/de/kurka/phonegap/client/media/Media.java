@@ -3,7 +3,7 @@ package de.kurka.phonegap.client.media;
 public interface Media {
 	public void getCurrentPosition(MediaPositionCallback callback);
 
-	public int getDuration();
+	public long getDuration();
 
 	public void play();
 

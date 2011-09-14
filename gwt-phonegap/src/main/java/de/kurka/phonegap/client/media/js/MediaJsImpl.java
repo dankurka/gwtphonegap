@@ -31,7 +31,11 @@ public final class MediaJsImpl extends JavaScriptObject implements Media {
 	}
 
 	@Override
-	public native int getDuration() /*-{
+	public long getDuration() {
+		return Math.round(getDuration0());
+	}
+
+	private native double getDuration0() /*-{
 		return this.getDuration();
 	}-*/;
 

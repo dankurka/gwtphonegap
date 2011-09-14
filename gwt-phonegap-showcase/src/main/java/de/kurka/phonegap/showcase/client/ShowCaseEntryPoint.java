@@ -42,6 +42,8 @@ import de.kurka.phonegap.showcase.client.event.EventDisplay;
 import de.kurka.phonegap.showcase.client.event.EventPresenter;
 import de.kurka.phonegap.showcase.client.geolocation.GeolocationDisplay;
 import de.kurka.phonegap.showcase.client.geolocation.GeolocationPresenter;
+import de.kurka.phonegap.showcase.client.media.MediaDisplay;
+import de.kurka.phonegap.showcase.client.media.MediaPresenter;
 import de.kurka.phonegap.showcase.client.notification.NotificationDisplay;
 import de.kurka.phonegap.showcase.client.notification.NotificationPresenter;
 
@@ -95,9 +97,10 @@ public class ShowCaseEntryPoint implements EntryPoint {
 		ConnectionPresenter connectionPresenter = new ConnectionPresenter(new ConnectionDisplay(), phoneGap);
 		ContactPresenter contactPresenter = new ContactPresenter(new ContactDisplay(), phoneGap);
 		EventPresenter eventPresenter = new EventPresenter(new EventDisplay(), phoneGap);
+		MediaPresenter mediaPresenter = new MediaPresenter(new MediaDisplay(), phoneGap);
 
 		MainPresenter mainPresenter = new MainPresenter(new MainDisplay(), phoneGap, new AccelerometerPresenter(new AccelerometerDisplay(), phoneGap), devicePresenter, geolocationPresenter,
-				notificationPresenter, aboutPresenter, cameraPresenter, connectionPresenter, contactPresenter, eventPresenter);
+				notificationPresenter, aboutPresenter, cameraPresenter, connectionPresenter, contactPresenter, eventPresenter, mediaPresenter);
 
 		RootPanel.get().add(mainPresenter.getDisplay().asWidget());
 
