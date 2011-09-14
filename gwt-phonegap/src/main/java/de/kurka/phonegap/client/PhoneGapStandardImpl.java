@@ -33,6 +33,7 @@ import de.kurka.phonegap.client.event.Event;
 import de.kurka.phonegap.client.file.File;
 import de.kurka.phonegap.client.geolocation.Geolocation;
 import de.kurka.phonegap.client.log.DebugLogger;
+import de.kurka.phonegap.client.media.MediaModule;
 import de.kurka.phonegap.client.notification.Notification;
 import de.kurka.phonegap.client.plugins.PhoneGapPlugin;
 
@@ -51,6 +52,7 @@ public class PhoneGapStandardImpl implements PhoneGap {
 	private File file;
 	private Connection connection;
 	private Event event;
+	private MediaModule mediaModule;
 
 	private Map<String, PhoneGapPlugin> plugins = new HashMap<String, PhoneGapPlugin>();
 
@@ -185,7 +187,12 @@ public class PhoneGapStandardImpl implements PhoneGap {
 		file = constructFile();
 		connection = constructConnection();
 		event = constructEvent();
+		mediaModule = constructMediaModule();
 
+	}
+
+	protected MediaModule constructMediaModule() {
+		return GWT.create(MediaModule.class);
 	}
 
 	protected Event constructEvent() {
@@ -249,5 +256,10 @@ public class PhoneGapStandardImpl implements PhoneGap {
 		return false;
 
 	}-*/;
+
+	@Override
+	public MediaModule getMedia() {
+		return mediaModule;
+	}
 
 }

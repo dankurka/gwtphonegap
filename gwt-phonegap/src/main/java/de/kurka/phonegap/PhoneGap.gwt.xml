@@ -128,6 +128,20 @@
         </all>
     </replace-with>
     
+    <!-- Media -->
+    <replace-with class="de.kurka.phonegap.client.media.js.MediaModuleJsImpl">
+        <when-type-is class="de.kurka.phonegap.client.media.MediaModule"/>
+         <all>
+            <when-property-is name="phonegap.env" value="yes"/>
+        </all>
+    </replace-with>
+     <replace-with class="de.kurka.phonegap.client.media.js.MediaModuleJsImpl">
+        <when-type-is class="de.kurka.phonegap.client.media.MediaModule"/>
+         <all>
+            <when-property-is name="phonegap.env" value="no"/>
+        </all>
+    </replace-with>
+    
     <!-- Notification -->
     <replace-with class="de.kurka.phonegap.client.notification.NotificationMobileImpl">
         <when-type-is class="de.kurka.phonegap.client.notification.Notification"/>
@@ -141,6 +155,8 @@
             <when-property-is name="phonegap.env" value="no"/>
         </all>
     </replace-with>
+    
+    
     
     <!-- File -->
      <replace-with class="de.kurka.phonegap.client.file.browser.FileBrowserImpl">

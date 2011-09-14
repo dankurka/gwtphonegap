@@ -26,6 +26,7 @@ import de.kurka.phonegap.client.event.Event;
 import de.kurka.phonegap.client.file.File;
 import de.kurka.phonegap.client.geolocation.Geolocation;
 import de.kurka.phonegap.client.log.DebugLogger;
+import de.kurka.phonegap.client.media.MediaModule;
 import de.kurka.phonegap.client.notification.Notification;
 import de.kurka.phonegap.client.plugins.PhoneGapPlugin;
 
@@ -152,5 +153,7 @@ public interface PhoneGap {
 
 	//testing for android....
 	public boolean exitApp();
+
+	public MediaModule getMedia();
 
 }
