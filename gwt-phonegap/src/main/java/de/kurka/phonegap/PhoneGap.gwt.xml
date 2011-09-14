@@ -92,7 +92,7 @@
      <replace-with class="de.kurka.phonegap.client.event.js.EventJsImpl">
         <when-type-is class="de.kurka.phonegap.client.event.Event"/>
          <all>
-            <when-property-is name="phonegap.env" value="yes"/>
+            <when-property-is name="phonegap.env" value="no"/>
         </all>
     </replace-with>
     

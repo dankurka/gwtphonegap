@@ -34,12 +34,30 @@ public class EventJsImpl implements Event {
 
 	private PhoneGapEventHandlerImpl pgImpl;
 
+	private boolean backSetup;
+
 	public EventJsImpl() {
 		eventBus = new SimpleEventBus();
 
 		pgImpl = new PhoneGapEventHandlerImpl();
 		setupEvents();
 	}
+
+	private void ensureBackListener() {
+		if (backSetup)
+			return;
+		backSetup = true;
+		setupBackEvent();
+	}
+
+	private native void setupBackEvent()/*-{
+		var that = this;
+		//back event
+		var back = function() {
+			that.@de.kurka.phonegap.client.event.js.EventJsImpl::onBack()();
+		};
+		$doc.addEventListener("backbutton", $entry(back), false);
+	}-*/;
 
 	private native void setupEvents()/*-{
 		var that = this;
@@ -66,13 +84,7 @@ public class EventJsImpl implements Event {
 		var pause = function() {
 			that.@de.kurka.phonegap.client.event.js.EventJsImpl::onPause()();
 		};
-		$doc.addEventListener("resume", $entry(pause), false);
-
-		//back event
-		var back = function() {
-			that.@de.kurka.phonegap.client.event.js.EventJsImpl::onBack()();
-		};
-		$doc.addEventListener("backbutton", $entry(pause), false);
+		$doc.addEventListener("pause", $entry(pause), false);
 
 		//search event
 		var search = function() {
@@ -183,6 +195,7 @@ public class EventJsImpl implements Event {
 
 		@Override
 		public HandlerRegistration addBackButtonPressedHandler(BackButtonPressedHandler handler) {
+			ensureBackListener();
 			return eventBus.addHandler(BackButtonPressedEvent.getType(), handler);
 		}
 
