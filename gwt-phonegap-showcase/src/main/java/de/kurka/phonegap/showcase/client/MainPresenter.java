@@ -24,6 +24,7 @@ import com.google.gwt.user.client.ui.Widget;
 import de.kurka.phonegap.client.PhoneGap;
 import de.kurka.phonegap.showcase.client.accelerometer.AccelerometerPresenter;
 import de.kurka.phonegap.showcase.client.camera.CameraPresenter;
+import de.kurka.phonegap.showcase.client.compass.CompassPresenter;
 import de.kurka.phonegap.showcase.client.connection.ConnectionPresenter;
 import de.kurka.phonegap.showcase.client.contact.ContactPresenter;
 import de.kurka.phonegap.showcase.client.device.DevicePresenter;
@@ -46,10 +47,11 @@ public class MainPresenter {
 	private final EventPresenter eventPresenter;
 	private final PhoneGap phoneGap;
 	private final MediaPresenter mediaPresenter;
+	private final CompassPresenter compassPresenter;
 
 	public MainPresenter(Display display, PhoneGap phoneGap, AccelerometerPresenter accelerometerPresenter, DevicePresenter devicePresenter, GeolocationPresenter geolocationPresenter,
 			NotificationPresenter notificationPresenter, AboutPresenter aboutPresenter, CameraPresenter cameraPresenter, ConnectionPresenter connectionPresenter, ContactPresenter contactPresenter,
-			EventPresenter eventPresenter, MediaPresenter mediaPresenter) {
+			EventPresenter eventPresenter, MediaPresenter mediaPresenter, CompassPresenter compassPresenter) {
 		this.display = display;
 		this.phoneGap = phoneGap;
 		this.accelerometerPresenter = accelerometerPresenter;
@@ -62,6 +64,7 @@ public class MainPresenter {
 		this.contactPresenter = contactPresenter;
 		this.eventPresenter = eventPresenter;
 		this.mediaPresenter = mediaPresenter;
+		this.compassPresenter = compassPresenter;
 
 		bind();
 
@@ -95,6 +98,7 @@ public class MainPresenter {
 	public void start() {
 		display.getContainer().add(accelerometerPresenter.getDisplay().asWidget());
 		display.getContainer().add(cameraPresenter.getDisplay().asWidget());
+		display.getContainer().add(compassPresenter.getDisplay().asWidget());
 		display.getContainer().add(connectionPresenter.getDisplay().asWidget());
 		display.getContainer().add(contactPresenter.getDisplay().asWidget());
 		display.getContainer().add(devicePresenter.getDisplay().asWidget());

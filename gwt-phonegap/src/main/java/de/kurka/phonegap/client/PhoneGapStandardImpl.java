@@ -26,6 +26,7 @@ import com.google.gwt.user.client.Timer;
 
 import de.kurka.phonegap.client.accelerometer.Accelerometer;
 import de.kurka.phonegap.client.camera.Camera;
+import de.kurka.phonegap.client.compass.Compass;
 import de.kurka.phonegap.client.connection.Connection;
 import de.kurka.phonegap.client.contacts.Contacts;
 import de.kurka.phonegap.client.device.Device;
@@ -53,6 +54,7 @@ public class PhoneGapStandardImpl implements PhoneGap {
 	private Connection connection;
 	private Event event;
 	private MediaModule mediaModule;
+	private Compass compass;
 
 	private Map<String, PhoneGapPlugin> plugins = new HashMap<String, PhoneGapPlugin>();
 
@@ -188,7 +190,12 @@ public class PhoneGapStandardImpl implements PhoneGap {
 		connection = constructConnection();
 		event = constructEvent();
 		mediaModule = constructMediaModule();
+		compass = constructCompass();
 
+	}
+
+	protected Compass constructCompass() {
+		return GWT.create(Compass.class);
 	}
 
 	protected MediaModule constructMediaModule() {
@@ -260,6 +267,11 @@ public class PhoneGapStandardImpl implements PhoneGap {
 	@Override
 	public MediaModule getMedia() {
 		return mediaModule;
+	}
+
+	@Override
+	public Compass getCompass() {
+		return compass;
 	}
 
 }
