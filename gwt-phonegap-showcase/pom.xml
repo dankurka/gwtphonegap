@@ -8,11 +8,11 @@
 	<groupId>de.kurka.phonegap</groupId>
 	<artifactId>gwt-phonegap-showcase</artifactId>
 	<version>0.9-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<name>GWT PhoneGap</name>
 
-
-
+	
+	
 	<build>
 		<plugins>
 			<plugin>
@@ -27,12 +27,11 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>gwt-maven-plugin</artifactId>
-				<version>2.2.0</version>
+				<version>2.3.0-1</version>
 				<executions>
 
 					<execution>
 						<id>compile gwt</id>
-						<phase>test</phase>
 						<goals>
 							<goal>compile</goal>
 
@@ -40,8 +39,20 @@
 					</execution>
 
 				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>com.google.gwt</groupId>
+						<artifactId>gwt-user</artifactId>
+						<version>2.4.0</version>
+					</dependency>
+					<dependency>
+						<groupId>com.google.gwt</groupId>
+						<artifactId>gwt-dev</artifactId>
+						<version>2.4.0</version>
+					</dependency>
+				</dependencies>
 			</plugin>
-			
+
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<executions>
@@ -52,14 +63,15 @@
 						<phase>test</phase>
 						<configuration>
 							<tasks>
-								<copy todir="target/${project.artifactId}-${project.version}" >
-									<fileset dir="war/"> 
-									<exclude name="WEB-INF/" />
+								<copy todir="target/${project.artifactId}-${project.version}">
+									<fileset dir="war/">
+										<exclude name="WEB-INF/" />
 									</fileset>
 								</copy>
-								
-								<copy todir="target/${project.artifactId}-${project.version}-phonebuild" >
-									<fileset dir="target/${project.artifactId}-${project.version}/"> 
+
+								<copy
+									todir="target/${project.artifactId}-${project.version}-phonebuild">
+									<fileset dir="target/${project.artifactId}-${project.version}/">
 									</fileset>
 								</copy>
 
@@ -72,8 +84,8 @@
 
 				</executions>
 			</plugin>
-			
-			
+
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-eclipse-plugin</artifactId>
@@ -86,27 +98,27 @@
 					<projectnatures>
 						<projectnature>org.eclipse.jdt.core.javanature</projectnature>
 						<projectnature>com.google.gdt.eclipse.core.webAppNature</projectnature>
-						
+
 						<nature>com.google.gwt.eclipse.core.gwtNature</nature>
 					</projectnatures>
 					<buildcommands>
 						<buildcommand>org.eclipse.jdt.core.javabuilder</buildcommand>
 						<buildcommand>com.google.gdt.eclipse.core.webAppProjectValidator</buildcommand>
-						
+
 						<buildcommand>com.google.appengine.eclipse.core.projectValidator</buildcommand>
 						<buildcommand>com.google.gwt.eclipse.core.gwtProjectValidator</buildcommand>
 					</buildcommands>
 					<classpathContainers>
 						<classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
-						
+
 						<classpathContainer>com.google.gwt.eclipse.core.GWT_CONTAINER</classpathContainer>
 					</classpathContainers>
 					<excludes>
-						
+
 						<exclude>com.google.gwt:gwt-servlet</exclude>
 						<exclude>com.google.gwt:gwt-user</exclude>
 
-						</excludes>
+					</excludes>
 					<linkedResources>
 						<linkedResource>
 							<name>war</name>
