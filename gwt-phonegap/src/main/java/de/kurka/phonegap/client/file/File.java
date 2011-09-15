@@ -10,4 +10,6 @@ public interface File {
 	public void requestFileSystem(int fileSystemType, int size, FileCallback<FileSystem, FileError> callback);
 
 	public void resolveLocalFileSystemURI(String url, FileCallback<EntryBase, FileError> callback);
+
+	public FileTransfer createFileTransfer();
 }

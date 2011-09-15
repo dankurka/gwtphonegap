@@ -90,4 +90,8 @@ public class JsLightMap<V> implements LightMap<V> {
 		return array;
 	}-*/;
 
+	public JavaScriptObject getMap() {
+		return map;
+	}
+
 }

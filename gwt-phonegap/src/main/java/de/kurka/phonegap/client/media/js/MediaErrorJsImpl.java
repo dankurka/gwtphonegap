@@ -17,7 +17,7 @@ public final class MediaErrorJsImpl extends JavaScriptObject implements MediaErr
 
 	@Override
 	public native String getErrorMessage() /*-{
-		return message;
+		return this.message;
 	}-*/;
 
 }

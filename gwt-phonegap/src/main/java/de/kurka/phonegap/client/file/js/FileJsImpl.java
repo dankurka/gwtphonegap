@@ -7,6 +7,7 @@ import de.kurka.phonegap.client.file.File;
 import de.kurka.phonegap.client.file.FileCallback;
 import de.kurka.phonegap.client.file.FileError;
 import de.kurka.phonegap.client.file.FileSystem;
+import de.kurka.phonegap.client.file.FileTransfer;
 
 public class FileJsImpl implements File {
 
@@ -56,5 +57,10 @@ public class FileJsImpl implements File {
 	private void resolveLocalFileSystemURIOnSuccess(FileCallback<EntryBase, FileError> callback, EntryBaseJsImpl system) {
 		callback.onSuccess(system);
 	}
+
+	@Override
+	public native FileTransfer createFileTransfer() /*-{
+		return new $wnd.FileTransfer();
+	}-*/;
 
 }
