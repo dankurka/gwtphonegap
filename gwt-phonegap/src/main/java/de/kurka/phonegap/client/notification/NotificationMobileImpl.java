@@ -23,76 +23,93 @@ package de.kurka.phonegap.client.notification;
  */
 public class NotificationMobileImpl implements Notification {
 
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.notification.Notification#alert(java.lang.String)
-	 */
-	@Override
-	public void alert(String message) {
-		alert(message, "Alert", "Ok");
+	private static final AlertCallback emptyCallback = new AlertCallback() {
+
+		@Override
+		public void onOkButtonClicked() {
+
+		}
+	};
+	private static final String[] defaultLabels = new String[] { "Ok", "Cancel" };
+
+	public NotificationMobileImpl() {
+
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.notification.Notification#alert(java.lang.String, java.lang.String)
-	 */
-	@Override
-	public void alert(String message, String title) {
-		alert(message, title, "Ok");
-	}
-
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.notification.Notification#alert(java.lang.String, java.lang.String, java.lang.String)
-	 */
-	@Override
-	public native void alert(String message, String title, String buttonName)/*-{
-		$wnd.navigator.notification.alert(message, title, buttonName);
-	}-*/;
-
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.notification.Notification#beep(int)
-	 */
 	@Override
 	public native void beep(int count)/*-{
 		$wnd.navigator.notification.beep(count);
 	}-*/;
 
-	// TODO put this back in after bug in confirm is fixed
-	// /**
-	// * {@link Notification#confirm(String, String, String)}
-	// */
-	// public int confirm(String message) {
-	// return confirm(message, "Confirm", "Ok,Cancel");
-	// }
-	//
-	// /**
-	// * {@link Notification#confirm(String, String, String)}
-	// */
-	// public int confirm(String message, String title) {
-	// return confirm(message, title, "Ok,Cancel");
-	// }
-	//
-	// /**
-	// * Shows a confirmation dialog box.
-	// *
-	// * <ul>
-	// * <li>Android</li>
-	// * <li>iPhone</li>
-	// * </ul>
-	// *
-	// * @param message the message to display
-	// * @param title the dialog title
-	// * @param buttonLabel
-	// * @return Index of the button clicked (1, 2 or 3).
-	// */
-	// public native int confirm(String message, String title, String
-	// buttonLabel)/*-{
-	// $wnd.navigator.notification.confirm(message, title, buttonLabel);
-	// }-*/;
-
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.notification.Notification#vibrate(int)
-	 */
 	@Override
 	public native void vibrate(int milliseconds)/*-{
 		$wnd.navigator.notification.vibrate(milliseconds);
+	}-*/;
+
+	@Override
+	public void alert(String message) {
+		alert(message, emptyCallback);
+
+	}
+
+	@Override
+	public void alert(String message, AlertCallback callback) {
+		alert(message, callback, "Alert");
+
+	}
+
+	@Override
+	public void alert(String message, AlertCallback callback, String title) {
+		alert(message, callback, title, "Ok");
+
+	}
+
+	@Override
+	public native void alert(String message, AlertCallback callback, String title, String buttonName) /*-{
+
+		var cal = function() {
+			callback.@de.kurka.phonegap.client.notification.AlertCallback::onOkButtonClicked()();
+		};
+
+		$wnd.navigator.notification.alert(message, $entry(cal), title,
+				buttonName);
+
+	}-*/;
+
+	@Override
+	public void confirm(String message, ConfirmCallback callback) {
+		confirm(message, callback, "Title");
+
+	}
+
+	@Override
+	public void confirm(String message, ConfirmCallback callback, String title) {
+
+		confirm(message, callback, title, defaultLabels);
+
+	}
+
+	@Override
+	public void confirm(String message, ConfirmCallback callback, String title, String[] buttonLabels) {
+		if (buttonLabels == null)
+			buttonLabels = defaultLabels;
+
+		if (buttonLabels.length != 2) {
+			throw new IllegalArgumentException("expected two labels for buttons got: " + buttonLabels.length);
+		}
+
+		String labels = buttonLabels[0] + "," + buttonLabels[1];
+		confirm0(message, callback, title, labels);
+
+	}
+
+	private native void confirm0(String message, ConfirmCallback callback, String title, String buttonLabels) /*-{
+
+		var cal = function(button) {
+			callback.@de.kurka.phonegap.client.notification.ConfirmCallback::onConfirm(I)(button);
+		};
+
+		$wnd.navigator.notification.confirm(message, $entry(cal), title,
+				buttonLabels);
 	}-*/;
 }

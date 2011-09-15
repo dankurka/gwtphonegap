@@ -21,6 +21,8 @@ import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.phonegap.client.PhoneGap;
+import de.kurka.phonegap.client.notification.AlertCallback;
+import de.kurka.phonegap.client.notification.ConfirmCallback;
 
 public class NotificationPresenter {
 	private final Display display;
@@ -39,7 +41,13 @@ public class NotificationPresenter {
 
 			@Override
 			public void onClick(ClickEvent event) {
-				phoneGap.getNotification().alert("daniel says hi", "gwt-phonegap", "buttonText");
+				phoneGap.getNotification().alert("daniel says hi", new AlertCallback() {
+
+					@Override
+					public void onOkButtonClicked() {
+
+					}
+				}, "gwt-phonegap", "buttonText");
 
 			}
 		});
@@ -66,10 +74,15 @@ public class NotificationPresenter {
 
 			@Override
 			public void onClick(ClickEvent event) {
-				//TODO put this back in after bug is fixed in Notification.confirm
-				//				int confirm = phoneGap.getNotification().confirm("question?", "gwt-phonegap", "yes,no");
-				//
-				//				phoneGap.getNotification().alert("you pressed: " + confirm, "gwt-phonegap", "buttonText");
+
+				phoneGap.getNotification().confirm("question?", new ConfirmCallback() {
+
+					@Override
+					public void onConfirm(int button) {
+
+					}
+				}, "gwt-phonegap");
+
 			}
 		});
 

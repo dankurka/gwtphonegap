@@ -43,9 +43,8 @@ public class NotificationDisplay implements Display {
 		alertButton = new Button("Alert");
 		content.add(alertButton);
 
-		//TODO put button back in after bug is removed from iOS
 		confirmButton = new Button("Confirm");
-		//main.add(confirmButton);
+		content.add(confirmButton);
 
 		vibrateButton = new Button("Vibrate");
 		content.add(vibrateButton);

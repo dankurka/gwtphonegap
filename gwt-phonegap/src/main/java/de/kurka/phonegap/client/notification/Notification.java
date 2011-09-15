@@ -15,104 +15,31 @@
  */
 package de.kurka.phonegap.client.notification;
 
+/**
+ * 
+ * @see {@link http://docs.phonegap.com/phonegap_notification_notification.md.html}
+ * 
+ * @author Daniel Kurka
+ *
+ */
 public interface Notification {
 
-	/**
-	 * {@link NotificationMobileImpl#alert(String, String, String)}
-	 */
 	public void alert(String message);
 
-	/**
-	 * {@link NotificationMobileImpl#alert(String, String, String)}
-	 */
-	public void alert(String message, String title);
+	public void alert(String message, AlertCallback callback);
 
-	/**
-	 * Shows an alert or dialog box.
-	 * 
-	 * Most PhoneGap implementations use a native dialog box for this feature.
-	 * However, some platforms simply use the browser's alert function, which is
-	 * typically less customizable.
-	 * 
-	 * <h1>Supported Platforms:</h1>
-	 * 
-	 * <ul>
-	 * <li>Android</li>
-	 * <li>BlackBerry (OS 4.6)</li>
-	 * <li>BlackBerry Widgets (OS 5.0 and higher)</li>
-	 * <li>iPhone</li>
-	 * </ul>
-	 * 
-	 * @param message
-	 * @param title
-	 * @param buttonName
-	 * 
-	 */
-	public void alert(String message, String title, String buttonName);
+	public void alert(String message, AlertCallback callback, String title);
 
-	/**
-	 * The device will play a beep sound.
-	 * 
-	 * <h1>Supported Platforms:</h1>
-	 * 
-	 * <ul>
-	 * <li>Android</li>
-	 * <li>BlackBerry (OS 4.6)</li>
-	 * <li>BlackBerry Widgets (OS 5.0 and higher)</li>
-	 * <li>iPhone</li>
-	 * </ul>
-	 * 
-	 * 
-	 * <h1>Android Quirks</h1>
-	 * 
-	 * <ul>
-	 * <li>Android plays the default "Notification ringtone" specified under the
-	 * "Settings/Sound & Display" panel.</li>
-	 * </ul>
-	 * 
-	 * 
-	 * <h1>iPhone Quirks</h1>
-	 * 
-	 * <ul>
-	 * <li>Ignores the beep count argument.</li>
-	 * <li>There is no native beep API for iPhone.
-	 * <ul>
-	 * <li>PhoneGap implements beep by playing an audio file via the media API.</li>
-	 * <li>The user must provide a file with the desired beep tone.</li>
-	 * <li>This file must be less than 30 seconds long, located in the www/
-	 * root, and must be named beep.wav.</li>
-	 * </ul>
-	 * </li>
-	 * </ul>
-	 * 
-	 * @param count
-	 *            The number of times to repeat the beep
-	 */
+	public void alert(String message, AlertCallback callback, String title, String buttonName);
+
+	public void confirm(String message, ConfirmCallback callback);
+
+	public void confirm(String message, ConfirmCallback callback, String title);
+
+	public void confirm(String message, ConfirmCallback callback, String title, String[] buttonLabels);
+
 	public void beep(int count);
 
-	/**
-	 * Vibrates the device for the specified amount of time.
-	 * 
-	 * <h1>Supported Platforms:</h1>
-	 * 
-	 * <ul>
-	 * <li>Android</li>
-	 * <li>BlackBerry (OS 4.6)</li>
-	 * <li>BlackBerry Widgets (OS 5.0 and higher)</li>
-	 * <li>iPhone</li>
-	 * </ul>
-	 * 
-	 * 
-	 * <h1>iPhone Quirks</h1>
-	 * <ul>
-	 * <li>time: Ignores the time and vibrates for a pre-set amount of time.</li>
-	 * </ul>
-	 * 
-	 * 
-	 * @param milliseconds
-	 *            Milliseconds to vibrate the device. 1000 milliseconds equals 1
-	 *            second
-	 */
 	public void vibrate(int milliseconds);
 
 }

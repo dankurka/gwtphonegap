@@ -26,24 +26,52 @@ public class NotificationBrowserImpl implements Notification {
 	}
 
 	@Override
-	public void alert(String message, String title) {
-		alert(message);
-
-	}
-
-	@Override
-	public void alert(String message, String title, String buttonName) {
-		alert(message);
-
-	}
-
-	@Override
 	public void beep(int count) {
 
 	}
 
 	@Override
 	public void vibrate(int milliseconds) {
+
+	}
+
+	@Override
+	public void alert(String message, AlertCallback callback) {
+		Window.alert(message);
+		callback.onOkButtonClicked();
+
+	}
+
+	@Override
+	public void alert(String message, AlertCallback callback, String title) {
+		alert(message, callback);
+
+	}
+
+	@Override
+	public void alert(String message, AlertCallback callback, String title, String buttonName) {
+		alert(message, callback);
+
+	}
+
+	@Override
+	public void confirm(String message, ConfirmCallback callback) {
+		boolean confirm = Window.confirm(message);
+		//TODO is this correct?
+		//take a look into at phonegap docs
+		callback.onConfirm(confirm ? 0 : 1);
+
+	}
+
+	@Override
+	public void confirm(String message, ConfirmCallback callback, String title) {
+		confirm(message, callback);
+
+	}
+
+	@Override
+	public void confirm(String message, ConfirmCallback callback, String title, String[] buttonLabels) {
+		confirm(message, callback);
 
 	}
 
