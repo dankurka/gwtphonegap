@@ -63,6 +63,21 @@
         </all>
     </replace-with>
     
+    
+    <!-- Capture -->
+    <replace-with class="de.kurka.phonegap.client.capture.js.CaptureJsImpl">
+        <when-type-is class="de.kurka.phonegap.client.capture.Capture"/>
+        <all>
+            <when-property-is name="phonegap.env" value="yes"/>
+        </all>
+    </replace-with>
+    <replace-with class="de.kurka.phonegap.client.capture.browser.CaptureBrowserImpl">
+        <when-type-is class="de.kurka.phonegap.client.capture.Capture"/>
+        <all>
+            <when-property-is name="phonegap.env" value="no"/>
+        </all>
+    </replace-with>
+    
      <!-- Compass -->
     <replace-with class="de.kurka.phonegap.client.compass.js.CompassJsImpl">
         <when-type-is class="de.kurka.phonegap.client.compass.Compass"/>

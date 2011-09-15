@@ -19,6 +19,7 @@ import com.google.gwt.event.shared.HandlerRegistration;
 
 import de.kurka.phonegap.client.accelerometer.Accelerometer;
 import de.kurka.phonegap.client.camera.Camera;
+import de.kurka.phonegap.client.capture.Capture;
 import de.kurka.phonegap.client.compass.Compass;
 import de.kurka.phonegap.client.connection.Connection;
 import de.kurka.phonegap.client.contacts.Contacts;
@@ -158,5 +159,7 @@ public interface PhoneGap {
 	public MediaModule getMedia();
 
 	public Compass getCompass();
+
+	public Capture getCapture();
 
 }
