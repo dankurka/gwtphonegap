@@ -13,37 +13,18 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.phonegap.client.accelerometer;
+package de.kurka.phonegap.client.accelerometer.js;
 
-import java.util.Date;
+import de.kurka.phonegap.client.accelerometer.AccelerometerWatcher;
 
-/**
- * Contains {@link Accelerometer} data captured at a specific point in time.
- * 
- * @author Daniel Kurka
- * 
- */
-public interface Acceleration {
+public class AccelerometerWatcherJsImpl implements AccelerometerWatcher {
+	private final String id;
 
-	/**
-	 * Amount of motion on the x-axis. Range [0, 1]
-	 */
-	public double getX();
+	public AccelerometerWatcherJsImpl(String id) {
+		this.id = id;
+	}
 
-	/**
-	 * Amount of motion on the y-axis. Range [0, 1]
-	 */
-	public double getY();
-
-	/**
-	 * Amount of motion on the z-axis. Range [0, 1]
-	 */
-
-	public double getZ();
-
-	/**
-	 * Time of the Acceleration capture
-	 */
-	public Date getTimeStamp();
-
+	public String getId() {
+		return id;
+	}
 }

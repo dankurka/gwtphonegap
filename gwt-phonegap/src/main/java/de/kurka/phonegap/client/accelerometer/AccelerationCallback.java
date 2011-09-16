@@ -15,6 +15,11 @@
  */
 package de.kurka.phonegap.client.accelerometer;
 
+/**
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public interface AccelerationCallback {
 	public void onSuccess(Acceleration acceleration);
 

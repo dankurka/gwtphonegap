@@ -13,7 +13,12 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.phonegap.client.accelerometer;
+package de.kurka.phonegap.client.accelerometer.js;
+
+import de.kurka.phonegap.client.accelerometer.AccelerationCallback;
+import de.kurka.phonegap.client.accelerometer.AccelerationOptions;
+import de.kurka.phonegap.client.accelerometer.Accelerometer;
+import de.kurka.phonegap.client.accelerometer.AccelerometerWatcher;
 
 /**
  * Captures device motion in the x, y, and z direction.
@@ -46,11 +51,14 @@ public class AccelerometerMobileImpl implements Accelerometer {
 				$entry(successCallback), $entry(errorCallback), localOptions);
 	}-*/;
 
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.accelerometer.Accelerometer#watchAcceleration(de.kurka.phonegap.client.accelerometer.AccelerationOptions, de.kurka.phonegap.client.accelerometer.AccelerationCallback)
-	 */
 	@Override
-	public native AccelerometerWatcher watchAcceleration(AccelerationOptions options, AccelerationCallback accelerationCallback) /*-{
+	public AccelerometerWatcher watchAcceleration(AccelerationOptions options, AccelerationCallback accelerationCallback) {
+		String id = watchAcceleration0(options, accelerationCallback);
+
+		return new AccelerometerWatcherJsImpl(id);
+	}
+
+	private native String watchAcceleration0(AccelerationOptions options, AccelerationCallback accelerationCallback) /*-{
 		var sc = function(data) {
 			accelerationCallback.@de.kurka.phonegap.client.accelerometer.AccelerationCallback::onSuccess(Lde/kurka/phonegap/client/accelerometer/Acceleration;)(data);
 		};
@@ -68,23 +76,21 @@ public class AccelerometerMobileImpl implements Accelerometer {
 		var idv = $wnd.navigator.accelerometer.watchAcceleration($entry(sc),
 				$entry(ec), localOptions);
 
-		var watcher = {
-			id : idv
-		};
-
-		return watcher;
+		return idv;
 
 	}-*/;
 
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.accelerometer.Accelerometer#clearWatch(de.kurka.phonegap.client.accelerometer.AccelerometerWatcher)
-	 */
 	@Override
-	public native void clearWatch(AccelerometerWatcher watcher) /*-{
-		alert(watcher);
-		alert(typeof (watcher));
-		alert(typeof (watcher.id));
-		alert(watcher);
-		$wnd.navigator.accelerometer.clearWatch(watcher.id);
+	public void clearWatch(AccelerometerWatcher watcher) {
+		if (!(watcher instanceof AccelerometerWatcherJsImpl)) {
+			throw new IllegalStateException("this should not happen - can only clear Watchers you got from watchAcceleration");
+		}
+		AccelerometerWatcherJsImpl watcherImpl = (AccelerometerWatcherJsImpl) watcher;
+		clearWatch0(watcherImpl.getId());
+
+	}
+
+	private native void clearWatch0(String id) /*-{
+		$wnd.navigator.accelerometer.clearWatch(id);
 	}-*/;
 }

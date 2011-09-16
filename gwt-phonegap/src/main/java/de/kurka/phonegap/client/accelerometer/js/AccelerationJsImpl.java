@@ -13,12 +13,41 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.phonegap.client.accelerometer;
+package de.kurka.phonegap.client.accelerometer.js;
+
+import java.util.Date;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
-public class AccelerometerWatcherJsImpl extends JavaScriptObject implements AccelerometerWatcher {
-	protected AccelerometerWatcherJsImpl() {
+import de.kurka.phonegap.client.accelerometer.Acceleration;
 
+public final class AccelerationJsImpl extends JavaScriptObject implements Acceleration {
+
+	protected AccelerationJsImpl() {
+
+	}
+
+	@Override
+	public native double getX()/*-{
+		return this.x;
+	}-*/;
+
+	@Override
+	public native double getY()/*-{
+		return this.y;
+	}-*/;
+
+	@Override
+	public native double getZ()/*-{
+		return this.z;
+	}-*/;
+
+	private native double getTimeStamp0()/*-{
+		return this.timestamp;
+	}-*/;
+
+	@Override
+	public Date getTimeStamp() {
+		return new Date(Math.round(getTimeStamp0()));
 	}
 }

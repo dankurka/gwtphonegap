@@ -13,20 +13,24 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.phonegap.client.accelerometer;
+package de.kurka.phonegap.client.accelerometer.browser;
+
+import java.util.Date;
+
+import de.kurka.phonegap.client.accelerometer.Acceleration;
 
 public class AccelerationBrowserImpl implements Acceleration {
 
 	private final double x;
 	private final double y;
 	private final double z;
-	private final long timestamp;
+	private final Date timestamp;
 
 	public AccelerationBrowserImpl(double x, double y, double z) {
 		this.x = x;
 		this.y = y;
 		this.z = z;
-		this.timestamp = System.currentTimeMillis();
+		this.timestamp = new Date();
 
 	}
 
@@ -46,7 +50,7 @@ public class AccelerationBrowserImpl implements Acceleration {
 	}
 
 	@Override
-	public double getTimeStamp() {
+	public Date getTimeStamp() {
 		return timestamp;
 	}
 

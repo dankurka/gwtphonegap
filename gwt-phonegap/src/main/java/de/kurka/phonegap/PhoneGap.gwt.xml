@@ -36,13 +36,13 @@
     </replace-with>
     
     <!-- Accelerometer -->
-    <replace-with class="de.kurka.phonegap.client.accelerometer.AccelerometerMobileImpl">
+    <replace-with class="de.kurka.phonegap.client.accelerometer.js.AccelerometerMobileImpl">
         <when-type-is class="de.kurka.phonegap.client.accelerometer.Accelerometer"/>
         <all>
             <when-property-is name="phonegap.env" value="yes"/>
         </all>
     </replace-with>
-    <replace-with class="de.kurka.phonegap.client.accelerometer.AccelerometerBrowserImpl">
+    <replace-with class="de.kurka.phonegap.client.accelerometer.browser.AccelerometerBrowserImpl">
         <when-type-is class="de.kurka.phonegap.client.accelerometer.Accelerometer"/>
         <all>
             <when-property-is name="phonegap.env" value="no"/>

@@ -13,9 +13,14 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.phonegap.client.accelerometer;
+package de.kurka.phonegap.client.accelerometer.browser;
 
 import com.google.gwt.user.client.Timer;
+
+import de.kurka.phonegap.client.accelerometer.AccelerationCallback;
+import de.kurka.phonegap.client.accelerometer.AccelerationOptions;
+import de.kurka.phonegap.client.accelerometer.Accelerometer;
+import de.kurka.phonegap.client.accelerometer.AccelerometerWatcher;
 
 public class AccelerometerBrowserImpl implements Accelerometer {
 
