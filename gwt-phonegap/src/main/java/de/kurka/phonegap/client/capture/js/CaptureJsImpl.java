@@ -56,7 +56,7 @@ public class CaptureJsImpl implements Capture {
 	@Override
 	public void captureAudio(CaptureAudioOptions options, CaptureCallback callback) {
 
-		JavaScriptObject gapOptions = createOptions(options.getLimit(), options.getDuration(), options.getMode());
+		JavaScriptObject gapOptions = createOptions(options.getLimit(), options.getDuration(), options.getMode().getType());
 		captureAudio0(gapOptions, callback);
 
 	}
