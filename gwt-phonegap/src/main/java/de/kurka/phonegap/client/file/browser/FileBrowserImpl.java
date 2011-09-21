@@ -4,6 +4,7 @@ import de.kurka.phonegap.client.file.EntryBase;
 import de.kurka.phonegap.client.file.File;
 import de.kurka.phonegap.client.file.FileCallback;
 import de.kurka.phonegap.client.file.FileError;
+import de.kurka.phonegap.client.file.FileReader;
 import de.kurka.phonegap.client.file.FileSystem;
 import de.kurka.phonegap.client.file.FileTransfer;
 import de.kurka.phonegap.client.file.FileTransferError;
@@ -42,6 +43,12 @@ public class FileBrowserImpl implements File {
 
 			}
 		};
+	}
+
+	@Override
+	public FileReader createReader() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

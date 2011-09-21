@@ -18,6 +18,10 @@ public class FileEntryJsImpl implements FileEntry {
 		this.entry = entry;
 	}
 
+	public JavaScriptObject getEntry() {
+		return entry;
+	}
+
 	@Override
 	public native String getName() /*-{
 		return (this.@de.kurka.phonegap.client.file.js.DirectoryEntryJsImpl::entry).name;

@@ -6,6 +6,7 @@ import de.kurka.phonegap.client.file.EntryBase;
 import de.kurka.phonegap.client.file.File;
 import de.kurka.phonegap.client.file.FileCallback;
 import de.kurka.phonegap.client.file.FileError;
+import de.kurka.phonegap.client.file.FileReader;
 import de.kurka.phonegap.client.file.FileSystem;
 import de.kurka.phonegap.client.file.FileTransfer;
 
@@ -61,6 +62,11 @@ public class FileJsImpl implements File {
 	@Override
 	public native FileTransfer createFileTransfer() /*-{
 		return new $wnd.FileTransfer();
+	}-*/;
+
+	@Override
+	public native FileReader createReader()/*-{
+		return new $wnd.FileReader();
 	}-*/;
 
 }

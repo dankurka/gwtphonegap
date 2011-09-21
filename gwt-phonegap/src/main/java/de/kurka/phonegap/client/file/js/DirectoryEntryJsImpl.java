@@ -215,7 +215,7 @@ public class DirectoryEntryJsImpl implements DirectoryEntry {
 	}
 
 	@Override
-	public native void getFile(String path, Flags flags, FileCallback<DirectoryEntry, FileError> callback) /*-{
+	public native void getFile(String path, Flags flags, FileCallback<FileEntry, FileError> callback) /*-{
 		var that = this;
 
 		var fail = function(error) {

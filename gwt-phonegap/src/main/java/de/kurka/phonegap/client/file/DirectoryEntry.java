@@ -22,7 +22,7 @@ public interface DirectoryEntry {
 
 	public void getDirectory(String path, Flags flags, FileCallback<DirectoryEntry, FileError> callback);
 
-	public void getFile(String path, Flags flags, FileCallback<DirectoryEntry, FileError> callback);
+	public void getFile(String path, Flags flags, FileCallback<FileEntry, FileError> callback);
 
 	public void removeRecursively(FileCallback<Boolean, FileError> callback);
 

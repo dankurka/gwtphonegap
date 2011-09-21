@@ -12,4 +12,6 @@ public interface File {
 	public void resolveLocalFileSystemURI(String url, FileCallback<EntryBase, FileError> callback);
 
 	public FileTransfer createFileTransfer();
+
+	public FileReader createReader();
 }
