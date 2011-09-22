@@ -74,7 +74,7 @@ public class DirectoryEntryBrowserImpl implements DirectoryEntry, EntryBase {
 
 	@Override
 	public void remove(FileCallback<Boolean, FileError> callback) {
-		// TODO Auto-generated method stub
+		controller.removeDirectory(getFullPath(), callback);
 
 	}
 
@@ -109,7 +109,7 @@ public class DirectoryEntryBrowserImpl implements DirectoryEntry, EntryBase {
 	public void getFile(String path, Flags flags, FileCallback<FileEntry, FileError> callback) {
 		String absPath;
 		if (path.startsWith("/")) {
-			//absolute
+			// absolute
 			absPath = path;
 		} else {
 			absPath = getFullPath() + "/" + path;
