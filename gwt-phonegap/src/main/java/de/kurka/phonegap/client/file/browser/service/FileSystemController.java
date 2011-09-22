@@ -245,4 +245,27 @@ public class FileSystemController {
 		});
 
 	}
+
+	public void removeDirectory(String fullPath, final FileCallback<Boolean, FileError> callback) {
+		service.removeDirectory(fullPath, new AsyncCallback<Boolean>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				if (caught instanceof FileErrorException) {
+					FileErrorException fileErrorException = (FileErrorException) caught;
+					callback.onFailure(fileErrorException);
+				} else {
+					callback.onFailure(new FileErrorException(FileError.INVALID_STATE_ERR));
+				}
+
+			}
+
+			@Override
+			public void onSuccess(Boolean result) {
+				callback.onSuccess(Boolean.TRUE);
+
+			}
+		});
+
+	}
 }

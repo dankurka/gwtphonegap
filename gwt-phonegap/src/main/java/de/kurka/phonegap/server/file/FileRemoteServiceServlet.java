@@ -326,4 +326,25 @@ public class FileRemoteServiceServlet extends RemoteServiceServlet implements Fi
 
 		return dto;
 	}
+
+	@Override
+	public Boolean removeDirectory(String fullPath) throws FileErrorException {
+		File basePath = new File(path);
+
+		File file = new File(basePath, fullPath);
+
+		ensureLocalRoot(basePath, file);
+
+		if (!file.isDirectory()) {
+			throw new FileErrorException(FileError.INVALID_MODIFICATION_ERR);
+		}
+
+		file.delete();
+		if (logger.isLoggable(Level.INFO)) {
+			logger.info("Deleted: '" + file.getAbsolutePath() + "'");
+		}
+
+		return Boolean.TRUE;
+
+	}
 }

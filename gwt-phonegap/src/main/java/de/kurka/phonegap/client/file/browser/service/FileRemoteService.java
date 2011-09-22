@@ -45,4 +45,6 @@ public interface FileRemoteService extends RemoteService {
 
 	FileSystemEntryDTO getFile(String absPath, FlagsDTO flagsDTO) throws FileErrorException;
 
+	Boolean removeDirectory(String fullPath) throws FileErrorException;
+
 }

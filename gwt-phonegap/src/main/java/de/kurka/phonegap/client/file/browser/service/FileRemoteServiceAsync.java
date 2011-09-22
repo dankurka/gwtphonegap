@@ -55,4 +55,6 @@ public interface FileRemoteServiceAsync {
 	 */
 	void getFile(String absPath, FlagsDTO flagsDTO, AsyncCallback<FileSystemEntryDTO> callback);
 
+	void removeDirectory(String fullPath, AsyncCallback<Boolean> callback);
+
 }
