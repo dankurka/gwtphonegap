@@ -109,7 +109,7 @@ public class FileEntryBrowserImpl implements FileEntry, EntryBase {
 	 */
 	@Override
 	public void createWriter(FileCallback<FileWriter, FileError> callback) {
-		// TODO Auto-generated method stub
+		controller.createWriter(this, callback);
 
 	}
 

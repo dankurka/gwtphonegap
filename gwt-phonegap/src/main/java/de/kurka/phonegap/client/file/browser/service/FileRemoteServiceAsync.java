@@ -21,6 +21,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import de.kurka.phonegap.client.file.browser.dto.FileSystemDTO;
 import de.kurka.phonegap.client.file.browser.dto.FileSystemEntryDTO;
+import de.kurka.phonegap.client.file.browser.dto.FileWriterDTO;
 
 public interface FileRemoteServiceAsync {
 
@@ -38,5 +39,9 @@ public interface FileRemoteServiceAsync {
 	 * @param callback
 	 */
 	void readAsText(String fullPath, AsyncCallback<String> callback);
+
+	void createWriter(String fullPath, String name, AsyncCallback<FileWriterDTO> asyncCallback);
+
+	void writeFile(FileWriterDTO fileWriterDTO, String content, AsyncCallback<FileWriterDTO> callback);
 
 }

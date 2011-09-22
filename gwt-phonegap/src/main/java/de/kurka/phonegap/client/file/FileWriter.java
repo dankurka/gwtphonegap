@@ -1,6 +1,10 @@
 package de.kurka.phonegap.client.file;
 
 public interface FileWriter {
+	public static final int INIT = 0;
+	public static final int WRITING = 1;
+	public static final int DONE = 2;
+
 	public int getReadyState();
 
 	public String getFileName();

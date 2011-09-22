@@ -3,9 +3,9 @@ package de.kurka.phonegap.showcase.client.file;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
-import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HasHTML;
+import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.IsWidget;
 
 import de.kurka.gwt.collection.shared.LightArray;
@@ -18,7 +18,9 @@ import de.kurka.phonegap.client.file.FileEntry;
 import de.kurka.phonegap.client.file.FileError;
 import de.kurka.phonegap.client.file.FileReader;
 import de.kurka.phonegap.client.file.FileSystem;
+import de.kurka.phonegap.client.file.FileWriter;
 import de.kurka.phonegap.client.file.ReaderCallback;
+import de.kurka.phonegap.client.file.WriterCallback;
 
 public class FilePresenter {
 
@@ -37,7 +39,11 @@ public class FilePresenter {
 
 		public HasClickHandlers goUpButton();
 
-		public HasHTML getFileContent();
+		public HasText getFileContent();
+
+		public HasClickHandlers getFileUpdateButton();
+
+		boolean confirm(String string);
 
 	}
 
@@ -90,6 +96,50 @@ public class FilePresenter {
 				}
 			}
 		});
+
+		display.getFileUpdateButton().addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				if (display.confirm("Really rewrite file?")) {
+					if (currentFile != null) {
+						currentFile.createWriter(new FileCallback<FileWriter, FileError>() {
+
+							@Override
+							public void onSuccess(FileWriter entry) {
+								entry.setOnWriteEndCallback(new WriterCallback<FileWriter>() {
+
+									@Override
+									public void onCallback(FileWriter result) {
+										Window.alert("file written");
+
+									}
+								});
+
+								entry.setOnErrorCallback(new WriterCallback<FileWriter>() {
+
+									@Override
+									public void onCallback(FileWriter result) {
+										Window.alert("error while writing file");
+
+									}
+								});
+								entry.write(display.getFileContent().getText());
+
+							}
+
+							@Override
+							public void onFailure(FileError error) {
+								Window.alert("can not create writer");
+
+							}
+						});
+					}
+				}
+
+			}
+		});
+
 	}
 
 	private void gotFileSyste(FileSystem fileSystem) {
@@ -136,7 +186,7 @@ public class FilePresenter {
 		readFile(fileEntry);
 	}
 
-	private void readFile(FileEntry fileEntry) {
+	private void readFile(final FileEntry fileEntry) {
 		FileReader reader = phoneGap.getFile().createReader();
 
 		reader.setOnloadCallback(new ReaderCallback<FileReader>() {
@@ -144,11 +194,11 @@ public class FilePresenter {
 			@Override
 			public void onCallback(FileReader result) {
 
-				String result2 = result.getResult();
-
-				String htmlEscape = SafeHtmlUtils.htmlEscape(result2);
-				display.getFileContent().setHTML("Content: '<textarea style='width: 300px; height: 300px;'>" + htmlEscape + "</textarea>");
-
+				//				String result2 = result.getResult();
+				//
+				//				String htmlEscape = SafeHtmlUtils.htmlEscape(result2);
+				display.getFileContent().setText(result.getResult());
+				currentFile = fileEntry;
 			}
 		});
 
@@ -156,7 +206,7 @@ public class FilePresenter {
 
 			@Override
 			public void onCallback(FileReader result) {
-				display.getFileContent().setHTML("Error while reading file");
+				display.getFileContent().setText("Error while reading file");
 
 			}
 		});
@@ -167,6 +217,8 @@ public class FilePresenter {
 	private LightArray<EntryBase> currentEntries;
 
 	private DirectoryEntry currentDir;
+
+	private FileEntry currentFile;
 
 	private void listDirectory(int index) {
 		listDirectory(currentEntries.get(index).getAsDirectoryEntry());

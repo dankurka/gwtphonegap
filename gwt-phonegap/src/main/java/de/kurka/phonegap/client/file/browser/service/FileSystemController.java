@@ -28,12 +28,15 @@ import de.kurka.phonegap.client.file.FileCallback;
 import de.kurka.phonegap.client.file.FileEntry;
 import de.kurka.phonegap.client.file.FileError;
 import de.kurka.phonegap.client.file.FileSystem;
+import de.kurka.phonegap.client.file.FileWriter;
 import de.kurka.phonegap.client.file.browser.DirectoryEntryBrowserImpl;
 import de.kurka.phonegap.client.file.browser.FileEntryBrowserImpl;
 import de.kurka.phonegap.client.file.browser.FileErrorException;
 import de.kurka.phonegap.client.file.browser.FileSystemBrowserImpl;
+import de.kurka.phonegap.client.file.browser.FileWriterBrowserImpl;
 import de.kurka.phonegap.client.file.browser.dto.FileSystemDTO;
 import de.kurka.phonegap.client.file.browser.dto.FileSystemEntryDTO;
+import de.kurka.phonegap.client.file.browser.dto.FileWriterDTO;
 
 /**
  * @author Daniel Kurka
@@ -142,6 +145,43 @@ public class FileSystemController {
 	 */
 	public void readAsText(FileEntry entry, AsyncCallback<String> callback) {
 		service.readAsText(entry.getFullPath(), callback);
+
+	}
+
+	/**
+	 * @param fileEntryBrowserImpl
+	 * @param callback
+	 */
+	public void createWriter(FileEntryBrowserImpl fileEntryBrowserImpl, final FileCallback<FileWriter, FileError> callback) {
+		service.createWriter(fileEntryBrowserImpl.getFullPath(), fileEntryBrowserImpl.getName(), new AsyncCallback<FileWriterDTO>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				if (caught instanceof FileErrorException) {
+					FileErrorException fileErrorException = (FileErrorException) caught;
+					callback.onFailure(fileErrorException);
+				} else {
+					callback.onFailure(new FileErrorException(FileError.INVALID_STATE_ERR));
+				}
+
+			}
+
+			@Override
+			public void onSuccess(FileWriterDTO result) {
+				FileWriterBrowserImpl fileWriterBrowserImpl = new FileWriterBrowserImpl(result, FileSystemController.this);
+				callback.onSuccess(fileWriterBrowserImpl);
+
+			}
+		});
+	}
+
+	/**
+	 * @param result
+	 * @param text
+	 * @param callback
+	 */
+	public void writeFile(FileWriterDTO result, String text, AsyncCallback<FileWriterDTO> callback) {
+		service.writeFile(result, text, callback);
 
 	}
 }

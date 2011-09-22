@@ -17,6 +17,7 @@ package de.kurka.phonegap.server.file;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -30,6 +31,7 @@ import de.kurka.phonegap.client.file.FileError;
 import de.kurka.phonegap.client.file.browser.FileErrorException;
 import de.kurka.phonegap.client.file.browser.dto.FileSystemDTO;
 import de.kurka.phonegap.client.file.browser.dto.FileSystemEntryDTO;
+import de.kurka.phonegap.client.file.browser.dto.FileWriterDTO;
 import de.kurka.phonegap.client.file.browser.service.FileRemoteService;
 
 /**
@@ -200,4 +202,84 @@ public class FileRemoteServiceServlet extends RemoteServiceServlet implements Fi
 
 	}
 
+	/* (non-Javadoc)
+	 * @see de.kurka.phonegap.client.file.browser.service.FileRemoteService#createWriter(java.lang.String)
+	 */
+	@Override
+	public FileWriterDTO createWriter(String relativePath, String name) throws FileErrorException {
+		File basePath = new File(path);
+
+		File file = new File(basePath, relativePath);
+
+		ensureLocalRoot(basePath, file);
+
+		if (!file.exists()) {
+			throw new FileErrorException(FileError.NOT_FOUND_ERR);
+		}
+
+		long fileLength = file.length();
+		long position = 0;
+
+		return new FileWriterDTO(relativePath, name, fileLength, position);
+	}
+
+	/* (non-Javadoc)
+	 * @see de.kurka.phonegap.client.file.browser.service.FileRemoteService#writeFile(de.kurka.phonegap.client.file.browser.dto.FileWriterDTO)
+	 */
+	@Override
+	public FileWriterDTO writeFile(FileWriterDTO fileWriterDTO, String content) throws FileErrorException {
+		File basePath = new File(path);
+
+		File file = new File(basePath, fileWriterDTO.getFullPath());
+
+		ensureLocalRoot(basePath, file);
+
+		if (!file.exists()) {
+			throw new FileErrorException(FileError.NOT_FOUND_ERR);
+		}
+
+		try {
+
+			String fileInString = FileUtils.readFileToString(file);
+
+			StringBuffer buffer = new StringBuffer(fileInString);
+
+			int position;
+
+			if (fileWriterDTO.getPosition() == 0) {
+				buffer.append(content);
+				if (fileInString.length() > content.length()) {
+					buffer.append(fileInString.substring(content.length()));
+				}
+				position = content.length();
+			} else {
+				int end = (int) fileWriterDTO.getPosition();
+				if (end > fileInString.length()) {
+					end = fileInString.length();
+				}
+				String start = fileInString.substring(0, end);
+				buffer.append(start);
+
+				buffer.append(content);
+
+				int oldIndex = buffer.length();
+				if (oldIndex < fileInString.length()) {
+					buffer.append(fileInString.substring(oldIndex));
+				}
+				position = oldIndex;
+			}
+
+			FileWriter fileWriter = new FileWriter(file);
+			fileWriter.write(content);
+			fileWriter.close();
+
+			fileWriterDTO.setPosition(position);
+			fileWriterDTO.setSize(file.length());
+
+			return fileWriterDTO;
+		} catch (IOException e) {
+			throw new FileErrorException(FileError.NO_MODIFICATION_ALLOWED_ERR);
+		}
+
+	}
 }

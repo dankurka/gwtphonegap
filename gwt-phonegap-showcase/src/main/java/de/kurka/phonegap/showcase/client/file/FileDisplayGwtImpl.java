@@ -3,11 +3,14 @@ package de.kurka.phonegap.showcase.client.file;
 import java.util.ArrayList;
 
 import com.google.gwt.event.dom.client.HasClickHandlers;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DisclosurePanel;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHTML;
+import com.google.gwt.user.client.ui.HasText;
+import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.Widget;
 
 import de.kurka.phonegap.showcase.client.file.FilePresenter.FileDisplay;
@@ -19,7 +22,8 @@ public class FileDisplayGwtImpl implements FileDisplay {
 	private HTML status;
 	private FlowPanel listing;
 	private Button goUpButton;
-	private HTML fileContent;
+	private TextArea fileContent;
+	private Button fileChangeButton;
 
 	public FileDisplayGwtImpl() {
 		main = new DisclosurePanel("File");
@@ -39,8 +43,10 @@ public class FileDisplayGwtImpl implements FileDisplay {
 
 		content.add(new HTML("File Content"));
 
-		fileContent = new HTML();
+		fileContent = new TextArea();
 		content.add(fileContent);
+		fileChangeButton = new Button("overwrite file!");
+		content.add(fileChangeButton);
 
 	}
 
@@ -65,11 +71,8 @@ public class FileDisplayGwtImpl implements FileDisplay {
 	@Override
 	public void addEntry(String name, boolean isDir) {
 		HTML entry = new HTML();
-		if (isDir) {
-			entry.setHTML("<a href=''>" + name + "</a>");
-		} else {
-			entry.setHTML(name);
-		}
+
+		entry.setHTML("<a href=''>" + name + "</a>");
 
 		entries.add(entry);
 		listing.add(entry);
@@ -87,8 +90,18 @@ public class FileDisplayGwtImpl implements FileDisplay {
 	}
 
 	@Override
-	public HasHTML getFileContent() {
+	public HasText getFileContent() {
 		return fileContent;
+	}
+
+	@Override
+	public HasClickHandlers getFileUpdateButton() {
+		return fileChangeButton;
+	}
+
+	@Override
+	public boolean confirm(String string) {
+		return Window.confirm(string);
 	}
 
 }
