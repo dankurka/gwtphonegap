@@ -315,6 +315,10 @@ public class FileRemoteServiceServlet extends RemoteServiceServlet implements Fi
 			}
 		}
 
+		if (!file.exists()) {
+			throw new FileErrorException(FileError.NOT_FOUND_ERR);
+		}
+
 		FileSystemEntryDTO dto = new FileSystemEntryDTO();
 		dto.setFile(true);
 		dto.setFullPath(absPath);
