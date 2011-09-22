@@ -53,7 +53,6 @@ public class FileEntryBrowserImpl implements FileEntry, EntryBase {
 	@Override
 	public void getMetadata(FileCallback<Metadata, FileError> callback) {
 		controller.getMetaData(getFullPath(), callback);
-
 	}
 
 	/* (non-Javadoc)
