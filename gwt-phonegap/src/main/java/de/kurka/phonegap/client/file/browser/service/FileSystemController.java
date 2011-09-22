@@ -29,6 +29,7 @@ import de.kurka.phonegap.client.file.FileEntry;
 import de.kurka.phonegap.client.file.FileError;
 import de.kurka.phonegap.client.file.FileSystem;
 import de.kurka.phonegap.client.file.FileWriter;
+import de.kurka.phonegap.client.file.Flags;
 import de.kurka.phonegap.client.file.Metadata;
 import de.kurka.phonegap.client.file.browser.DirectoryEntryBrowserImpl;
 import de.kurka.phonegap.client.file.browser.FileEntryBrowserImpl;
@@ -39,6 +40,7 @@ import de.kurka.phonegap.client.file.browser.MetaDataBrowserImpl;
 import de.kurka.phonegap.client.file.browser.dto.FileSystemDTO;
 import de.kurka.phonegap.client.file.browser.dto.FileSystemEntryDTO;
 import de.kurka.phonegap.client.file.browser.dto.FileWriterDTO;
+import de.kurka.phonegap.client.file.browser.dto.FlagsDTO;
 import de.kurka.phonegap.client.file.browser.dto.MetaDataDTO;
 
 /**
@@ -210,6 +212,29 @@ public class FileSystemController {
 			public void onSuccess(MetaDataDTO result) {
 
 				callback.onSuccess(new MetaDataBrowserImpl(result));
+
+			}
+		});
+
+	}
+
+	/**
+	 * @param absPath
+	 * @param flags
+	 * @param callback
+	 */
+	public void getFile(String absPath, Flags flags, FileCallback<FileEntry, FileError> callback) {
+		service.getFile(absPath, new FlagsDTO(flags), new AsyncCallback<FileSystemEntryDTO>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void onSuccess(FileSystemEntryDTO result) {
+				// TODO Auto-generated method stub
 
 			}
 		});

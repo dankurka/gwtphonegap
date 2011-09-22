@@ -50,7 +50,7 @@ public class DirectoryEntryBrowserImpl implements DirectoryEntry, EntryBase {
 
 	@Override
 	public void getMetadata(FileCallback<Metadata, FileError> callback) {
-		// TODO Auto-generated method stub
+		controller.getMetaData(getFullPath(), callback);
 
 	}
 
@@ -107,7 +107,14 @@ public class DirectoryEntryBrowserImpl implements DirectoryEntry, EntryBase {
 
 	@Override
 	public void getFile(String path, Flags flags, FileCallback<FileEntry, FileError> callback) {
-		// TODO Auto-generated method stub
+		String absPath;
+		if (path.startsWith("/")) {
+			//absolute
+			absPath = path;
+		} else {
+			absPath = getFullPath() + "/" + path;
+		}
+		controller.getFile(absPath, flags, callback);
 
 	}
 

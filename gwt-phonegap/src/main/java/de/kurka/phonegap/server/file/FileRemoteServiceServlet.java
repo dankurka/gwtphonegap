@@ -33,6 +33,7 @@ import de.kurka.phonegap.client.file.browser.FileErrorException;
 import de.kurka.phonegap.client.file.browser.dto.FileSystemDTO;
 import de.kurka.phonegap.client.file.browser.dto.FileSystemEntryDTO;
 import de.kurka.phonegap.client.file.browser.dto.FileWriterDTO;
+import de.kurka.phonegap.client.file.browser.dto.FlagsDTO;
 import de.kurka.phonegap.client.file.browser.dto.MetaDataDTO;
 import de.kurka.phonegap.client.file.browser.service.FileRemoteService;
 
@@ -285,9 +286,6 @@ public class FileRemoteServiceServlet extends RemoteServiceServlet implements Fi
 
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.file.browser.service.FileRemoteService#getMetaData(java.lang.String)
-	 */
 	@Override
 	public MetaDataDTO getMetaData(String fullPath) throws FileErrorException {
 		File basePath = new File(path);
@@ -297,5 +295,31 @@ public class FileRemoteServiceServlet extends RemoteServiceServlet implements Fi
 		ensureLocalRoot(basePath, file);
 
 		return new MetaDataDTO(new Date(file.lastModified()));
+	}
+
+	@Override
+	public FileSystemEntryDTO getFile(String absPath, FlagsDTO flagsDTO) throws FileErrorException {
+		File basePath = new File(path);
+
+		File file = new File(basePath, absPath);
+
+		ensureLocalRoot(basePath, file);
+
+		if (flagsDTO.isCreate()) {
+			if (!file.exists()) {
+				try {
+					file.createNewFile();
+				} catch (IOException e) {
+					throw new FileErrorException(FileError.INVALID_MODIFICATION_ERR);
+				}
+			}
+		}
+
+		FileSystemEntryDTO dto = new FileSystemEntryDTO();
+		dto.setFile(true);
+		dto.setFullPath(absPath);
+		dto.setName(file.getName());
+
+		return dto;
 	}
 }
