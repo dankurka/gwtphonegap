@@ -29,14 +29,17 @@ import de.kurka.phonegap.client.file.FileEntry;
 import de.kurka.phonegap.client.file.FileError;
 import de.kurka.phonegap.client.file.FileSystem;
 import de.kurka.phonegap.client.file.FileWriter;
+import de.kurka.phonegap.client.file.Metadata;
 import de.kurka.phonegap.client.file.browser.DirectoryEntryBrowserImpl;
 import de.kurka.phonegap.client.file.browser.FileEntryBrowserImpl;
 import de.kurka.phonegap.client.file.browser.FileErrorException;
 import de.kurka.phonegap.client.file.browser.FileSystemBrowserImpl;
 import de.kurka.phonegap.client.file.browser.FileWriterBrowserImpl;
+import de.kurka.phonegap.client.file.browser.MetaDataBrowserImpl;
 import de.kurka.phonegap.client.file.browser.dto.FileSystemDTO;
 import de.kurka.phonegap.client.file.browser.dto.FileSystemEntryDTO;
 import de.kurka.phonegap.client.file.browser.dto.FileWriterDTO;
+import de.kurka.phonegap.client.file.browser.dto.MetaDataDTO;
 
 /**
  * @author Daniel Kurka
@@ -182,6 +185,34 @@ public class FileSystemController {
 	 */
 	public void writeFile(FileWriterDTO result, String text, AsyncCallback<FileWriterDTO> callback) {
 		service.writeFile(result, text, callback);
+
+	}
+
+	/**
+	 * @param fullPath
+	 * @param callback
+	 */
+	public void getMetaData(String fullPath, final FileCallback<Metadata, FileError> callback) {
+		service.getMetaData(fullPath, new AsyncCallback<MetaDataDTO>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				if (caught instanceof FileErrorException) {
+					FileErrorException fileErrorException = (FileErrorException) caught;
+					callback.onFailure(fileErrorException);
+				} else {
+					callback.onFailure(new FileErrorException(FileError.INVALID_STATE_ERR));
+				}
+
+			}
+
+			@Override
+			public void onSuccess(MetaDataDTO result) {
+
+				callback.onSuccess(new MetaDataBrowserImpl(result));
+
+			}
+		});
 
 	}
 }

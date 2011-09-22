@@ -24,6 +24,7 @@ import de.kurka.phonegap.client.file.browser.FileErrorException;
 import de.kurka.phonegap.client.file.browser.dto.FileSystemDTO;
 import de.kurka.phonegap.client.file.browser.dto.FileSystemEntryDTO;
 import de.kurka.phonegap.client.file.browser.dto.FileWriterDTO;
+import de.kurka.phonegap.client.file.browser.dto.MetaDataDTO;
 
 @RemoteServiceRelativePath("phonegapfileapi")
 public interface FileRemoteService extends RemoteService {
@@ -38,5 +39,7 @@ public interface FileRemoteService extends RemoteService {
 	FileWriterDTO createWriter(String fullPath, String name) throws FileErrorException;
 
 	FileWriterDTO writeFile(FileWriterDTO fileWriterDTO, String content) throws FileErrorException;
+
+	MetaDataDTO getMetaData(String fullPath) throws FileErrorException;
 
 }

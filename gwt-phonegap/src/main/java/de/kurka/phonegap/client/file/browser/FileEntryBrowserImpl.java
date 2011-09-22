@@ -50,12 +50,9 @@ public class FileEntryBrowserImpl implements FileEntry, EntryBase {
 		return dto.getFullPath();
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.file.FileEntry#getMetadata(de.kurka.phonegap.client.file.FileCallback)
-	 */
 	@Override
 	public void getMetadata(FileCallback<Metadata, FileError> callback) {
-		// TODO Auto-generated method stub
+		controller.getMetaData(getFullPath(), callback);
 
 	}
 

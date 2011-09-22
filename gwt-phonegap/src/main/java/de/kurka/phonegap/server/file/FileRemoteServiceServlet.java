@@ -20,6 +20,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -32,6 +33,7 @@ import de.kurka.phonegap.client.file.browser.FileErrorException;
 import de.kurka.phonegap.client.file.browser.dto.FileSystemDTO;
 import de.kurka.phonegap.client.file.browser.dto.FileSystemEntryDTO;
 import de.kurka.phonegap.client.file.browser.dto.FileWriterDTO;
+import de.kurka.phonegap.client.file.browser.dto.MetaDataDTO;
 import de.kurka.phonegap.client.file.browser.service.FileRemoteService;
 
 /**
@@ -281,5 +283,19 @@ public class FileRemoteServiceServlet extends RemoteServiceServlet implements Fi
 			throw new FileErrorException(FileError.NO_MODIFICATION_ALLOWED_ERR);
 		}
 
+	}
+
+	/* (non-Javadoc)
+	 * @see de.kurka.phonegap.client.file.browser.service.FileRemoteService#getMetaData(java.lang.String)
+	 */
+	@Override
+	public MetaDataDTO getMetaData(String fullPath) throws FileErrorException {
+		File basePath = new File(path);
+
+		File file = new File(basePath, fullPath);
+
+		ensureLocalRoot(basePath, file);
+
+		return new MetaDataDTO(new Date(file.lastModified()));
 	}
 }
