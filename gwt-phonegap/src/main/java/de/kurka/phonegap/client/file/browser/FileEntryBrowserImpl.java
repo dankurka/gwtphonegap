@@ -91,12 +91,9 @@ public class FileEntryBrowserImpl implements FileEntry, EntryBase {
 
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.file.FileEntry#getParent(de.kurka.phonegap.client.file.FileCallback)
-	 */
 	@Override
 	public void getParent(FileCallback<DirectoryEntry, FileError> callback) {
-		// TODO Auto-generated method stub
+		controller.readParent(getFullPath(), callback);
 
 	}
 
