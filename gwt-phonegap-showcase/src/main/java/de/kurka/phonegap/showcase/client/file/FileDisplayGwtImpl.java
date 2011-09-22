@@ -24,6 +24,7 @@ public class FileDisplayGwtImpl implements FileDisplay {
 	private Button goUpButton;
 	private TextArea fileContent;
 	private Button fileChangeButton;
+	private Button createFileButton;
 
 	public FileDisplayGwtImpl() {
 		main = new DisclosurePanel("File");
@@ -47,6 +48,9 @@ public class FileDisplayGwtImpl implements FileDisplay {
 		content.add(fileContent);
 		fileChangeButton = new Button("overwrite file!");
 		content.add(fileChangeButton);
+
+		createFileButton = new Button("createFile");
+		content.add(createFileButton);
 
 	}
 
@@ -102,6 +106,28 @@ public class FileDisplayGwtImpl implements FileDisplay {
 	@Override
 	public boolean confirm(String string) {
 		return Window.confirm(string);
+	}
+
+	@Override
+	public HasClickHandlers getFileCreateButton() {
+		return createFileButton;
+	}
+
+	@Override
+	public HasText getFileName() {
+		return new HasText() {
+
+			@Override
+			public void setText(String text) {
+
+			}
+
+			@Override
+			public String getText() {
+				return Window.prompt("Filename", "");
+			}
+		};
+
 	}
 
 }

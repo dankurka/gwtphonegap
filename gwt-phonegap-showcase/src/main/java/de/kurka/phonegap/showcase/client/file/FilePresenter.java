@@ -19,6 +19,7 @@ import de.kurka.phonegap.client.file.FileError;
 import de.kurka.phonegap.client.file.FileReader;
 import de.kurka.phonegap.client.file.FileSystem;
 import de.kurka.phonegap.client.file.FileWriter;
+import de.kurka.phonegap.client.file.Flags;
 import de.kurka.phonegap.client.file.ReaderCallback;
 import de.kurka.phonegap.client.file.WriterCallback;
 
@@ -44,6 +45,10 @@ public class FilePresenter {
 		public HasClickHandlers getFileUpdateButton();
 
 		boolean confirm(String string);
+
+		public HasClickHandlers getFileCreateButton();
+
+		HasText getFileName();
 
 	}
 
@@ -140,6 +145,31 @@ public class FilePresenter {
 			}
 		});
 
+		display.getFileCreateButton().addClickHandler(new ClickHandler() {
+
+			@Override
+			public void onClick(ClickEvent event) {
+				if (currentDir != null) {
+					String fileName = display.getFileName().getText();
+					currentDir.getFile(fileName, new Flags(true, false), new FileCallback<FileEntry, FileError>() {
+
+						@Override
+						public void onSuccess(FileEntry entry) {
+							listDirectory(currentDir);
+
+						}
+
+						@Override
+						public void onFailure(FileError error) {
+							Window.alert("error");
+
+						}
+					});
+				}
+
+			}
+		});
+
 	}
 
 	private void gotFileSyste(FileSystem fileSystem) {
@@ -176,6 +206,7 @@ public class FilePresenter {
 		@Override
 		public void onClick(ClickEvent event) {
 			readFile(index);
+			event.preventDefault();
 
 		}
 
@@ -194,9 +225,9 @@ public class FilePresenter {
 			@Override
 			public void onCallback(FileReader result) {
 
-				//				String result2 = result.getResult();
+				// String result2 = result.getResult();
 				//
-				//				String htmlEscape = SafeHtmlUtils.htmlEscape(result2);
+				// String htmlEscape = SafeHtmlUtils.htmlEscape(result2);
 				display.getFileContent().setText(result.getResult());
 				currentFile = fileEntry;
 			}

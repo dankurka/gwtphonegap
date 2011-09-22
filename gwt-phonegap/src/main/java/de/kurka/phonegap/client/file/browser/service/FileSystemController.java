@@ -223,18 +223,23 @@ public class FileSystemController {
 	 * @param flags
 	 * @param callback
 	 */
-	public void getFile(String absPath, Flags flags, FileCallback<FileEntry, FileError> callback) {
+	public void getFile(String absPath, Flags flags, final FileCallback<FileEntry, FileError> callback) {
 		service.getFile(absPath, new FlagsDTO(flags), new AsyncCallback<FileSystemEntryDTO>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
+				if (caught instanceof FileErrorException) {
+					FileErrorException fileErrorException = (FileErrorException) caught;
+					callback.onFailure(fileErrorException);
+				} else {
+					callback.onFailure(new FileErrorException(FileError.INVALID_STATE_ERR));
+				}
 
 			}
 
 			@Override
 			public void onSuccess(FileSystemEntryDTO result) {
-				// TODO Auto-generated method stub
+				callback.onSuccess(new FileEntryBrowserImpl(result, FileSystemController.this));
 
 			}
 		});
