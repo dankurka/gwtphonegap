@@ -26,17 +26,18 @@ import de.kurka.phonegap.client.file.browser.dto.MetaDataDTO;
  */
 public class MetaDataBrowserImpl implements Metadata {
 
+	private final MetaDataDTO result;
+
 	/**
 	 * @param result
 	 */
 	public MetaDataBrowserImpl(MetaDataDTO result) {
-		// TODO Auto-generated constructor stub
+		this.result = result;
 	}
 
 	@Override
 	public Date getModificationTime() {
-		// TODO Auto-generated method stub
-		return null;
+		return result.getModificationTime();
 	}
 
 }
