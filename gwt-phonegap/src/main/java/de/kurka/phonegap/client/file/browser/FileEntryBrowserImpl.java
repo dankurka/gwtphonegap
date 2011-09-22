@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Daniel Kurka
+ * Copyright 2011 Daniel Kurka
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -15,27 +15,29 @@
  */
 package de.kurka.phonegap.client.file.browser;
 
-import de.kurka.gwt.collection.shared.LightArray;
 import de.kurka.phonegap.client.file.DirectoryEntry;
-import de.kurka.phonegap.client.file.DirectoryReader;
 import de.kurka.phonegap.client.file.EntryBase;
 import de.kurka.phonegap.client.file.FileCallback;
 import de.kurka.phonegap.client.file.FileEntry;
 import de.kurka.phonegap.client.file.FileError;
-import de.kurka.phonegap.client.file.Flags;
+import de.kurka.phonegap.client.file.FileObject;
+import de.kurka.phonegap.client.file.FileWriter;
 import de.kurka.phonegap.client.file.Metadata;
 import de.kurka.phonegap.client.file.browser.dto.FileSystemEntryDTO;
 import de.kurka.phonegap.client.file.browser.service.FileSystemController;
 
-public class DirectoryEntryBrowserImpl implements DirectoryEntry, EntryBase {
-
-	private final FileSystemController controller;
+/**
+ * @author Daniel Kurka
+ * 
+ */
+public class FileEntryBrowserImpl implements FileEntry, EntryBase {
 
 	private FileSystemEntryDTO dto;
+	private final FileSystemController controller;
 
-	public DirectoryEntryBrowserImpl(FileSystemEntryDTO dto, FileSystemController controller) {
-		this.controller = controller;
+	public FileEntryBrowserImpl(FileSystemEntryDTO dto, FileSystemController controller) {
 		this.dto = dto;
+		this.controller = controller;
 	}
 
 	@Override
@@ -48,93 +50,96 @@ public class DirectoryEntryBrowserImpl implements DirectoryEntry, EntryBase {
 		return dto.getFullPath();
 	}
 
+	/* (non-Javadoc)
+	 * @see de.kurka.phonegap.client.file.FileEntry#getMetadata(de.kurka.phonegap.client.file.FileCallback)
+	 */
 	@Override
 	public void getMetadata(FileCallback<Metadata, FileError> callback) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/* (non-Javadoc)
+	 * @see de.kurka.phonegap.client.file.FileEntry#moveTo(de.kurka.phonegap.client.file.DirectoryEntry, java.lang.String, de.kurka.phonegap.client.file.FileCallback)
+	 */
 	@Override
-	public void moveTo(DirectoryEntry parent, String newName, FileCallback<DirectoryEntry, FileError> callback) {
+	public void moveTo(DirectoryEntry parent, String newName, FileCallback<FileEntry, FileError> callback) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/* (non-Javadoc)
+	 * @see de.kurka.phonegap.client.file.FileEntry#copyTo(de.kurka.phonegap.client.file.DirectoryEntry, java.lang.String, de.kurka.phonegap.client.file.FileCallback)
+	 */
 	@Override
-	public void copyTo(DirectoryEntry parent, String newName, FileCallback<DirectoryEntry, FileError> callback) {
+	public void copyTo(DirectoryEntry parent, String newName, FileCallback<FileEntry, FileError> callback) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/* (non-Javadoc)
+	 * @see de.kurka.phonegap.client.file.FileEntry#toURI()
+	 */
 	@Override
 	public String toURI() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see de.kurka.phonegap.client.file.FileEntry#remove(de.kurka.phonegap.client.file.FileCallback)
+	 */
 	@Override
 	public void remove(FileCallback<Boolean, FileError> callback) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/* (non-Javadoc)
+	 * @see de.kurka.phonegap.client.file.FileEntry#getParent(de.kurka.phonegap.client.file.FileCallback)
+	 */
 	@Override
 	public void getParent(FileCallback<DirectoryEntry, FileError> callback) {
-
-		String fullPath = getFullPath();
-
-		controller.readParent(fullPath, callback);
-
-	}
-
-	@Override
-	public DirectoryReader createReader() {
-		return new DirectoryReader() {
-
-			@Override
-			public void readEntries(final FileCallback<LightArray<EntryBase>, FileError> callback) {
-				controller.readDirectory(dto.getFullPath(), callback);
-
-			}
-		};
-	}
-
-	@Override
-	public void getDirectory(String path, Flags flags, FileCallback<DirectoryEntry, FileError> callback) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/* (non-Javadoc)
+	 * @see de.kurka.phonegap.client.file.FileEntry#createWriter(de.kurka.phonegap.client.file.FileCallback)
+	 */
 	@Override
-	public void getFile(String path, Flags flags, FileCallback<FileEntry, FileError> callback) {
+	public void createWriter(FileCallback<FileWriter, FileError> callback) {
 		// TODO Auto-generated method stub
 
 	}
 
+	/* (non-Javadoc)
+	 * @see de.kurka.phonegap.client.file.FileEntry#getFile(de.kurka.phonegap.client.file.FileCallback)
+	 */
 	@Override
-	public void removeRecursively(FileCallback<Boolean, FileError> callback) {
+	public void getFile(FileCallback<FileObject, FileError> callback) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public boolean isFile() {
-		return false;
-	}
-
-	@Override
-	public boolean isDirectory() {
 		return true;
 	}
 
 	@Override
+	public boolean isDirectory() {
+		return false;
+	}
+
+	@Override
 	public FileEntry getAsFileEntry() {
-		throw new RuntimeException();
+		return this;
 	}
 
 	@Override
 	public DirectoryEntry getAsDirectoryEntry() {
-		return this;
+		throw new RuntimeException();
 	}
 
 }

@@ -15,70 +15,88 @@
  */
 package de.kurka.phonegap.client.file.browser;
 
+import com.google.gwt.user.client.rpc.AsyncCallback;
+
 import de.kurka.phonegap.client.file.FileEntry;
 import de.kurka.phonegap.client.file.FileError;
 import de.kurka.phonegap.client.file.FileReader;
 import de.kurka.phonegap.client.file.ReaderCallback;
+import de.kurka.phonegap.client.file.browser.service.FileSystemController;
 
 public class FileReaderBrowserImpl implements FileReader {
 
+	private final FileSystemController controller;
+	protected String result;
+	private int state;
+	private FileError error;
+	private ReaderCallback<FileReader> onLoadStartCallback;
+	private ReaderCallback<FileReader> onloadCallback;
+	private ReaderCallback<FileReader> onAbortCallback;
+	private ReaderCallback<FileReader> onErrorCallback;
+	private ReaderCallback<FileReader> onLoadEndCallback;
+	private boolean abort;
+
+	public FileReaderBrowserImpl(FileSystemController controller) {
+		this.controller = controller;
+		this.state = FileReader.EMPTY;
+		this.abort = false;
+	}
+
 	@Override
 	public int getReadyState() {
-		// TODO Auto-generated method stub
-		return 0;
+		return state;
 	}
 
 	@Override
 	public String getResult() {
-		// TODO Auto-generated method stub
-		return null;
+		return result;
 	}
 
 	@Override
 	public FileError getError() {
-		// TODO Auto-generated method stub
-		return null;
+		return error;
 	}
 
 	@Override
 	public void setOnLoadStartCallback(ReaderCallback<FileReader> callback) {
-		// TODO Auto-generated method stub
+		this.onLoadStartCallback = callback;
 
 	}
 
 	@Override
 	public void setOnProgressCallback(ReaderCallback<FileReader> callback) {
-		// TODO Auto-generated method stub
 
 	}
 
 	@Override
 	public void setOnloadCallback(ReaderCallback<FileReader> callback) {
-		// TODO Auto-generated method stub
+		this.onloadCallback = callback;
 
 	}
 
 	@Override
 	public void setOnAbortCallback(ReaderCallback<FileReader> callback) {
-		// TODO Auto-generated method stub
+		this.onAbortCallback = callback;
 
 	}
 
 	@Override
 	public void setOnErrorCallback(ReaderCallback<FileReader> callback) {
-		// TODO Auto-generated method stub
+		this.onErrorCallback = callback;
 
 	}
 
 	@Override
 	public void setOnLoadEndCallback(ReaderCallback<FileReader> callback) {
-		// TODO Auto-generated method stub
+		this.onLoadEndCallback = callback;
 
 	}
 
 	@Override
 	public void abort() {
-		// TODO Auto-generated method stub
+		this.abort = true;
+		if (onAbortCallback != null)
+			onAbortCallback.onCallback(this);
 
 	}
 
@@ -90,7 +108,55 @@ public class FileReaderBrowserImpl implements FileReader {
 
 	@Override
 	public void readAsText(FileEntry entry) {
-		// TODO Auto-generated method stub
+		if (this.state == FileReader.LOADING)
+			throw new RuntimeException("this loader is loading, cant do two things at once");
+		this.state = FileReader.LOADING;
+
+		if (onLoadStartCallback != null) {
+			onLoadStartCallback.onCallback(this);
+		}
+
+		controller.readAsText(entry, new AsyncCallback<String>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				if (abort)
+					return;
+				state = FileReader.DONE;
+
+				if (caught instanceof FileErrorException) {
+					FileErrorException fileErrorException = (FileErrorException) caught;
+					error = fileErrorException;
+				} else {
+					error = new FileErrorException();
+				}
+
+				if (onErrorCallback != null) {
+					onErrorCallback.onCallback(FileReaderBrowserImpl.this);
+				}
+
+				if (onLoadEndCallback != null) {
+					onLoadEndCallback.onCallback(FileReaderBrowserImpl.this);
+				}
+
+			}
+
+			@Override
+			public void onSuccess(String result) {
+				if (abort)
+					return;
+				state = FileReader.DONE;
+				FileReaderBrowserImpl.this.result = result;
+
+				if (onloadCallback != null) {
+					onloadCallback.onCallback(FileReaderBrowserImpl.this);
+				}
+
+				if (onLoadEndCallback != null) {
+					onLoadEndCallback.onCallback(FileReaderBrowserImpl.this);
+				}
+			}
+		});
 
 	}
 

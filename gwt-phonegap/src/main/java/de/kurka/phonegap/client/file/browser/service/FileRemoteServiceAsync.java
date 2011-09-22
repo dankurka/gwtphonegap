@@ -15,12 +15,28 @@
  */
 package de.kurka.phonegap.client.file.browser.service;
 
+import java.util.ArrayList;
+
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
-import de.kurka.phonegap.client.file.browser.FileSystemBrowserImpl;
+import de.kurka.phonegap.client.file.browser.dto.FileSystemDTO;
+import de.kurka.phonegap.client.file.browser.dto.FileSystemEntryDTO;
 
 public interface FileRemoteServiceAsync {
 
-	void requestFileSystem(int fileSystemType, int size, AsyncCallback<FileSystemBrowserImpl> callback);
+	void requestFileSystem(int fileSystemType, int size, AsyncCallback<FileSystemDTO> callback);
+
+	void readDirectory(String path, AsyncCallback<ArrayList<FileSystemEntryDTO>> callback);
+
+	/**
+	 * @param fullPath
+	 */
+	void getParent(String fullPath, AsyncCallback<FileSystemEntryDTO> callback);
+
+	/**
+	 * @param fullPath
+	 * @param callback
+	 */
+	void readAsText(String fullPath, AsyncCallback<String> callback);
 
 }

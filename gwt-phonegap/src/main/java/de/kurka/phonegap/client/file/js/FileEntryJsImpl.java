@@ -24,12 +24,12 @@ public class FileEntryJsImpl implements FileEntry {
 
 	@Override
 	public native String getName() /*-{
-		return (this.@de.kurka.phonegap.client.file.js.DirectoryEntryJsImpl::entry).name;
+		return (this.@de.kurka.phonegap.client.file.js.FileEntryJsImpl::entry).name;
 	}-*/;
 
 	@Override
 	public native String getFullPath() /*-{
-		return (this.@de.kurka.phonegap.client.file.js.DirectoryEntryJsImpl::entry).fullPath;
+		return (this.@de.kurka.phonegap.client.file.js.FileEntryJsImpl::entry).fullPath;
 	}-*/;
 
 	@Override
@@ -120,7 +120,7 @@ public class FileEntryJsImpl implements FileEntry {
 
 	@Override
 	public native String toURI() /*-{
-		var entry = (this.@de.kurka.phonegap.client.file.js.DirectoryEntryJsImpl::entry);
+		var entry = (this.@de.kurka.phonegap.client.file.js.FileEntryJsImpl::entry);
 		return entry.toURI();
 	}-*/;
 
@@ -187,7 +187,7 @@ public class FileEntryJsImpl implements FileEntry {
 
 		};
 
-		var entry = (this.@de.kurka.phonegap.client.file.js.DirectoryEntryJsImpl::entry);
+		var entry = (this.@de.kurka.phonegap.client.file.js.FileEntryJsImpl::entry);
 
 		entry.createWriter($entry(suc), $entry(fail));
 
@@ -212,7 +212,7 @@ public class FileEntryJsImpl implements FileEntry {
 			that.@de.kurka.phonegap.client.file.js.FileEntryJsImpl::onGetFileSuccess(Lde/kurka/phonegap/client/file/FileCallback;Lde/kurka/phonegap/client/file/js/FileObjectJsImpl;)(callback, file);
 		};
 
-		var entry = (this.@de.kurka.phonegap.client.file.js.DirectoryEntryJsImpl::entry);
+		var entry = (this.@de.kurka.phonegap.client.file.js.FileEntryJsImpl::entry);
 
 		entry.file($entry(suc), $entry(fail));
 

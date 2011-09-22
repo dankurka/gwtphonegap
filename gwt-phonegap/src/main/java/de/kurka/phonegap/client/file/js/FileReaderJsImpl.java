@@ -121,21 +121,21 @@ public final class FileReaderJsImpl extends JavaScriptObject implements FileRead
 	@Override
 	public void readAsDataUrl(FileEntry entry) {
 		FileEntryJsImpl entryJs = (FileEntryJsImpl) entry;
-		readAsDataUrl(entryJs);
+		readAsDataUrl0(entryJs.getEntry());
 
 	}
 
-	private native void readAsDataUrl(JavaScriptObject entry)/*-{
+	private native void readAsDataUrl0(JavaScriptObject entry)/*-{
 		this.readAsDataUrl(entry);
 	}-*/;
 
 	@Override
 	public void readAsText(FileEntry entry) {
 		FileEntryJsImpl entryJs = (FileEntryJsImpl) entry;
-		readAsText(entryJs);
+		readAsText0(entryJs.getEntry());
 	}
 
-	private native void readAsText(JavaScriptObject entry)/*-{
+	private native void readAsText0(JavaScriptObject entry)/*-{
 		this.readAsText(entry);
 	}-*/;
 

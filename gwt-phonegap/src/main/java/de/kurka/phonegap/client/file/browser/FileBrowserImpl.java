@@ -1,8 +1,6 @@
 package de.kurka.phonegap.client.file.browser;
 
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.rpc.AsyncCallback;
-
+import de.kurka.gwt.collection.shared.LightArray;
 import de.kurka.phonegap.client.file.EntryBase;
 import de.kurka.phonegap.client.file.File;
 import de.kurka.phonegap.client.file.FileCallback;
@@ -13,38 +11,25 @@ import de.kurka.phonegap.client.file.FileTransfer;
 import de.kurka.phonegap.client.file.FileTransferError;
 import de.kurka.phonegap.client.file.FileUploadCallback;
 import de.kurka.phonegap.client.file.FileUploadOptions;
-import de.kurka.phonegap.client.file.browser.service.FileRemoteService;
-import de.kurka.phonegap.client.file.browser.service.FileRemoteServiceAsync;
+import de.kurka.phonegap.client.file.browser.service.FileSystemController;
 
 public class FileBrowserImpl implements File {
 
-	private FileRemoteServiceAsync service;
+	private FileSystemController fileController;
 
 	public FileBrowserImpl() {
-		service = GWT.create(FileRemoteService.class);
+		fileController = new FileSystemController();
+	}
+
+	public void readDirectory(String fullPath, FileCallback<LightArray<EntryBase>, FileError> callback) {
+
+		fileController.readDirectory(fullPath, callback);
+
 	}
 
 	@Override
 	public void requestFileSystem(int fileSystemType, int size, final FileCallback<FileSystem, FileError> callback) {
-		service.requestFileSystem(fileSystemType, size, new AsyncCallback<FileSystemBrowserImpl>() {
-
-			@Override
-			public void onSuccess(FileSystemBrowserImpl result) {
-				callback.onSuccess(result);
-
-			}
-
-			@Override
-			public void onFailure(Throwable caught) {
-				if (caught instanceof FileErrorException) {
-					FileErrorException fileErrorException = (FileErrorException) caught;
-					callback.onFailure(fileErrorException);
-				} else {
-					callback.onFailure(new FileErrorException(FileError.INVALID_STATE_ERR));
-				}
-
-			}
-		});
+		fileController.requestFileSystem(fileSystemType, size, callback);
 
 	}
 
@@ -76,8 +61,7 @@ public class FileBrowserImpl implements File {
 
 	@Override
 	public FileReader createReader() {
-		// TODO Auto-generated method stub
-		return null;
+		return new FileReaderBrowserImpl(fileController);
 	}
 
 }

@@ -19,29 +19,34 @@ import java.io.Serializable;
 
 import de.kurka.phonegap.client.file.DirectoryEntry;
 import de.kurka.phonegap.client.file.FileSystem;
+import de.kurka.phonegap.client.file.browser.dto.FileSystemDTO;
+import de.kurka.phonegap.client.file.browser.service.FileSystemController;
 
 public class FileSystemBrowserImpl implements FileSystem, Serializable {
 
 	private static final long serialVersionUID = -7344553969341379456L;
 
-	private String name;
-
 	private DirectoryEntryBrowserImpl entry;
 
-	public FileSystemBrowserImpl() {
-		entry = new DirectoryEntryBrowserImpl();
-		entry.setFullPath("/");
-		entry.setName("/");
-		this.name = "root";
+	private FileSystemDTO dto;
+
+	public FileSystemBrowserImpl(FileSystemDTO dto, FileSystemController controller) {
+		entry = new DirectoryEntryBrowserImpl(dto.getFileSystemEntry(), controller);
+		this.dto = dto;
 	}
 
 	@Override
 	public String getName() {
-		return name;
+		return dto.getName();
 	}
 
 	@Override
 	public DirectoryEntry getRoot() {
 		return entry;
 	}
+
+	public DirectoryEntryBrowserImpl getEntry() {
+		return entry;
+	}
+
 }

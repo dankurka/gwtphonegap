@@ -2,6 +2,10 @@ package de.kurka.phonegap.client.file;
 
 public interface FileReader {
 
+	public static final int EMPTY = 0;
+	public static final int LOADING = 1;
+	public static final int DONE = 2;
+
 	public int getReadyState();
 
 	public String getResult();

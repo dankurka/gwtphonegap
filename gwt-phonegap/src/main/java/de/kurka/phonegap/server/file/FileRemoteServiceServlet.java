@@ -16,13 +16,20 @@
 package de.kurka.phonegap.server.file;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import org.apache.commons.io.FileUtils;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import de.kurka.phonegap.client.file.FileError;
 import de.kurka.phonegap.client.file.browser.FileErrorException;
-import de.kurka.phonegap.client.file.browser.FileSystemBrowserImpl;
+import de.kurka.phonegap.client.file.browser.dto.FileSystemDTO;
+import de.kurka.phonegap.client.file.browser.dto.FileSystemEntryDTO;
 import de.kurka.phonegap.client.file.browser.service.FileRemoteService;
 
 /**
@@ -60,17 +67,137 @@ public class FileRemoteServiceServlet extends RemoteServiceServlet implements Fi
 	}
 
 	@Override
-	public FileSystemBrowserImpl requestFileSystem(int fileSystemType, int size) throws FileErrorException {
-		if (!useInsecureApi) {
-			throw new FileErrorException(FileError.SECURITY_ERR);
-		}
+	public FileSystemDTO requestFileSystem(int fileSystemType, int size) throws FileErrorException {
+
+		ensureHostedMode();
 
 		File file = new File(path);
 		if (!file.exists()) {
 			throw new FileErrorException(FileError.PATH_EXISTS_ERR);
 		}
 
-		return new FileSystemBrowserImpl();
+		FileSystemEntryDTO entryDTO = new FileSystemEntryDTO();
+		entryDTO.setFile(false);
+		entryDTO.setFullPath("/");
+		entryDTO.setName("root");
+		return new FileSystemDTO(entryDTO, "root");
+
+	}
+
+	/**
+	 * @throws FileErrorException
+	 */
+	private void ensureHostedMode() throws FileErrorException {
+		if (!useInsecureApi) {
+			logger.severe("trying to use insecure phonegap api - but its not enabled -> start VM with -DinsecurePhoneGapFileApi=true -DphonegapFilePath=<path>");
+			throw new FileErrorException(FileError.SECURITY_ERR);
+		}
+
+		logger.warning("using insecure phonegap file api, you should only use this in dev mode, never in production!");
+	}
+
+	@Override
+	public ArrayList<FileSystemEntryDTO> readDirectory(String relativePath) throws FileErrorException {
+		ensureHostedMode();
+		File basePath = new File(path);
+
+		File file = new File(basePath, relativePath);
+
+		if (!file.isDirectory()) {
+			throw new FileErrorException(FileErrorException.PATH_EXISTS_ERR);
+		}
+
+		File[] listFiles = file.listFiles();
+
+		ArrayList<FileSystemEntryDTO> entries = new ArrayList<FileSystemEntryDTO>();
+
+		for (int i = 0; i < listFiles.length; i++) {
+			File listedFile = listFiles[i];
+
+			FileSystemEntryDTO entry = new FileSystemEntryDTO();
+			entry.setFile(listedFile.isFile());
+			entry.setName(listedFile.getName());
+			String absolutePath = listedFile.getAbsolutePath();
+			String fullPath = absolutePath.substring(path.length(), absolutePath.length());
+			entry.setFullPath(fullPath);
+			entries.add(entry);
+		}
+
+		return entries;
+	}
+
+	/* (non-Javadoc)
+	 * @see de.kurka.phonegap.client.file.browser.service.FileRemoteService#getParent(java.lang.String)
+	 */
+	@Override
+	public FileSystemEntryDTO getParent(String relativePath) throws FileErrorException {
+		ensureHostedMode();
+		File basePath = new File(path);
+
+		File file = new File(basePath, relativePath);
+
+		File parentFile = file.getParentFile();
+
+		ensureLocalRoot(basePath, parentFile);
+
+		try {
+			String canonicalPath = parentFile.getCanonicalPath();
+			String baseString = basePath.getCanonicalPath();
+
+			FileSystemEntryDTO entry = new FileSystemEntryDTO();
+			entry.setFile(parentFile.isFile());
+			entry.setName(parentFile.getName());
+
+			if (baseString.length() == canonicalPath.length()) {
+				entry.setFullPath("/");
+			} else {
+				String fullPath = canonicalPath.substring(baseString.length(), canonicalPath.length());
+				entry.setFullPath(fullPath);
+			}
+			return entry;
+		} catch (IOException e) {
+			throw new FileErrorException(FileError.INVALID_MODIFICATION_ERR);
+		}
+
+	}
+
+	/* (non-Javadoc)
+	 * @see de.kurka.phonegap.client.file.browser.service.FileRemoteService#readAsText(java.lang.String)
+	 */
+	@Override
+	public String readAsText(String relativePath) throws FileErrorException {
+		File basePath = new File(path);
+
+		File file = new File(basePath, relativePath);
+
+		ensureLocalRoot(basePath, file);
+
+		try {
+
+			String fileContent = FileUtils.readFileToString(file);
+			return fileContent;
+		} catch (FileNotFoundException e) {
+			logger.log(Level.WARNING, "error while reading file", e);
+			throw new FileErrorException(FileError.NOT_FOUND_ERR);
+		} catch (IOException e) {
+			logger.log(Level.WARNING, "error while reading file", e);
+			throw new FileErrorException(FileError.NOT_READABLE_ERR);
+		}
+
+	}
+
+	private void ensureLocalRoot(File root, File newFile) throws FileErrorException {
+
+		try {
+			String canonicalPath = newFile.getCanonicalPath();
+			String baseString = root.getCanonicalPath();
+			if (!canonicalPath.startsWith(baseString)) {
+				throw new FileErrorException(FileError.INVALID_MODIFICATION_ERR);
+			}
+		} catch (IOException e) {
+			throw new FileErrorException(FileError.INVALID_MODIFICATION_ERR);
+		}
+
 	}
 
 }

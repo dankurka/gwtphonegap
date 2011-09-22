@@ -4,6 +4,15 @@
     "http://java.sun.com/dtd/web-app_2_3.dtd">
 
 <web-app>
-    
+
+	<servlet>
+		<servlet-name>phonegapfileapi</servlet-name>
+		<servlet-class>de.kurka.phonegap.server.file.FileRemoteServiceServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>phonegapfileapi</servlet-name>
+		<url-pattern>/showcase/phonegapfileapi</url-pattern>
+	</servlet-mapping>
+
 
 </web-app>

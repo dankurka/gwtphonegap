@@ -15,13 +15,23 @@
  */
 package de.kurka.phonegap.client.file.browser.service;
 
+import java.util.ArrayList;
+
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 import de.kurka.phonegap.client.file.browser.FileErrorException;
-import de.kurka.phonegap.client.file.browser.FileSystemBrowserImpl;
+import de.kurka.phonegap.client.file.browser.dto.FileSystemDTO;
+import de.kurka.phonegap.client.file.browser.dto.FileSystemEntryDTO;
 
 @RemoteServiceRelativePath("phonegapfileapi")
 public interface FileRemoteService extends RemoteService {
-	public FileSystemBrowserImpl requestFileSystem(int fileSystemType, int size) throws FileErrorException;
+	public FileSystemDTO requestFileSystem(int fileSystemType, int size) throws FileErrorException;
+
+	ArrayList<FileSystemEntryDTO> readDirectory(String path) throws FileErrorException;
+
+	FileSystemEntryDTO getParent(String fullPath) throws FileErrorException;
+
+	String readAsText(String fullPath) throws FileErrorException;
+
 }

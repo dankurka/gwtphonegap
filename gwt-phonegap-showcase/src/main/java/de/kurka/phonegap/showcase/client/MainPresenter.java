@@ -29,6 +29,7 @@ import de.kurka.phonegap.showcase.client.connection.ConnectionPresenter;
 import de.kurka.phonegap.showcase.client.contact.ContactPresenter;
 import de.kurka.phonegap.showcase.client.device.DevicePresenter;
 import de.kurka.phonegap.showcase.client.event.EventPresenter;
+import de.kurka.phonegap.showcase.client.file.FilePresenter;
 import de.kurka.phonegap.showcase.client.geolocation.GeolocationPresenter;
 import de.kurka.phonegap.showcase.client.media.MediaPresenter;
 import de.kurka.phonegap.showcase.client.notification.NotificationPresenter;
@@ -48,10 +49,11 @@ public class MainPresenter {
 	private final PhoneGap phoneGap;
 	private final MediaPresenter mediaPresenter;
 	private final CompassPresenter compassPresenter;
+	private final FilePresenter filePresenter;
 
 	public MainPresenter(Display display, PhoneGap phoneGap, AccelerometerPresenter accelerometerPresenter, DevicePresenter devicePresenter, GeolocationPresenter geolocationPresenter,
 			NotificationPresenter notificationPresenter, AboutPresenter aboutPresenter, CameraPresenter cameraPresenter, ConnectionPresenter connectionPresenter, ContactPresenter contactPresenter,
-			EventPresenter eventPresenter, MediaPresenter mediaPresenter, CompassPresenter compassPresenter) {
+			EventPresenter eventPresenter, MediaPresenter mediaPresenter, CompassPresenter compassPresenter, FilePresenter filePresenter) {
 		this.display = display;
 		this.phoneGap = phoneGap;
 		this.accelerometerPresenter = accelerometerPresenter;
@@ -65,6 +67,7 @@ public class MainPresenter {
 		this.eventPresenter = eventPresenter;
 		this.mediaPresenter = mediaPresenter;
 		this.compassPresenter = compassPresenter;
+		this.filePresenter = filePresenter;
 
 		bind();
 
@@ -103,6 +106,7 @@ public class MainPresenter {
 		display.getContainer().add(contactPresenter.getDisplay().asWidget());
 		display.getContainer().add(devicePresenter.getDisplay().asWidget());
 		display.getContainer().add(eventPresenter.getDisplay().asWidget());
+		display.getContainer().add(filePresenter.getDisplay().asWidget());
 		display.getContainer().add(geolocationPresenter.getDisplay().asWidget());
 		display.getContainer().add(mediaPresenter.getDisplay().asWidget());
 		display.getContainer().add(notificationPresenter.getDisplay().asWidget());
