@@ -110,7 +110,7 @@ public class FileReaderBrowserImpl implements FileReader {
 			onLoadStartCallback.onCallback(this);
 		}
 
-		controller.readAsText(entry, new AsyncCallback<String>() {
+		controller.readAsDataUrl(entry, new AsyncCallback<String>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
