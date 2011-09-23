@@ -102,7 +102,55 @@ public class FileReaderBrowserImpl implements FileReader {
 
 	@Override
 	public void readAsDataUrl(FileEntry entry) {
-		// TODO Auto-generated method stub
+		if (this.state == FileReader.LOADING)
+			throw new RuntimeException("this loader is loading, cant do two things at once");
+		this.state = FileReader.LOADING;
+
+		if (onLoadStartCallback != null) {
+			onLoadStartCallback.onCallback(this);
+		}
+
+		controller.readAsText(entry, new AsyncCallback<String>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				if (abort)
+					return;
+				state = FileReader.DONE;
+
+				if (caught instanceof FileErrorException) {
+					FileErrorException fileErrorException = (FileErrorException) caught;
+					error = fileErrorException;
+				} else {
+					error = new FileErrorException();
+				}
+
+				if (onErrorCallback != null) {
+					onErrorCallback.onCallback(FileReaderBrowserImpl.this);
+				}
+
+				if (onLoadEndCallback != null) {
+					onLoadEndCallback.onCallback(FileReaderBrowserImpl.this);
+				}
+
+			}
+
+			@Override
+			public void onSuccess(String result) {
+				if (abort)
+					return;
+				state = FileReader.DONE;
+				FileReaderBrowserImpl.this.result = result;
+
+				if (onloadCallback != null) {
+					onloadCallback.onCallback(FileReaderBrowserImpl.this);
+				}
+
+				if (onLoadEndCallback != null) {
+					onLoadEndCallback.onCallback(FileReaderBrowserImpl.this);
+				}
+			}
+		});
 
 	}
 

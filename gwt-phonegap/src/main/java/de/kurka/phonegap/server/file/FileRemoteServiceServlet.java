@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -27,6 +28,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.io.FileUtils;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
@@ -197,6 +199,25 @@ public class FileRemoteServiceServlet extends RemoteServiceServlet implements Fi
 			throw new FileErrorException(FileError.NOT_READABLE_ERR);
 		}
 
+	}
+
+	@Override
+	public String readAsDataUrl(String fullPath) throws FileErrorException {
+		String text = readAsText(fullPath);
+
+		try {
+			String base64 = new String(Base64.encodeBase64(text.getBytes("UTF-8")), "UTF-8");
+			File basePath = new File(path);
+			File file = new File(basePath, fullPath);
+
+			String mimeType = guessMimeType(file);
+
+			return "data:" + mimeType + ";base64," + base64;
+
+		} catch (UnsupportedEncodingException e) {
+			logger.log(Level.WARNING, "error while reading file", e);
+			throw new FileErrorException(FileError.NOT_READABLE_ERR);
+		}
 	}
 
 	private void ensureLocalRoot(File root, File newFile) throws FileErrorException {

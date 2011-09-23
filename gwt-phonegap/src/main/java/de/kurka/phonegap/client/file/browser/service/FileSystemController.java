@@ -459,4 +459,13 @@ public class FileSystemController {
 		});
 
 	}
+
+	/**
+	 * @param entry
+	 * @param asyncCallback
+	 */
+	public void readAsDataUrl(FileEntry entry, AsyncCallback<String> callback) {
+		service.readAsDataUrl(entry.getFullPath(), callback);
+
+	}
 }

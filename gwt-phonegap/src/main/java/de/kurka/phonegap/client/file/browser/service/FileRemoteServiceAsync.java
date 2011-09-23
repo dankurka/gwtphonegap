@@ -115,4 +115,10 @@ public interface FileRemoteServiceAsync {
 	 */
 	void copyDiretory(String fullPath, String newDir, String newName, AsyncCallback<FileSystemEntryDTO> callback);
 
+	/**
+	 * @param fullPath
+	 * @param callback
+	 */
+	void readAsDataUrl(String fullPath, AsyncCallback<String> callback);
+
 }
