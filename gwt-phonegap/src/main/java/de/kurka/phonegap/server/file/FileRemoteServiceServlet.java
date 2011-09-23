@@ -581,6 +581,40 @@ public class FileRemoteServiceServlet extends RemoteServiceServlet implements Fi
 
 	}
 
+	@Override
+	public FileSystemEntryDTO copyDiretory(String fullPath, String newParent, String newName) throws FileErrorException {
+		File basePath = new File(path);
+
+		File directory = new File(basePath, fullPath);
+		ensureLocalRoot(basePath, directory);
+
+		ensureLocalRoot(basePath, directory);
+
+		File baseDir = new File(basePath, newParent);
+
+		ensureLocalRoot(basePath, baseDir);
+
+		File newDir = new File(baseDir, newParent);
+
+		try {
+			FileUtils.copyDirectory(directory, newDir);
+
+			FileSystemEntryDTO dto = new FileSystemEntryDTO();
+
+			dto.setFile(false);
+			String absolutePath = newDir.getAbsolutePath();
+			String tmpPath = absolutePath.substring(path.length(), absolutePath.length());
+			dto.setFullPath(tmpPath);
+			dto.setName(directory.getName());
+			return dto;
+
+		} catch (IOException e) {
+			logger.log(Level.SEVERE, "can not copy directory", e);
+			throw new FileErrorException(FileError.INVALID_STATE_ERR);
+		}
+
+	}
+
 	//map with mimetypes
 	private Map<String, String> initMimeTypes() {
 

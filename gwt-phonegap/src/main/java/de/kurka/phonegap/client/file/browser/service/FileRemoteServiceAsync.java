@@ -107,4 +107,12 @@ public interface FileRemoteServiceAsync {
 	 */
 	void moveDirectory(String fullPath, String newParent, String newName, AsyncCallback<FileSystemEntryDTO> callback);
 
+	/**
+	 * @param fullPath
+	 * @param newDir
+	 * @param newName
+	 * @param asyncCallback
+	 */
+	void copyDiretory(String fullPath, String newDir, String newName, AsyncCallback<FileSystemEntryDTO> callback);
+
 }

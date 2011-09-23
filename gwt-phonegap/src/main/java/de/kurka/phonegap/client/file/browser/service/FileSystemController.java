@@ -418,18 +418,42 @@ public class FileSystemController {
 	 * @param newName
 	 * @param callback
 	 */
-	public void moveDirectory(String fullPath, String newParent, String newName, FileCallback<DirectoryEntry, FileError> callback) {
+	public void moveDirectory(String fullPath, String newParent, String newName, final FileCallback<DirectoryEntry, FileError> callback) {
 		service.moveDirectory(fullPath, newParent, newName, new AsyncCallback<FileSystemEntryDTO>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
+				handleError(callback, caught);
 
 			}
 
 			@Override
 			public void onSuccess(FileSystemEntryDTO result) {
-				// TODO Auto-generated method stub
+				callback.onSuccess(new DirectoryEntryBrowserImpl(result, FileSystemController.this));
+
+			}
+		});
+
+	}
+
+	/**
+	 * @param fullPath
+	 * @param fullPath2
+	 * @param newName
+	 * @param callback
+	 */
+	public void copyDirectory(String fullPath, String newDir, String newName, final FileCallback<DirectoryEntry, FileError> callback) {
+		service.copyDiretory(fullPath, newDir, newName, new AsyncCallback<FileSystemEntryDTO>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				handleError(callback, caught);
+
+			}
+
+			@Override
+			public void onSuccess(FileSystemEntryDTO result) {
+				callback.onSuccess(new DirectoryEntryBrowserImpl(result, FileSystemController.this));
 
 			}
 		});

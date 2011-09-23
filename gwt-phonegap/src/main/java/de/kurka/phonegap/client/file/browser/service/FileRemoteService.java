@@ -62,4 +62,6 @@ public interface FileRemoteService extends RemoteService {
 
 	FileSystemEntryDTO moveDirectory(String fullPath, String newParent, String newName) throws FileErrorException;
 
+	FileSystemEntryDTO copyDiretory(String fullPath, String newDir, String newName) throws FileErrorException;
+
 }

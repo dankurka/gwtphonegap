@@ -56,9 +56,7 @@ public class DirectoryEntryBrowserImpl implements DirectoryEntry, EntryBase {
 
 	@Override
 	public void moveTo(DirectoryEntry parent, String newName, FileCallback<DirectoryEntry, FileError> callback) {
-
 		controller.moveDirectory(getFullPath(), parent.getFullPath(), newName, callback);
-
 	}
 
 	@Override
