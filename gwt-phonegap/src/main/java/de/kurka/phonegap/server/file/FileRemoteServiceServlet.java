@@ -568,7 +568,9 @@ public class FileRemoteServiceServlet extends RemoteServiceServlet implements Fi
 			FileSystemEntryDTO dto = new FileSystemEntryDTO();
 
 			dto.setFile(false);
-			dto.setFullPath(absPath);
+			String absolutePath = newDir.getAbsolutePath();
+			String tmpPath = absolutePath.substring(path.length(), absolutePath.length());
+			dto.setFullPath(tmpPath);
 			dto.setName(directory.getName());
 			return dto;
 
