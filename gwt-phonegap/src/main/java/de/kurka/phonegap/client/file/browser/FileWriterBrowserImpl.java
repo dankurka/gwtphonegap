@@ -15,6 +15,7 @@
  */
 package de.kurka.phonegap.client.file.browser;
 
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import de.kurka.phonegap.client.file.FileError;
@@ -132,6 +133,9 @@ public class FileWriterBrowserImpl implements FileWriter {
 	@Override
 	public void truncate(long position) {
 		//TODO how do we implement this for devmode?
+		//lets just put out a warning....
+		//and fix this later
+		Window.alert("truncate not working in dev mode");
 
 	}
 
