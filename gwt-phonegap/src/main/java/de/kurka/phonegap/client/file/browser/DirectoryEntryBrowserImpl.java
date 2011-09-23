@@ -61,7 +61,7 @@ public class DirectoryEntryBrowserImpl implements DirectoryEntry, EntryBase {
 
 	@Override
 	public void copyTo(DirectoryEntry parent, String newName, FileCallback<DirectoryEntry, FileError> callback) {
-		// TODO Auto-generated method stub
+		controller.copyDirectory(getFullPath(), parent.getFullPath(), newName, callback);
 
 	}
 
