@@ -69,4 +69,10 @@ public class FileJsImpl implements File {
 		return new $wnd.FileReader();
 	}-*/;
 
+	@Override
+	public void setBasePath(String path) {
+		//nothing to do here phonegap takes care of this
+
+	}
+
 }

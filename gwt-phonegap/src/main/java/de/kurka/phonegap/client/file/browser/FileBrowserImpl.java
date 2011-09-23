@@ -13,12 +13,22 @@ import de.kurka.phonegap.client.file.FileUploadCallback;
 import de.kurka.phonegap.client.file.FileUploadOptions;
 import de.kurka.phonegap.client.file.browser.service.FileSystemController;
 
+/**
+ * Experimental
+ * 
+ * this is an implementation of the phonegap file API which can be run with GWT
+ * hosted mode It simulates the api by using a remote service
+ * 
+ * @author Daniel Kurka
+ * 
+ */
 public class FileBrowserImpl implements File {
 
 	private FileSystemController fileController;
 
 	public FileBrowserImpl() {
 		fileController = new FileSystemController();
+
 	}
 
 	public void readDirectory(String fullPath, FileCallback<LightArray<EntryBase>, FileError> callback) {
@@ -62,6 +72,12 @@ public class FileBrowserImpl implements File {
 	@Override
 	public FileReader createReader() {
 		return new FileReaderBrowserImpl(fileController);
+	}
+
+	@Override
+	public void setBasePath(String path) {
+		fileController.setBasePath(path);
+
 	}
 
 }

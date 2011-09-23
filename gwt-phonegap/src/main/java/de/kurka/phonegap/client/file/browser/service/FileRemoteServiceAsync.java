@@ -19,6 +19,7 @@ import java.util.ArrayList;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
+import de.kurka.phonegap.client.file.browser.dto.FileObjectDTO;
 import de.kurka.phonegap.client.file.browser.dto.FileSystemDTO;
 import de.kurka.phonegap.client.file.browser.dto.FileSystemEntryDTO;
 import de.kurka.phonegap.client.file.browser.dto.FileWriterDTO;
@@ -56,5 +57,54 @@ public interface FileRemoteServiceAsync {
 	void getFile(String absPath, FlagsDTO flagsDTO, AsyncCallback<FileSystemEntryDTO> callback);
 
 	void removeDirectory(String fullPath, AsyncCallback<Boolean> callback);
+
+	/**
+	 * @param fullPath
+	 * @param asyncCallback
+	 */
+	void removeFile(String fullPath, AsyncCallback<Boolean> callback);
+
+	/**
+	 * @param fileFullPath
+	 * @param directoryFullPath
+	 * @param newName
+	 * @param asyncCallback
+	 */
+	void moveFile(String fileFullPath, String directoryFullPath, String newName, AsyncCallback<FileSystemEntryDTO> callback);
+
+	/**
+	 * @param dirPath
+	 * @param newName
+	 * @param newName2
+	 * @param asyncCallback
+	 */
+	void copyFile(String filePath, String dirPath, String newName, AsyncCallback<FileSystemEntryDTO> callback);
+
+	/**
+	 * @param fullPath
+	 * @param asyncCallback
+	 */
+	void getFileObject(String fullPath, AsyncCallback<FileObjectDTO> callback);
+
+	/**
+	 * @param absPath
+	 * @param flagsDTO
+	 * @param asyncCallback
+	 */
+	void getDirectory(String absPath, FlagsDTO flagsDTO, AsyncCallback<FileSystemEntryDTO> callback);
+
+	/**
+	 * @param fullPath
+	 * @param asyncCallback
+	 */
+	void removeRecursively(String fullPath, AsyncCallback<Boolean> callback);
+
+	/**
+	 * @param fullPath
+	 * @param newParent
+	 * @param newName
+	 * @param callback
+	 */
+	void moveDirectory(String fullPath, String newParent, String newName, AsyncCallback<FileSystemEntryDTO> callback);
 
 }

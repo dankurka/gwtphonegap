@@ -21,6 +21,7 @@ import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 import de.kurka.phonegap.client.file.browser.FileErrorException;
+import de.kurka.phonegap.client.file.browser.dto.FileObjectDTO;
 import de.kurka.phonegap.client.file.browser.dto.FileSystemDTO;
 import de.kurka.phonegap.client.file.browser.dto.FileSystemEntryDTO;
 import de.kurka.phonegap.client.file.browser.dto.FileWriterDTO;
@@ -46,5 +47,19 @@ public interface FileRemoteService extends RemoteService {
 	FileSystemEntryDTO getFile(String absPath, FlagsDTO flagsDTO) throws FileErrorException;
 
 	Boolean removeDirectory(String fullPath) throws FileErrorException;
+
+	Boolean removeFile(String fullPath) throws FileErrorException;
+
+	FileSystemEntryDTO moveFile(String fileFullPath, String directoryFullPath, String newName) throws FileErrorException;
+
+	FileSystemEntryDTO copyFile(String filePath, String dirPath, String newName) throws FileErrorException;
+
+	FileObjectDTO getFileObject(String fullPath) throws FileErrorException;
+
+	FileSystemEntryDTO getDirectory(String absPath, FlagsDTO flagsDTO) throws FileErrorException;
+
+	Boolean removeRecursively(String fullPath) throws FileErrorException;
+
+	FileSystemEntryDTO moveDirectory(String fullPath, String newParent, String newName) throws FileErrorException;
 
 }

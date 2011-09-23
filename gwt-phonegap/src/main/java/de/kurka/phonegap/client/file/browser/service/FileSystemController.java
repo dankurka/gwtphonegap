@@ -27,6 +27,7 @@ import de.kurka.phonegap.client.file.EntryBase;
 import de.kurka.phonegap.client.file.FileCallback;
 import de.kurka.phonegap.client.file.FileEntry;
 import de.kurka.phonegap.client.file.FileError;
+import de.kurka.phonegap.client.file.FileObject;
 import de.kurka.phonegap.client.file.FileSystem;
 import de.kurka.phonegap.client.file.FileWriter;
 import de.kurka.phonegap.client.file.Flags;
@@ -34,9 +35,11 @@ import de.kurka.phonegap.client.file.Metadata;
 import de.kurka.phonegap.client.file.browser.DirectoryEntryBrowserImpl;
 import de.kurka.phonegap.client.file.browser.FileEntryBrowserImpl;
 import de.kurka.phonegap.client.file.browser.FileErrorException;
+import de.kurka.phonegap.client.file.browser.FileObjectBrowserImpl;
 import de.kurka.phonegap.client.file.browser.FileSystemBrowserImpl;
 import de.kurka.phonegap.client.file.browser.FileWriterBrowserImpl;
 import de.kurka.phonegap.client.file.browser.MetaDataBrowserImpl;
+import de.kurka.phonegap.client.file.browser.dto.FileObjectDTO;
 import de.kurka.phonegap.client.file.browser.dto.FileSystemDTO;
 import de.kurka.phonegap.client.file.browser.dto.FileSystemEntryDTO;
 import de.kurka.phonegap.client.file.browser.dto.FileWriterDTO;
@@ -50,6 +53,10 @@ import de.kurka.phonegap.client.file.browser.dto.MetaDataDTO;
 public class FileSystemController {
 	private static final FileRemoteServiceAsync service = GWT.create(FileRemoteService.class);
 
+	public FileSystemController() {
+
+	}
+
 	/**
 	 * @param fullPath
 	 * @param callback
@@ -59,12 +66,7 @@ public class FileSystemController {
 
 			@Override
 			public void onFailure(Throwable caught) {
-				if (caught instanceof FileErrorException) {
-					FileErrorException fileErrorException = (FileErrorException) caught;
-					callback.onFailure(fileErrorException);
-				} else {
-					callback.onFailure(new FileErrorException(FileError.INVALID_STATE_ERR));
-				}
+				handleError(callback, caught);
 
 			}
 
@@ -105,12 +107,7 @@ public class FileSystemController {
 
 			@Override
 			public void onFailure(Throwable caught) {
-				if (caught instanceof FileErrorException) {
-					FileErrorException fileErrorException = (FileErrorException) caught;
-					callback.onFailure(fileErrorException);
-				} else {
-					callback.onFailure(new FileErrorException(FileError.INVALID_STATE_ERR));
-				}
+				handleError(callback, caught);
 
 			}
 		});
@@ -126,12 +123,7 @@ public class FileSystemController {
 
 			@Override
 			public void onFailure(Throwable caught) {
-				if (caught instanceof FileErrorException) {
-					FileErrorException fileErrorException = (FileErrorException) caught;
-					callback.onFailure(fileErrorException);
-				} else {
-					callback.onFailure(new FileErrorException(FileError.INVALID_STATE_ERR));
-				}
+				handleError(callback, caught);
 
 			}
 
@@ -162,12 +154,7 @@ public class FileSystemController {
 
 			@Override
 			public void onFailure(Throwable caught) {
-				if (caught instanceof FileErrorException) {
-					FileErrorException fileErrorException = (FileErrorException) caught;
-					callback.onFailure(fileErrorException);
-				} else {
-					callback.onFailure(new FileErrorException(FileError.INVALID_STATE_ERR));
-				}
+				handleError(callback, caught);
 
 			}
 
@@ -199,12 +186,7 @@ public class FileSystemController {
 
 			@Override
 			public void onFailure(Throwable caught) {
-				if (caught instanceof FileErrorException) {
-					FileErrorException fileErrorException = (FileErrorException) caught;
-					callback.onFailure(fileErrorException);
-				} else {
-					callback.onFailure(new FileErrorException(FileError.INVALID_STATE_ERR));
-				}
+				handleError(callback, caught);
 
 			}
 
@@ -228,12 +210,7 @@ public class FileSystemController {
 
 			@Override
 			public void onFailure(Throwable caught) {
-				if (caught instanceof FileErrorException) {
-					FileErrorException fileErrorException = (FileErrorException) caught;
-					callback.onFailure(fileErrorException);
-				} else {
-					callback.onFailure(new FileErrorException(FileError.INVALID_STATE_ERR));
-				}
+				handleError(callback, caught);
 
 			}
 
@@ -251,18 +228,208 @@ public class FileSystemController {
 
 			@Override
 			public void onFailure(Throwable caught) {
-				if (caught instanceof FileErrorException) {
-					FileErrorException fileErrorException = (FileErrorException) caught;
-					callback.onFailure(fileErrorException);
-				} else {
-					callback.onFailure(new FileErrorException(FileError.INVALID_STATE_ERR));
-				}
+				handleError(callback, caught);
 
 			}
 
 			@Override
 			public void onSuccess(Boolean result) {
 				callback.onSuccess(Boolean.TRUE);
+
+			}
+		});
+
+	}
+
+	/**
+	 * @param fullPath
+	 * @param callback
+	 */
+	public void removeFile(String fullPath, final FileCallback<Boolean, FileError> callback) {
+		service.removeFile(fullPath, new AsyncCallback<Boolean>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				handleError(callback, caught);
+
+			}
+
+			@Override
+			public void onSuccess(Boolean result) {
+				callback.onSuccess(Boolean.TRUE);
+
+			}
+		});
+
+	}
+
+	/**
+	 * @param callback
+	 * @param caught
+	 */
+	private void handleError(final FileCallback<?, FileError> callback, Throwable caught) {
+		if (caught instanceof FileErrorException) {
+			FileErrorException fileErrorException = (FileErrorException) caught;
+			callback.onFailure(fileErrorException);
+		} else {
+			callback.onFailure(new FileErrorException(FileError.INVALID_STATE_ERR));
+		}
+	}
+
+	/**
+	 * @param fullPath
+	 * @param fullPath2
+	 * @param newName
+	 * @param callback
+	 */
+	public void moveFile(String fileFullPath, String directoryFullPath, String newName, final FileCallback<FileEntry, FileError> callback) {
+		service.moveFile(fileFullPath, directoryFullPath, newName, new AsyncCallback<FileSystemEntryDTO>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				handleError(callback, caught);
+
+			}
+
+			@Override
+			public void onSuccess(FileSystemEntryDTO result) {
+				FileEntryBrowserImpl impl = new FileEntryBrowserImpl(result, FileSystemController.this);
+				callback.onSuccess(impl);
+
+			}
+		});
+	}
+
+	/**
+	 * @param fullPath
+	 * @param newName
+	 * @param
+	 * @param callback
+	 */
+	public void copyFile(String filePath, String dirPath, String newName, final FileCallback<FileEntry, FileError> callback) {
+		service.copyFile(filePath, dirPath, newName, new AsyncCallback<FileSystemEntryDTO>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				handleError(callback, caught);
+
+			}
+
+			@Override
+			public void onSuccess(FileSystemEntryDTO result) {
+				FileEntryBrowserImpl impl = new FileEntryBrowserImpl(result, FileSystemController.this);
+				callback.onSuccess(impl);
+
+			}
+		});
+
+	}
+
+	private String basePath;
+
+	/**
+	 * @param basePath
+	 *            the basePath to set
+	 */
+	public void setBasePath(String basePath) {
+		if (!basePath.endsWith("/")) {
+			basePath = basePath + "/";
+		}
+		this.basePath = basePath;
+
+	}
+
+	public String toURI(String fullPath) {
+		if (basePath == null) {
+			throw new IllegalStateException("you have to set basePath on the fileSystem phonegap emulation before using this -> phonegap.getFile()");
+		}
+		return basePath + fullPath;
+	}
+
+	/**
+	 * @param fullPath
+	 * @param callback
+	 */
+	public void getFileObject(String fullPath, final FileCallback<FileObject, FileError> callback) {
+		service.getFileObject(fullPath, new AsyncCallback<FileObjectDTO>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				handleError(callback, caught);
+
+			}
+
+			@Override
+			public void onSuccess(FileObjectDTO result) {
+				callback.onSuccess(new FileObjectBrowserImpl(result));
+
+			}
+		});
+
+	}
+
+	/**
+	 * @param absPath
+	 * @param flags
+	 * @param callback
+	 */
+	public void getDirectory(String absPath, Flags flags, final FileCallback<DirectoryEntry, FileError> callback) {
+		service.getDirectory(absPath, new FlagsDTO(flags), new AsyncCallback<FileSystemEntryDTO>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				handleError(callback, caught);
+
+			}
+
+			@Override
+			public void onSuccess(FileSystemEntryDTO result) {
+				callback.onSuccess(new DirectoryEntryBrowserImpl(result, FileSystemController.this));
+
+			}
+		});
+
+	}
+
+	/**
+	 * @param fullPath
+	 * @param callback
+	 */
+	public void removeRecursively(String fullPath, final FileCallback<Boolean, FileError> callback) {
+		service.removeRecursively(fullPath, new AsyncCallback<Boolean>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				handleError(callback, caught);
+
+			}
+
+			@Override
+			public void onSuccess(Boolean result) {
+				callback.onSuccess(result);
+
+			}
+		});
+	}
+
+	/**
+	 * @param fullPath
+	 * @param fullPath2
+	 * @param newName
+	 * @param callback
+	 */
+	public void moveDirectory(String fullPath, String newParent, String newName, FileCallback<DirectoryEntry, FileError> callback) {
+		service.moveDirectory(fullPath, newParent, newName, new AsyncCallback<FileSystemEntryDTO>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void onSuccess(FileSystemEntryDTO result) {
+				// TODO Auto-generated method stub
 
 			}
 		});

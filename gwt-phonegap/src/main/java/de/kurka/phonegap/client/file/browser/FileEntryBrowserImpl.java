@@ -55,39 +55,26 @@ public class FileEntryBrowserImpl implements FileEntry, EntryBase {
 		controller.getMetaData(getFullPath(), callback);
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.file.FileEntry#moveTo(de.kurka.phonegap.client.file.DirectoryEntry, java.lang.String, de.kurka.phonegap.client.file.FileCallback)
-	 */
 	@Override
 	public void moveTo(DirectoryEntry parent, String newName, FileCallback<FileEntry, FileError> callback) {
-		// TODO Auto-generated method stub
+		controller.moveFile(getFullPath(), parent.getFullPath(), newName, callback);
 
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.file.FileEntry#copyTo(de.kurka.phonegap.client.file.DirectoryEntry, java.lang.String, de.kurka.phonegap.client.file.FileCallback)
-	 */
 	@Override
 	public void copyTo(DirectoryEntry parent, String newName, FileCallback<FileEntry, FileError> callback) {
-		// TODO Auto-generated method stub
+		controller.copyFile(getFullPath(), parent.getFullPath(), newName, callback);
 
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.file.FileEntry#toURI()
-	 */
 	@Override
 	public String toURI() {
-		// TODO Auto-generated method stub
-		return null;
+		return controller.toURI(getFullPath());
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.file.FileEntry#remove(de.kurka.phonegap.client.file.FileCallback)
-	 */
 	@Override
 	public void remove(FileCallback<Boolean, FileError> callback) {
-		// TODO Auto-generated method stub
+		controller.removeFile(getFullPath(), callback);
 
 	}
 
@@ -97,21 +84,15 @@ public class FileEntryBrowserImpl implements FileEntry, EntryBase {
 
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.file.FileEntry#createWriter(de.kurka.phonegap.client.file.FileCallback)
-	 */
 	@Override
 	public void createWriter(FileCallback<FileWriter, FileError> callback) {
 		controller.createWriter(this, callback);
 
 	}
 
-	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.client.file.FileEntry#getFile(de.kurka.phonegap.client.file.FileCallback)
-	 */
 	@Override
 	public void getFile(FileCallback<FileObject, FileError> callback) {
-		// TODO Auto-generated method stub
+		controller.getFileObject(getFullPath(), callback);
 
 	}
 

@@ -56,7 +56,8 @@ public class DirectoryEntryBrowserImpl implements DirectoryEntry, EntryBase {
 
 	@Override
 	public void moveTo(DirectoryEntry parent, String newName, FileCallback<DirectoryEntry, FileError> callback) {
-		// TODO Auto-generated method stub
+
+		controller.moveDirectory(getFullPath(), parent.getFullPath(), newName, callback);
 
 	}
 
@@ -68,8 +69,7 @@ public class DirectoryEntryBrowserImpl implements DirectoryEntry, EntryBase {
 
 	@Override
 	public String toURI() {
-		// TODO Auto-generated method stub
-		return null;
+		return controller.toURI(getFullPath());
 	}
 
 	@Override
@@ -101,7 +101,14 @@ public class DirectoryEntryBrowserImpl implements DirectoryEntry, EntryBase {
 
 	@Override
 	public void getDirectory(String path, Flags flags, FileCallback<DirectoryEntry, FileError> callback) {
-		// TODO Auto-generated method stub
+		String absPath;
+		if (path.startsWith("/")) {
+			// absolute
+			absPath = path;
+		} else {
+			absPath = getFullPath() + "/" + path;
+		}
+		controller.getDirectory(absPath, flags, callback);
 
 	}
 
@@ -120,7 +127,7 @@ public class DirectoryEntryBrowserImpl implements DirectoryEntry, EntryBase {
 
 	@Override
 	public void removeRecursively(FileCallback<Boolean, FileError> callback) {
-		// TODO Auto-generated method stub
+		controller.removeRecursively(getFullPath(), callback);
 
 	}
 

@@ -14,4 +14,11 @@ public interface File {
 	public FileTransfer createFileTransfer();
 
 	public FileReader createReader();
+
+	/**
+	 * only used for mock implementations
+	 * 
+	 * @param path
+	 */
+	public void setBasePath(String path);
 }
