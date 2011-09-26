@@ -15,11 +15,56 @@
  */
 package de.kurka.phonegap.client.camera;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.resources.client.ClientBundle;
+import com.google.gwt.resources.client.DataResource;
+
 public class CameraBrowserImpl implements Camera {
+
+	public interface CameraBundle extends ClientBundle {
+
+		@Source("resources/camera_success.jpg")
+		public DataResource getSuccessPicture();
+	}
+
+	public CameraBrowserImpl() {
+		setCameraBundle(getBundle());
+		setPictureUrl(GWT.getModuleBaseURL() + "resources/camera_success.jpg");
+	}
+
+	protected CameraBundle bundle;
+	private String pictureUrl;
+
+	protected CameraBundle getBundle() {
+		if (bundle == null) {
+			bundle = GWT.create(CameraBundle.class);
+		}
+		return bundle;
+	}
 
 	@Override
 	public void getPicture(PictureOptions options, PictureCallback callback) {
-		callback.onFailure();
+		if (options.getDestinationType() == PictureOptions.DESTINATION_TYPE_DATA_URL) {
+			callback.onSuccess(getBundle().getSuccessPicture().getSafeUri().asString().substring("data:image/jpeg;base64,".length()));
+		} else {
+			if (options.getDestinationType() == PictureOptions.DESTINATION_TYPE_FILE_URI) {
+
+				callback.onSuccess(this.pictureUrl);
+
+			} else {
+				callback.onFailure();
+			}
+
+		}
+
+	}
+
+	public void setCameraBundle(CameraBundle bundle) {
+		this.bundle = bundle;
+	}
+
+	public void setPictureUrl(String url) {
+		this.pictureUrl = url;
 	}
 
 }
