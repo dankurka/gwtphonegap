@@ -39,10 +39,13 @@ public class PhoneGapLogServiceStandardImpl extends RemoteServiceServlet impleme
 	private static final long serialVersionUID = 736258979764201565L;
 
 	@Override
-	public String logOnServer(List<LogRecord> record) {
+	public String logOnServer(String clientId, List<LogRecord> record) {
 		String strongName = getPermutationStrongName();
 		try {
 			for (LogRecord logRecord : record) {
+				if (clientId != null) {
+					logRecord.setMessage("cid: '" + clientId + "' " + logRecord.getMessage());
+				}
 
 				RemoteLoggingServiceUtil.logOnServer(logRecord, strongName, deobfuscator, loggerNameOverride);
 			}

@@ -26,6 +26,6 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  */
 public interface PhoneGapLogServiceAsync {
 
-	void logOnServer(List<LogRecord> record, AsyncCallback<String> callback);
+	void logOnServer(String clientId, List<LogRecord> record, AsyncCallback<String> callback);
 
 }

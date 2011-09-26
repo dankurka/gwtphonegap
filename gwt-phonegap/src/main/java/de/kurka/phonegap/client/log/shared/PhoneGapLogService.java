@@ -25,5 +25,5 @@ import com.google.gwt.user.client.rpc.RemoteService;
  * 
  */
 public interface PhoneGapLogService extends RemoteService {
-	public String logOnServer(List<LogRecord> record);
+	public String logOnServer(String clientId, List<LogRecord> record);
 }

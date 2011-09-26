@@ -84,7 +84,7 @@ public class PhoneGapRemoteBatchLogHandler extends RemoteLogHandlerBase {
 		if (!isServiceUrlSet()) {
 			return;
 		}
-		service.logOnServer(logRecords, new AsyncCallback<String>() {
+		service.logOnServer(clientId, logRecords, new AsyncCallback<String>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
@@ -115,6 +115,16 @@ public class PhoneGapRemoteBatchLogHandler extends RemoteLogHandlerBase {
 			return true;
 		}
 		return false;
+	}
+
+	private String clientId;
+
+	/**
+	 * @param uuid
+	 */
+	public void setClientId(String uuid) {
+		this.clientId = uuid;
+
 	}
 
 }

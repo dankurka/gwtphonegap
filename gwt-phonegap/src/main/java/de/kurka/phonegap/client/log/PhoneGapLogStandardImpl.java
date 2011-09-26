@@ -53,4 +53,13 @@ public class PhoneGapLogStandardImpl implements PhoneGapLog {
 			remoteHandler.setServerUrl(url);
 	}
 
+	/**
+	 * @param uuid
+	 */
+	public void setClientId(String uuid) {
+		if (remoteHandler != null)
+			remoteHandler.setClientId(uuid);
+
+	}
+
 }
