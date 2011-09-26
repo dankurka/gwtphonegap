@@ -28,7 +28,6 @@ public class CameraBrowserImpl implements Camera {
 	}
 
 	public CameraBrowserImpl() {
-		setCameraBundle(getBundle());
 		setPictureUrl(GWT.getModuleBaseURL() + "resources/camera_success.jpg");
 	}
 
