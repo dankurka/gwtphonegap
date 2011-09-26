@@ -15,6 +15,8 @@
  */
 package de.kurka.phonegap.showcase.client.accelerometer;
 
+import java.util.ArrayList;
+
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
@@ -25,7 +27,9 @@ import de.kurka.phonegap.client.PhoneGap;
 import de.kurka.phonegap.client.accelerometer.Acceleration;
 import de.kurka.phonegap.client.accelerometer.AccelerationCallback;
 import de.kurka.phonegap.client.accelerometer.AccelerationOptions;
+import de.kurka.phonegap.client.accelerometer.AccelermeterMock;
 import de.kurka.phonegap.client.accelerometer.AccelerometerWatcher;
+import de.kurka.phonegap.client.accelerometer.browser.AccelerationBrowserImpl;
 
 public class AccelerometerPresenter {
 
@@ -78,6 +82,17 @@ public class AccelerometerPresenter {
 				}
 			}
 		});
+
+		if (phoneGap.isDevMode()) {
+			AccelermeterMock mock = ((AccelermeterMock) phoneGap.getAccelerometer());
+
+			ArrayList<Acceleration> list = new ArrayList<Acceleration>();
+			list.add(new AccelerationBrowserImpl(1, 1, 1));
+			list.add(new AccelerationBrowserImpl(1, 0, 0));
+			list.add(new AccelerationBrowserImpl(0, 1, 0));
+			list.add(new AccelerationBrowserImpl(0, 0, 1));
+			mock.setMockValues(list);
+		}
 	}
 
 	private class AccelerometerCallbackImpl implements AccelerationCallback {

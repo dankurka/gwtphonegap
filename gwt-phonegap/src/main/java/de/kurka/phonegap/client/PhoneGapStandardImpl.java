@@ -289,4 +289,12 @@ public class PhoneGapStandardImpl implements PhoneGap {
 		return capture;
 	}
 
+	/* (non-Javadoc)
+	 * @see de.kurka.phonegap.client.PhoneGap#isDevMode()
+	 */
+	@Override
+	public boolean isDevMode() {
+		return !GWT.isScript();
+	}
+
 }

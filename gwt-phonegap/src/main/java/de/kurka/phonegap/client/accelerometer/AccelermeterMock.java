@@ -15,12 +15,13 @@
  */
 package de.kurka.phonegap.client.accelerometer;
 
-import de.kurka.phonegap.client.accelerometer.browser.AccelerationBrowserImpl;
+import java.util.List;
 
 /**
  * @author Daniel Kurka
  * 
  */
 public interface AccelermeterMock extends Accelerometer {
-	public void setMockValues(AccelerationBrowserImpl[] values);
+
+	void setMockValues(List<Acceleration> values);
 }
