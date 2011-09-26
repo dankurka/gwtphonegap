@@ -15,6 +15,8 @@
  */
 package de.kurka.phonegap.showcase.client;
 
+import java.util.logging.Logger;
+
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
@@ -73,11 +75,14 @@ public class MainPresenter {
 
 	}
 
+	private Logger logger = Logger.getLogger(getClass().getName());
+
 	private void bind() {
 		display.getExitButton().addClickHandler(new ClickHandler() {
 
 			@Override
 			public void onClick(ClickEvent event) {
+				logger.severe("test log");
 				phoneGap.exitApp();
 
 			}

@@ -1,9 +1,9 @@
 <module>
-    <inherits name='com.google.gwt.user.User'/>
-    <inherits name='de.kurka.gwt.collection.GwtCollections'/>
-    
-    
-        <define-property name="phonegap.env" values="yes, no" />
+	<inherits name='com.google.gwt.user.User' />
+	<inherits name='de.kurka.gwt.collection.GwtCollections' />
+
+
+	<define-property name="phonegap.env" values="yes, no" />
 	<property-provider name="phonegap.env"><![CDATA[
   	{
 	    var ua = window.navigator.userAgent.toLowerCase();
@@ -21,216 +21,285 @@
 ]]></property-provider>
     
     <!-- Phonegap -->
-     <replace-with class="de.kurka.phonegap.client.PhoneGapStandardImpl">
-        <when-type-is class="de.kurka.phonegap.client.PhoneGap"/>
-        <all>
-            <when-property-is name="phonegap.env" value="yes"/>
-        </all>
-    </replace-with>
-    
-    <replace-with class="de.kurka.phonegap.client.PhoneGapBrowserImpl">
-        <when-type-is class="de.kurka.phonegap.client.PhoneGap"/>
-        <all>
-            <when-property-is name="phonegap.env" value="no"/>
-        </all>
-    </replace-with>
+	<replace-with class="de.kurka.phonegap.client.PhoneGapStandardImpl">
+		<when-type-is class="de.kurka.phonegap.client.PhoneGap" />
+		<all>
+			<when-property-is name="phonegap.env" value="yes" />
+		</all>
+	</replace-with>
+
+	<replace-with class="de.kurka.phonegap.client.PhoneGapBrowserImpl">
+		<when-type-is class="de.kurka.phonegap.client.PhoneGap" />
+		<all>
+			<when-property-is name="phonegap.env" value="no" />
+		</all>
+	</replace-with>
     
     <!-- Accelerometer -->
-    <replace-with class="de.kurka.phonegap.client.accelerometer.js.AccelerometerMobileImpl">
-        <when-type-is class="de.kurka.phonegap.client.accelerometer.Accelerometer"/>
-        <all>
-            <when-property-is name="phonegap.env" value="yes"/>
-        </all>
-    </replace-with>
-    <replace-with class="de.kurka.phonegap.client.accelerometer.browser.AccelerometerBrowserImpl">
-        <when-type-is class="de.kurka.phonegap.client.accelerometer.Accelerometer"/>
-        <all>
-            <when-property-is name="phonegap.env" value="no"/>
-        </all>
-    </replace-with>
+	<replace-with
+		class="de.kurka.phonegap.client.accelerometer.js.AccelerometerMobileImpl">
+		<when-type-is class="de.kurka.phonegap.client.accelerometer.Accelerometer" />
+		<all>
+			<when-property-is name="phonegap.env" value="yes" />
+		</all>
+	</replace-with>
+	<replace-with
+		class="de.kurka.phonegap.client.accelerometer.browser.AccelerometerBrowserImpl">
+		<when-type-is class="de.kurka.phonegap.client.accelerometer.Accelerometer" />
+		<all>
+			<when-property-is name="phonegap.env" value="no" />
+		</all>
+	</replace-with>
     
     <!-- Camera -->
-    <replace-with class="de.kurka.phonegap.client.camera.CameraMobileImpl">
-        <when-type-is class="de.kurka.phonegap.client.camera.Camera"/>
-        <all>
-            <when-property-is name="phonegap.env" value="yes"/>
-        </all>
-    </replace-with>
-     <replace-with class="de.kurka.phonegap.client.camera.CameraBrowserImpl">
-        <when-type-is class="de.kurka.phonegap.client.camera.Camera"/>
-        <all>
-            <when-property-is name="phonegap.env" value="no"/>
-        </all>
-    </replace-with>
+	<replace-with class="de.kurka.phonegap.client.camera.CameraMobileImpl">
+		<when-type-is class="de.kurka.phonegap.client.camera.Camera" />
+		<all>
+			<when-property-is name="phonegap.env" value="yes" />
+		</all>
+	</replace-with>
+	<replace-with class="de.kurka.phonegap.client.camera.CameraBrowserImpl">
+		<when-type-is class="de.kurka.phonegap.client.camera.Camera" />
+		<all>
+			<when-property-is name="phonegap.env" value="no" />
+		</all>
+	</replace-with>
     
     
     <!-- Capture -->
-    <replace-with class="de.kurka.phonegap.client.capture.js.CaptureJsImpl">
-        <when-type-is class="de.kurka.phonegap.client.capture.Capture"/>
-        <all>
-            <when-property-is name="phonegap.env" value="yes"/>
-        </all>
-    </replace-with>
-    <replace-with class="de.kurka.phonegap.client.capture.browser.CaptureBrowserImpl">
-        <when-type-is class="de.kurka.phonegap.client.capture.Capture"/>
-        <all>
-            <when-property-is name="phonegap.env" value="no"/>
-        </all>
-    </replace-with>
+	<replace-with class="de.kurka.phonegap.client.capture.js.CaptureJsImpl">
+		<when-type-is class="de.kurka.phonegap.client.capture.Capture" />
+		<all>
+			<when-property-is name="phonegap.env" value="yes" />
+		</all>
+	</replace-with>
+	<replace-with
+		class="de.kurka.phonegap.client.capture.browser.CaptureBrowserImpl">
+		<when-type-is class="de.kurka.phonegap.client.capture.Capture" />
+		<all>
+			<when-property-is name="phonegap.env" value="no" />
+		</all>
+	</replace-with>
     
      <!-- Compass -->
-    <replace-with class="de.kurka.phonegap.client.compass.js.CompassJsImpl">
-        <when-type-is class="de.kurka.phonegap.client.compass.Compass"/>
-        <all>
-            <when-property-is name="phonegap.env" value="yes"/>
-        </all>
-    </replace-with>
-    <replace-with class="de.kurka.phonegap.client.compass.browser.CompassBrowserImpl">
-        <when-type-is class="de.kurka.phonegap.client.compass.Compass"/>
-        <all>
-            <when-property-is name="phonegap.env" value="no"/>
-        </all>
-    </replace-with>
+	<replace-with class="de.kurka.phonegap.client.compass.js.CompassJsImpl">
+		<when-type-is class="de.kurka.phonegap.client.compass.Compass" />
+		<all>
+			<when-property-is name="phonegap.env" value="yes" />
+		</all>
+	</replace-with>
+	<replace-with
+		class="de.kurka.phonegap.client.compass.browser.CompassBrowserImpl">
+		<when-type-is class="de.kurka.phonegap.client.compass.Compass" />
+		<all>
+			<when-property-is name="phonegap.env" value="no" />
+		</all>
+	</replace-with>
     
     <!-- Contacts -->
-     <replace-with class="de.kurka.phonegap.client.contacts.js.ContactsJsoImpl">
-        <when-type-is class="de.kurka.phonegap.client.contacts.Contacts"/>
-    </replace-with>
+	<replace-with class="de.kurka.phonegap.client.contacts.js.ContactsJsoImpl">
+		<when-type-is class="de.kurka.phonegap.client.contacts.Contacts" />
+	</replace-with>
     
     <!-- Device -->
-    <replace-with class="de.kurka.phonegap.client.device.DeviceMobileImpl">
-        <when-type-is class="de.kurka.phonegap.client.device.Device"/>
-         <all>
-            <when-property-is name="phonegap.env" value="yes"/>
-        </all>
-    </replace-with>
-    <replace-with class="de.kurka.phonegap.client.device.DeviceBrowserImpl">
-        <when-type-is class="de.kurka.phonegap.client.device.Device"/>
-         <all>
-            <when-property-is name="phonegap.env" value="no"/>
-        </all>
-    </replace-with>
+	<replace-with class="de.kurka.phonegap.client.device.DeviceMobileImpl">
+		<when-type-is class="de.kurka.phonegap.client.device.Device" />
+		<all>
+			<when-property-is name="phonegap.env" value="yes" />
+		</all>
+	</replace-with>
+	<replace-with class="de.kurka.phonegap.client.device.DeviceBrowserImpl">
+		<when-type-is class="de.kurka.phonegap.client.device.Device" />
+		<all>
+			<when-property-is name="phonegap.env" value="no" />
+		</all>
+	</replace-with>
     
     <!-- Event -->
-    <replace-with class="de.kurka.phonegap.client.event.js.EventJsImpl">
-        <when-type-is class="de.kurka.phonegap.client.event.Event"/>
-         <all>
-            <when-property-is name="phonegap.env" value="yes"/>
-        </all>
-    </replace-with>
-     <replace-with class="de.kurka.phonegap.client.event.js.EventJsImpl">
-        <when-type-is class="de.kurka.phonegap.client.event.Event"/>
-         <all>
-            <when-property-is name="phonegap.env" value="no"/>
-        </all>
-    </replace-with>
+	<replace-with class="de.kurka.phonegap.client.event.js.EventJsImpl">
+		<when-type-is class="de.kurka.phonegap.client.event.Event" />
+		<all>
+			<when-property-is name="phonegap.env" value="yes" />
+		</all>
+	</replace-with>
+	<replace-with class="de.kurka.phonegap.client.event.js.EventJsImpl">
+		<when-type-is class="de.kurka.phonegap.client.event.Event" />
+		<all>
+			<when-property-is name="phonegap.env" value="no" />
+		</all>
+	</replace-with>
     
     <!-- Geolocation -->
-    <replace-with class="de.kurka.phonegap.client.geolocation.GeolocationMobileImpl">
-        <when-type-is class="de.kurka.phonegap.client.geolocation.Geolocation"/>
-         <all>
-            <when-property-is name="phonegap.env" value="yes"/>
-        </all>
-    </replace-with>
-    <replace-with class="de.kurka.phonegap.client.geolocation.GeolocationBrowserEmptyImpl">
-        <when-type-is class="de.kurka.phonegap.client.geolocation.Geolocation"/>
-         <all>
-            <when-property-is name="phonegap.env" value="no"/>
-        </all>
-    </replace-with>
-    
-    <replace-with class="de.kurka.phonegap.client.log.DebugLoggerMobileImpl">
-        <when-type-is class="de.kurka.phonegap.client.log.DebugLogger"/>
-    </replace-with>
+	<replace-with
+		class="de.kurka.phonegap.client.geolocation.GeolocationMobileImpl">
+		<when-type-is class="de.kurka.phonegap.client.geolocation.Geolocation" />
+		<all>
+			<when-property-is name="phonegap.env" value="yes" />
+		</all>
+	</replace-with>
+	<replace-with
+		class="de.kurka.phonegap.client.geolocation.GeolocationBrowserEmptyImpl">
+		<when-type-is class="de.kurka.phonegap.client.geolocation.Geolocation" />
+		<all>
+			<when-property-is name="phonegap.env" value="no" />
+		</all>
+	</replace-with>
+
+	<replace-with class="de.kurka.phonegap.client.log.DebugLoggerMobileImpl">
+		<when-type-is class="de.kurka.phonegap.client.log.DebugLogger" />
+	</replace-with>
       
      <!-- Connection -->
-    <replace-with class="de.kurka.phonegap.client.connection.ConnectionMobileImpl">
-        <when-type-is class="de.kurka.phonegap.client.connection.Connection"/>
-         <all>
-            <when-property-is name="phonegap.env" value="yes"/>
-        </all>
-    </replace-with>
-    <replace-with class="de.kurka.phonegap.client.connection.ConnectionBrowserImpl">
-        <when-type-is class="de.kurka.phonegap.client.connection.Connection"/>
-         <all>
-            <when-property-is name="phonegap.env" value="no"/>
-        </all>
-    </replace-with>
+	<replace-with
+		class="de.kurka.phonegap.client.connection.ConnectionMobileImpl">
+		<when-type-is class="de.kurka.phonegap.client.connection.Connection" />
+		<all>
+			<when-property-is name="phonegap.env" value="yes" />
+		</all>
+	</replace-with>
+	<replace-with
+		class="de.kurka.phonegap.client.connection.ConnectionBrowserImpl">
+		<when-type-is class="de.kurka.phonegap.client.connection.Connection" />
+		<all>
+			<when-property-is name="phonegap.env" value="no" />
+		</all>
+	</replace-with>
     
     <!-- Media -->
-    <replace-with class="de.kurka.phonegap.client.media.js.MediaModuleJsImpl">
-        <when-type-is class="de.kurka.phonegap.client.media.MediaModule"/>
-         <all>
-            <when-property-is name="phonegap.env" value="yes"/>
-        </all>
-    </replace-with>
-     <replace-with class="de.kurka.phonegap.client.media.browser.MediaModuleBrowserImpl">
-        <when-type-is class="de.kurka.phonegap.client.media.MediaModule"/>
-         <all>
-            <when-property-is name="phonegap.env" value="no"/>
-        </all>
-    </replace-with>
+	<replace-with class="de.kurka.phonegap.client.media.js.MediaModuleJsImpl">
+		<when-type-is class="de.kurka.phonegap.client.media.MediaModule" />
+		<all>
+			<when-property-is name="phonegap.env" value="yes" />
+		</all>
+	</replace-with>
+	<replace-with
+		class="de.kurka.phonegap.client.media.browser.MediaModuleBrowserImpl">
+		<when-type-is class="de.kurka.phonegap.client.media.MediaModule" />
+		<all>
+			<when-property-is name="phonegap.env" value="no" />
+		</all>
+	</replace-with>
     
     <!-- Notification -->
-    <replace-with class="de.kurka.phonegap.client.notification.NotificationMobileImpl">
-        <when-type-is class="de.kurka.phonegap.client.notification.Notification"/>
-         <all>
-            <when-property-is name="phonegap.env" value="yes"/>
-        </all>
-    </replace-with>
-    <replace-with class="de.kurka.phonegap.client.notification.NotificationBrowserImpl">
-        <when-type-is class="de.kurka.phonegap.client.notification.Notification"/>
-         <all>
-            <when-property-is name="phonegap.env" value="no"/>
-        </all>
-    </replace-with>
+	<replace-with
+		class="de.kurka.phonegap.client.notification.NotificationMobileImpl">
+		<when-type-is class="de.kurka.phonegap.client.notification.Notification" />
+		<all>
+			<when-property-is name="phonegap.env" value="yes" />
+		</all>
+	</replace-with>
+	<replace-with
+		class="de.kurka.phonegap.client.notification.NotificationBrowserImpl">
+		<when-type-is class="de.kurka.phonegap.client.notification.Notification" />
+		<all>
+			<when-property-is name="phonegap.env" value="no" />
+		</all>
+	</replace-with>
     
     
     
     <!-- File -->
-     <replace-with class="de.kurka.phonegap.client.file.browser.FileBrowserImpl">
-        <when-type-is class="de.kurka.phonegap.client.file.File"/>
-         <all>
-            <when-property-is name="phonegap.env" value="no"/>
-        </all>
-    </replace-with>
-    
-     <replace-with class="de.kurka.phonegap.client.file.js.FileJsImpl">
-        <when-type-is class="de.kurka.phonegap.client.file.File"/>
-         <all>
-            <when-property-is name="phonegap.env" value="yes"/>
-        </all>
-    </replace-with>
+	<replace-with class="de.kurka.phonegap.client.file.browser.FileBrowserImpl">
+		<when-type-is class="de.kurka.phonegap.client.file.File" />
+		<all>
+			<when-property-is name="phonegap.env" value="no" />
+		</all>
+	</replace-with>
+
+	<replace-with class="de.kurka.phonegap.client.file.js.FileJsImpl">
+		<when-type-is class="de.kurka.phonegap.client.file.File" />
+		<all>
+			<when-property-is name="phonegap.env" value="yes" />
+		</all>
+	</replace-with>
     
     <!-- Plugins -->
     <!-- Childbrowser -->
-    <replace-with class="de.kurka.phonegap.client.plugins.childbrowser.ChildBrowserPhoneGapImpl">
-        <when-type-is class="de.kurka.phonegap.client.plugins.childbrowser.ChildBrowser"/>
-        <all>
-            <when-property-is name="phonegap.env" value="yes"/>
-        </all>
-    </replace-with>
-    <replace-with class="de.kurka.phonegap.client.plugins.childbrowser.ChildBrowserBrowserImpl">
-        <when-type-is class="de.kurka.phonegap.client.plugins.childbrowser.ChildBrowser"/>
-        <all>
-            <when-property-is name="phonegap.env" value="no"/>
-        </all>
-    </replace-with>
+	<replace-with
+		class="de.kurka.phonegap.client.plugins.childbrowser.ChildBrowserPhoneGapImpl">
+		<when-type-is
+			class="de.kurka.phonegap.client.plugins.childbrowser.ChildBrowser" />
+		<all>
+			<when-property-is name="phonegap.env" value="yes" />
+		</all>
+	</replace-with>
+	<replace-with
+		class="de.kurka.phonegap.client.plugins.childbrowser.ChildBrowserBrowserImpl">
+		<when-type-is
+			class="de.kurka.phonegap.client.plugins.childbrowser.ChildBrowser" />
+		<all>
+			<when-property-is name="phonegap.env" value="no" />
+		</all>
+	</replace-with>
     <!-- Badge -->
-    <replace-with class="de.kurka.phonegap.client.plugins.badge.BadgePhoneGapImpl">
-        <when-type-is class="de.kurka.phonegap.client.plugins.badge.Badge"/>
-         <all>
-            <when-property-is name="phonegap.env" value="yes"/>
-        </all>
-    </replace-with>
-    <replace-with class="de.kurka.phonegap.client.plugins.badge.BadgeBrowserImpl">
-        <when-type-is class="de.kurka.phonegap.client.plugins.badge.Badge"/>
-         <all>
-            <when-property-is name="phonegap.env" value="no"/>
-        </all>
-    </replace-with>
-   
+	<replace-with
+		class="de.kurka.phonegap.client.plugins.badge.BadgePhoneGapImpl">
+		<when-type-is class="de.kurka.phonegap.client.plugins.badge.Badge" />
+		<all>
+			<when-property-is name="phonegap.env" value="yes" />
+		</all>
+	</replace-with>
+	<replace-with class="de.kurka.phonegap.client.plugins.badge.BadgeBrowserImpl">
+		<when-type-is class="de.kurka.phonegap.client.plugins.badge.Badge" />
+		<all>
+			<when-property-is name="phonegap.env" value="no" />
+		</all>
+	</replace-with>
     
     
+    <!-- Log -->
+     <inherits name="com.google.gwt.logging.Logging"/>
     
+    <define-configuration-property name="phonegap.logging.threshold" is-multi-valued="false" />
+    <set-configuration-property name="phonegap.logging.threshold" value="WARNING" /> 
+    
+    <define-configuration-property name="phonegap.logging.maxentries" is-multi-valued="false" />
+    <set-configuration-property name="phonegap.logging.maxentries" value="100" /> 
+    
+    
+	<generate-with
+		class="de.kurka.phonegap.server.log.rebind.PhoneGapLogValueGenerator">
+		<when-type-assignable class="de.kurka.phonegap.client.log.PhoneGapLogConfig" />
+	</generate-with>
+
+
+	<generate-with
+		class="de.kurka.phonegap.server.log.rebind.PhoneGapLogThresholdGenerator">
+		<when-type-assignable
+			class="de.kurka.phonegap.client.log.PhoneGapLogThreshold" />
+	</generate-with>
+	
+	<define-property name="phonegap.logging.remoteHandler"  values="ENABLED, DISABLED" />
+	<set-property name="phonegap.logging.remoteHandler" value="ENABLED" />
+	
+	<define-property name="phonegap.logging.consoleHandler"  values="ENABLED, DISABLED" />
+	<set-property name="phonegap.logging.consoleHandler" value="ENABLED" />
+
+	<replace-with class="com.google.gwt.logging.client.NullLogHandler">
+		<when-type-is class="de.kurka.phonegap.client.log.PhoneGapConsoleLogHandler" />
+		<any>
+			<when-property-is name="gwt.logging.enabled" value="FALSE" />
+			<when-property-is name="phonegap.logging.consoleHandler" value="DISABLED" />
+		</any>
+	</replace-with>
+	
+	<replace-with class="com.google.gwt.logging.client.NullLogHandler">
+		<when-type-is class="de.kurka.phonegap.client.log.PhoneGapRemoteBatchLogHandler" />
+		<any>
+			<when-property-is name="gwt.logging.enabled" value="FALSE" />
+			<when-property-is name="phonegap.logging.remoteHandler" value="DISABLED" />
+		</any>
+	</replace-with>
+	<set-property name="gwt.logging.enabled" value="TRUE"/> 
+	
+	<!-- disable default gwt Log handler -->
+	<set-property name="gwt.logging.consoleHandler" value="DISABLED"/> 
+
+	
+	
+	
+
+
+
+
 </module>

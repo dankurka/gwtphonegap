@@ -34,7 +34,8 @@ import de.kurka.phonegap.client.device.Device;
 import de.kurka.phonegap.client.event.Event;
 import de.kurka.phonegap.client.file.File;
 import de.kurka.phonegap.client.geolocation.Geolocation;
-import de.kurka.phonegap.client.log.DebugLogger;
+import de.kurka.phonegap.client.log.PhoneGapLog;
+import de.kurka.phonegap.client.log.PhoneGapLogStandardImpl;
 import de.kurka.phonegap.client.media.MediaModule;
 import de.kurka.phonegap.client.notification.Notification;
 import de.kurka.phonegap.client.plugins.PhoneGapPlugin;
@@ -49,7 +50,6 @@ public class PhoneGapStandardImpl implements PhoneGap {
 	private Camera camera;
 	private Geolocation geolocation;
 	private Notification notification;
-	private DebugLogger debugLogger;
 	private Contacts contacts;
 	private File file;
 	private Connection connection;
@@ -62,8 +62,18 @@ public class PhoneGapStandardImpl implements PhoneGap {
 
 	private EventBus handlerManager = new SimpleEventBus();
 
-	public PhoneGapStandardImpl() {
+	private PhoneGapLogStandardImpl phoneGapLog;
 
+	public PhoneGapStandardImpl() {
+		//log configures it self
+		getLog();
+	}
+
+	public PhoneGapLog getLog() {
+		if (phoneGapLog == null) {
+			phoneGapLog = new PhoneGapLogStandardImpl();
+		}
+		return phoneGapLog;
 	}
 
 	@Override
@@ -82,6 +92,7 @@ public class PhoneGapStandardImpl implements PhoneGap {
 
 	@Override
 	public void initializePhoneGap(final int timeoutInMs) {
+
 		final long end = System.currentTimeMillis() + timeoutInMs;
 		if (isPhoneGapInitialized()) {
 
@@ -145,11 +156,6 @@ public class PhoneGapStandardImpl implements PhoneGap {
 		return notification;
 	}
 
-	@Override
-	public DebugLogger getDebugLogger() {
-		return debugLogger;
-	}
-
 	private void firePhoneGapAvailable() {
 		constructModules();
 
@@ -176,17 +182,12 @@ public class PhoneGapStandardImpl implements PhoneGap {
 		return GWT.create(Notification.class);
 	}
 
-	protected DebugLogger constructDebugLogger() {
-		return GWT.create(DebugLogger.class);
-	}
-
 	protected void constructModules() {
 		device = constructDevice();
 		accelerometer = constructAccelerometer();
 		camera = constructCamera();
 		geolocation = constructGeolocation();
 		notification = constructNotification();
-		debugLogger = constructDebugLogger();
 		contacts = constructContacts();
 		file = constructFile();
 		connection = constructConnection();

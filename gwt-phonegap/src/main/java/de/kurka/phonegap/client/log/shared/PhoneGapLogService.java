@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Daniel Kurka
+ * Copyright 2011 Daniel Kurka
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,14 +13,17 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.phonegap.client.log;
+package de.kurka.phonegap.client.log.shared;
 
-public interface DebugLogger {
+import java.util.List;
+import java.util.logging.LogRecord;
 
-	public void info(String message);
+import com.google.gwt.user.client.rpc.RemoteService;
 
-	public void warn(String message);
-
-	public void error(String message);
-
+/**
+ * @author Daniel Kurka
+ * 
+ */
+public interface PhoneGapLogService extends RemoteService {
+	public String logOnServer(List<LogRecord> record);
 }

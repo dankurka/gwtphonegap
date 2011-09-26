@@ -24,5 +24,7 @@
 
 	<entry-point class="de.kurka.phonegap.showcase.client.ShowCaseEntryPoint" />
 	
+	
+	
 	<source path="client"/>
 </module>
