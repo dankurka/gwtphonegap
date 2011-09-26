@@ -159,6 +159,7 @@ public class PhoneGapStandardImpl implements PhoneGap {
 	private void firePhoneGapAvailable() {
 
 		constructModules();
+		phoneGapLog.setClientId(getDevice().getUuid());
 
 		handlerManager.fireEvent(new PhoneGapAvailableEvent());
 	}
