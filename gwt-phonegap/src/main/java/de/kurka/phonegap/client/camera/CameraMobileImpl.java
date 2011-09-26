@@ -18,7 +18,18 @@ package de.kurka.phonegap.client.camera;
 public class CameraMobileImpl implements Camera {
 
 	@Override
-	public native void getPicture(PictureOptions options, PictureCallback callback)/*-{
+	public void getPicture(PictureOptions options, PictureCallback callback) {
+		if (options == null) {
+			throw new IllegalArgumentException("options can not be null");
+		}
+
+		if (callback == null) {
+			throw new IllegalArgumentException("callback can not be null");
+		}
+		getPicture0(options, callback);
+	}
+
+	private native void getPicture0(PictureOptions options, PictureCallback callback)/*-{
 		var successCallback = function(data) {
 			callback.@de.kurka.phonegap.client.camera.PictureCallback::onSuccess(Ljava/lang/String;)(data);
 		};
