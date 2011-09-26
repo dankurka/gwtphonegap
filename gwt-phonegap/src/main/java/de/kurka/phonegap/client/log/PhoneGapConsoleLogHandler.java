@@ -27,10 +27,18 @@ import com.google.gwt.logging.client.TextLogFormatter;
  */
 public class PhoneGapConsoleLogHandler extends Handler {
 
+	private boolean supportsLogging;
+
 	public PhoneGapConsoleLogHandler() {
 		setFormatter(new TextLogFormatter(true));
 		setLevel(Level.ALL);
+		supportsLogging = testForLogging();
+
 	}
+
+	protected native boolean testForLogging() /*-{
+		return (($wnd.console != null) && ($wnd.console.log != null) && (typeof ($wnd.console.log) == 'function'));
+	}-*/;
 
 	@Override
 	public void close() {
@@ -46,22 +54,21 @@ public class PhoneGapConsoleLogHandler extends Handler {
 
 	@Override
 	public void publish(LogRecord record) {
-		if (!isSupported() || !isLoggable(record)) {
+		if (!supportsLogging)
+			return;
+
+		if (!isLoggable(record)) {
 			return;
 		}
+
 		String msg = getFormatter().format(record);
 		log(msg);
 
 	}
 
-	protected native boolean isSupported() /*-{
-		return ((window.console != null) && (window.console.firebug == null)
-				&& (window.console.log != null) && (typeof (window.console.log) == 'function'));
-
-	}-*/;
-
 	protected native void log(String message) /*-{
-		window.console.log(message);
+		$wnd.console.log(message);
+
 	}-*/;
 
 }
