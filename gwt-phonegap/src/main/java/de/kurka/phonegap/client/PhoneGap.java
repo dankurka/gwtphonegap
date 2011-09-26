@@ -41,11 +41,16 @@ import de.kurka.phonegap.client.plugins.PhoneGapPlugin;
  * <ul>
  * <li>Accelerometer</li>
  * <li>Camera</li>
+ * <li>Capture</li>
+ * <li>Compass</li>
+ * <li>Conntection</li>
+ * <li>Contacts</li>
  * <li>Device</li>
+ * <li>Events</li>
  * <li>File</li>
  * <li>Geolocation</li>
+ * <li>Media</li>
  * <li>Log</li>
- * <li>Network</li>
  * <li>Notification</li>
  * </ul>
  * 
