@@ -19,10 +19,11 @@ import com.google.gwt.user.client.Timer;
 
 import de.kurka.phonegap.client.accelerometer.AccelerationCallback;
 import de.kurka.phonegap.client.accelerometer.AccelerationOptions;
+import de.kurka.phonegap.client.accelerometer.AccelermeterMock;
 import de.kurka.phonegap.client.accelerometer.Accelerometer;
 import de.kurka.phonegap.client.accelerometer.AccelerometerWatcher;
 
-public class AccelerometerBrowserImpl implements Accelerometer {
+public class AccelerometerBrowserImpl implements Accelerometer, AccelermeterMock {
 
 	@Override
 	public void getCurrentAcceleration(AccelerationCallback accelerationCallback, AccelerationOptions options) {
@@ -60,10 +61,51 @@ public class AccelerometerBrowserImpl implements Accelerometer {
 
 			schedule((int) options.getFrequency());
 
-			callback.onSuccess(new AccelerationBrowserImpl(0, 0, 0));
+			if (shouldFail) {
+				callback.onFailure();
+			} else {
+
+				if (useMockValues) {
+					AccelerationBrowserImpl impl = mockValues[currentIndex];
+					currentIndex++;
+					currentIndex = currentIndex % maxIndex;
+					callback.onSuccess(impl);
+				} else {
+					callback.onSuccess(new AccelerationBrowserImpl(0, 0, 0));
+				}
+			}
 
 		}
 
+	}
+
+	private AccelerationBrowserImpl[] mockValues;
+	private int currentIndex;
+	private int maxIndex;
+	private boolean useMockValues;
+
+	private boolean shouldFail;
+
+	@Override
+	public void setMockValues(AccelerationBrowserImpl[] values) {
+		if (values == null) {
+			mockValues = null;
+			useMockValues = false;
+		} else {
+			if (mockValues.length == 0) {
+				throw new IllegalArgumentException("no values provided");
+			}
+			this.mockValues = values;
+			this.currentIndex = 0;
+			this.maxIndex = mockValues.length;
+			useMockValues = true;
+
+		}
+
+	}
+
+	public void setShouldFail(boolean shouldFail) {
+		this.shouldFail = shouldFail;
 	}
 
 }
