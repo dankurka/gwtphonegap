@@ -93,6 +93,7 @@ public class AccelerometerPresenter {
 			list.add(new AccelerationBrowserImpl(0, 0, 1));
 			mock.setMockValues(list);
 		}
+
 	}
 
 	private class AccelerometerCallbackImpl implements AccelerationCallback {
