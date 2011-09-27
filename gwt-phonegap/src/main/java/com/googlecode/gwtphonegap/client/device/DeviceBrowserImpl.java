@@ -50,7 +50,7 @@ public class DeviceBrowserImpl implements Device {
 
 	private static final char[] CHAR_ARRAY = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".toCharArray();
 
-	private String getPseudoGUUID() {
+	public static String getPseudoGUUID() {
 		char[] buffer = new char[36];
 
 		for (int i = 0; i < 36; i++) {

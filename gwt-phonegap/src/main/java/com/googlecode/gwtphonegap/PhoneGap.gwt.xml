@@ -99,6 +99,16 @@
     <!-- Contacts -->
 	<replace-with class="com.googlecode.gwtphonegap.client.contacts.js.ContactsJsoImpl">
 		<when-type-is class="com.googlecode.gwtphonegap.client.contacts.Contacts" />
+		<all>
+			<when-property-is name="phonegap.env" value="yes" />
+		</all>
+	</replace-with>
+	
+	<replace-with class="com.googlecode.gwtphonegap.client.contacts.browser.ContactsBrowserImpl">
+		<when-type-is class="com.googlecode.gwtphonegap.client.contacts.Contacts" />
+		<all>
+			<when-property-is name="phonegap.env" value="no" />
+		</all>
 	</replace-with>
     
     <!-- Device -->

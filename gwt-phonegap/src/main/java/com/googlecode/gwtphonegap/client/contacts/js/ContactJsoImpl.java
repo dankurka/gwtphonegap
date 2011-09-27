@@ -27,7 +27,6 @@ import com.googlecode.gwtphonegap.client.contacts.ContactOrganisation;
 import com.googlecode.gwtphonegap.collection.client.JsLightArray;
 import com.googlecode.gwtphonegap.collection.shared.LightArray;
 
-
 public final class ContactJsoImpl extends JavaScriptObject implements Contact {
 
 	protected ContactJsoImpl() {
@@ -350,7 +349,7 @@ public final class ContactJsoImpl extends JavaScriptObject implements Contact {
 		this.save();
 	}-*/;
 
-	public native Contact clone()/*-{
+	public native Contact cloneContact()/*-{
 		return this.clone();
 	}-*/;
 

@@ -19,7 +19,6 @@ import java.util.Date;
 
 import com.googlecode.gwtphonegap.collection.shared.LightArray;
 
-
 /**
  * Contains properties that describe a contact, such as a user's personal or
  * business contact.
@@ -259,7 +258,7 @@ public interface Contact {
 	 * @return a new Contact object that is a deep copy of the calling object,
 	 *         with the id property set to null.
 	 */
-	public Contact clone();
+	public Contact cloneContact();
 
 	/**
 	 * Removes the contact from the device contacts database. An error callback
@@ -272,4 +271,5 @@ public interface Contact {
 	 * existing contact if a contact with the same id already exists.
 	 */
 	public void save();
+
 }
