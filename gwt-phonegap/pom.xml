@@ -100,6 +100,8 @@
 					<excludes>
 						<exclude>com.google.gwt:gwt-servlet</exclude>
 						<exclude>com.google.gwt:gwt-user</exclude>
+						<exclude>com.google.gwt:gwt-dev</exclude>
+						<exclude>javax.validation:validation-api</exclude>
 					</excludes>
 
 
