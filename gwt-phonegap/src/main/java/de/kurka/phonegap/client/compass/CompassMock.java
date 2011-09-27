@@ -13,25 +13,16 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.phonegap.client.compass.browser;
+package de.kurka.phonegap.client.compass;
 
-import com.google.gwt.user.client.Timer;
+import java.util.List;
 
-import de.kurka.phonegap.client.compass.CompassCallback;
-import de.kurka.phonegap.client.compass.CompassWatcher;
+/**
+ * @author Daniel Kurka
+ * 
+ */
+public interface CompassMock extends Compass {
+	void setMockValues(List<Double> values);
 
-public class CompassWatcherTimerImpl extends Timer implements CompassWatcher {
-
-	private final CompassCallback callback;
-
-	public CompassWatcherTimerImpl(CompassCallback callback) {
-		this.callback = callback;
-
-	}
-
-	@Override
-	public void run() {
-		callback.onError();
-	}
-
+	public void setShouldFail(boolean shouldFail);
 }

@@ -19,7 +19,7 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.DataResource;
 
-public class CameraBrowserImpl implements Camera {
+public class CameraBrowserImpl implements CameraMock {
 
 	public interface CameraBundle extends ClientBundle {
 
@@ -43,6 +43,11 @@ public class CameraBrowserImpl implements Camera {
 
 	@Override
 	public void getPicture(PictureOptions options, PictureCallback callback) {
+		if (shouldFail) {
+			callback.onFailure();
+			return;
+		}
+
 		if (options.getDestinationType() == PictureOptions.DESTINATION_TYPE_DATA_URL) {
 			callback.onSuccess(getBundle().getSuccessPicture().getSafeUri().asString().substring("data:image/jpeg;base64,".length()));
 		} else {
@@ -58,12 +63,22 @@ public class CameraBrowserImpl implements Camera {
 
 	}
 
+	@Override
 	public void setCameraBundle(CameraBundle bundle) {
 		this.bundle = bundle;
 	}
 
+	@Override
 	public void setPictureUrl(String url) {
 		this.pictureUrl = url;
+	}
+
+	private boolean shouldFail;
+
+	@Override
+	public void setShouldFail(boolean fail) {
+		this.shouldFail = fail;
+
 	}
 
 }

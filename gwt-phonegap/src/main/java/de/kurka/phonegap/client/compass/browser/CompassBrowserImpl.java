@@ -15,12 +15,20 @@
  */
 package de.kurka.phonegap.client.compass.browser;
 
-import de.kurka.phonegap.client.compass.Compass;
+import java.util.List;
+
+import com.google.gwt.user.client.Timer;
+
 import de.kurka.phonegap.client.compass.CompassCallback;
+import de.kurka.phonegap.client.compass.CompassMock;
 import de.kurka.phonegap.client.compass.CompassOptions;
 import de.kurka.phonegap.client.compass.CompassWatcher;
 
-public class CompassBrowserImpl implements Compass {
+public class CompassBrowserImpl implements CompassMock {
+
+	private List<Double> values;
+	private int currentIndex;
+	private int maxIndex;
 
 	@Override
 	public void getCurrentHeading(CompassOptions options, CompassCallback callback) {
@@ -42,6 +50,57 @@ public class CompassBrowserImpl implements Compass {
 		}
 		CompassWatcherTimerImpl timerImpl = (CompassWatcherTimerImpl) watcher;
 		timerImpl.cancel();
+	}
+
+	@Override
+	public void setMockValues(List<Double> values) {
+		this.values = values;
+		if (this.values != null) {
+			if (this.values.size() < 1) {
+				this.values = null;
+				throw new IllegalArgumentException("list can«t be empty");
+			}
+			currentIndex = 0;
+			maxIndex = values.size();
+		}
+
+	}
+
+	public class CompassWatcherTimerImpl extends Timer implements CompassWatcher {
+
+		private final CompassCallback callback;
+
+		public CompassWatcherTimerImpl(CompassCallback callback) {
+			this.callback = callback;
+
+		}
+
+		@Override
+		public void run() {
+			if (shouldFail) {
+				callback.onError();
+			} else {
+				if (values == null) {
+					callback.onSuccess(0);
+				} else {
+					Double heading = values.get(currentIndex);
+					currentIndex++;
+					currentIndex = currentIndex % maxIndex;
+					callback.onSuccess(heading);
+
+				}
+			}
+
+		}
+
+	}
+
+	private boolean shouldFail;
+
+	@Override
+	public void setShouldFail(boolean shouldFail) {
+		this.shouldFail = shouldFail;
+
 	}
 
 }
