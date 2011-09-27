@@ -4,20 +4,20 @@ import java.util.Date;
 
 import com.google.gwt.user.client.ui.HasHTML;
 import com.google.gwt.user.client.ui.Widget;
+import com.googlecode.gwtphonegap.client.PhoneGap;
+import com.googlecode.gwtphonegap.client.event.BackButtonPressedEvent;
+import com.googlecode.gwtphonegap.client.event.BackButtonPressedHandler;
+import com.googlecode.gwtphonegap.client.event.OffLineEvent;
+import com.googlecode.gwtphonegap.client.event.OffLineHandler;
+import com.googlecode.gwtphonegap.client.event.OnlineEvent;
+import com.googlecode.gwtphonegap.client.event.OnlineHandler;
+import com.googlecode.gwtphonegap.client.event.PauseEvent;
+import com.googlecode.gwtphonegap.client.event.PauseHandler;
+import com.googlecode.gwtphonegap.client.event.ResumeEvent;
+import com.googlecode.gwtphonegap.client.event.ResumeHandler;
+import com.googlecode.gwtphonegap.client.event.SearchButtonPressedEvent;
+import com.googlecode.gwtphonegap.client.event.SearchButtonPressedHandler;
 
-import de.kurka.phonegap.client.PhoneGap;
-import de.kurka.phonegap.client.event.BackButtonPressedEvent;
-import de.kurka.phonegap.client.event.BackButtonPressedHandler;
-import de.kurka.phonegap.client.event.OffLineEvent;
-import de.kurka.phonegap.client.event.OffLineHandler;
-import de.kurka.phonegap.client.event.OnlineEvent;
-import de.kurka.phonegap.client.event.OnlineHandler;
-import de.kurka.phonegap.client.event.PauseEvent;
-import de.kurka.phonegap.client.event.PauseHandler;
-import de.kurka.phonegap.client.event.ResumeEvent;
-import de.kurka.phonegap.client.event.ResumeHandler;
-import de.kurka.phonegap.client.event.SearchButtonPressedEvent;
-import de.kurka.phonegap.client.event.SearchButtonPressedHandler;
 
 public class EventPresenter {
 

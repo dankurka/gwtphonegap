@@ -6,11 +6,11 @@ import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.ui.HasHTML;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
+import com.googlecode.gwtphonegap.client.PhoneGap;
+import com.googlecode.gwtphonegap.client.compass.CompassCallback;
+import com.googlecode.gwtphonegap.client.compass.CompassOptions;
+import com.googlecode.gwtphonegap.client.compass.CompassWatcher;
 
-import de.kurka.phonegap.client.PhoneGap;
-import de.kurka.phonegap.client.compass.CompassCallback;
-import de.kurka.phonegap.client.compass.CompassOptions;
-import de.kurka.phonegap.client.compass.CompassWatcher;
 
 public class CompassPresenter {
 

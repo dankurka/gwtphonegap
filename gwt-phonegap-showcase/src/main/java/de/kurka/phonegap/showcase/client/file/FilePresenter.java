@@ -7,21 +7,21 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HasHTML;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.IsWidget;
+import com.googlecode.gwtphonegap.client.PhoneGap;
+import com.googlecode.gwtphonegap.client.file.DirectoryEntry;
+import com.googlecode.gwtphonegap.client.file.DirectoryReader;
+import com.googlecode.gwtphonegap.client.file.EntryBase;
+import com.googlecode.gwtphonegap.client.file.FileCallback;
+import com.googlecode.gwtphonegap.client.file.FileEntry;
+import com.googlecode.gwtphonegap.client.file.FileError;
+import com.googlecode.gwtphonegap.client.file.FileReader;
+import com.googlecode.gwtphonegap.client.file.FileSystem;
+import com.googlecode.gwtphonegap.client.file.FileWriter;
+import com.googlecode.gwtphonegap.client.file.Flags;
+import com.googlecode.gwtphonegap.client.file.ReaderCallback;
+import com.googlecode.gwtphonegap.client.file.WriterCallback;
 
 import de.kurka.gwt.collection.shared.LightArray;
-import de.kurka.phonegap.client.PhoneGap;
-import de.kurka.phonegap.client.file.DirectoryEntry;
-import de.kurka.phonegap.client.file.DirectoryReader;
-import de.kurka.phonegap.client.file.EntryBase;
-import de.kurka.phonegap.client.file.FileCallback;
-import de.kurka.phonegap.client.file.FileEntry;
-import de.kurka.phonegap.client.file.FileError;
-import de.kurka.phonegap.client.file.FileReader;
-import de.kurka.phonegap.client.file.FileSystem;
-import de.kurka.phonegap.client.file.FileWriter;
-import de.kurka.phonegap.client.file.Flags;
-import de.kurka.phonegap.client.file.ReaderCallback;
-import de.kurka.phonegap.client.file.WriterCallback;
 
 public class FilePresenter {
 

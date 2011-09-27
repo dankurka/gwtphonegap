@@ -22,14 +22,14 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Widget;
+import com.googlecode.gwtphonegap.client.PhoneGap;
+import com.googlecode.gwtphonegap.client.accelerometer.Acceleration;
+import com.googlecode.gwtphonegap.client.accelerometer.AccelerationCallback;
+import com.googlecode.gwtphonegap.client.accelerometer.AccelerationOptions;
+import com.googlecode.gwtphonegap.client.accelerometer.AccelermeterMock;
+import com.googlecode.gwtphonegap.client.accelerometer.AccelerometerWatcher;
+import com.googlecode.gwtphonegap.client.accelerometer.browser.AccelerationBrowserImpl;
 
-import de.kurka.phonegap.client.PhoneGap;
-import de.kurka.phonegap.client.accelerometer.Acceleration;
-import de.kurka.phonegap.client.accelerometer.AccelerationCallback;
-import de.kurka.phonegap.client.accelerometer.AccelerationOptions;
-import de.kurka.phonegap.client.accelerometer.AccelermeterMock;
-import de.kurka.phonegap.client.accelerometer.AccelerometerWatcher;
-import de.kurka.phonegap.client.accelerometer.browser.AccelerationBrowserImpl;
 
 public class AccelerometerPresenter {
 

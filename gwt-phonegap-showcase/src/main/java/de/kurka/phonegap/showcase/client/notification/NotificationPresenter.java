@@ -19,10 +19,10 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.ui.Widget;
+import com.googlecode.gwtphonegap.client.PhoneGap;
+import com.googlecode.gwtphonegap.client.notification.AlertCallback;
+import com.googlecode.gwtphonegap.client.notification.ConfirmCallback;
 
-import de.kurka.phonegap.client.PhoneGap;
-import de.kurka.phonegap.client.notification.AlertCallback;
-import de.kurka.phonegap.client.notification.ConfirmCallback;
 
 public class NotificationPresenter {
 	private final Display display;

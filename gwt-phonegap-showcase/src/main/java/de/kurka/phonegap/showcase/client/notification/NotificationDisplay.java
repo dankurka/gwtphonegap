@@ -76,7 +76,7 @@ public class NotificationDisplay implements Display {
 	}
 
 	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.showcase.client.notification.NotificationPresenter.Display#getConfirmButton()
+	 * @see com.googlecode.gwtphonegap.showcase.client.notification.NotificationPresenter.Display#getConfirmButton()
 	 */
 	@Override
 	public HasClickHandlers getConfirmButton() {

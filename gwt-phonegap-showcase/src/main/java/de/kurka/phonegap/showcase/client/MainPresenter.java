@@ -20,8 +20,8 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
+import com.googlecode.gwtphonegap.client.PhoneGap;
 
-import de.kurka.phonegap.client.PhoneGap;
 import de.kurka.phonegap.showcase.client.accelerometer.AccelerometerPresenter;
 import de.kurka.phonegap.showcase.client.camera.CameraPresenter;
 import de.kurka.phonegap.showcase.client.compass.CompassPresenter;

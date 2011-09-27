@@ -22,12 +22,12 @@ import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.googlecode.gwtphonegap.client.PhoneGap;
+import com.googlecode.gwtphonegap.client.PhoneGapAvailableEvent;
+import com.googlecode.gwtphonegap.client.PhoneGapAvailableHandler;
+import com.googlecode.gwtphonegap.client.PhoneGapTimeoutEvent;
+import com.googlecode.gwtphonegap.client.PhoneGapTimeoutHandler;
 
-import de.kurka.phonegap.client.PhoneGap;
-import de.kurka.phonegap.client.PhoneGapAvailableEvent;
-import de.kurka.phonegap.client.PhoneGapAvailableHandler;
-import de.kurka.phonegap.client.PhoneGapTimeoutEvent;
-import de.kurka.phonegap.client.PhoneGapTimeoutHandler;
 import de.kurka.phonegap.showcase.client.accelerometer.AccelerometerDisplay;
 import de.kurka.phonegap.showcase.client.accelerometer.AccelerometerPresenter;
 import de.kurka.phonegap.showcase.client.camera.CameraDisplay;

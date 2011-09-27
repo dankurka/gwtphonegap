@@ -16,8 +16,8 @@
 package de.kurka.phonegap.showcase.client.device;
 
 import com.google.gwt.user.client.ui.Widget;
+import com.googlecode.gwtphonegap.client.PhoneGap;
 
-import de.kurka.phonegap.client.PhoneGap;
 
 public class DevicePresenter {
 

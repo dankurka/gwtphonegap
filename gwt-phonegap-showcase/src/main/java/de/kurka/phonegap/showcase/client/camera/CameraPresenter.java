@@ -20,10 +20,10 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Widget;
+import com.googlecode.gwtphonegap.client.PhoneGap;
+import com.googlecode.gwtphonegap.client.camera.PictureCallback;
+import com.googlecode.gwtphonegap.client.camera.PictureOptions;
 
-import de.kurka.phonegap.client.PhoneGap;
-import de.kurka.phonegap.client.camera.PictureCallback;
-import de.kurka.phonegap.client.camera.PictureOptions;
 
 public class CameraPresenter {
 

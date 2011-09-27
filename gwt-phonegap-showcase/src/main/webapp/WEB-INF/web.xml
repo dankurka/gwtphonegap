@@ -7,7 +7,7 @@
 
 	<servlet>
 		<servlet-name>phonegapfileapi</servlet-name>
-		<servlet-class>de.kurka.phonegap.server.file.FileRemoteServiceServlet</servlet-class>
+		<servlet-class>com.googlecode.gwtphonegap.server.file.FileRemoteServiceServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>phonegapfileapi</servlet-name>

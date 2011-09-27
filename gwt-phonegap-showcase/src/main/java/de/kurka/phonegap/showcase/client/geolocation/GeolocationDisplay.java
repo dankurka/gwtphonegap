@@ -152,7 +152,7 @@ public class GeolocationDisplay implements Display {
 	}
 
 	/* (non-Javadoc)
-	 * @see de.kurka.phonegap.showcase.client.geolocation.GeolocationPresenter.Display#setTime(java.lang.String)
+	 * @see com.googlecode.gwtphonegap.showcase.client.geolocation.GeolocationPresenter.Display#setTime(java.lang.String)
 	 */
 	@Override
 	public void setTime(String time) {

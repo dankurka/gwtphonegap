@@ -8,12 +8,12 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HasHTML;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
+import com.googlecode.gwtphonegap.client.PhoneGap;
+import com.googlecode.gwtphonegap.client.media.Media;
+import com.googlecode.gwtphonegap.client.media.MediaCallback;
+import com.googlecode.gwtphonegap.client.media.MediaError;
+import com.googlecode.gwtphonegap.client.media.MediaPositionCallback;
 
-import de.kurka.phonegap.client.PhoneGap;
-import de.kurka.phonegap.client.media.Media;
-import de.kurka.phonegap.client.media.MediaCallback;
-import de.kurka.phonegap.client.media.MediaError;
-import de.kurka.phonegap.client.media.MediaPositionCallback;
 
 public class MediaPresenter {
 	private final Display display;

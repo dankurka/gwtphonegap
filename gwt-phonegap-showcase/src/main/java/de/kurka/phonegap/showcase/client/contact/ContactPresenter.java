@@ -6,14 +6,14 @@ import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.ui.HasHTML;
 import com.google.gwt.user.client.ui.HasValue;
 import com.google.gwt.user.client.ui.Widget;
+import com.googlecode.gwtphonegap.client.PhoneGap;
+import com.googlecode.gwtphonegap.client.contacts.Contact;
+import com.googlecode.gwtphonegap.client.contacts.ContactError;
+import com.googlecode.gwtphonegap.client.contacts.ContactFindCallback;
+import com.googlecode.gwtphonegap.client.contacts.ContactFindOptions;
 
 import de.kurka.gwt.collection.shared.GwtCollectionFactory;
 import de.kurka.gwt.collection.shared.LightArray;
-import de.kurka.phonegap.client.PhoneGap;
-import de.kurka.phonegap.client.contacts.Contact;
-import de.kurka.phonegap.client.contacts.ContactError;
-import de.kurka.phonegap.client.contacts.ContactFindCallback;
-import de.kurka.phonegap.client.contacts.ContactFindOptions;
 
 public class ContactPresenter {
 

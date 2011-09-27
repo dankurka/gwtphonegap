@@ -21,13 +21,13 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Widget;
+import com.googlecode.gwtphonegap.client.PhoneGap;
+import com.googlecode.gwtphonegap.client.geolocation.GeolocationCallback;
+import com.googlecode.gwtphonegap.client.geolocation.GeolocationOptions;
+import com.googlecode.gwtphonegap.client.geolocation.GeolocationWatcher;
+import com.googlecode.gwtphonegap.client.geolocation.Position;
+import com.googlecode.gwtphonegap.client.geolocation.PositionError;
 
-import de.kurka.phonegap.client.PhoneGap;
-import de.kurka.phonegap.client.geolocation.GeolocationCallback;
-import de.kurka.phonegap.client.geolocation.GeolocationOptions;
-import de.kurka.phonegap.client.geolocation.GeolocationWatcher;
-import de.kurka.phonegap.client.geolocation.Position;
-import de.kurka.phonegap.client.geolocation.PositionError;
 
 public class GeolocationPresenter {
 
