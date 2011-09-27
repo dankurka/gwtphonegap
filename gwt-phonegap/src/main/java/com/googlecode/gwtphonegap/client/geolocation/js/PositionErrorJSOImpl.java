@@ -13,9 +13,10 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.gwtphonegap.client.geolocation;
+package com.googlecode.gwtphonegap.client.geolocation.js;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.googlecode.gwtphonegap.client.geolocation.PositionError;
 
 /**
  * A PositionError object is returned to the geolocationError callback when an error occurs.

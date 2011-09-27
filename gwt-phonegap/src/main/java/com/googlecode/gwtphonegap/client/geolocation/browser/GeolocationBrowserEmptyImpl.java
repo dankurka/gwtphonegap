@@ -13,9 +13,14 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.gwtphonegap.client.geolocation;
+package com.googlecode.gwtphonegap.client.geolocation.browser;
 
 import com.google.gwt.user.client.Timer;
+import com.googlecode.gwtphonegap.client.geolocation.Geolocation;
+import com.googlecode.gwtphonegap.client.geolocation.GeolocationCallback;
+import com.googlecode.gwtphonegap.client.geolocation.GeolocationOptions;
+import com.googlecode.gwtphonegap.client.geolocation.GeolocationWatcher;
+import com.googlecode.gwtphonegap.client.geolocation.PositionError;
 
 public class GeolocationBrowserEmptyImpl implements Geolocation {
 

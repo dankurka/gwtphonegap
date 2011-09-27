@@ -26,17 +26,13 @@ public interface PositionError {
 	 * 
 	 * @return
 	 */
-	public int getCode()/*-{
-		return this.code;
-	}-*/;
+	public int getCode();
 
 	/**
 	 * Error message describing the details of the error encountered.
 	 * 
 	 * @return
 	 */
-	public String getMessage()/*-{
-		return this.message;
-	}-*/;
+	public String getMessage();
 
 }

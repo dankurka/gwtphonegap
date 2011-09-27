@@ -15,6 +15,7 @@
  */
 package com.googlecode.gwtphonegap.client.geolocation;
 
+
 public interface GeolocationCallback {
 	public void onSuccess(Position position);
 

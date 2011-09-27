@@ -13,12 +13,19 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.gwtphonegap.client.geolocation;
+package com.googlecode.gwtphonegap.client.geolocation.js;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import com.googlecode.gwtphonegap.client.geolocation.GeolocationWatcher;
 
-public final class GeolocationWatcherJSOImpl extends JavaScriptObject implements GeolocationWatcher {
-	protected GeolocationWatcherJSOImpl() {
+public class GeolocationWatcherJSOImpl implements GeolocationWatcher {
+	private final String id;
 
+	protected GeolocationWatcherJSOImpl(String id) {
+		this.id = id;
+
+	}
+
+	public String getId() {
+		return id;
 	}
 }

@@ -28,7 +28,6 @@ import com.googlecode.gwtphonegap.client.geolocation.GeolocationWatcher;
 import com.googlecode.gwtphonegap.client.geolocation.Position;
 import com.googlecode.gwtphonegap.client.geolocation.PositionError;
 
-
 public class GeolocationPresenter {
 
 	private final PhoneGap phoneGap;
@@ -70,12 +69,12 @@ public class GeolocationPresenter {
 	}
 
 	private native String getKeys(JavaScriptObject obj)/*-{
-		var keys = "";
-		for ( var key in obj) {
-			keys += key + ";";
-		}
-		return keys;
-	}-*/;
+														var keys = "";
+														for ( var key in obj) {
+														keys += key + ";";
+														}
+														return keys;
+														}-*/;
 
 	private class GeoLocationCallbackImpl implements GeolocationCallback {
 
@@ -103,7 +102,7 @@ public class GeolocationPresenter {
 
 				break;
 			case PositionError.POSITION_UNAVAILABLE:
-				Window.alert("Position unavaible");
+				Window.alert("PositionJsImpl unavaible");
 				break;
 			case PositionError.TIMEOUT:
 				Window.alert("timeout");

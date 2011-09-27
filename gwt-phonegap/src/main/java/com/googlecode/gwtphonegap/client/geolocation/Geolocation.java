@@ -15,14 +15,16 @@
  */
 package com.googlecode.gwtphonegap.client.geolocation;
 
+import com.googlecode.gwtphonegap.client.geolocation.js.GeolocationMobileImpl;
+
 public interface Geolocation {
 
 	/**
-	 * calculates the device's current position as a Position object.
+	 * calculates the device's current position as a PositionJsImpl object.
 	 * 
 	 * Function geolocation.getCurrentPositon is an asynchronous function. It
 	 * returns the device's current position to the geolocationSuccess callback
-	 * with a Position object as the parameter. If there is an error, the
+	 * with a PositionJsImpl object as the parameter. If there is an error, the
 	 * geolocationError callback is invoked with a PositionError object.
 	 * 
 	 * <h1>Supported Platforms</h1>
@@ -45,7 +47,7 @@ public interface Geolocation {
 	 * Function geolocation.watchPosition is an asynchronous function. It
 	 * returns the device's current position when a change in position has been
 	 * detected. When the device has retrieved a new location, the
-	 * geolocationSuccess callback is invoked with a Position object as the
+	 * geolocationSuccess callback is invoked with a PositionJsImpl object as the
 	 * parameter. If there is an error, the geolocationError callback is invoked
 	 * with a PositionError object.
 	 * 

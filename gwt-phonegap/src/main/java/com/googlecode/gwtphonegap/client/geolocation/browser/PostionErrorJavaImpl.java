@@ -13,7 +13,9 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.gwtphonegap.client.geolocation;
+package com.googlecode.gwtphonegap.client.geolocation.browser;
+
+import com.googlecode.gwtphonegap.client.geolocation.PositionError;
 
 public class PostionErrorJavaImpl implements PositionError {
 

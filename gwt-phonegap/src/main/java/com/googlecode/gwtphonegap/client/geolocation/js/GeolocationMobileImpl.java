@@ -13,7 +13,12 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.gwtphonegap.client.geolocation;
+package com.googlecode.gwtphonegap.client.geolocation.js;
+
+import com.googlecode.gwtphonegap.client.geolocation.Geolocation;
+import com.googlecode.gwtphonegap.client.geolocation.GeolocationCallback;
+import com.googlecode.gwtphonegap.client.geolocation.GeolocationOptions;
+import com.googlecode.gwtphonegap.client.geolocation.GeolocationWatcher;
 
 /**
  * 
@@ -34,35 +39,27 @@ package com.googlecode.gwtphonegap.client.geolocation;
  */
 public class GeolocationMobileImpl implements Geolocation {
 
-	/* (non-Javadoc)
-	 * @see com.googlecode.gwtphonegap.client.geolocation.Geolocation#getCurrentPosition(com.googlecode.gwtphonegap.client.geolocation.GeolocationCallback)
-	 */
 	@Override
 	public native void getCurrentPosition(GeolocationCallback callback)/*-{
 		var successCallback = function(data) {
-			callback.@com.googlecode.gwtphonegap.client.geolocation.GeolocationCallback::onSuccess(Lcom/googlecode/gwtphonegap/client/geolocation/Position;)(data);
+			@com.googlecode.gwtphonegap.client.geolocation.js.GeolocationMobileImpl::onSuccess(Lcom/googlecode/gwtphonegap/client/geolocation/GeolocationCallback;Lcom/googlecode/gwtphonegap/client/geolocation/js/PositionJsImpl;)(callback, data);
 		};
 
-		var errorCallback = function() {
-			callback.@com.googlecode.gwtphonegap.client.geolocation.GeolocationCallback::onFailure(Lcom/googlecode/gwtphonegap/client/geolocation/PositionError;)(error);
+		var errorCallback = function(error) {
+			@com.googlecode.gwtphonegap.client.geolocation.js.GeolocationMobileImpl::onFailure(Lcom/googlecode/gwtphonegap/client/geolocation/GeolocationCallback;Lcom/googlecode/gwtphonegap/client/geolocation/js/PositionErrorJSOImpl;)(callback, error);
 		};
 
 		$wnd.navigator.geolocation.getCurrentPosition($entry(successCallback),
 				$entry(errorCallback));
 	}-*/;
 
-	/* (non-Javadoc)
-	 * @see com.googlecode.gwtphonegap.client.geolocation.Geolocation#watchPosition(com.googlecode.gwtphonegap.client.geolocation.GeolocationOptions, com.googlecode.gwtphonegap.client.geolocation.GeolocationCallback)
-	 */
-	@Override
-	public native GeolocationWatcher watchPosition(GeolocationOptions options, GeolocationCallback callback)/*-{
+	public native String watchPosition0(GeolocationOptions options, GeolocationCallback callback)/*-{
 		var successCallback = function(data) {
-
-			callback.@com.googlecode.gwtphonegap.client.geolocation.GeolocationCallback::onSuccess(Lcom/googlecode/gwtphonegap/client/geolocation/Position;)(data);
+			@com.googlecode.gwtphonegap.client.geolocation.js.GeolocationMobileImpl::onSuccess(Lcom/googlecode/gwtphonegap/client/geolocation/GeolocationCallback;Lcom/googlecode/gwtphonegap/client/geolocation/js/PositionJsImpl;)(callback, data);
 		};
 
 		var errorCallback = function(error) {
-			callback.@com.googlecode.gwtphonegap.client.geolocation.GeolocationCallback::onFailure(Lcom/googlecode/gwtphonegap/client/geolocation/PositionError;)(error);
+			@com.googlecode.gwtphonegap.client.geolocation.js.GeolocationMobileImpl::onFailure(Lcom/googlecode/gwtphonegap/client/geolocation/GeolocationCallback;Lcom/googlecode/gwtphonegap/client/geolocation/js/PositionErrorJSOImpl;)(callback, error);
 		};
 
 		var localOptions = {};
@@ -83,19 +80,35 @@ public class GeolocationMobileImpl implements Geolocation {
 		var watcherId = $wnd.navigator.geolocation.watchPosition(
 				$entry(successCallback), $entry(errorCallback), localOptions);
 
-		var watcher = {
-			id : watcherId
-		};
-
-		return watcher;
+		return watcherId;
 	}-*/;
 
-	/* (non-Javadoc)
-	 * @see com.googlecode.gwtphonegap.client.geolocation.Geolocation#clearWatch(com.googlecode.gwtphonegap.client.geolocation.GeolocationWatcher)
-	 */
+	private static void onFailure(GeolocationCallback callback, PositionErrorJSOImpl error) {
+		callback.onFailure(error);
+	}
+
+	private static void onSuccess(GeolocationCallback callback, PositionJsImpl posision) {
+		callback.onSuccess(posision);
+	}
+
+	private native void clearWatch0(String watcher) /*-{
+		$wnd.navigator.geolocation.clearWatch(watcher);
+	}-*/;
+
 	@Override
-	public native void clearWatch(GeolocationWatcher watcher) /*-{
-		$wnd.navigator.geolocation.clearWatch(watcher.id);
-	}-*/;
+	public void clearWatch(GeolocationWatcher watcher) {
+		if (!(watcher instanceof GeolocationWatcherJSOImpl)) {
+			throw new IllegalStateException();
+		}
+		GeolocationWatcherJSOImpl geolocationWatcherJSOImpl = (GeolocationWatcherJSOImpl) watcher;
+		clearWatch0(geolocationWatcherJSOImpl.getId());
+
+	}
+
+	@Override
+	public GeolocationWatcher watchPosition(GeolocationOptions options, GeolocationCallback callback) {
+		String id = watchPosition0(options, callback);
+		return new GeolocationWatcherJSOImpl(id);
+	}
 
 }
