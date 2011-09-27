@@ -30,7 +30,6 @@ import com.googlecode.gwtphonegap.client.accelerometer.AccelermeterMock;
 import com.googlecode.gwtphonegap.client.accelerometer.AccelerometerWatcher;
 import com.googlecode.gwtphonegap.client.accelerometer.browser.AccelerationBrowserImpl;
 
-
 public class AccelerometerPresenter {
 
 	private final Display display;
@@ -58,8 +57,6 @@ public class AccelerometerPresenter {
 		public void setTimeValue(String value);
 	}
 
-	private boolean running = false;
-
 	public Display getDisplay() {
 		return display;
 
@@ -70,15 +67,14 @@ public class AccelerometerPresenter {
 
 			@Override
 			public void onClick(ClickEvent event) {
-				if (!running) {
+				if (watcher == null) {
 					final AccelerationOptions options = new AccelerationOptions();
 					options.setFrequency(50);
 					watcher = phoneGap.getAccelerometer().watchAcceleration(options, new AccelerometerCallbackImpl());
-					running = true;
 				} else {
 					phoneGap.getAccelerometer().clearWatch(watcher);
 					watcher = null;
-					running = false;
+
 				}
 			}
 		});
