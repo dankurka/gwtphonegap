@@ -5,7 +5,7 @@
 
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>de.kurka.phonegap</groupId>
+	<groupId>com.googlecode.gwtphonegap</groupId>
 	<artifactId>gwt-phonegap-showcase</artifactId>
 	<version>1.0.0.0-SNAPSHOT</version>
 	<packaging>war</packaging>
@@ -144,8 +144,8 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>de.kurka.phonegap</groupId>
-			<artifactId>gwt-phonegap</artifactId>
+			<groupId>com.googlecode.gwtphonegap</groupId>
+			<artifactId>gwtphonegap</artifactId>
 			<version>1.0.0.0-SNAPSHOT</version>
 
 		</dependency>
