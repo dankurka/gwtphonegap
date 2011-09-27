@@ -11,15 +11,29 @@
 	<packaging>jar</packaging>
 	<name>GWT PhoneGap</name>
 
-	<url>http://code.google.com/p/gwt-phonegap/</url>
+	<url>http://code.google.com/p/gwtphonegap/</url>
 	<description>A GWT Wrapper for the PhoneGap Javascript Library</description>
 
-	<contributors>
-		<contributor>
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+
+	<developers>
+		<developer>
 			<name>Daniel Kurka</name>
 			<url>http://www.daniel-kurka.de</url>
-		</contributor>
-	</contributors>
+		</developer>
+	</developers>
+
+	<scm>
+		<url>scm:git:https://kurka.daniel@code.google.com/p/gwt-phonegap/</url>
+		<connection>scm:git:https://kurka.daniel@code.google.com/p/gwt-phonegap/</connection>
+	</scm>
 
 
 
