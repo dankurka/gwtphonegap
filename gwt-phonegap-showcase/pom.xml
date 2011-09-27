@@ -12,6 +12,9 @@
 	<name>GWT PhoneGap</name>
 
 	
+	<properties>
+		<gwtversion>2.4.0</gwtversion>
+	</properties>
 	
 	<build>
 		<plugins>
@@ -114,10 +117,10 @@
 						<classpathContainer>com.google.gwt.eclipse.core.GWT_CONTAINER</classpathContainer>
 					</classpathContainers>
 					<excludes>
-
 						<exclude>com.google.gwt:gwt-servlet</exclude>
 						<exclude>com.google.gwt:gwt-user</exclude>
-
+						<exclude>com.google.gwt:gwt-dev</exclude>
+						<exclude>javax.validation:validation-api</exclude>
 					</excludes>
 					<linkedResources>
 						<linkedResource>
@@ -151,9 +154,35 @@
 		</dependency>
 
 		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.7</version>
+			<type>jar</type>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
-			<version>2.4.0</version>
+			<version>${gwtversion}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-dev</artifactId>
+			<version>${gwtversion}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.0.0.GA</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.0.0.GA</version>
+			<classifier>sources</classifier>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
