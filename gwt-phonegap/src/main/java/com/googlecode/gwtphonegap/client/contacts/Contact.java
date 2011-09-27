@@ -17,7 +17,8 @@ package com.googlecode.gwtphonegap.client.contacts;
 
 import java.util.Date;
 
-import de.kurka.gwt.collection.shared.LightArray;
+import com.googlecode.gwtphonegap.collection.shared.LightArray;
+
 
 /**
  * Contains properties that describe a contact, such as a user's personal or

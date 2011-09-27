@@ -13,9 +13,9 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.gwt.collection.shared.java;
+package com.googlecode.gwtphonegap.collection.shared.java;
 
-import de.kurka.gwt.collection.shared.LightArrayBoolean;
+import com.googlecode.gwtphonegap.collection.shared.LightArrayBoolean;
 
 public class JavaLightArrayBoolean implements LightArrayBoolean {
 

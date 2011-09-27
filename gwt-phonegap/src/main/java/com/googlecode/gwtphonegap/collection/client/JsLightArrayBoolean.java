@@ -13,11 +13,11 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.gwt.collection.client;
+package com.googlecode.gwtphonegap.collection.client;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.googlecode.gwtphonegap.collection.shared.LightArrayBoolean;
 
-import de.kurka.gwt.collection.shared.LightArrayBoolean;
 
 public class JsLightArrayBoolean implements LightArrayBoolean {
 
@@ -33,33 +33,33 @@ public class JsLightArrayBoolean implements LightArrayBoolean {
 
 	@Override
 	public native void push(boolean value)/*-{
-		this.@de.kurka.gwt.collection.client.JsLightArrayBoolean::array[this.@de.kurka.gwt.collection.client.JsLightArrayBoolean::array.length] = value;
+		this.@com.googlecode.gwtphonegap.collection.client.JsLightArrayBoolean::array[this.@com.googlecode.gwtphonegap.collection.client.JsLightArrayBoolean::array.length] = value;
 	}-*/;
 
 	@Override
 	public native boolean shift() /*-{
-		return this.@de.kurka.gwt.collection.client.JsLightArrayBoolean::array
+		return this.@com.googlecode.gwtphonegap.collection.client.JsLightArrayBoolean::array
 				.shift();
 	}-*/;
 
 	@Override
 	public native boolean get(int index) /*-{
-		return this.@de.kurka.gwt.collection.client.JsLightArrayBoolean::array[index];
+		return this.@com.googlecode.gwtphonegap.collection.client.JsLightArrayBoolean::array[index];
 	}-*/;
 
 	@Override
 	public native void set(int index, boolean value) /*-{
-		this.@de.kurka.gwt.collection.client.JsLightArrayBoolean::array[index] = value;
+		this.@com.googlecode.gwtphonegap.collection.client.JsLightArrayBoolean::array[index] = value;
 	}-*/;
 
 	@Override
 	public native int length()/*-{
-		return this.@de.kurka.gwt.collection.client.JsLightArrayBoolean::array.length;
+		return this.@com.googlecode.gwtphonegap.collection.client.JsLightArrayBoolean::array.length;
 	}-*/;
 
 	@Override
 	public native void unshift(boolean value)/*-{
-		this.@de.kurka.gwt.collection.client.JsLightArrayBoolean::array
+		this.@com.googlecode.gwtphonegap.collection.client.JsLightArrayBoolean::array
 				.unshift(value);
 	}-*/;
 

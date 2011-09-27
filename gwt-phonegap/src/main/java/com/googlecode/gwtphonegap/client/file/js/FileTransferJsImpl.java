@@ -8,8 +8,8 @@ import com.google.gwt.core.client.JavaScriptObject;
 import com.googlecode.gwtphonegap.client.file.FileTransfer;
 import com.googlecode.gwtphonegap.client.file.FileUploadCallback;
 import com.googlecode.gwtphonegap.client.file.FileUploadOptions;
+import com.googlecode.gwtphonegap.collection.client.JsLightMap;
 
-import de.kurka.gwt.collection.client.JsLightMap;
 
 public final class FileTransferJsImpl extends JavaScriptObject implements FileTransfer {
 

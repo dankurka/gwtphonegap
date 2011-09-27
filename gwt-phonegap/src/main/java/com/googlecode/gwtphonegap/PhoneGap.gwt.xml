@@ -1,6 +1,6 @@
 <module>
 	<inherits name='com.google.gwt.user.User' />
-	<inherits name='de.kurka.gwt.collection.GwtCollections' />
+	<inherits name='com.googlecode.gwtphonegap.collection.GwtCollections' />
 
 
 	<define-property name="phonegap.env" values="yes, no" />

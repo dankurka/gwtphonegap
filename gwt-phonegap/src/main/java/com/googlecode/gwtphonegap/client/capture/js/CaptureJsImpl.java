@@ -10,9 +10,9 @@ import com.googlecode.gwtphonegap.client.capture.CaptureImageOptions;
 import com.googlecode.gwtphonegap.client.capture.CaptureVideoOptions;
 import com.googlecode.gwtphonegap.client.capture.ConfigurationData;
 import com.googlecode.gwtphonegap.client.capture.MediaFile;
+import com.googlecode.gwtphonegap.collection.client.JsLightArray;
+import com.googlecode.gwtphonegap.collection.shared.LightArray;
 
-import de.kurka.gwt.collection.client.JsLightArray;
-import de.kurka.gwt.collection.shared.LightArray;
 
 public class CaptureJsImpl implements Capture {
 

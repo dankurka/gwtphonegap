@@ -13,18 +13,19 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.gwt.collection.shared;
+package com.googlecode.gwtphonegap.collection.shared;
 
-public interface LightArrayInt {
-	public int shift();
+public interface LightMap<V> {
 
-	public int get(int index);
+	public void clear();
 
-	public void set(int index, int value);
+	public boolean containsKey(String key);
 
-	public int length();
+	public LightArray<String> getKeys();
 
-	public void unshift(int value);
+	public void remove(String key);
 
-	void push(int value);
+	public V get(String key);
+
+	public void put(String key, V value);
 }

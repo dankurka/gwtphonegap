@@ -15,7 +15,7 @@
  */
 package com.googlecode.gwtphonegap.client.contacts;
 
-import de.kurka.gwt.collection.shared.LightArray;
+import com.googlecode.gwtphonegap.collection.shared.LightArray;
 
 public interface Contacts {
 	public Contact create();

@@ -5,9 +5,9 @@ import com.googlecode.gwtphonegap.client.file.DirectoryReader;
 import com.googlecode.gwtphonegap.client.file.EntryBase;
 import com.googlecode.gwtphonegap.client.file.FileCallback;
 import com.googlecode.gwtphonegap.client.file.FileError;
+import com.googlecode.gwtphonegap.collection.client.JsLightArray;
+import com.googlecode.gwtphonegap.collection.shared.LightArray;
 
-import de.kurka.gwt.collection.client.JsLightArray;
-import de.kurka.gwt.collection.shared.LightArray;
 
 public class DirectoryReaderJsImpl implements DirectoryReader {
 

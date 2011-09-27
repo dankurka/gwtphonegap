@@ -7,16 +7,16 @@ import com.googlecode.gwtphonegap.client.capture.CaptureError;
 import com.googlecode.gwtphonegap.client.capture.CaptureImageOptions;
 import com.googlecode.gwtphonegap.client.capture.CaptureVideoOptions;
 import com.googlecode.gwtphonegap.client.capture.ConfigurationData;
+import com.googlecode.gwtphonegap.collection.shared.CollectionFactory;
+import com.googlecode.gwtphonegap.collection.shared.LightArray;
 
-import de.kurka.gwt.collection.shared.GwtCollectionFactory;
-import de.kurka.gwt.collection.shared.LightArray;
 
 public class CaptureBrowserImpl implements Capture {
 
 	@Override
 	public LightArray<ConfigurationData> getSupportedAudioModes() {
 		//TODO implement proper values
-		LightArray<ConfigurationData> array = GwtCollectionFactory.constructArray();
+		LightArray<ConfigurationData> array = CollectionFactory.constructArray();
 		return array;
 
 	}
@@ -24,14 +24,14 @@ public class CaptureBrowserImpl implements Capture {
 	@Override
 	public LightArray<ConfigurationData> getSupportedImageModes() {
 		//TODO implement proper values
-		LightArray<ConfigurationData> array = GwtCollectionFactory.constructArray();
+		LightArray<ConfigurationData> array = CollectionFactory.constructArray();
 		return array;
 	}
 
 	@Override
 	public LightArray<ConfigurationData> getSupportedVideoModes() {
 		//TODO implement proper values
-		LightArray<ConfigurationData> array = GwtCollectionFactory.constructArray();
+		LightArray<ConfigurationData> array = CollectionFactory.constructArray();
 		return array;
 	}
 

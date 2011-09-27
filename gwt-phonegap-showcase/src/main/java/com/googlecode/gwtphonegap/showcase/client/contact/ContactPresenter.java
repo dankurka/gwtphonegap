@@ -11,9 +11,9 @@ import com.googlecode.gwtphonegap.client.contacts.Contact;
 import com.googlecode.gwtphonegap.client.contacts.ContactError;
 import com.googlecode.gwtphonegap.client.contacts.ContactFindCallback;
 import com.googlecode.gwtphonegap.client.contacts.ContactFindOptions;
+import com.googlecode.gwtphonegap.collection.shared.CollectionFactory;
+import com.googlecode.gwtphonegap.collection.shared.LightArray;
 
-import de.kurka.gwt.collection.shared.GwtCollectionFactory;
-import de.kurka.gwt.collection.shared.LightArray;
 
 public class ContactPresenter {
 
@@ -51,7 +51,7 @@ public class ContactPresenter {
 			public void onClick(ClickEvent event) {
 				String searchString = display.getFindValue().getValue();
 
-				LightArray<String> fields = GwtCollectionFactory.<String> constructArray();
+				LightArray<String> fields = CollectionFactory.<String> constructArray();
 
 				fields.push("displayName");
 				fields.push("name");

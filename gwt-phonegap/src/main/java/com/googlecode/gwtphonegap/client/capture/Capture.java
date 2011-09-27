@@ -15,7 +15,7 @@
  */
 package com.googlecode.gwtphonegap.client.capture;
 
-import de.kurka.gwt.collection.shared.LightArray;
+import com.googlecode.gwtphonegap.collection.shared.LightArray;
 
 /**
  * Provides access to the audio, image, and video capture capabilities of the

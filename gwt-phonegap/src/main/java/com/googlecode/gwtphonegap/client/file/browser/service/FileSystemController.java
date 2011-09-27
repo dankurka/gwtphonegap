@@ -42,9 +42,9 @@ import com.googlecode.gwtphonegap.client.file.browser.dto.FileSystemEntryDTO;
 import com.googlecode.gwtphonegap.client.file.browser.dto.FileWriterDTO;
 import com.googlecode.gwtphonegap.client.file.browser.dto.FlagsDTO;
 import com.googlecode.gwtphonegap.client.file.browser.dto.MetaDataDTO;
+import com.googlecode.gwtphonegap.collection.shared.CollectionFactory;
+import com.googlecode.gwtphonegap.collection.shared.LightArray;
 
-import de.kurka.gwt.collection.shared.GwtCollectionFactory;
-import de.kurka.gwt.collection.shared.LightArray;
 
 /**
  * @author Daniel Kurka
@@ -73,7 +73,7 @@ public class FileSystemController {
 			@Override
 			public void onSuccess(ArrayList<FileSystemEntryDTO> result) {
 
-				LightArray<EntryBase> entries = GwtCollectionFactory.constructArray();
+				LightArray<EntryBase> entries = CollectionFactory.constructArray();
 				for (FileSystemEntryDTO entry : result) {
 
 					EntryBase base;

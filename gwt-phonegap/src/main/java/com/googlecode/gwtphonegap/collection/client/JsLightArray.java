@@ -13,11 +13,11 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.gwt.collection.client;
+package com.googlecode.gwtphonegap.collection.client;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.googlecode.gwtphonegap.collection.shared.LightArray;
 
-import de.kurka.gwt.collection.shared.LightArray;
 
 public class JsLightArray<T> implements LightArray<T> {
 
@@ -33,7 +33,7 @@ public class JsLightArray<T> implements LightArray<T> {
 
 	@Override
 	public native T get(int index) /*-{
-		return this.@de.kurka.gwt.collection.client.JsLightArray::array[index];
+		return this.@com.googlecode.gwtphonegap.collection.client.JsLightArray::array[index];
 	}-*/;
 
 	public JavaScriptObject getArray() {
@@ -42,27 +42,27 @@ public class JsLightArray<T> implements LightArray<T> {
 
 	@Override
 	public native int length()/*-{
-		return this.@de.kurka.gwt.collection.client.JsLightArray::array.length;
+		return this.@com.googlecode.gwtphonegap.collection.client.JsLightArray::array.length;
 	}-*/;
 
 	@Override
 	public native void push(T value)/*-{
-		this.@de.kurka.gwt.collection.client.JsLightArray::array[this.@de.kurka.gwt.collection.client.JsLightArray::array.length] = value;
+		this.@com.googlecode.gwtphonegap.collection.client.JsLightArray::array[this.@com.googlecode.gwtphonegap.collection.client.JsLightArray::array.length] = value;
 	}-*/;
 
 	@Override
 	public native void set(int index, T value) /*-{
-		this.@de.kurka.gwt.collection.client.JsLightArray::array[index] = value;
+		this.@com.googlecode.gwtphonegap.collection.client.JsLightArray::array[index] = value;
 	}-*/;
 
 	@Override
 	public native T shift() /*-{
-		return this.@de.kurka.gwt.collection.client.JsLightArray::array.shift();
+		return this.@com.googlecode.gwtphonegap.collection.client.JsLightArray::array.shift();
 	}-*/;
 
 	@Override
 	public native void unshift(T value)/*-{
-		this.@de.kurka.gwt.collection.client.JsLightArray::array.unshift(value);
+		this.@com.googlecode.gwtphonegap.collection.client.JsLightArray::array.unshift(value);
 	}-*/;
 
 }

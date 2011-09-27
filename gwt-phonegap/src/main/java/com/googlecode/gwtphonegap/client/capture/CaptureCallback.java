@@ -15,7 +15,7 @@
  */
 package com.googlecode.gwtphonegap.client.capture;
 
-import de.kurka.gwt.collection.shared.LightArray;
+import com.googlecode.gwtphonegap.collection.shared.LightArray;
 
 public interface CaptureCallback {
 	public void onSuccess(LightArray<MediaFile> mediaFiles);

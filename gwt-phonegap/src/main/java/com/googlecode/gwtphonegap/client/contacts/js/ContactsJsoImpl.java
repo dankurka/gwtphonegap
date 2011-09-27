@@ -24,9 +24,9 @@ import com.googlecode.gwtphonegap.client.contacts.ContactFactory;
 import com.googlecode.gwtphonegap.client.contacts.ContactFindCallback;
 import com.googlecode.gwtphonegap.client.contacts.ContactFindOptions;
 import com.googlecode.gwtphonegap.client.contacts.Contacts;
+import com.googlecode.gwtphonegap.collection.client.JsLightArray;
+import com.googlecode.gwtphonegap.collection.shared.LightArray;
 
-import de.kurka.gwt.collection.client.JsLightArray;
-import de.kurka.gwt.collection.shared.LightArray;
 
 public class ContactsJsoImpl implements Contacts {
 

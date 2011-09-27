@@ -13,16 +13,16 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.gwt.collection.shared;
+package com.googlecode.gwtphonegap.collection.shared;
 
 import com.google.gwt.core.client.GWT;
+import com.googlecode.gwtphonegap.collection.client.JsLightArray;
+import com.googlecode.gwtphonegap.collection.client.JsLightMap;
+import com.googlecode.gwtphonegap.collection.shared.java.JavaLightArray;
+import com.googlecode.gwtphonegap.collection.shared.java.JavaLightMap;
 
-import de.kurka.gwt.collection.client.JsLightArray;
-import de.kurka.gwt.collection.client.JsLightMap;
-import de.kurka.gwt.collection.shared.java.JavaLightArray;
-import de.kurka.gwt.collection.shared.java.JavaLightMap;
 
-public class GwtCollectionFactory {
+public class CollectionFactory {
 	public static <V> LightMap<V> constructMap() {
 		if (GWT.isClient()) {
 			return new JsLightMap<V>();

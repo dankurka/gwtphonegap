@@ -13,12 +13,12 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.gwt.collection.client;
+package com.googlecode.gwtphonegap.collection.client;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.googlecode.gwtphonegap.collection.shared.LightArray;
+import com.googlecode.gwtphonegap.collection.shared.LightMap;
 
-import de.kurka.gwt.collection.shared.LightArray;
-import de.kurka.gwt.collection.shared.LightMap;
 
 public class JsLightMap<V> implements LightMap<V> {
 	private JavaScriptObject map;
@@ -40,12 +40,12 @@ public class JsLightMap<V> implements LightMap<V> {
 	}
 
 	private final native void clearData() /*-{
-		this.@de.kurka.gwt.collection.client.JsLightMap::map = {};
+		this.@com.googlecode.gwtphonegap.collection.client.JsLightMap::map = {};
 	}-*/;
 
 	@Override
 	public final native boolean containsKey(String key) /*-{
-		return (this.@de.kurka.gwt.collection.client.JsLightMap::map)[key] != null;
+		return (this.@com.googlecode.gwtphonegap.collection.client.JsLightMap::map)[key] != null;
 	}-*/;
 
 	@Override
@@ -54,7 +54,7 @@ public class JsLightMap<V> implements LightMap<V> {
 	}
 
 	private native V nativeDelete(String key) /*-{
-		delete (this.@de.kurka.gwt.collection.client.JsLightMap::map)[key];
+		delete (this.@com.googlecode.gwtphonegap.collection.client.JsLightMap::map)[key];
 	}-*/;
 
 	@Override
@@ -63,7 +63,7 @@ public class JsLightMap<V> implements LightMap<V> {
 	}
 
 	private native V nativeGet(String key) /*-{
-		return (this.@de.kurka.gwt.collection.client.JsLightMap::map)[key];
+		return (this.@com.googlecode.gwtphonegap.collection.client.JsLightMap::map)[key];
 	}-*/;
 
 	@Override
@@ -73,7 +73,7 @@ public class JsLightMap<V> implements LightMap<V> {
 	}
 
 	private native V nativePut(String key, V value) /*-{
-		(this.@de.kurka.gwt.collection.client.JsLightMap::map)[key] = value;
+		(this.@com.googlecode.gwtphonegap.collection.client.JsLightMap::map)[key] = value;
 	}-*/;
 
 	@Override
@@ -84,7 +84,7 @@ public class JsLightMap<V> implements LightMap<V> {
 
 	private native JavaScriptObject getNativeKeyArray()/*-{
 		var array = [];
-		for ( var key in this.@de.kurka.gwt.collection.client.JsLightMap::map) {
+		for ( var key in this.@com.googlecode.gwtphonegap.collection.client.JsLightMap::map) {
 			array.push(key);
 		}
 		return array;

@@ -13,13 +13,14 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.gwt.collection.shared.java;
+package com.googlecode.gwtphonegap.collection.shared.java;
 
 import java.util.HashMap;
 import java.util.Set;
 
-import de.kurka.gwt.collection.shared.LightArray;
-import de.kurka.gwt.collection.shared.LightMap;
+import com.googlecode.gwtphonegap.collection.shared.LightArray;
+import com.googlecode.gwtphonegap.collection.shared.LightMap;
+
 
 public class JavaLightMap<V> implements LightMap<V> {
 

@@ -13,18 +13,18 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.gwt.collection.shared;
+package com.googlecode.gwtphonegap.collection.shared;
 
-public interface LightArrayBoolean {
-	public boolean shift();
+public interface LightArrayInt {
+	public int shift();
 
-	public boolean get(int index);
+	public int get(int index);
 
-	public void set(int index, boolean value);
+	public void set(int index, int value);
 
 	public int length();
 
-	public void unshift(boolean value);
+	public void unshift(int value);
 
-	void push(boolean value);
+	void push(int value);
 }

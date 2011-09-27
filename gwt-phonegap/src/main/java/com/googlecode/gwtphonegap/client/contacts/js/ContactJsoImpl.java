@@ -24,9 +24,9 @@ import com.googlecode.gwtphonegap.client.contacts.ContactAddress;
 import com.googlecode.gwtphonegap.client.contacts.ContactField;
 import com.googlecode.gwtphonegap.client.contacts.ContactName;
 import com.googlecode.gwtphonegap.client.contacts.ContactOrganisation;
+import com.googlecode.gwtphonegap.collection.client.JsLightArray;
+import com.googlecode.gwtphonegap.collection.shared.LightArray;
 
-import de.kurka.gwt.collection.client.JsLightArray;
-import de.kurka.gwt.collection.shared.LightArray;
 
 public final class ContactJsoImpl extends JavaScriptObject implements Contact {
 

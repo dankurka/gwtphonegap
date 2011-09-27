@@ -20,8 +20,8 @@ import com.googlecode.gwtphonegap.client.file.FileWriter;
 import com.googlecode.gwtphonegap.client.file.Flags;
 import com.googlecode.gwtphonegap.client.file.ReaderCallback;
 import com.googlecode.gwtphonegap.client.file.WriterCallback;
+import com.googlecode.gwtphonegap.collection.shared.LightArray;
 
-import de.kurka.gwt.collection.shared.LightArray;
 
 public class FilePresenter {
 

@@ -25,8 +25,8 @@ import com.googlecode.gwtphonegap.client.file.Flags;
 import com.googlecode.gwtphonegap.client.file.Metadata;
 import com.googlecode.gwtphonegap.client.file.browser.dto.FileSystemEntryDTO;
 import com.googlecode.gwtphonegap.client.file.browser.service.FileSystemController;
+import com.googlecode.gwtphonegap.collection.shared.LightArray;
 
-import de.kurka.gwt.collection.shared.LightArray;
 
 public class DirectoryEntryBrowserImpl implements DirectoryEntry, EntryBase {
 

@@ -13,11 +13,11 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package de.kurka.gwt.collection.client;
+package com.googlecode.gwtphonegap.collection.client;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.googlecode.gwtphonegap.collection.shared.LightArrayInt;
 
-import de.kurka.gwt.collection.shared.LightArrayInt;
 
 public class JsLightArrayInteger implements LightArrayInt {
 
@@ -33,33 +33,33 @@ public class JsLightArrayInteger implements LightArrayInt {
 
 	@Override
 	public native void push(int value)/*-{
-		this.@de.kurka.gwt.collection.client.JsLightArrayInteger::array[this.@de.kurka.gwt.collection.client.JsLightArrayInteger::array.length] = value;
+		this.@com.googlecode.gwtphonegap.collection.client.JsLightArrayInteger::array[this.@com.googlecode.gwtphonegap.collection.client.JsLightArrayInteger::array.length] = value;
 	}-*/;
 
 	@Override
 	public native int shift() /*-{
-		return this.@de.kurka.gwt.collection.client.JsLightArrayInteger::array
+		return this.@com.googlecode.gwtphonegap.collection.client.JsLightArrayInteger::array
 				.shift();
 	}-*/;
 
 	@Override
 	public native int get(int index) /*-{
-		return this.@de.kurka.gwt.collection.client.JsLightArrayInteger::array[index];
+		return this.@com.googlecode.gwtphonegap.collection.client.JsLightArrayInteger::array[index];
 	}-*/;
 
 	@Override
 	public native void set(int index, int value) /*-{
-		this.@de.kurka.gwt.collection.client.JsLightArrayInteger::array[index] = value;
+		this.@com.googlecode.gwtphonegap.collection.client.JsLightArrayInteger::array[index] = value;
 	}-*/;
 
 	@Override
 	public native int length()/*-{
-		return this.@de.kurka.gwt.collection.client.JsLightArrayInteger::array.length;
+		return this.@com.googlecode.gwtphonegap.collection.client.JsLightArrayInteger::array.length;
 	}-*/;
 
 	@Override
 	public native void unshift(int value)/*-{
-		this.@de.kurka.gwt.collection.client.JsLightArrayInteger::array
+		this.@com.googlecode.gwtphonegap.collection.client.JsLightArrayInteger::array
 				.unshift(value);
 	}-*/;
 
