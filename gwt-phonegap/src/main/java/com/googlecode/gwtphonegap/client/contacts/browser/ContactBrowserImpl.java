@@ -19,6 +19,76 @@ import com.googlecode.gwtphonegap.collection.shared.LightArray;
 
 public class ContactBrowserImpl implements Contact {
 
+	private static final String CONTACT_FIELD_PREF = "pref";
+
+	private static final String CONTACT_FIELD_VALUE = "value";
+
+	private static final String CONTACT_FIELD_TYPE = "type";
+
+	private static final String NAME_SUFFIX = "suffix";
+
+	private static final String NAME_PREFIX = "prefix";
+
+	private static final String NAME_MIDDLE_NAME = "middleName";
+
+	private static final String NAME_GIVEN_NAME = "givenName";
+
+	private static final String NAME_FAMILY_NAME = "familyName";
+
+	private static final String NAME_FORMATTED = "formatted";
+
+	private static final String ADDRESS_COUNTRY = "country";
+
+	private static final String ADDRESS_POSTAL_CODE = "postalCode";
+
+	private static final String ADDRESS_REGION = "region";
+
+	private static final String ADDRESS_LOCALITY = "locality";
+
+	private static final String ADDRESS_STREET_ADDRESS = "streetAddress";
+
+	private static final String ADDRESS_FORMATTED = "formatted";
+
+	private static final String ORGA_TITLE = "title";
+
+	private static final String ORGA_DEPARTMENT = "department";
+
+	private static final String CONTACT_ORGANISATION = "organisation";
+
+	private static final String CONTACT_ADDRESSES = "addresses";
+
+	private static final String CONTACT_NAME = "name";
+
+	private static final String CONTACT_URLS = "urls";
+
+	private static final String CONTACT_CATEGORIES = "categories";
+
+	private static final String CONTACT_PHOTOS = "photos";
+
+	private static final String CONTACT_IMS = "ims";
+
+	private static final String CONTACT_EMAILS = "emails";
+
+	private static final String CONTACT_PHONE_NUMBERS = "phoneNumbers";
+
+	private static final String CONTACT_BIRTHDAY = "birthday";
+
+	private static final String CONTACT_TIME_ZONE = "timeZone";
+
+	private static final String CONTACT_NOTE = "note";
+
+	private static final String CONTACT_GENDER = "gender";
+
+	private static final String CONTACT_REVISION = "revision";
+
+	private static final String CONTACT_NICK_NAME = "nickName";
+
+	private static final String CONTACT_DISPLAY_NAME = "displayName";
+
+	private static final String FIELD_ID = "id";
+
+	private static final String ORGA_NAME = "name";
+
 	private final ContactsBrowserImpl contactBrowserImpl;
 
 	private String id;
@@ -298,52 +368,52 @@ public class ContactBrowserImpl implements Contact {
 		ContactBrowserImpl contact = new ContactBrowserImpl(controller);
 
 		//simple fields
-		contact.setId(getFieldAsString(jsonContact.get("id")));
-		contact.setDisplayName(getFieldAsString(jsonContact.get("displayName")));
-		contact.setNickName(getFieldAsString(jsonContact.get("nickName")));
-		contact.setRevision(getFieldAsString(jsonContact.get("revision")));
-		contact.setGender(getFieldAsString(jsonContact.get("gender")));
-		contact.setNote(getFieldAsString(jsonContact.get("note")));
-		contact.setTimeZone(getFieldAsString(jsonContact.get("timeZone")));
+		contact.setId(getFieldAsString(jsonContact.get(FIELD_ID)));
+		contact.setDisplayName(getFieldAsString(jsonContact.get(CONTACT_DISPLAY_NAME)));
+		contact.setNickName(getFieldAsString(jsonContact.get(CONTACT_NICK_NAME)));
+		contact.setRevision(getFieldAsString(jsonContact.get(CONTACT_REVISION)));
+		contact.setGender(getFieldAsString(jsonContact.get(CONTACT_GENDER)));
+		contact.setNote(getFieldAsString(jsonContact.get(CONTACT_NOTE)));
+		contact.setTimeZone(getFieldAsString(jsonContact.get(CONTACT_TIME_ZONE)));
 
 		//birthday
-		JSONValue dateValue = jsonContact.get("birthday");
+		JSONValue dateValue = jsonContact.get(CONTACT_BIRTHDAY);
 		if (dateValue != null && dateValue.isNumber() != null) {
 			contact.setBirthDay(new Date((long) dateValue.isNumber().doubleValue()));
 		}
 
 		//contact fields
-		JSONArray phoneNumberArray = jsonContact.get("phoneNumbers").isArray();
+		JSONArray phoneNumberArray = jsonContact.get(CONTACT_PHONE_NUMBERS).isArray();
 		LightArray<ContactField> phoneNumbers = getContactFieldsForArray(phoneNumberArray);
 		contact.setPhoneNumbers(phoneNumbers);
 
-		JSONArray emailsArray = jsonContact.get("emails").isArray();
+		JSONArray emailsArray = jsonContact.get(CONTACT_EMAILS).isArray();
 		LightArray<ContactField> emails = getContactFieldsForArray(emailsArray);
 		contact.setEmails(emails);
 
-		JSONArray imsArray = jsonContact.get("ims").isArray();
+		JSONArray imsArray = jsonContact.get(CONTACT_IMS).isArray();
 		LightArray<ContactField> ims = getContactFieldsForArray(imsArray);
 		contact.setIms(ims);
 
-		JSONArray photosArray = jsonContact.get("photos").isArray();
+		JSONArray photosArray = jsonContact.get(CONTACT_PHOTOS).isArray();
 		LightArray<ContactField> photos = getContactFieldsForArray(photosArray);
 		contact.setPhotos(photos);
 
-		JSONArray categoriesArray = jsonContact.get("categories").isArray();
+		JSONArray categoriesArray = jsonContact.get(CONTACT_CATEGORIES).isArray();
 		LightArray<ContactField> categories = getContactFieldsForArray(categoriesArray);
 		contact.setCategories(categories);
 
-		JSONArray urlsArray = jsonContact.get("urls").isArray();
+		JSONArray urlsArray = jsonContact.get(CONTACT_URLS).isArray();
 		LightArray<ContactField> urls = getContactFieldsForArray(urlsArray);
 		contact.setUrls(urls);
 
-		ContactName name = getName(jsonContact.get("name").isObject());
+		ContactName name = getName(jsonContact.get(CONTACT_NAME).isObject());
 		contact.setName(name);
 
-		LightArray<ContactAddress> addresses = getAddressArray(jsonContact.get("addresses").isArray());
+		LightArray<ContactAddress> addresses = getAddressArray(jsonContact.get(CONTACT_ADDRESSES).isArray());
 		contact.setContactAddresses(addresses);
 
-		LightArray<ContactOrganisation> organisations = getContactOrganisationArray(jsonContact.get("organisation").isArray());
+		LightArray<ContactOrganisation> organisations = getContactOrganisationArray(jsonContact.get(CONTACT_ORGANISATION).isArray());
 		contact.setOrganisations(organisations);
 
 		return contact;
@@ -369,9 +439,9 @@ public class ContactBrowserImpl implements Contact {
 			return co;
 		}
 
-		String name = getFieldAsString(object.get("name"));
-		String department = getFieldAsString(object.get("department"));
-		String title = getFieldAsString(object.get("title"));
+		String name = getFieldAsString(object.get(CONTACT_NAME));
+		String department = getFieldAsString(object.get(ORGA_DEPARTMENT));
+		String title = getFieldAsString(object.get(ORGA_TITLE));
 
 		co.setDepartment(department);
 		co.setName(name);
@@ -400,12 +470,12 @@ public class ContactBrowserImpl implements Contact {
 			return ca;
 		}
 
-		String formatted = getFieldAsString(object.get("formatted"));
-		String streedAddress = getFieldAsString(object.get("streetAddress"));
-		String locality = getFieldAsString(object.get("locality"));
-		String region = getFieldAsString(object.get("region"));
-		String postalCode = getFieldAsString(object.get("postalCode"));
-		String country = getFieldAsString(object.get("country"));
+		String formatted = getFieldAsString(object.get(ADDRESS_FORMATTED));
+		String streedAddress = getFieldAsString(object.get(ADDRESS_STREET_ADDRESS));
+		String locality = getFieldAsString(object.get(ADDRESS_LOCALITY));
+		String region = getFieldAsString(object.get(ADDRESS_REGION));
+		String postalCode = getFieldAsString(object.get(ADDRESS_POSTAL_CODE));
+		String country = getFieldAsString(object.get(ADDRESS_COUNTRY));
 
 		ca.setFormatted(formatted);
 		ca.setStreetAddress(streedAddress);
@@ -423,12 +493,12 @@ public class ContactBrowserImpl implements Contact {
 			return name;
 		}
 
-		String formatted = getFieldAsString(object.get("formatted"));
-		String familyName = getFieldAsString(object.get("familyName"));
-		String givenName = getFieldAsString(object.get("givenName"));
-		String middleName = getFieldAsString(object.get("middleName"));
-		String prefix = getFieldAsString(object.get("prefix"));
-		String suffix = getFieldAsString(object.get("suffix"));
+		String formatted = getFieldAsString(object.get(NAME_FORMATTED));
+		String familyName = getFieldAsString(object.get(NAME_FAMILY_NAME));
+		String givenName = getFieldAsString(object.get(NAME_GIVEN_NAME));
+		String middleName = getFieldAsString(object.get(NAME_MIDDLE_NAME));
+		String prefix = getFieldAsString(object.get(NAME_PREFIX));
+		String suffix = getFieldAsString(object.get(NAME_SUFFIX));
 
 		name.setFormatted(formatted);
 		name.setFamilyName(familyName);
@@ -450,9 +520,9 @@ public class ContactBrowserImpl implements Contact {
 			ContactFieldBrowserImpl cf = new ContactFieldBrowserImpl();
 			JSONObject object = jsonArray.get(i).isObject();
 
-			String type = getFieldAsString(object.get("type"));
-			String value = getFieldAsString(object.get("value"));
-			boolean pref = getFieldAsBoolean(object.get("pref"));
+			String type = getFieldAsString(object.get(CONTACT_FIELD_TYPE));
+			String value = getFieldAsString(object.get(CONTACT_FIELD_VALUE));
+			boolean pref = getFieldAsBoolean(object.get(CONTACT_FIELD_PREF));
 			cf.setPref(pref);
 			cf.setType(type);
 			cf.setValue(value);
@@ -474,31 +544,31 @@ public class ContactBrowserImpl implements Contact {
 		JSONObject root = new JSONObject();
 
 		//simple values
-		root.put("id", getAsJSONString(this.getId()));
-		root.put("displayName", getAsJSONString(this.getDisplayName()));
-		root.put("nickName", getAsJSONString(this.getNickName()));
-		root.put("revision", getAsJSONString(this.getRevision()));
-		root.put("gender", getAsJSONString(this.getGender()));
-		root.put("timezone", getAsJSONString(this.getTimeZone()));
+		root.put(FIELD_ID, getAsJSONString(this.getId()));
+		root.put(CONTACT_DISPLAY_NAME, getAsJSONString(this.getDisplayName()));
+		root.put(CONTACT_NICK_NAME, getAsJSONString(this.getNickName()));
+		root.put(CONTACT_REVISION, getAsJSONString(this.getRevision()));
+		root.put(CONTACT_GENDER, getAsJSONString(this.getGender()));
+		root.put(CONTACT_TIME_ZONE, getAsJSONString(this.getTimeZone()));
 
 		if (this.getBirthDay() != null) {
 			double value = this.getBirthDay().getTime();
-			root.put("birthday", new JSONNumber(value));
+			root.put(CONTACT_BIRTHDAY, new JSONNumber(value));
 		}
 
-		root.put("phoneNumbers", toJSONArray(this.getPhoneNumbers()));
+		root.put(CONTACT_PHONE_NUMBERS, toJSONArray(this.getPhoneNumbers()));
 
-		root.put("emails", toJSONArray(this.getEmails()));
-		root.put("ims", toJSONArray(this.getIms()));
-		root.put("photos", toJSONArray(this.getPhotos()));
-		root.put("categories", toJSONArray(this.getCategories()));
-		root.put("urls", toJSONArray(this.getUrls()));
+		root.put(CONTACT_EMAILS, toJSONArray(this.getEmails()));
+		root.put(CONTACT_IMS, toJSONArray(this.getIms()));
+		root.put(CONTACT_PHOTOS, toJSONArray(this.getPhotos()));
+		root.put(CONTACT_CATEGORIES, toJSONArray(this.getCategories()));
+		root.put(CONTACT_URLS, toJSONArray(this.getUrls()));
 
-		root.put("name", createContact(this.getName()));
+		root.put(CONTACT_NAME, createContact(this.getName()));
 
-		root.put("addresses", createAddresses(this.getContactAddresses()));
+		root.put(CONTACT_ADDRESSES, createAddresses(this.getContactAddresses()));
 
-		root.put("organisation", createOrganisation(this.getOrganisations()));
+		root.put(CONTACT_ORGANISATION, createOrganisation(this.getOrganisations()));
 
 		return root;
 	}
@@ -510,9 +580,9 @@ public class ContactBrowserImpl implements Contact {
 			ContactOrganisation co = organisations.get(i);
 			JSONObject orga = new JSONObject();
 
-			orga.put("name", getAsJSONString(co.getName()));
-			orga.put("department", getAsJSONString(co.getDepartment()));
-			orga.put("title", getAsJSONString(co.getTitle()));
+			orga.put(ORGA_NAME, getAsJSONString(co.getName()));
+			orga.put(ORGA_DEPARTMENT, getAsJSONString(co.getDepartment()));
+			orga.put(ORGA_TITLE, getAsJSONString(co.getTitle()));
 
 			jsonArray.set(i, orga);
 		}
@@ -526,12 +596,12 @@ public class ContactBrowserImpl implements Contact {
 		for (int i = 0; i < addresses.length(); i++) {
 			ContactAddress contactAddress = addresses.get(i);
 			JSONObject address = new JSONObject();
-			address.put("formatted", getAsJSONString(contactAddress.getFormatted()));
-			address.put("streetAddress", getAsJSONString(contactAddress.getStreetAddress()));
-			address.put("locality", getAsJSONString(contactAddress.getLocality()));
-			address.put("region", getAsJSONString(contactAddress.getRegion()));
-			address.put("postalCode", getAsJSONString(contactAddress.getPostalCode()));
-			address.put("country", getAsJSONString(contactAddress.getCountry()));
+			address.put(ADDRESS_FORMATTED, getAsJSONString(contactAddress.getFormatted()));
+			address.put(ADDRESS_STREET_ADDRESS, getAsJSONString(contactAddress.getStreetAddress()));
+			address.put(ADDRESS_LOCALITY, getAsJSONString(contactAddress.getLocality()));
+			address.put(ADDRESS_REGION, getAsJSONString(contactAddress.getRegion()));
+			address.put(ADDRESS_POSTAL_CODE, getAsJSONString(contactAddress.getPostalCode()));
+			address.put(ADDRESS_COUNTRY, getAsJSONString(contactAddress.getCountry()));
 			jsonArray.set(i, address);
 		}
 
@@ -541,12 +611,12 @@ public class ContactBrowserImpl implements Contact {
 	private JSONObject createContact(ContactName contactName) {
 		JSONObject jsonName = new JSONObject();
 
-		jsonName.put("formatted", getAsJSONString(contactName.getFormatted()));
-		jsonName.put("familyName", getAsJSONString(contactName.getFamilyName()));
-		jsonName.put("givenName", getAsJSONString(contactName.getGivenName()));
-		jsonName.put("middleName", getAsJSONString(contactName.getMiddleName()));
-		jsonName.put("prefix", getAsJSONString(contactName.getHonoricPrefix()));
-		jsonName.put("suffix", getAsJSONString(contactName.getHonoricSuffix()));
+		jsonName.put(NAME_FORMATTED, getAsJSONString(contactName.getFormatted()));
+		jsonName.put(NAME_FAMILY_NAME, getAsJSONString(contactName.getFamilyName()));
+		jsonName.put(NAME_GIVEN_NAME, getAsJSONString(contactName.getGivenName()));
+		jsonName.put(NAME_MIDDLE_NAME, getAsJSONString(contactName.getMiddleName()));
+		jsonName.put(NAME_PREFIX, getAsJSONString(contactName.getHonoricPrefix()));
+		jsonName.put(NAME_SUFFIX, getAsJSONString(contactName.getHonoricSuffix()));
 
 		return jsonName;
 	}
@@ -556,10 +626,10 @@ public class ContactBrowserImpl implements Contact {
 		for (int i = 0; i < contactField.length(); i++) {
 			ContactField field = contactField.get(i);
 			JSONObject jsonField = new JSONObject();
-			jsonField.put("type", getAsJSONString(field.getType()));
-			jsonField.put("value", getAsJSONString(field.getValue()));
+			jsonField.put(CONTACT_FIELD_TYPE, getAsJSONString(field.getType()));
+			jsonField.put(CONTACT_FIELD_VALUE, getAsJSONString(field.getValue()));
 
-			jsonField.put("pref", JSONBoolean.getInstance(field.isPref()));
+			jsonField.put(CONTACT_FIELD_PREF, JSONBoolean.getInstance(field.isPref()));
 			jsonArray.set(i, jsonField);
 		}
 
