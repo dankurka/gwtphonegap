@@ -7,7 +7,6 @@ import com.google.gwt.user.client.ui.HasHTML;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.gwtphonegap.client.PhoneGap;
 
-
 public class ConnectionPresenter {
 
 	private Display display;

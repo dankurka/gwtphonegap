@@ -20,11 +20,29 @@ package com.googlecode.gwtphonegap.client.connection;
  * @author Daniel Kurka
  * 
  */
-public class ConnectionBrowserImpl implements Connection {
+public class ConnectionBrowserImpl implements ConnectionMock {
+
+	private String type;
+
+	public ConnectionBrowserImpl() {
+		type = Connection.ETHERNET;
+	}
 
 	@Override
 	public String getType() {
-		return Connection.ETHERNET;
+		return type;
+	}
+
+	public void setType(String type) {
+		if (type == null) {
+			throw new IllegalArgumentException("type can not be null");
+		}
+		if (!Connection.CELL_2G.equals(type) && !Connection.CELL_3G.equals(type) && !Connection.CELL_4G.equals(type) && !Connection.ETHERNET.equals(type) && !Connection.NONE.equals(type)
+				&& !Connection.UNKNOWN.equals(type) && !Connection.WIFI.equals(type)) {
+			throw new IllegalArgumentException("unknown type");
+		}
+
+		this.type = type;
 	}
 
 }
