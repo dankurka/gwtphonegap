@@ -6,7 +6,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.googlecode.gwtphonegap</groupId>
-	<artifactId>gwt-phonegap-showcase</artifactId>
+	<artifactId>gwtphonegap-showcase</artifactId>
 	<version>1.0.0.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>GWT PhoneGap</name>
