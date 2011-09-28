@@ -96,27 +96,23 @@ public class GeolocationBrowserEmptyImpl implements Geolocation {
 	 */
 	//TODO remove this once gwt fixes the bug
 	private native int fixGwtGeoLocation(Callback<com.google.gwt.geolocation.client.Position, com.google.gwt.geolocation.client.PositionError> callback, PositionOptions options) /*-{
-    var opt = @com.google.gwt.geolocation.client.Geolocation::toJso(*)(options);
+		var opt = @com.google.gwt.geolocation.client.Geolocation::toJso(*)(options);
 
-    var success = $entry(function(pos) {
-    	for(key in pos)
-    	{
-    		alert(key + ", " + pos[key]);
-    	}
-      @com.google.gwt.geolocation.client.Geolocation::handleSuccess(*)(callback, pos);
-    });
+		var success = $entry(function(pos) {
+			@com.google.gwt.geolocation.client.Geolocation::handleSuccess(*)(callback, pos);
+		});
 
-    var failure = $entry(function(err) {
-      @com.google.gwt.geolocation.client.Geolocation::handleFailure(*)
-      (callback, err.code, err.message);
-    });
+		var failure = $entry(function(err) {
+			@com.google.gwt.geolocation.client.Geolocation::handleFailure(*)(callback, err.code, err.message);
+		});
 
-	var id = -1;
-    if (@com.google.gwt.geolocation.client.Geolocation::isSupported()) {
-      id = $wnd.navigator.geolocation.watchPosition(success, failure, opt);
-    }
-    return id;
-  }-*/;
+		var id = -1;
+		if (@com.google.gwt.geolocation.client.Geolocation::isSupported()) {
+			id = $wnd.navigator.geolocation
+					.watchPosition(success, failure, opt);
+		}
+		return id;
+	}-*/;
 
 	@Override
 	public void clearWatch(GeolocationWatcher watcher) {
