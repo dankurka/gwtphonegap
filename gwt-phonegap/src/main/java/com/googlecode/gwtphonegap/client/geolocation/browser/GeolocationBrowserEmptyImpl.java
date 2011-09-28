@@ -15,6 +15,8 @@
  */
 package com.googlecode.gwtphonegap.client.geolocation.browser;
 
+import com.google.gwt.core.client.Callback;
+import com.google.gwt.geolocation.client.Geolocation.PositionOptions;
 import com.google.gwt.user.client.Timer;
 import com.googlecode.gwtphonegap.client.geolocation.Geolocation;
 import com.googlecode.gwtphonegap.client.geolocation.GeolocationCallback;
@@ -24,25 +26,145 @@ import com.googlecode.gwtphonegap.client.geolocation.PositionError;
 
 public class GeolocationBrowserEmptyImpl implements Geolocation {
 
-	@Override
-	public void getCurrentPosition(GeolocationCallback callback) {
-		callback.onFailure(new PostionErrorJavaImpl(PositionError.PERMISSION_DENIED, ""));
+	private com.google.gwt.geolocation.client.Geolocation gwtGeoLocation;
+
+	public GeolocationBrowserEmptyImpl() {
+		gwtGeoLocation = com.google.gwt.geolocation.client.Geolocation.getIfSupported();
 
 	}
 
 	@Override
-	public GeolocationWatcher watchPosition(GeolocationOptions options, GeolocationCallback callback) {
-		return new GeolocationWatcherGwtTimerImpl(options, callback);
+	public void getCurrentPosition(final GeolocationCallback callback) {
+		if (gwtGeoLocation == null) {
+			callback.onFailure(new PostionErrorJavaImpl(PositionError.PERMISSION_DENIED, ""));
+		} else {
+			gwtGeoLocation.getCurrentPosition(new Callback<com.google.gwt.geolocation.client.Position, com.google.gwt.geolocation.client.PositionError>() {
+
+				@Override
+				public void onSuccess(com.google.gwt.geolocation.client.Position result) {
+					PositionBrowserImpl positionBrowserImpl = createPosition(result);
+					callback.onSuccess(positionBrowserImpl);
+
+				}
+
+				@Override
+				public void onFailure(com.google.gwt.geolocation.client.PositionError reason) {
+
+					callback.onFailure(new PostionErrorJavaImpl(reason.getCode(), reason.getMessage()));
+
+				}
+			});
+		}
+
 	}
+
+	@Override
+	public GeolocationWatcher watchPosition(GeolocationOptions options, final GeolocationCallback callback) {
+		if (gwtGeoLocation == null) {
+			return new GeolocationWatcherGwtTimerImpl(options, callback);
+		} else {
+
+			com.google.gwt.geolocation.client.Geolocation.PositionOptions opt = new PositionOptions();
+			opt.setHighAccuracyEnabled(true);
+			opt.setMaximumAge(options.getMaximumAge());
+			opt.setTimeout(options.getTimeout());
+			int watchPosition = fixGwtGeoLocation(new Callback<com.google.gwt.geolocation.client.Position, com.google.gwt.geolocation.client.PositionError>() {
+
+				@Override
+				public void onSuccess(com.google.gwt.geolocation.client.Position result) {
+					PositionBrowserImpl positionBrowserImpl = createPosition(result);
+					callback.onSuccess(positionBrowserImpl);
+
+				}
+
+				@Override
+				public void onFailure(com.google.gwt.geolocation.client.PositionError reason) {
+
+					callback.onFailure(new PostionErrorJavaImpl(reason.getCode(), reason.getMessage()));
+
+				}
+			}, opt);
+
+			return new GwtLocationWatcher(watchPosition);
+		}
+
+	}
+
+	/**
+	 * See issue
+	 * http://code.google.com/p/google-web-toolkit/issues/detail?id=6834
+	 */
+	//TODO remove this once gwt fixes the bug
+	private native int fixGwtGeoLocation(Callback<com.google.gwt.geolocation.client.Position, com.google.gwt.geolocation.client.PositionError> callback, PositionOptions options) /*-{
+    var opt = @com.google.gwt.geolocation.client.Geolocation::toJso(*)(options);
+
+    var success = $entry(function(pos) {
+    	for(key in pos)
+    	{
+    		alert(key + ", " + pos[key]);
+    	}
+      @com.google.gwt.geolocation.client.Geolocation::handleSuccess(*)(callback, pos);
+    });
+
+    var failure = $entry(function(err) {
+      @com.google.gwt.geolocation.client.Geolocation::handleFailure(*)
+      (callback, err.code, err.message);
+    });
+
+	var id = -1;
+    if (@com.google.gwt.geolocation.client.Geolocation::isSupported()) {
+      id = $wnd.navigator.geolocation.watchPosition(success, failure, opt);
+    }
+    return id;
+  }-*/;
 
 	@Override
 	public void clearWatch(GeolocationWatcher watcher) {
-		if (!(watcher instanceof GeolocationWatcherGwtTimerImpl)) {
-			throw new IllegalArgumentException();
-		}
-		GeolocationWatcherGwtTimerImpl timerImpl = (GeolocationWatcherGwtTimerImpl) watcher;
-		timerImpl.cancel();
+		if ((watcher instanceof GeolocationWatcherGwtTimerImpl)) {
+			GeolocationWatcherGwtTimerImpl timerImpl = (GeolocationWatcherGwtTimerImpl) watcher;
+			timerImpl.cancel();
 
+		} else {
+			if (watcher instanceof GwtLocationWatcher) {
+				GwtLocationWatcher gwtLocationWatcher = (GwtLocationWatcher) watcher;
+				gwtGeoLocation.clearWatch(gwtLocationWatcher.getId());
+
+			} else {
+				throw new IllegalArgumentException();
+			}
+		}
+
+	}
+
+	/**
+	 * @param result
+	 * @return
+	 */
+	private PositionBrowserImpl createPosition(com.google.gwt.geolocation.client.Position result) {
+		CoordinatesBrowserImpl co = new CoordinatesBrowserImpl();
+		co.setAltitude(result.getCoordinates().getAltitude() != null ? result.getCoordinates().getAltitude() : 0);
+		co.setAltitudeAccuracy(result.getCoordinates().getAltitudeAccuracy() != null ? result.getCoordinates().getAltitudeAccuracy() : 0);
+		co.setHeading(result.getCoordinates().getHeading() != null ? result.getCoordinates().getHeading() : 0);
+		co.setHorizontalAccuracy(result.getCoordinates().getAccuracy());
+		co.setLatidue(result.getCoordinates().getLatitude());
+		co.setLongitude(result.getCoordinates().getLongitude());
+		co.setSpeed(result.getCoordinates().getSpeed() != null ? result.getCoordinates().getSpeed() : 0);
+		co.setVerticalAccuracy(result.getCoordinates().getAccuracy());
+		PositionBrowserImpl positionBrowserImpl = new PositionBrowserImpl(co, Math.round(result.getTimestamp()));
+		return positionBrowserImpl;
+	}
+
+	private class GwtLocationWatcher implements GeolocationWatcher {
+		private final int id;
+
+		public GwtLocationWatcher(int id) {
+			this.id = id;
+
+		}
+
+		public int getId() {
+			return id;
+		}
 	}
 
 	private class GeolocationWatcherGwtTimerImpl extends Timer implements GeolocationWatcher {

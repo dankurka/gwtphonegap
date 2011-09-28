@@ -102,7 +102,7 @@ public class GeolocationPresenter {
 
 				break;
 			case PositionError.POSITION_UNAVAILABLE:
-				Window.alert("PositionJsImpl unavaible");
+				Window.alert("unavaible");
 				break;
 			case PositionError.TIMEOUT:
 				Window.alert("timeout");
