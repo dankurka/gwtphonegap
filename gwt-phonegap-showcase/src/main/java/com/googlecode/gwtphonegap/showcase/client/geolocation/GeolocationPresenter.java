@@ -15,7 +15,6 @@
  */
 package com.googlecode.gwtphonegap.showcase.client.geolocation;
 
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
@@ -34,7 +33,6 @@ public class GeolocationPresenter {
 	private final Display display;
 
 	private GeolocationWatcher watcher;
-	private boolean running = false;
 
 	public GeolocationPresenter(Display display, PhoneGap phoneGap) {
 		this.display = display;
@@ -50,31 +48,23 @@ public class GeolocationPresenter {
 
 			@Override
 			public void onClick(ClickEvent event) {
-				if (!running) {
+				if (watcher == null) {
 					GeolocationOptions options = new GeolocationOptions();
 					options.setFrequency(1000);
 					watcher = phoneGap.getGeolocation().watchPosition(options, new GeoLocationCallbackImpl());
 					display.setButtonText("Stop");
-					running = true;
+
 				} else {
 					phoneGap.getGeolocation().clearWatch(watcher);
 					watcher = null;
 					display.setButtonText("Start");
-					running = false;
+
 				}
 
 			}
 		});
 
 	}
-
-	private native String getKeys(JavaScriptObject obj)/*-{
-														var keys = "";
-														for ( var key in obj) {
-														keys += key + ";";
-														}
-														return keys;
-														}-*/;
 
 	private class GeoLocationCallbackImpl implements GeolocationCallback {
 
@@ -111,11 +101,10 @@ public class GeolocationPresenter {
 				break;
 			}
 
-			if (running) {
+			if (watcher != null) {
 				phoneGap.getGeolocation().clearWatch(watcher);
 				watcher = null;
 				display.setButtonText("Start");
-				running = false;
 
 			}
 
