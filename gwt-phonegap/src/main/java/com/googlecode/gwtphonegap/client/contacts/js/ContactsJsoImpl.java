@@ -27,7 +27,6 @@ import com.googlecode.gwtphonegap.client.contacts.Contacts;
 import com.googlecode.gwtphonegap.collection.client.JsLightArray;
 import com.googlecode.gwtphonegap.collection.shared.LightArray;
 
-
 public class ContactsJsoImpl implements Contacts {
 
 	@Override
@@ -83,7 +82,7 @@ public class ContactsJsoImpl implements Contacts {
 	}
 
 	@Override
-	public ContactFactory getFacotry() {
+	public ContactFactory getFactory() {
 		return new ContactFactoryJsoImpl();
 	}
 

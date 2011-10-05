@@ -58,6 +58,6 @@ public interface Contacts {
 	 */
 	public void find(LightArray<String> fields, ContactFindCallback callback, ContactFindOptions contactFindOptions);
 
-	public ContactFactory getFacotry();
+	public ContactFactory getFactory();
 
 }

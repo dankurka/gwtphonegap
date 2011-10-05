@@ -89,7 +89,7 @@ public class ContactsBrowserImpl implements Contacts {
 	}
 
 	@Override
-	public ContactFactory getFacotry() {
+	public ContactFactory getFactory() {
 		if (contactFactory == null) {
 			contactFactory = new ContactFactoryBrowserImpl();
 		}
