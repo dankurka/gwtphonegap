@@ -27,6 +27,7 @@ import com.googlecode.gwtphonegap.client.PhoneGapAvailableEvent;
 import com.googlecode.gwtphonegap.client.PhoneGapAvailableHandler;
 import com.googlecode.gwtphonegap.client.PhoneGapTimeoutEvent;
 import com.googlecode.gwtphonegap.client.PhoneGapTimeoutHandler;
+import com.googlecode.gwtphonegap.client.plugins.childbrowser.ChildBrowser;
 import com.googlecode.gwtphonegap.showcase.client.accelerometer.AccelerometerDisplay;
 import com.googlecode.gwtphonegap.showcase.client.accelerometer.AccelerometerPresenter;
 import com.googlecode.gwtphonegap.showcase.client.camera.CameraDisplay;
@@ -49,7 +50,8 @@ import com.googlecode.gwtphonegap.showcase.client.media.MediaDisplay;
 import com.googlecode.gwtphonegap.showcase.client.media.MediaPresenter;
 import com.googlecode.gwtphonegap.showcase.client.notification.NotificationDisplay;
 import com.googlecode.gwtphonegap.showcase.client.notification.NotificationPresenter;
-
+import com.googlecode.gwtphonegap.showcase.client.plugin.ChildBrowserDisplay;
+import com.googlecode.gwtphonegap.showcase.client.plugin.ChildBrowserPresenter;
 
 public class ShowCaseEntryPoint implements EntryPoint {
 	private Logger log = Logger.getLogger(getClass().getName());
@@ -92,6 +94,10 @@ public class ShowCaseEntryPoint implements EntryPoint {
 	}
 
 	private void startShowCase(PhoneGap phoneGap) {
+		// load plugin
+		ChildBrowser cb = (ChildBrowser) GWT.create(ChildBrowser.class);
+		cb.initialize();
+		phoneGap.loadPlugin("childBrowser", cb);
 
 		DevicePresenter devicePresenter = new DevicePresenter(new DeviceDisplay(), phoneGap);
 		GeolocationPresenter geolocationPresenter = new GeolocationPresenter(new GeolocationDisplay(), phoneGap);
@@ -104,9 +110,10 @@ public class ShowCaseEntryPoint implements EntryPoint {
 		MediaPresenter mediaPresenter = new MediaPresenter(new MediaDisplay(), phoneGap);
 		CompassPresenter compassPresenter = new CompassPresenter(new CompassDisplay(), phoneGap);
 		FilePresenter filePresenter = new FilePresenter(new FileDisplayGwtImpl(), phoneGap);
+		ChildBrowserPresenter childBrowserPresenter = new ChildBrowserPresenter(new ChildBrowserDisplay(), phoneGap);
 
 		MainPresenter mainPresenter = new MainPresenter(new MainDisplay(), phoneGap, new AccelerometerPresenter(new AccelerometerDisplay(), phoneGap), devicePresenter, geolocationPresenter,
-				notificationPresenter, aboutPresenter, cameraPresenter, connectionPresenter, contactPresenter, eventPresenter, mediaPresenter, compassPresenter, filePresenter);
+				notificationPresenter, aboutPresenter, cameraPresenter, connectionPresenter, contactPresenter, eventPresenter, mediaPresenter, compassPresenter, filePresenter, childBrowserPresenter);
 
 		RootPanel.get().add(mainPresenter.getDisplay().asWidget());
 

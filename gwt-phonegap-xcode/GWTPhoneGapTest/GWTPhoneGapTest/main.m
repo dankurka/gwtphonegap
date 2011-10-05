@@ -1,8 +1,8 @@
 //
 //  main.m
-//  GWTPhoneGapTest
+//  GWTPhonegapTest
 //
-//  Created by Daniel Kurka on 13.09.11.
+//  Created by Daniel Kurka on 05.10.11.
 //  Copyright __MyCompanyName__ 2011. All rights reserved.
 //
 

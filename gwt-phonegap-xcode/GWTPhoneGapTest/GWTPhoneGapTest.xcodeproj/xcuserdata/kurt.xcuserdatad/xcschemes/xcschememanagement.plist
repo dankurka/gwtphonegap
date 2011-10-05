@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>GWTPhoneGapTest.xcscheme</key>
+		<key>GWTPhonegapTest.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,7 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>450A2114141FCCE5007D6DD8</key>
+		<key>453A6B16143CD1D00038B093</key>
 		<dict>
 			<key>primary</key>
 			<true/>

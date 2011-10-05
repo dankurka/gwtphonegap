@@ -1,0 +1,11 @@
+body {
+background-color: #AAAAAA;
+}
+
+.main {
+	padding: 20px;
+}
+
+.main .title {
+	font-size: 24px;
+}

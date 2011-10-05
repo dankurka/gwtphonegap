@@ -32,7 +32,7 @@ import com.googlecode.gwtphonegap.showcase.client.file.FilePresenter;
 import com.googlecode.gwtphonegap.showcase.client.geolocation.GeolocationPresenter;
 import com.googlecode.gwtphonegap.showcase.client.media.MediaPresenter;
 import com.googlecode.gwtphonegap.showcase.client.notification.NotificationPresenter;
-
+import com.googlecode.gwtphonegap.showcase.client.plugin.ChildBrowserPresenter;
 
 public class MainPresenter {
 
@@ -50,10 +50,11 @@ public class MainPresenter {
 	private final MediaPresenter mediaPresenter;
 	private final CompassPresenter compassPresenter;
 	private final FilePresenter filePresenter;
+	private final ChildBrowserPresenter childBrowserPresenter;
 
 	public MainPresenter(Display display, PhoneGap phoneGap, AccelerometerPresenter accelerometerPresenter, DevicePresenter devicePresenter, GeolocationPresenter geolocationPresenter,
 			NotificationPresenter notificationPresenter, AboutPresenter aboutPresenter, CameraPresenter cameraPresenter, ConnectionPresenter connectionPresenter, ContactPresenter contactPresenter,
-			EventPresenter eventPresenter, MediaPresenter mediaPresenter, CompassPresenter compassPresenter, FilePresenter filePresenter) {
+			EventPresenter eventPresenter, MediaPresenter mediaPresenter, CompassPresenter compassPresenter, FilePresenter filePresenter, ChildBrowserPresenter childBrowserPresenter) {
 		this.display = display;
 		this.phoneGap = phoneGap;
 		this.accelerometerPresenter = accelerometerPresenter;
@@ -68,6 +69,7 @@ public class MainPresenter {
 		this.mediaPresenter = mediaPresenter;
 		this.compassPresenter = compassPresenter;
 		this.filePresenter = filePresenter;
+		this.childBrowserPresenter = childBrowserPresenter;
 
 		bind();
 
@@ -111,6 +113,7 @@ public class MainPresenter {
 		display.getContainer().add(mediaPresenter.getDisplay().asWidget());
 		display.getContainer().add(notificationPresenter.getDisplay().asWidget());
 		display.getContainer().add(aboutPresenter.getDisplay().asWidget());
+		display.getContainer().add(childBrowserPresenter.getDisplay().asWidget());
 
 	}
 }

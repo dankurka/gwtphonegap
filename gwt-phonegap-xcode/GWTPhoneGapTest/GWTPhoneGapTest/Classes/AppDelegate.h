@@ -1,8 +1,8 @@
 //
 //  AppDelegate.h
-//  GWTPhoneGapTest
+//  GWTPhonegapTest
 //
-//  Created by Daniel Kurka on 13.09.11.
+//  Created by Daniel Kurka on 05.10.11.
 //  Copyright __MyCompanyName__ 2011. All rights reserved.
 //
 
@@ -19,7 +19,7 @@
 }
 
 // invoke string is passed to your app on launch, this is only valid if you 
-// edit GWTPhoneGapTest.plist to add a protocol
+// edit GWTPhonegapTest.plist to add a protocol
 // a simple tutorial can be found here : 
 // http://iphonedevelopertips.com/cocoa/launching-your-own-application-via-a-custom-url-scheme.html
 

@@ -1,8 +1,8 @@
 //
 //  AppDelegate.m
-//  GWTPhoneGapTest
+//  GWTPhonegapTest
 //
-//  Created by Daniel Kurka on 13.09.11.
+//  Created by Daniel Kurka on 05.10.11.
 //  Copyright __MyCompanyName__ 2011. All rights reserved.
 //
 
@@ -36,14 +36,14 @@
 	{
 		NSURL *url = [launchOptions objectForKey:[keyArray objectAtIndex:0]];
 		self.invokeString = [url absoluteString];
-		NSLog(@"GWTPhoneGapTest launchOptions = %@",url);
+		NSLog(@"GWTPhonegapTest launchOptions = %@",url);
 	}
 	
 	return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
 
 // this happens while we are running ( in the background, or from within our own app )
-// only valid if GWTPhoneGapTest.plist specifies a protocol to handle
+// only valid if GWTPhonegapTest.plist specifies a protocol to handle
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url 
 {
     // must call super so all plugins will get the notification, and their handlers will be called 
@@ -64,7 +64,7 @@
  */
 - (void)webViewDidFinishLoad:(UIWebView *)theWebView 
 {
-	// only valid if GWTPhoneGapTest.plist specifies a protocol to handle
+	// only valid if GWTPhonegapTest.plist specifies a protocol to handle
 	if(self.invokeString)
 	{
 		// this is passed before the deviceready event is fired, so you can access it in js when you receive deviceready

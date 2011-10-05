@@ -13,10 +13,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "450A2114141FCCE5007D6DD8"
-               BuildableName = "GWTPhoneGapTest.app"
-               BlueprintName = "GWTPhoneGapTest"
-               ReferencedContainer = "container:GWTPhoneGapTest.xcodeproj">
+               BlueprintIdentifier = "453A6B16143CD1D00038B093"
+               BuildableName = "GWTPhonegapTest.app"
+               BlueprintName = "GWTPhonegapTest"
+               ReferencedContainer = "container:GWTPhonegapTest.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -38,10 +38,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "450A2114141FCCE5007D6DD8"
-            BuildableName = "GWTPhoneGapTest.app"
-            BlueprintName = "GWTPhoneGapTest"
-            ReferencedContainer = "container:GWTPhoneGapTest.xcodeproj">
+            BlueprintIdentifier = "453A6B16143CD1D00038B093"
+            BuildableName = "GWTPhonegapTest.app"
+            BlueprintName = "GWTPhonegapTest"
+            ReferencedContainer = "container:GWTPhonegapTest.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -55,10 +55,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "450A2114141FCCE5007D6DD8"
-            BuildableName = "GWTPhoneGapTest.app"
-            BlueprintName = "GWTPhoneGapTest"
-            ReferencedContainer = "container:GWTPhoneGapTest.xcodeproj">
+            BlueprintIdentifier = "453A6B16143CD1D00038B093"
+            BuildableName = "GWTPhonegapTest.app"
+            BlueprintName = "GWTPhonegapTest"
+            ReferencedContainer = "container:GWTPhonegapTest.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
