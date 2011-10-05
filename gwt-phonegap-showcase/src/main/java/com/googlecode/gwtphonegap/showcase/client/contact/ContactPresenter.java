@@ -14,7 +14,6 @@ import com.googlecode.gwtphonegap.client.contacts.ContactFindOptions;
 import com.googlecode.gwtphonegap.collection.shared.CollectionFactory;
 import com.googlecode.gwtphonegap.collection.shared.LightArray;
 
-
 public class ContactPresenter {
 
 	private final PhoneGap phoneGap;
@@ -97,7 +96,7 @@ public class ContactPresenter {
 
 				contact.getName().setFamilyName(value);
 
-				contact.getPhoneNumbers().push(phoneGap.getContacts().getFacotry().createContactField("home", "012345 678", true));
+				contact.getPhoneNumbers().push(phoneGap.getContacts().getFactory().createContactField("home", "012345 678", true));
 				contact.save();
 
 				display.getCreateFeedback().setHTML("saved");
