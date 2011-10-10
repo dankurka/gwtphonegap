@@ -15,6 +15,7 @@
  */
 package com.googlecode.gwtphonegap.client.plugins.childbrowser;
 
+import com.google.gwt.core.client.JavaScriptException;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.HandlerRegistration;
@@ -29,13 +30,40 @@ public class ChildBrowserPhoneGapImpl implements ChildBrowser {
 	@Override
 	public void initialize() {
 
-		cb = initializeNative();
-		initialized = true;
+		try {
+			cb = initializeNative();
+			initialized = true;
+		} catch (JavaScriptException e) {
+			throw new IllegalStateException("could not initialize Childbrowser plugin");
+		}
+
 	}
 
-	public native JavaScriptObject initializeNative() /*-{
+	public native JavaScriptObject initializeNative() throws JavaScriptException/*-{
 		var instance = this;
-		var cb = $wnd.ChildBrowser.install();
+		var cb = null;
+		//ios
+		if (typeof ($wnd.ChildBrowser) != "undefined"
+				&& $wnd.ChildBrowser != null) {
+			if (typeof ($wnd.ChildBrowser.install) == "function") {
+				cb = $wnd.ChildBrowser.install();
+			}
+		}
+
+		//android
+		if (cb == null) {
+			if (typeof ($wnd.plugins) != "undefined" && $wnd.plugins != null) {
+				if (typeof ($wnd.plugins.childBrowser) != "undefined"
+						&& $wnd.plugins.childBrowser != null) {
+					cb = $wnd.plugins.childBrowser;
+				}
+			}
+		}
+
+		// no init found throw....
+		if (cb == null) {
+			throw "no child browser plugin found";
+		}
 
 		cb.onLocationChange = $entry(function(loc) {
 			instance.@com.googlecode.gwtphonegap.client.plugins.childbrowser.ChildBrowserPhoneGapImpl::onLocationChange(Ljava/lang/String;)(loc);
