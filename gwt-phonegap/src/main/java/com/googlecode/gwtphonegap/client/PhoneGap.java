@@ -15,7 +15,7 @@
  */
 package com.googlecode.gwtphonegap.client;
 
-import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.googlecode.gwtphonegap.client.accelerometer.Accelerometer;
 import com.googlecode.gwtphonegap.client.camera.Camera;
 import com.googlecode.gwtphonegap.client.capture.Capture;
@@ -30,7 +30,6 @@ import com.googlecode.gwtphonegap.client.log.PhoneGapLog;
 import com.googlecode.gwtphonegap.client.media.MediaModule;
 import com.googlecode.gwtphonegap.client.notification.Notification;
 import com.googlecode.gwtphonegap.client.plugins.PhoneGapPlugin;
-
 
 /**
  * This class is a wrapper class for phonegap.js

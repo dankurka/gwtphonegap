@@ -17,9 +17,9 @@ package com.googlecode.gwtphonegap.client.plugins.childbrowser;
 
 import com.google.gwt.core.client.JavaScriptException;
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.event.shared.EventBus;
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.event.shared.SimpleEventBus;
+import com.google.web.bindery.event.shared.EventBus;
+import com.google.web.bindery.event.shared.HandlerRegistration;
+import com.google.web.bindery.event.shared.SimpleEventBus;
 
 public class ChildBrowserPhoneGapImpl implements ChildBrowser {
 

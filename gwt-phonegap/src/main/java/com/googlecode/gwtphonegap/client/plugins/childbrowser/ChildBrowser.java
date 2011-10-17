@@ -15,9 +15,8 @@
  */
 package com.googlecode.gwtphonegap.client.plugins.childbrowser;
 
-import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.googlecode.gwtphonegap.client.plugins.PhoneGapPlugin;
-
 
 public interface ChildBrowser extends PhoneGapPlugin {
 	public void showWebPage(String url);

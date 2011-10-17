@@ -1,9 +1,9 @@
 package com.googlecode.gwtphonegap.client.event;
 
-import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.GwtEvent;
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.event.shared.SimpleEventBus;
+import com.google.web.bindery.event.shared.EventBus;
+import com.google.web.bindery.event.shared.HandlerRegistration;
+import com.google.web.bindery.event.shared.SimpleEventBus;
 
 public abstract class EventBaseImpl implements Event, EventMock {
 

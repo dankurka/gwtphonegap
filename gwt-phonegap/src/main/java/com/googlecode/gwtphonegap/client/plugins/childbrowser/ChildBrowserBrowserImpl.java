@@ -23,7 +23,6 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.LoadEvent;
 import com.google.gwt.event.dom.client.LoadHandler;
 import com.google.gwt.event.shared.EventBus;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.Button;
@@ -32,9 +31,10 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Frame;
 import com.google.gwt.user.client.ui.Panel;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.web.bindery.event.shared.HandlerRegistration;
 
 /**
- * @author Christian KŸtbach
+ * 
  * 
  */
 public class ChildBrowserBrowserImpl implements ChildBrowser {
@@ -69,7 +69,6 @@ public class ChildBrowserBrowserImpl implements ChildBrowser {
 		}
 
 		browser.navigate(url);
-
 
 	}
 
@@ -115,7 +114,7 @@ public class ChildBrowserBrowserImpl implements ChildBrowser {
 
 			FlowPanel flowPanel = new FlowPanel();
 			flowPanel.getElement().getStyle().setPosition(Position.ABSOLUTE);
-			
+
 			flowPanel.getElement().getStyle().setLeft(0, Unit.PX);
 			flowPanel.getElement().getStyle().setRight(0, Unit.PX);
 			flowPanel.getElement().getStyle().setBottom(0, Unit.PX);
@@ -137,7 +136,7 @@ public class ChildBrowserBrowserImpl implements ChildBrowser {
 			initWidget(container);
 		}
 
-		private void navigate(String url){
+		private void navigate(String url) {
 			frame.setUrl(url);
 		}
 
@@ -151,15 +150,12 @@ public class ChildBrowserBrowserImpl implements ChildBrowser {
 		}
 	}
 
-
-
 	/* (non-Javadoc)
 	 * @see com.googlecode.gwtphonegap.client.plugins.childbrowser.ChildBrowser#close()
 	 */
 	@Override
 	public void close() {
 		removePanel();
-
 
 	}
 
@@ -194,8 +190,6 @@ public class ChildBrowserBrowserImpl implements ChildBrowser {
 	private void onClose() {
 		handlerManager.fireEvent(new ChildBrowserCloseEvent());
 	}
-
-
 
 	private void onLocationChange(String url) {
 		handlerManager.fireEvent(new ChildBrowserLocationChangedEvent(url));
