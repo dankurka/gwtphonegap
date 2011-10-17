@@ -35,8 +35,8 @@
 	</developers>
 
 	<scm>
-		<url>scm:git:https://kurka.daniel@code.google.com/p/gwt-phonegap/</url>
-		<connection>scm:git:https://kurka.daniel@code.google.com/p/gwt-phonegap/</connection>
+		<url>scm:git:https://code.google.com/p/gwt-phonegap/</url>
+		<connection>scm:git:https://code.google.com/p/gwt-phonegap/</connection>
 	</scm>
 
 
