@@ -15,7 +15,7 @@
  */
 package com.googlecode.gwtphonegap.client;
 
-import com.google.web.bindery.event.shared.HandlerRegistration;
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.googlecode.gwtphonegap.client.accelerometer.Accelerometer;
 import com.googlecode.gwtphonegap.client.camera.Camera;
 import com.googlecode.gwtphonegap.client.capture.Capture;
@@ -80,16 +80,14 @@ public interface PhoneGap {
 	 * {@link PhoneGapAvaibleEvent} is fired, else a
 	 * {@link PhoneGapTimeoutEvent} is fired
 	 * 
-	 * @param timeoutInMs
-	 *            the timeout in milliseconds
+	 * @param timeoutInMs the timeout in milliseconds
 	 */
 	public void initializePhoneGap(final int timeoutInMs);
 
 	/**
 	 * Add a handler for {@link PhoneGapAvaibleEvent}
 	 * 
-	 * @param handler
-	 *            the handler to add
+	 * @param handler the handler to add
 	 * @return the handler registration
 	 */
 	public HandlerRegistration addHandler(PhoneGapAvailableHandler handler);
@@ -97,8 +95,7 @@ public interface PhoneGap {
 	/**
 	 * Add a handler for {@link PhoneGapTimeoutEvent}
 	 * 
-	 * @param handler
-	 *            the handler to add
+	 * @param handler the handler to add
 	 * @return the handler registration
 	 */
 	public HandlerRegistration addHandler(PhoneGapTimeoutHandler handler);
@@ -150,7 +147,7 @@ public interface PhoneGap {
 
 	public Event getEvent();
 
-	//testing for android....
+	// testing for android....
 	public boolean exitApp();
 
 	public MediaModule getMedia();

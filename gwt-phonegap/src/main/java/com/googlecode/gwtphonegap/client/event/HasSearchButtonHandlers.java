@@ -15,8 +15,8 @@
  */
 package com.googlecode.gwtphonegap.client.event;
 
+import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.event.shared.HasHandlers;
-import com.google.web.bindery.event.shared.HandlerRegistration;
 
 public interface HasSearchButtonHandlers extends HasHandlers {
 	public HandlerRegistration addSearchButtonHandler(SearchButtonPressedHandler handler);

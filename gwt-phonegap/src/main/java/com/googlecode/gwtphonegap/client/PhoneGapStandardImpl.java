@@ -19,10 +19,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.user.client.Timer;
-import com.google.web.bindery.event.shared.EventBus;
-import com.google.web.bindery.event.shared.HandlerRegistration;
-import com.google.web.bindery.event.shared.SimpleEventBus;
 import com.googlecode.gwtphonegap.client.accelerometer.Accelerometer;
 import com.googlecode.gwtphonegap.client.camera.Camera;
 import com.googlecode.gwtphonegap.client.capture.Capture;
@@ -64,7 +64,7 @@ public class PhoneGapStandardImpl implements PhoneGap {
 	private PhoneGapLogStandardImpl phoneGapLog;
 
 	public PhoneGapStandardImpl() {
-		//log configures it self
+		// log configures it self
 		getLog();
 	}
 
