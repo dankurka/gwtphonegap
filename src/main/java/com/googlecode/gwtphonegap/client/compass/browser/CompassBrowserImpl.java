@@ -57,7 +57,7 @@ public class CompassBrowserImpl implements CompassMock {
 		if (this.values != null) {
 			if (this.values.size() < 1) {
 				this.values = null;
-				throw new IllegalArgumentException("list can«t be empty");
+				throw new IllegalArgumentException("list can't be empty");
 			}
 			currentIndex = 0;
 			maxIndex = values.size();
