@@ -1,15 +1,5 @@
-gwt-phonegap/.classpath
-gwt-phonegap/.project
-gwt-phonegap/.settings/
-gwt-phonegap/target/
-gwt-phonegap-showcase/.classpath
-gwt-phonegap-showcase/.project
-gwt-phonegap-showcase/.settings/
-gwt-phonegap-showcase/target/
-gwt-phonegap/.gwt/
-gwt-phonegap-showcase/war/
-gwt-phonegap-xcode/GWTPhoneGapTest/www/index.html
-gwt-phonegap-xcode/GWTPhoneGapTest/www/showcase/
-gwt-phonegap-xcode/GWTPhoneGapTest/GWTPhoneGapTest.xcodeproj/project.xcworkspace/xcuserdata/danielkurka.xcuserdatad/
-gwt-phonegap-xcode/GWTPhoneGapTest/GWTPhoneGapTest.xcodeproj/xcuserdata/danielkurka.xcuserdatad/
+.classpath
+.project
+.settings/
+target/
 
