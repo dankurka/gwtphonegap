@@ -1,9 +1,0 @@
-#summary Changes for gwt-phonegap.
-
-= Version 0.6 =
-
- # support gwt 2.1
- # update to phonegap 0.9.2
- # location fix for iOs
- # fixed typo in Phonegap Wrapper class
- # bootstrap is now consistent on android / iOs (android needs to add a simple script to the html host page)
