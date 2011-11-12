@@ -21,7 +21,12 @@
 	<key>AllowInlineMediaPlayback</key>
 	<false/>
 	<key>ExternalHosts</key>
-	<array/>
+	<array>
+		<string>*.google.de</string>
+		<string>*.ibeat.org</string>
+	</array>
+	<key>New item</key>
+	<string></string>
 	<key>Plugins</key>
 	<dict>
 		<key>com.phonegap.accelerometer</key>

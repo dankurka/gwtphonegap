@@ -8,13 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #ifdef PHONEGAP_FRAMEWORK
-#import <PhoneGap/PGPlugin.h>
-#import <PhoneGap/NSData+Base64.h>
-#import <PhoneGap/JSON.h> 
+	#import <PhoneGap/PGPlugin.h>
 #else
-#import "PGPlugin.h"
-#import "NSData+Base64.h"
-#import "JSON.h" 
+	#import "PGPlugin.h"
 #endif
 #import "ChildBrowserViewController.h"
 

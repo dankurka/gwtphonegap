@@ -43,7 +43,6 @@ ChildBrowser._onJSCallback = function(js,loc)
 // Show a webpage, will result in a callback to onLocationChange
 ChildBrowser.prototype.showWebPage = function(loc)
 {
- 	
   PhoneGap.exec("ChildBrowserCommand.showWebPage", loc);
 };
 

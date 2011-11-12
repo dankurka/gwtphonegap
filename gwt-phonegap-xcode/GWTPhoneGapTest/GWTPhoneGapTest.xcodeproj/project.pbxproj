@@ -307,6 +307,9 @@
 /* Begin PBXProject section */
 		453A6B0B143CD1D00038B093 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = 453A6B0E143CD1D00038B093 /* Build configuration list for PBXProject "GWTPhonegapTest" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -471,6 +474,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GWTPhonegapTest/GWTPhonegapTest-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "PHONEGAP_FRAMEWORK=YES";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "GWTPhonegapTest/GWTPhonegapTest-Info.plist";
 				OTHER_LDFLAGS = (
 					"-weak_framework",
@@ -498,6 +502,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GWTPhonegapTest/GWTPhonegapTest-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "PHONEGAP_FRAMEWORK=YES";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "GWTPhonegapTest/GWTPhonegapTest-Info.plist";
 				OTHER_LDFLAGS = (
 					"-weak_framework",
@@ -535,6 +540,7 @@
 				453A6B63143CD1D10038B093 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
