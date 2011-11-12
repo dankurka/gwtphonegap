@@ -32,8 +32,7 @@ public interface CompassCallback {
 	 * onSuccess callback function that provides the compass heading
 	 * information.
 	 * 
-	 * @param heading
-	 *            value of the current heading
+	 * @param heading value of the current heading
 	 */
-	public void onSuccess(double heading);
+	public void onSuccess(CompassHeading heading);
 }

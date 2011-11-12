@@ -23,7 +23,6 @@ import com.googlecode.gwtphonegap.client.compass.CompassMock;
 import com.googlecode.gwtphonegap.client.compass.CompassOptions;
 import com.googlecode.gwtphonegap.client.compass.CompassWatcher;
 
-
 public class CompassBrowserImpl implements CompassMock {
 
 	private List<Double> values;
@@ -81,12 +80,12 @@ public class CompassBrowserImpl implements CompassMock {
 				callback.onError();
 			} else {
 				if (values == null) {
-					callback.onSuccess(0);
+					callback.onSuccess(new CompassHeadingMockValue(0, -1, 0));
 				} else {
 					Double heading = values.get(currentIndex);
 					currentIndex++;
 					currentIndex = currentIndex % maxIndex;
-					callback.onSuccess(heading);
+					callback.onSuccess(new CompassHeadingMockValue(heading, heading, 1));
 
 				}
 			}

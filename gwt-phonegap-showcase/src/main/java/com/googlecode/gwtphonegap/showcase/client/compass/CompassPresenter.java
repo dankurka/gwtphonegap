@@ -8,9 +8,9 @@ import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.gwtphonegap.client.PhoneGap;
 import com.googlecode.gwtphonegap.client.compass.CompassCallback;
+import com.googlecode.gwtphonegap.client.compass.CompassHeading;
 import com.googlecode.gwtphonegap.client.compass.CompassOptions;
 import com.googlecode.gwtphonegap.client.compass.CompassWatcher;
-
 
 public class CompassPresenter {
 
@@ -50,8 +50,8 @@ public class CompassPresenter {
 					watcher = phoneGap.getCompass().watchHeading(new CompassOptions(), new CompassCallback() {
 
 						@Override
-						public void onSuccess(double heading) {
-							display.compassValue().setHTML("value: " + heading);
+						public void onSuccess(CompassHeading heading) {
+							display.compassValue().setHTML("value: " + heading.getMagneticHeading());
 
 						}
 

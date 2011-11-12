@@ -26,7 +26,7 @@ public class CompassJsImpl implements Compass {
 	public native void getCurrentHeading(CompassOptions options, CompassCallback callback) /*-{
 
 		var suc = function(heading) {
-			callback.@com.googlecode.gwtphonegap.client.compass.CompassCallback::onSuccess(D)(heading);
+			callback.@com.googlecode.gwtphonegap.client.compass.CompassCallback::onSuccess(Lcom/googlecode/gwtphonegap/client/compass/CompassHeading;)(heading);
 		};
 
 		var fail = function() {
@@ -52,7 +52,7 @@ public class CompassJsImpl implements Compass {
 	private native String watchHeading0(CompassOptions options, CompassCallback callback)/*-{
 
 		var suc = function(heading) {
-			callback.@com.googlecode.gwtphonegap.client.compass.CompassCallback::onSuccess(D)(heading);
+			callback.@com.googlecode.gwtphonegap.client.compass.CompassCallback::onSuccess(Lcom/googlecode/gwtphonegap/client/compass/CompassHeading;)(heading);
 		};
 
 		var fail = function() {
