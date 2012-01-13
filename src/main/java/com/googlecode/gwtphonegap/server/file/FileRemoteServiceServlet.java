@@ -19,7 +19,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -41,7 +40,6 @@ import com.googlecode.gwtphonegap.client.file.browser.dto.FileWriterDTO;
 import com.googlecode.gwtphonegap.client.file.browser.dto.FlagsDTO;
 import com.googlecode.gwtphonegap.client.file.browser.dto.MetaDataDTO;
 import com.googlecode.gwtphonegap.client.file.browser.service.FileRemoteService;
-
 
 /**
  * This remote servlet simulates the file API of phonegap in dev mode
@@ -202,19 +200,20 @@ public class FileRemoteServiceServlet extends RemoteServiceServlet implements Fi
 	}
 
 	@Override
-	public String readAsDataUrl(String fullPath) throws FileErrorException {
-		String text = readAsText(fullPath);
+	public String readAsDataUrl(String relativePath) throws FileErrorException {
+		File basePath = new File(path);
+		File file = new File(basePath, relativePath);
+		ensureLocalRoot(basePath, file);
 
 		try {
-			String base64 = new String(Base64.encodeBase64(text.getBytes("UTF-8")), "UTF-8");
-			File basePath = new File(path);
-			File file = new File(basePath, fullPath);
+			byte[] binaryData = FileUtils.readFileToByteArray(file);
+			byte[] base64 = Base64.encodeBase64(binaryData);
 
+			String base64String = new String(base64, "UTF-8");
 			String mimeType = guessMimeType(file);
+			return "data:" + mimeType + ";base64," + base64String;
 
-			return "data:" + mimeType + ";base64," + base64;
-
-		} catch (UnsupportedEncodingException e) {
+		} catch (IOException e) {
 			logger.log(Level.WARNING, "error while reading file", e);
 			throw new FileErrorException(FileError.NOT_READABLE_ERR);
 		}
@@ -636,7 +635,7 @@ public class FileRemoteServiceServlet extends RemoteServiceServlet implements Fi
 
 	}
 
-	//map with mimetypes
+	// map with mimetypes
 	private Map<String, String> initMimeTypes() {
 
 		HashMap<String, String> map = new HashMap<String, String>();
