@@ -21,7 +21,6 @@ import com.googlecode.gwtphonegap.client.file.FileError;
 import com.googlecode.gwtphonegap.client.file.FileReader;
 import com.googlecode.gwtphonegap.client.file.ReaderCallback;
 
-
 public final class FileReaderJsImpl extends JavaScriptObject implements FileReader {
 
 	protected FileReaderJsImpl() {
@@ -126,7 +125,7 @@ public final class FileReaderJsImpl extends JavaScriptObject implements FileRead
 	}
 
 	private native void readAsDataUrl0(JavaScriptObject entry)/*-{
-		this.readAsDataUrl(entry);
+		this.readAsDataURL(entry);
 	}-*/;
 
 	@Override
