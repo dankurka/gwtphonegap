@@ -26,7 +26,6 @@ import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.googlecode.gwtphonegap.client.log.shared.PhoneGapLogService;
 import com.googlecode.gwtphonegap.client.log.shared.PhoneGapLogServiceAsync;
 
-
 /**
  * @author Daniel Kurka
  * 
