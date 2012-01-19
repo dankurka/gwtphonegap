@@ -1,3 +1,18 @@
+/*
+ * Copyright 2011 Daniel Kurka
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
 package com.googlecode.gwtphonegap.client.contacts.browser;
 
 import java.util.Date;
@@ -367,7 +382,7 @@ public class ContactBrowserImpl implements Contact {
 	public static Contact fromJSON(ContactsBrowserImpl controller, JSONObject jsonContact) {
 		ContactBrowserImpl contact = new ContactBrowserImpl(controller);
 
-		//simple fields
+		// simple fields
 		contact.setId(getFieldAsString(jsonContact.get(FIELD_ID)));
 		contact.setDisplayName(getFieldAsString(jsonContact.get(CONTACT_DISPLAY_NAME)));
 		contact.setNickName(getFieldAsString(jsonContact.get(CONTACT_NICK_NAME)));
@@ -376,13 +391,13 @@ public class ContactBrowserImpl implements Contact {
 		contact.setNote(getFieldAsString(jsonContact.get(CONTACT_NOTE)));
 		contact.setTimeZone(getFieldAsString(jsonContact.get(CONTACT_TIME_ZONE)));
 
-		//birthday
+		// birthday
 		JSONValue dateValue = jsonContact.get(CONTACT_BIRTHDAY);
 		if (dateValue != null && dateValue.isNumber() != null) {
 			contact.setBirthDay(new Date((long) dateValue.isNumber().doubleValue()));
 		}
 
-		//contact fields
+		// contact fields
 		JSONArray phoneNumberArray = jsonContact.get(CONTACT_PHONE_NUMBERS).isArray();
 		LightArray<ContactField> phoneNumbers = getContactFieldsForArray(phoneNumberArray);
 		contact.setPhoneNumbers(phoneNumbers);
@@ -543,7 +558,7 @@ public class ContactBrowserImpl implements Contact {
 	public JSONObject serializeContact() {
 		JSONObject root = new JSONObject();
 
-		//simple values
+		// simple values
 		root.put(FIELD_ID, getAsJSONString(this.getId()));
 		root.put(CONTACT_DISPLAY_NAME, getAsJSONString(this.getDisplayName()));
 		root.put(CONTACT_NICK_NAME, getAsJSONString(this.getNickName()));
