@@ -99,4 +99,34 @@ public interface ContactAddress {
 	 * @return
 	 */
 	public String getCountry();
+
+	/**
+	 * Set to true if this ContactAddress contains the user's preferred value.
+	 * 
+	 * 
+	 * @param pref
+	 */
+	public void setPref(boolean pref);
+
+	/**
+	 * true if this ContactAddress contains the user's preferred value.
+	 * 
+	 * 
+	 * @return
+	 */
+	public boolean isPref();
+
+	/**
+	 * A string that tells you what type of field this is (example: 'home')
+	 * 
+	 * @param type
+	 */
+	public void setType(String type);
+
+	/**
+	 * A string that tells you what type of field this is (example: 'home')
+	 * 
+	 * @return
+	 */
+	public String getType();
 }

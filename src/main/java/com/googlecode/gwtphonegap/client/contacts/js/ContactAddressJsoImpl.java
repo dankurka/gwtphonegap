@@ -18,7 +18,6 @@ package com.googlecode.gwtphonegap.client.contacts.js;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.googlecode.gwtphonegap.client.contacts.ContactAddress;
 
-
 public final class ContactAddressJsoImpl extends JavaScriptObject implements ContactAddress {
 
 	protected ContactAddressJsoImpl() {
@@ -83,6 +82,26 @@ public final class ContactAddressJsoImpl extends JavaScriptObject implements Con
 	@Override
 	public native String getCountry() /*-{
 		return this.country;
+	}-*/;
+
+	@Override
+	public native void setPref(boolean pref) /*-{
+		this.pref = pref;
+	}-*/;
+
+	@Override
+	public native boolean isPref() /*-{
+		this.pref;
+	}-*/;
+
+	@Override
+	public native void setType(String type) /*-{
+		this.type = type;
+	}-*/;
+
+	@Override
+	public native String getType() /*-{
+		return this.type;
 	}-*/;
 
 }

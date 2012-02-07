@@ -104,6 +104,10 @@ public class ContactBrowserImpl implements Contact {
 
 	private static final String ORGA_NAME = "name";
 
+	private static final String ADDRESS_TYPE = "type";
+
+	private static final String ADDRESS_PREF = "pref";
+
 	private final ContactsBrowserImpl contactBrowserImpl;
 
 	private String id;
@@ -491,6 +495,8 @@ public class ContactBrowserImpl implements Contact {
 		String region = getFieldAsString(object.get(ADDRESS_REGION));
 		String postalCode = getFieldAsString(object.get(ADDRESS_POSTAL_CODE));
 		String country = getFieldAsString(object.get(ADDRESS_COUNTRY));
+		String type = getFieldAsString(object.get(ADDRESS_TYPE));
+		boolean pref = getFieldAsBoolean(object.get(ADDRESS_PREF));
 
 		ca.setFormatted(formatted);
 		ca.setStreetAddress(streedAddress);
@@ -498,6 +504,8 @@ public class ContactBrowserImpl implements Contact {
 		ca.setRegion(region);
 		ca.setPostalCode(postalCode);
 		ca.setCountry(country);
+		ca.setType(type);
+		ca.setPref(pref);
 
 		return ca;
 	}
@@ -617,6 +625,8 @@ public class ContactBrowserImpl implements Contact {
 			address.put(ADDRESS_REGION, getAsJSONString(contactAddress.getRegion()));
 			address.put(ADDRESS_POSTAL_CODE, getAsJSONString(contactAddress.getPostalCode()));
 			address.put(ADDRESS_COUNTRY, getAsJSONString(contactAddress.getCountry()));
+			address.put(ADDRESS_TYPE, getAsJSONString(contactAddress.getType()));
+			address.put(ADDRESS_PREF, JSONBoolean.getInstance(contactAddress.isPref()));
 			jsonArray.set(i, address);
 		}
 

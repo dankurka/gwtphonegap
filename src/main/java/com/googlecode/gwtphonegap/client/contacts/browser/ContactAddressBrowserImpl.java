@@ -25,6 +25,8 @@ public class ContactAddressBrowserImpl implements ContactAddress {
 	private String region;
 	private String postalCode;
 	private String country;
+	private String type;
+	private boolean pref;
 
 	@Override
 	public void setFormatted(String formatted) {
@@ -90,6 +92,27 @@ public class ContactAddressBrowserImpl implements ContactAddress {
 	@Override
 	public String getCountry() {
 		return country;
+	}
+
+	@Override
+	public void setPref(boolean pref) {
+		this.pref = pref;
+	}
+
+	@Override
+	public boolean isPref() {
+		return pref;
+	}
+
+	@Override
+	public void setType(String type) {
+		this.type = type;
+
+	}
+
+	@Override
+	public String getType() {
+		return type;
 	}
 
 }
