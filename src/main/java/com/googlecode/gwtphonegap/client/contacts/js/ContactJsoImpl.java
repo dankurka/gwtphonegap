@@ -40,12 +40,12 @@ public final class ContactJsoImpl extends JavaScriptObject implements Contact {
 
 	@Override
 	public native void setDisplayName(String displayName) /*-{
-		this.displayname = displayName;
+		this.displayName = displayName;
 	}-*/;
 
 	@Override
 	public native String getDisplayName() /*-{
-		return this.displayname;
+		return this.displayName;
 	}-*/;
 
 	@Override
