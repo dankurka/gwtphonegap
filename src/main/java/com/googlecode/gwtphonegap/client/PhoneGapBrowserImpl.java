@@ -15,11 +15,15 @@
  */
 package com.googlecode.gwtphonegap.client;
 
-
 public class PhoneGapBrowserImpl extends PhoneGapStandardImpl {
 
 	@Override
 	public boolean isPhoneGapInitialized() {
+		return true;
+	}
+
+	@Override
+	public boolean isDevMode() {
 		return true;
 	}
 }

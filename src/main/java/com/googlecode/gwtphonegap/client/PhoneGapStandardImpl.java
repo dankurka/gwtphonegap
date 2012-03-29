@@ -77,6 +77,16 @@ public class PhoneGapStandardImpl implements PhoneGap {
 
 	@Override
 	public native boolean isPhoneGapInitialized()/*-{
+		//phonegap 1.5 ios
+		if(!(typeof($wnd.Cordova) == "undefined")){
+			return $wnd.Cordova.available;
+		}
+		
+		//phonegap 1.5 android and others
+		if(!(typeof($wnd.cordova) == "undefined")){
+			return $wnd.cordova.available;
+		}
+		
 		if (typeof ($wnd.PhoneGap) == "undefined") {
 			return false;
 		} else {
