@@ -38,7 +38,7 @@ public class DeviceMobileImpl implements Device {
 	 */
 	@Override
 	public native String getPhoneGapVersion()/*-{
-		return $wnd.device.phonegap;
+		return $wnd.device.cordova;
 	}-*/;
 
 	/* (non-Javadoc)

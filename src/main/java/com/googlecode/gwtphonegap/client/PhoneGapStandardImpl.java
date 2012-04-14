@@ -63,10 +63,23 @@ public class PhoneGapStandardImpl implements PhoneGap {
 
 	private PhoneGapLogStandardImpl phoneGapLog;
 
+	private boolean deviceReady;
+
 	public PhoneGapStandardImpl() {
 		// log configures it self
 		getLog();
+
+		setupReadyHook();
 	}
+
+	private native void setupReadyHook() /*-{
+		var that = this;
+		var f = function() {
+			that.@com.googlecode.gwtphonegap.client.PhoneGapStandardImpl::nativeDeviceReady()();
+		};
+		$doc.addEventListener("deviceready", $entry(f), false);
+
+	}-*/;
 
 	public PhoneGapLog getLog() {
 		if (phoneGapLog == null) {
@@ -76,23 +89,9 @@ public class PhoneGapStandardImpl implements PhoneGap {
 	}
 
 	@Override
-	public native boolean isPhoneGapInitialized()/*-{
-		//phonegap 1.5 ios
-		if(!(typeof($wnd.Cordova) == "undefined")){
-			return $wnd.Cordova.available;
-		}
-		
-		//phonegap 1.5 android and others
-		if(!(typeof($wnd.cordova) == "undefined")){
-			return $wnd.cordova.available;
-		}
-		
-		if (typeof ($wnd.PhoneGap) == "undefined") {
-			return false;
-		} else {
-			return $wnd.PhoneGap.available;
-		}
-	}-*/;
+	public boolean isPhoneGapInitialized() {
+		return deviceReady;
+	}
 
 	@Override
 	public void initializePhoneGap() {
@@ -113,7 +112,6 @@ public class PhoneGapStandardImpl implements PhoneGap {
 				@Override
 				public void run() {
 					if (isPhoneGapInitialized()) {
-						firePhoneGapAvailable();
 						return;
 					}
 
@@ -304,6 +302,11 @@ public class PhoneGapStandardImpl implements PhoneGap {
 	@Override
 	public boolean isDevMode() {
 		return !GWT.isScript();
+	}
+
+	protected void nativeDeviceReady() {
+		deviceReady = true;
+		firePhoneGapAvailable();
 	}
 
 }
