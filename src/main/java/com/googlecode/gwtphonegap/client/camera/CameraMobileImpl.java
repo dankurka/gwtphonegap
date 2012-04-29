@@ -34,19 +34,39 @@ public class CameraMobileImpl implements Camera {
 			callback.@com.googlecode.gwtphonegap.client.camera.PictureCallback::onSuccess(Ljava/lang/String;)(data);
 		};
 
-		var errorCallback = function() {
-			callback.@com.googlecode.gwtphonegap.client.camera.PictureCallback::onFailure()();
+		var errorCallback = function(message) {
+			callback.@com.googlecode.gwtphonegap.client.camera.PictureCallback::onFailure(Ljava/lang/String;)(message);
 		};
 
 		var qual = options.@com.googlecode.gwtphonegap.client.camera.PictureOptions::getQuality()();
 		var dt = options.@com.googlecode.gwtphonegap.client.camera.PictureOptions::getDestinationType()();
 		var st = options.@com.googlecode.gwtphonegap.client.camera.PictureOptions::getSourceType()();
 
+		//private int encoding;
+
+		//private int mediaType;
+
+		var encoding = options.@com.googlecode.gwtphonegap.client.camera.PictureOptions::getEncoding()();
+		var g_allowEdit = options.@com.googlecode.gwtphonegap.client.camera.PictureOptions::isAllowEdit()();
+		var mediaType = options.@com.googlecode.gwtphonegap.client.camera.PictureOptions::getMediaType()();
+
 		var localOptions = {
 			quality : qual,
 			destinationType : dt,
-			sourceType : st
+			sourceType : st,
+			allowEdit : g_allowEdit,
+			encodingType : encoding
 		};
+
+		var th = options.@com.googlecode.gwtphonegap.client.camera.PictureOptions::getTargetHeightInPx()();
+		if (th != -1) {
+			localOptions["targetHeight"] = th;
+		}
+
+		var tw = options.@com.googlecode.gwtphonegap.client.camera.PictureOptions::getTargetWidthInPx()();
+		if (tw != -1) {
+			localOptions["targetWidth"] = tw;
+		}
 
 		$wnd.navigator.camera.getPicture($entry(successCallback),
 				$entry(errorCallback), localOptions);

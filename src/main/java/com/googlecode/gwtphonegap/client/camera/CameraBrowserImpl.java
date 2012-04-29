@@ -44,7 +44,7 @@ public class CameraBrowserImpl implements CameraMock {
 	@Override
 	public void getPicture(PictureOptions options, PictureCallback callback) {
 		if (shouldFail) {
-			callback.onFailure();
+			callback.onFailure("should fail");
 			return;
 		}
 
@@ -56,7 +56,7 @@ public class CameraBrowserImpl implements CameraMock {
 				callback.onSuccess(this.pictureUrl);
 
 			} else {
-				callback.onFailure();
+				callback.onFailure("wrong type");
 			}
 
 		}
