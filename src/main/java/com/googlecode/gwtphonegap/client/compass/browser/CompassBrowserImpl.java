@@ -19,6 +19,7 @@ import java.util.List;
 
 import com.google.gwt.user.client.Timer;
 import com.googlecode.gwtphonegap.client.compass.CompassCallback;
+import com.googlecode.gwtphonegap.client.compass.CompassError;
 import com.googlecode.gwtphonegap.client.compass.CompassMock;
 import com.googlecode.gwtphonegap.client.compass.CompassOptions;
 import com.googlecode.gwtphonegap.client.compass.CompassWatcher;
@@ -31,7 +32,7 @@ public class CompassBrowserImpl implements CompassMock {
 
 	@Override
 	public void getCurrentHeading(CompassOptions options, CompassCallback callback) {
-		callback.onError();
+		callback.onError(new CompassErrorBrowserImpl(CompassError.COMPASS_NOT_SUPPORTED));
 
 	}
 
@@ -77,7 +78,7 @@ public class CompassBrowserImpl implements CompassMock {
 		@Override
 		public void run() {
 			if (shouldFail) {
-				callback.onError();
+				callback.onError(new CompassErrorBrowserImpl(CompassError.COMPASS_NOT_SUPPORTED));
 			} else {
 				if (values == null) {
 					callback.onSuccess(new CompassHeadingMockValue(0, -1, 0));

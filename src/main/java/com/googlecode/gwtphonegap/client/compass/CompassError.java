@@ -1,5 +1,5 @@
 /*
- * Copyright 2011 Daniel Kurka
+ * Copyright 2012 Daniel Kurka
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -15,24 +15,10 @@
  */
 package com.googlecode.gwtphonegap.client.compass;
 
-/**
- * The Compass Callback
- * 
- * @author Daniel Kurka
- * 
- */
-public interface CompassCallback {
+public interface CompassError {
+	public static final int COMPASS_INTERNAL_ERR = 0;
+	public static final int COMPASS_NOT_SUPPORTED = 20;
 
-	/**
-	 * Called if an error occured
-	 */
-	public void onError(CompassError error);
+	public int getCode();
 
-	/**
-	 * onSuccess callback function that provides the compass heading
-	 * information.
-	 * 
-	 * @param heading value of the current heading
-	 */
-	public void onSuccess(CompassHeading heading);
 }

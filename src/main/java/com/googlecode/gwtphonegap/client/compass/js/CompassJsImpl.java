@@ -29,13 +29,18 @@ public class CompassJsImpl implements Compass {
 			callback.@com.googlecode.gwtphonegap.client.compass.CompassCallback::onSuccess(Lcom/googlecode/gwtphonegap/client/compass/CompassHeading;)(heading);
 		};
 
-		var fail = function() {
-			callback.@com.googlecode.gwtphonegap.client.compass.CompassCallback::onError()();
+		var fail = function(error) {
+			callback.@com.googlecode.gwtphonegap.client.compass.CompassCallback::onError(Lcom/googlecode/gwtphonegap/client/compass/CompassError;)(error);
 		};
 
 		var gap_options = {};
 
 		gap_options.frequency = options.@com.googlecode.gwtphonegap.client.compass.CompassOptions::getFrequency()();
+
+		var filter = options.@com.googlecode.gwtphonegap.client.compass.CompassOptions::getFilter()();
+		if (filter != -1) {
+			gap_options.filter = filter;
+		}
 
 		$wnd.navigator.compass.getCurrentHeading($entry(suc), $entry(fail),
 				gap_options);
@@ -55,8 +60,8 @@ public class CompassJsImpl implements Compass {
 			callback.@com.googlecode.gwtphonegap.client.compass.CompassCallback::onSuccess(Lcom/googlecode/gwtphonegap/client/compass/CompassHeading;)(heading);
 		};
 
-		var fail = function() {
-			callback.@com.googlecode.gwtphonegap.client.compass.CompassCallback::onError()();
+		var fail = function(error) {
+			callback.@com.googlecode.gwtphonegap.client.compass.CompassCallback::onError(Lcom/googlecode/gwtphonegap/client/compass/CompassError;)(error);
 		};
 
 		var gap_options = {};

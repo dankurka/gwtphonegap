@@ -24,12 +24,15 @@ package com.googlecode.gwtphonegap.client.compass;
 public class CompassOptions {
 	private int frequency;
 
+	private double filter;
+
 	public CompassOptions() {
 		this(100);
 	}
 
 	public CompassOptions(int frequency) {
 		this.frequency = frequency;
+		this.filter = -1;
 	}
 
 	public int getFrequency() {
@@ -38,6 +41,14 @@ public class CompassOptions {
 
 	public void setFrequency(int frequency) {
 		this.frequency = frequency;
+	}
+
+	public void setFilter(double filter) {
+		this.filter = filter;
+	}
+
+	public double getFilter() {
+		return filter;
 	}
 
 }
