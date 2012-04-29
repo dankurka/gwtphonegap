@@ -17,8 +17,9 @@ package com.googlecode.gwtphonegap.client.accelerometer;
 
 /**
  * The Options which can be specified when reading the accelerometer
+ * 
  * @author Daniel Kurka
- *
+ * 
  */
 public class AccelerationOptions {
 
@@ -28,12 +29,18 @@ public class AccelerationOptions {
 		this.frequency = 10000;
 	}
 
+	public AccelerationOptions(double frequency) {
+		this.frequency = frequency;
+	}
+
 	public double getFrequency() {
 		return frequency;
 	}
 
 	/**
-	 * How often to retrieve the Acceleration in milliseconds. (Number) (Default: 10000)
+	 * How often to retrieve the Acceleration in milliseconds. (Number)
+	 * (Default: 10000)
+	 * 
 	 * @param frequency
 	 */
 	public void setFrequency(double frequency) {
