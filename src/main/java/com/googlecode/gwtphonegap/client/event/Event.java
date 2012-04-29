@@ -37,4 +37,18 @@ public interface Event {
 
 	public HasOfflineHandler getOffLineHandler();
 
+	public HasBatteryCriticalHandler getBatteryCriticalHandler();
+
+	public HasBatteryLowHandler getBatteryLowHandler();
+
+	public HasBatteryStatusHandler getBatteryStatusHandler();
+
+	public HasStartCallButtonHandler getStartCallButtonHandler();
+
+	public HasEndCallButtonHandler getEndCallButtonHandler();
+
+	public HasVolumneDownButtonPressedHandler getVolumneDownButtonPressedHandler();
+
+	public HasVolumneUpButtonPressedHandler getVolumneUpButtonPressedHandler();
+
 }

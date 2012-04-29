@@ -83,6 +83,49 @@ public class EventJsImpl extends EventBaseImpl {
 			that.@com.googlecode.gwtphonegap.client.event.js.EventJsImpl::fireMenuEvent()();
 		};
 		$doc.addEventListener("menubutton", $entry(menu), false);
+
+		//battery critical event
+		var bce = function(info) {
+			that.@com.googlecode.gwtphonegap.client.event.js.EventJsImpl::fireBatteryCriticalEvent(IZ)(info.level, info.isPlugged);
+		};
+		$wnd.addEventListener("batterycritical", $entry(bce), false);
+
+		//battery low event
+		var ble = function(info) {
+			that.@com.googlecode.gwtphonegap.client.event.js.EventJsImpl::fireBatteryLowEvent(IZ)(info.level, info.isPlugged);
+		};
+		$wnd.addEventListener("batterylow", $entry(ble), false);
+
+		//battery status event
+		var bse = function(info) {
+			that.@com.googlecode.gwtphonegap.client.event.js.EventJsImpl::fireBatteryStatusvent(IZ)(info.level, info.isPlugged);
+		};
+		$wnd.addEventListener("batterystatus", $entry(bse), false);
+
+		//start call event
+		var sce = function() {
+			that.@com.googlecode.gwtphonegap.client.event.js.EventJsImpl::fireStartCallButtonPressedEvent()();
+		};
+		$doc.addEventListener("startcallbutton", $entry(sce), false);
+
+		//end call event
+		var ece = function() {
+			that.@com.googlecode.gwtphonegap.client.event.js.EventJsImpl::fireEndCallButtonPressedEvent()();
+		};
+		$doc.addEventListener("endcallbutton", $entry(ece), false);
+
+		//volumne down button event
+		var vdbe = function() {
+			that.@com.googlecode.gwtphonegap.client.event.js.EventJsImpl::fireVolumneButtonDownPressedEvent()();
+		};
+		$doc.addEventListener("volumedownbutton", $entry(vdbe), false);
+
+		//volumne up button event
+		var vube = function() {
+			that.@com.googlecode.gwtphonegap.client.event.js.EventJsImpl::fireVolumneButtonUpPressedEvent()();
+		};
+		$doc.addEventListener("volumeupbutton", $entry(vube), false);
+
 	}-*/;
 
 }

@@ -29,4 +29,18 @@ public interface EventMock {
 	public void fireSearchEvent();
 
 	public void fireMenuEvent();
+
+	public void fireBatteryCriticalEvent(int level, boolean plugged);
+
+	public void fireBatteryLowEvent(int level, boolean plugged);
+
+	public void fireBatteryStatusvent(int level, boolean plugged);
+
+	public void fireStartCallButtonPressedEvent();
+
+	public void fireEndCallButtonPressedEvent();
+
+	public void fireVolumneButtonDownPressedEvent();
+
+	public void fireVolumneButtonUpPressedEvent();
 }

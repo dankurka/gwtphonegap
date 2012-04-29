@@ -59,8 +59,44 @@ public abstract class EventBaseImpl implements Event, EventMock {
 		return pgImpl;
 	}
 
+	@Override
+	public HasBatteryCriticalHandler getBatteryCriticalHandler() {
+		return pgImpl;
+	}
+
+	@Override
+	public HasBatteryLowHandler getBatteryLowHandler() {
+		return pgImpl;
+	}
+
+	@Override
+	public HasBatteryStatusHandler getBatteryStatusHandler() {
+		return pgImpl;
+	}
+
+	@Override
+	public HasStartCallButtonHandler getStartCallButtonHandler() {
+		return pgImpl;
+	}
+
+	@Override
+	public HasEndCallButtonHandler getEndCallButtonHandler() {
+		return pgImpl;
+	}
+
+	@Override
+	public HasVolumneDownButtonPressedHandler getVolumneDownButtonPressedHandler() {
+		return pgImpl;
+	}
+
+	@Override
+	public HasVolumneUpButtonPressedHandler getVolumneUpButtonPressedHandler() {
+		return pgImpl;
+	}
+
 	private class PhoneGapEventHandlerImpl implements HasOfflineHandler, HasOnlineHandler, HasResumeHandlers, HasPauseHandlers, HasBackButtonPressedHandlers, HasSearchButtonHandlers,
-			HasMenuButtonPressedHandlers {
+			HasMenuButtonPressedHandlers, HasBatteryCriticalHandler, HasBatteryLowHandler, HasBatteryStatusHandler, HasStartCallButtonHandler, HasEndCallButtonHandler,
+			HasVolumneDownButtonPressedHandler, HasVolumneUpButtonPressedHandler {
 
 		@Override
 		public void fireEvent(GwtEvent<?> event) {
@@ -104,6 +140,41 @@ public abstract class EventBaseImpl implements Event, EventMock {
 		@Override
 		public HandlerRegistration addMenuButtonPressedHandler(MenuButtonPressedHandler handler) {
 			return eventBus.addHandler(MenuButtonPressedEvent.getType(), handler);
+		}
+
+		@Override
+		public HandlerRegistration addBatteryCriticalHandler(BatteryCriticalHandler handler) {
+			return eventBus.addHandler(BatteryCriticalEvent.getType(), handler);
+		}
+
+		@Override
+		public HandlerRegistration addBatteryLowHandler(BatteryLowHandler handler) {
+			return eventBus.addHandler(BatteryLowEvent.getType(), handler);
+		}
+
+		@Override
+		public HandlerRegistration addBatteryStatusHandler(BatteryStatusHandler handler) {
+			return eventBus.addHandler(BatteryStatusEvent.getType(), handler);
+		}
+
+		@Override
+		public HandlerRegistration addStartCallButtonHandler(StartCallButtonPressedHandler handler) {
+			return eventBus.addHandler(StartCallButtonPressedEvent.getType(), handler);
+		}
+
+		@Override
+		public HandlerRegistration addEndCallButtonHandler(EndCallButtonPressedHandler handler) {
+			return eventBus.addHandler(EndCallButtonPressedEvent.getType(), handler);
+		}
+
+		@Override
+		public HandlerRegistration addVolumneDownButtonPressedHandler(VolumeDownButtonPressedHandler handler) {
+			return eventBus.addHandler(VolumeDownButtonPressedEvent.getType(), handler);
+		}
+
+		@Override
+		public HandlerRegistration addVolumneUpButtonPressedHandler(VolumeUpButtonPressedHandler handler) {
+			return eventBus.addHandler(VolumeUpButtonPressedEvent.getType(), handler);
 		}
 
 	}
@@ -152,6 +223,41 @@ public abstract class EventBaseImpl implements Event, EventMock {
 	public void fireMenuEvent() {
 		eventBus.fireEvent(new MenuButtonPressedEvent());
 
+	}
+
+	@Override
+	public void fireBatteryCriticalEvent(int level, boolean plugged) {
+		eventBus.fireEvent(new BatteryCriticalEvent(level, plugged));
+	}
+
+	@Override
+	public void fireBatteryLowEvent(int level, boolean plugged) {
+		eventBus.fireEvent(new BatteryLowEvent(level, plugged));
+	}
+
+	@Override
+	public void fireBatteryStatusvent(int level, boolean plugged) {
+		eventBus.fireEvent(new BatteryStatusEvent(level, plugged));
+	}
+
+	@Override
+	public void fireStartCallButtonPressedEvent() {
+		eventBus.fireEvent(new StartCallButtonPressedEvent());
+	}
+
+	@Override
+	public void fireEndCallButtonPressedEvent() {
+		eventBus.fireEvent(new EndCallButtonPressedEvent());
+	}
+
+	@Override
+	public void fireVolumneButtonDownPressedEvent() {
+		eventBus.fireEvent(new VolumeDownButtonPressedEvent());
+	}
+
+	@Override
+	public void fireVolumneButtonUpPressedEvent() {
+		eventBus.fireEvent(new VolumeUpButtonPressedEvent());
 	}
 
 }
