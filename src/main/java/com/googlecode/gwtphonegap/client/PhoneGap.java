@@ -160,4 +160,6 @@ public interface PhoneGap {
 
 	public boolean isDevMode();
 
+	public boolean isPhoneGapDevice();
+
 }

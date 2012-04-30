@@ -1,5 +1,5 @@
 /*
- * Copyright 2010 Daniel Kurka
+ * Copyright 2012 Daniel Kurka
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,22 +13,10 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.gwtphonegap.client;
+package com.googlecode.gwtphonegap.client.util;
 
-public class PhoneGapBrowserImpl extends PhoneGapStandardImpl {
+import com.google.gwt.user.client.rpc.ServiceDefTarget;
 
-	@Override
-	public boolean isPhoneGapInitialized() {
-		return true;
-	}
-
-	@Override
-	public boolean isDevMode() {
-		return true;
-	}
-
-	@Override
-	public boolean isPhoneGapDevice() {
-		return false;
-	}
+public interface PhonegapUtilImpl {
+	public void prepareService(ServiceDefTarget service, final String moduleUrl, String relativeServiceUrl);
 }

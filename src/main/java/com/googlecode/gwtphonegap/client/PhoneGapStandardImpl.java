@@ -309,4 +309,9 @@ public class PhoneGapStandardImpl implements PhoneGap {
 		firePhoneGapAvailable();
 	}
 
+	@Override
+	public boolean isPhoneGapDevice() {
+		return true;
+	}
+
 }
