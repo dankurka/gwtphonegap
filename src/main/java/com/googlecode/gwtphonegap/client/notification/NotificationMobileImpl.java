@@ -94,11 +94,18 @@ public class NotificationMobileImpl implements Notification {
 		if (buttonLabels == null)
 			buttonLabels = defaultLabels;
 
-		if (buttonLabels.length != 2) {
-			throw new IllegalArgumentException("expected two labels for buttons got: " + buttonLabels.length);
+		StringBuffer buffer = new StringBuffer();
+
+		for (int i = 0; i < buttonLabels.length; i++) {
+			buffer.append(buttonLabels[i]);
+
+			if (i != buttonLabels.length - 1) {
+				buffer.append(",");
+			}
+
 		}
 
-		String labels = buttonLabels[0] + "," + buttonLabels[1];
+		String labels = buffer.toString();
 		confirm0(message, callback, title, labels);
 
 	}
