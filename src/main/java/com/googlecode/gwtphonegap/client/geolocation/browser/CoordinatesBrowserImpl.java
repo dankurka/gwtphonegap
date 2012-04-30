@@ -22,8 +22,7 @@ public class CoordinatesBrowserImpl implements Coordinates {
 	private double latidue;
 	private double longitude;
 	private double altitude;
-	private double horizontalAccuracy;
-	private double verticalAccuracy;
+	private double accuracy;
 	private double altitudeAccuracy;
 	private double heading;
 	private double speed;
@@ -56,21 +55,12 @@ public class CoordinatesBrowserImpl implements Coordinates {
 	}
 
 	@Override
-	public double getHorizontalAccuracy() {
-		return horizontalAccuracy;
+	public double getAccuracy() {
+		return accuracy;
 	}
 
-	public void setHorizontalAccuracy(double horizontalAccuracy) {
-		this.horizontalAccuracy = horizontalAccuracy;
-	}
-
-	@Override
-	public double getVerticalAccuracy() {
-		return verticalAccuracy;
-	}
-
-	public void setVerticalAccuracy(double verticalAccuracy) {
-		this.verticalAccuracy = verticalAccuracy;
+	public void setAccuracy(double accuracy) {
+		this.accuracy = accuracy;
 	}
 
 	@Override

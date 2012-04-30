@@ -146,11 +146,10 @@ public class GeolocationBrowserEmptyImpl implements Geolocation {
 		co.setAltitude(result.getCoordinates().getAltitude() != null ? result.getCoordinates().getAltitude() : 0);
 		co.setAltitudeAccuracy(result.getCoordinates().getAltitudeAccuracy() != null ? result.getCoordinates().getAltitudeAccuracy() : 0);
 		co.setHeading(result.getCoordinates().getHeading() != null ? result.getCoordinates().getHeading() : 0);
-		co.setHorizontalAccuracy(result.getCoordinates().getAccuracy());
+		co.setAccuracy(result.getCoordinates().getAccuracy());
 		co.setLatidue(result.getCoordinates().getLatitude());
 		co.setLongitude(result.getCoordinates().getLongitude());
 		co.setSpeed(result.getCoordinates().getSpeed() != null ? result.getCoordinates().getSpeed() : 0);
-		co.setVerticalAccuracy(result.getCoordinates().getAccuracy());
 		PositionBrowserImpl positionBrowserImpl = new PositionBrowserImpl(co, Math.round(result.getTimestamp()));
 		return positionBrowserImpl;
 	}

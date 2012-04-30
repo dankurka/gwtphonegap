@@ -35,21 +35,11 @@ public final class CoordinatesJsImpl extends JavaScriptObject implements Coordin
 		return this.altitude;
 	}-*/;
 
-	/**
-	 * 
-	 * @return
-	 */
-	//TODO this is not consitent with phonegap doc (phonegap doc seems to be wrong)
-	public native double getHorizontalAccuracy()/*-{
+	public native double getAccuracy()/*-{
 		return this.accuracy.horizontal;
 	}-*/;
 
-	//TODO this is not consitent with phonegap doc (phonegap doc seems to be wrong)
-	public native double getVerticalAccuracy()/*-{
-		return this.accuracy.vertical;
-	}-*/;
-
-	//TODO this returns null on iPhone 4.1 
+	// TODO this returns null on iPhone 4.1
 	public native double getAltitudeAccuracy()/*-{
 		return this.altitudeAccuracy;
 	}-*/;
