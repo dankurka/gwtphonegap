@@ -20,6 +20,10 @@ import com.googlecode.gwtphonegap.client.compass.CompassError;
 
 public final class CompassErrorJsImpl extends JavaScriptObject implements CompassError {
 
+	protected CompassErrorJsImpl() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public native int getCode() /*-{
 		return this.code;
