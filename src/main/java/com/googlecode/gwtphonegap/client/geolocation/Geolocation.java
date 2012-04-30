@@ -41,15 +41,17 @@ public interface Geolocation {
 	 */
 	public void getCurrentPosition(GeolocationCallback callback);
 
+	public void getCurrentPosition(GeolocationCallback callback, GeolocationOptions options);
+
 	/**
 	 * Watches for changes to the device's current position.
 	 * 
 	 * Function geolocation.watchPosition is an asynchronous function. It
 	 * returns the device's current position when a change in position has been
 	 * detected. When the device has retrieved a new location, the
-	 * geolocationSuccess callback is invoked with a PositionJsImpl object as the
-	 * parameter. If there is an error, the geolocationError callback is invoked
-	 * with a PositionError object.
+	 * geolocationSuccess callback is invoked with a PositionJsImpl object as
+	 * the parameter. If there is an error, the geolocationError callback is
+	 * invoked with a PositionError object.
 	 * 
 	 * <ul>
 	 * <li>Android</li>

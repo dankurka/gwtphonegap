@@ -15,6 +15,7 @@
  */
 package com.googlecode.gwtphonegap.client.geolocation.js;
 
+import com.google.gwt.core.client.JavaScriptObject;
 import com.googlecode.gwtphonegap.client.geolocation.Geolocation;
 import com.googlecode.gwtphonegap.client.geolocation.GeolocationCallback;
 import com.googlecode.gwtphonegap.client.geolocation.GeolocationOptions;
@@ -40,7 +41,12 @@ import com.googlecode.gwtphonegap.client.geolocation.GeolocationWatcher;
 public class GeolocationMobileImpl implements Geolocation {
 
 	@Override
-	public native void getCurrentPosition(GeolocationCallback callback)/*-{
+	public void getCurrentPosition(GeolocationCallback callback) {
+		getCurrentPosition(callback, null);
+	}
+
+	@Override
+	public native void getCurrentPosition(GeolocationCallback callback, GeolocationOptions options)/*-{
 		var successCallback = function(data) {
 			@com.googlecode.gwtphonegap.client.geolocation.js.GeolocationMobileImpl::onSuccess(Lcom/googlecode/gwtphonegap/client/geolocation/GeolocationCallback;Lcom/googlecode/gwtphonegap/client/geolocation/js/PositionJsImpl;)(callback, data);
 		};
@@ -49,8 +55,10 @@ public class GeolocationMobileImpl implements Geolocation {
 			@com.googlecode.gwtphonegap.client.geolocation.js.GeolocationMobileImpl::onFailure(Lcom/googlecode/gwtphonegap/client/geolocation/GeolocationCallback;Lcom/googlecode/gwtphonegap/client/geolocation/js/PositionErrorJSOImpl;)(callback, error);
 		};
 
+		var localOptions = this.@com.googlecode.gwtphonegap.client.geolocation.js.GeolocationMobileImpl::createOptions(Lcom/googlecode/gwtphonegap/client/geolocation/GeolocationOptions;)(options);
+
 		$wnd.navigator.geolocation.getCurrentPosition($entry(successCallback),
-				$entry(errorCallback));
+				$entry(errorCallback), localOptions);
 	}-*/;
 
 	public native String watchPosition0(GeolocationOptions options, GeolocationCallback callback)/*-{
@@ -62,20 +70,7 @@ public class GeolocationMobileImpl implements Geolocation {
 			@com.googlecode.gwtphonegap.client.geolocation.js.GeolocationMobileImpl::onFailure(Lcom/googlecode/gwtphonegap/client/geolocation/GeolocationCallback;Lcom/googlecode/gwtphonegap/client/geolocation/js/PositionErrorJSOImpl;)(callback, error);
 		};
 
-		var localOptions = {};
-
-		localOptions.frequency = options.@com.googlecode.gwtphonegap.client.geolocation.GeolocationOptions::getFrequency()();
-		localOptions.enableHighAccuracy = options
-				.@com.googlecode.gwtphonegap.client.geolocation.GeolocationOptions::isEnableHighAccuracy();
-		var maxage = options.@com.googlecode.gwtphonegap.client.geolocation.GeolocationOptions::getMaximumAge()();
-		if (maxage > 0) {
-			localOptions.maximumAge = maxage;
-		}
-
-		var timeout = options.@com.googlecode.gwtphonegap.client.geolocation.GeolocationOptions::getTimeout()();
-		if (timeout > 0) {
-			localOptions.timeout = timeout;
-		}
+		var localOptions = this.@com.googlecode.gwtphonegap.client.geolocation.js.GeolocationMobileImpl::createOptions(Lcom/googlecode/gwtphonegap/client/geolocation/GeolocationOptions;)(options);
 
 		var watcherId = $wnd.navigator.geolocation.watchPosition(
 				$entry(successCallback), $entry(errorCallback), localOptions);
@@ -93,6 +88,30 @@ public class GeolocationMobileImpl implements Geolocation {
 
 	private native void clearWatch0(String watcher) /*-{
 		$wnd.navigator.geolocation.clearWatch(watcher);
+	}-*/;
+
+	private native JavaScriptObject createOptions(GeolocationOptions options)/*-{
+
+		var localOptions = {};
+
+		if (options == null)
+			return localOptions;
+
+		localOptions.frequency = options.@com.googlecode.gwtphonegap.client.geolocation.GeolocationOptions::getFrequency()();
+		localOptions.enableHighAccuracy = options
+				.@com.googlecode.gwtphonegap.client.geolocation.GeolocationOptions::isEnableHighAccuracy();
+		var maxage = options.@com.googlecode.gwtphonegap.client.geolocation.GeolocationOptions::getMaximumAge()();
+		if (maxage > 0) {
+			localOptions.maximumAge = maxage;
+		}
+
+		var timeout = options.@com.googlecode.gwtphonegap.client.geolocation.GeolocationOptions::getTimeout()();
+		if (timeout > 0) {
+			localOptions.timeout = timeout;
+		}
+
+		return localOptions;
+
 	}-*/;
 
 	@Override

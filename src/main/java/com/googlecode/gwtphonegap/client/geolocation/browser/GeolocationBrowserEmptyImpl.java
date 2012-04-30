@@ -34,7 +34,12 @@ public class GeolocationBrowserEmptyImpl implements Geolocation {
 	}
 
 	@Override
-	public void getCurrentPosition(final GeolocationCallback callback) {
+	public void getCurrentPosition(GeolocationCallback callback) {
+		getCurrentPosition(callback, null);
+	}
+
+	@Override
+	public void getCurrentPosition(final GeolocationCallback callback, GeolocationOptions options) {
 		if (gwtGeoLocation == null) {
 			callback.onFailure(new PostionErrorJavaImpl(PositionError.PERMISSION_DENIED, ""));
 		} else {
@@ -94,7 +99,7 @@ public class GeolocationBrowserEmptyImpl implements Geolocation {
 	 * See issue
 	 * http://code.google.com/p/google-web-toolkit/issues/detail?id=6834
 	 */
-	//TODO remove this once gwt fixes the bug
+	// TODO remove this once gwt fixes the bug
 	private native int fixGwtGeoLocation(Callback<com.google.gwt.geolocation.client.Position, com.google.gwt.geolocation.client.PositionError> callback, PositionOptions options) /*-{
 		var opt = @com.google.gwt.geolocation.client.Geolocation::toJso(*)(options);
 
