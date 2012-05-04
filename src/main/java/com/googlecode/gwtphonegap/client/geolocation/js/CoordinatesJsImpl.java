@@ -36,7 +36,7 @@ public final class CoordinatesJsImpl extends JavaScriptObject implements Coordin
 	}-*/;
 
 	public native double getAccuracy()/*-{
-		return this.accuracy.horizontal;
+		return this.accuracy;
 	}-*/;
 
 	// TODO this returns null on iPhone 4.1
