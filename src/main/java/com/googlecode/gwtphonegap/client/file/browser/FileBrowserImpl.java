@@ -18,6 +18,7 @@ package com.googlecode.gwtphonegap.client.file.browser;
 import com.googlecode.gwtphonegap.client.file.EntryBase;
 import com.googlecode.gwtphonegap.client.file.File;
 import com.googlecode.gwtphonegap.client.file.FileCallback;
+import com.googlecode.gwtphonegap.client.file.FileDownloadCallback;
 import com.googlecode.gwtphonegap.client.file.FileError;
 import com.googlecode.gwtphonegap.client.file.FileReader;
 import com.googlecode.gwtphonegap.client.file.FileSystem;
@@ -70,6 +71,20 @@ public class FileBrowserImpl implements File {
 
 			@Override
 			public void upload(String fileUri, String serverUrl, FileUploadOptions options, FileUploadCallback callback) {
+				FileTransferError fileTransferError = new FileTransferError() {
+
+					@Override
+					public int getCode() {
+						return FileTransferError.FILE_NOT_FOUND_ERR;
+					}
+				};
+
+				callback.onFailure(fileTransferError);
+
+			}
+
+			@Override
+			public void download(String sourceUrl, String filePath, FileDownloadCallback callback) {
 				FileTransferError fileTransferError = new FileTransferError() {
 
 					@Override

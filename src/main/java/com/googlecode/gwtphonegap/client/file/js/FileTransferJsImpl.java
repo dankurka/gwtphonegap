@@ -20,6 +20,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.googlecode.gwtphonegap.client.file.FileDownloadCallback;
 import com.googlecode.gwtphonegap.client.file.FileTransfer;
 import com.googlecode.gwtphonegap.client.file.FileUploadCallback;
 import com.googlecode.gwtphonegap.client.file.FileUploadOptions;
@@ -29,6 +30,11 @@ public final class FileTransferJsImpl extends JavaScriptObject implements FileTr
 
 	protected FileTransferJsImpl() {
 
+	}
+
+	@Override
+	public void download(String sourceUrl, String filePath, FileDownloadCallback callback) {
+		download0(sourceUrl, filePath, callback);
 	}
 
 	@Override
@@ -65,6 +71,19 @@ public final class FileTransferJsImpl extends JavaScriptObject implements FileTr
 		fop.params = map;
 
 		this.upload(fileUri, serverUrl, $entry(suc), $entry(fail), fop);
+	}-*/;
+
+	private native void download0(String sourceUrl, String filePath, FileDownloadCallback callback)/*-{
+
+		var suc = function(result) {
+			callback.@com.googlecode.gwtphonegap.client.file.FileDownloadCallback::onSuccess(Lcom/googlecode/gwtphonegap/client/file/FileEntry;)(result);
+		};
+
+		var fail = function(error) {
+			callback.@com.googlecode.gwtphonegap.client.file.FileDownloadCallback::onFailure(Lcom/googlecode/gwtphonegap/client/file/FileTransferError;)(error);
+		};
+
+		this.download(sourceUrl, filePath, $entry(suc), $entry(fail));
 	}-*/;
 
 }
