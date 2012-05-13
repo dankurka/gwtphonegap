@@ -318,11 +318,11 @@
 			<when-property-is name="phonegap.logging.remoteHandler" value="DISABLED" />
 		</any>
 	</replace-with>
-	<set-property name="gwt.logging.enabled" value="TRUE"/> 
+	
 	
 	<!-- disable default gwt Log handler -->
 	<set-property name="gwt.logging.consoleHandler" value="DISABLED"/> 
-
+	<set-property name="gwt.logging.popupHandler" value="DISABLED" />
 	
 	
 	

@@ -87,14 +87,14 @@ public class PhoneGapRemoteBatchLogHandler extends RemoteLogHandlerBase {
 
 			@Override
 			public void onFailure(Throwable caught) {
-				wireLogger.severe("can not post logrecords to server");
+				// wireLogger.severe("can not post logrecords to server");
 			}
 
 			@Override
 			public void onSuccess(String result) {
-				if (wireLogger.isLoggable(Level.FINE)) {
-					wireLogger.fine("posted log records to server");
-				}
+				// if (wireLogger.isLoggable(Level.FINE)) {
+				// wireLogger.fine("posted log records to server");
+				// }
 
 			}
 		});

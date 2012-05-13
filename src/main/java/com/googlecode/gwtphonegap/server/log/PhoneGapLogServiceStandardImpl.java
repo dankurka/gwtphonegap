@@ -26,7 +26,6 @@ import com.google.gwt.logging.server.StackTraceDeobfuscator;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.googlecode.gwtphonegap.client.log.shared.PhoneGapLogService;
 
-
 /**
  * @author Daniel Kurka
  * 
