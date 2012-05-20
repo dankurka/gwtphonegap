@@ -20,6 +20,11 @@
   	}
 ]]></property-provider>
     
+    
+    <replace-with class="com.googlecode.gwtphonegap.client.PhoneGapBrowserImpl">
+		<when-type-is class="com.googlecode.gwtphonegap.client.PhoneGap" />
+	</replace-with>
+    
     <!-- Phonegap -->
 	<replace-with class="com.googlecode.gwtphonegap.client.PhoneGapStandardImpl">
 		<when-type-is class="com.googlecode.gwtphonegap.client.PhoneGap" />
@@ -28,15 +33,14 @@
 		</all>
 	</replace-with>
 
-	<replace-with class="com.googlecode.gwtphonegap.client.PhoneGapBrowserImpl">
-		<when-type-is class="com.googlecode.gwtphonegap.client.PhoneGap" />
-		<all>
-			<when-property-is name="phonegap.env" value="no" />
-		</all>
-	</replace-with>
+	
 	
 	
 	 <!-- Phonegap Util-->
+	 <replace-with class="com.googlecode.gwtphonegap.client.util.PhonegapUtilImplBrowser">
+		<when-type-is class="com.googlecode.gwtphonegap.client.util.PhonegapUtilImpl" />
+	</replace-with>
+	
 	<replace-with class="com.googlecode.gwtphonegap.client.util.PhonegapUtilImplDevice">
 		<when-type-is class="com.googlecode.gwtphonegap.client.util.PhonegapUtilImpl" />
 		<all>
@@ -44,77 +48,65 @@
 		</all>
 	</replace-with>
 
-	<replace-with class="com.googlecode.gwtphonegap.client.util.PhonegapUtilImplBrowser">
-		<when-type-is class="com.googlecode.gwtphonegap.client.util.PhonegapUtilImpl" />
-		<all>
-			<when-property-is name="phonegap.env" value="no" />
-		</all>
-	</replace-with>
+	
     
 	
     
     <!-- Accelerometer -->
-	<replace-with
-		class="com.googlecode.gwtphonegap.client.accelerometer.js.AccelerometerMobileImpl">
+    <replace-with class="com.googlecode.gwtphonegap.client.accelerometer.browser.AccelerometerBrowserImpl">
+		<when-type-is class="com.googlecode.gwtphonegap.client.accelerometer.Accelerometer" />
+	</replace-with>
+	<replace-with class="com.googlecode.gwtphonegap.client.accelerometer.js.AccelerometerMobileImpl">
 		<when-type-is class="com.googlecode.gwtphonegap.client.accelerometer.Accelerometer" />
 		<all>
 			<when-property-is name="phonegap.env" value="yes" />
 		</all>
 	</replace-with>
-	<replace-with
-		class="com.googlecode.gwtphonegap.client.accelerometer.browser.AccelerometerBrowserImpl">
-		<when-type-is class="com.googlecode.gwtphonegap.client.accelerometer.Accelerometer" />
-		<all>
-			<when-property-is name="phonegap.env" value="no" />
-		</all>
-	</replace-with>
+	
     
     <!-- Camera -->
+    <replace-with class="com.googlecode.gwtphonegap.client.camera.CameraBrowserImpl">
+		<when-type-is class="com.googlecode.gwtphonegap.client.camera.Camera" />
+	</replace-with>
+    
 	<replace-with class="com.googlecode.gwtphonegap.client.camera.CameraMobileImpl">
 		<when-type-is class="com.googlecode.gwtphonegap.client.camera.Camera" />
 		<all>
 			<when-property-is name="phonegap.env" value="yes" />
 		</all>
 	</replace-with>
-	<replace-with class="com.googlecode.gwtphonegap.client.camera.CameraBrowserImpl">
-		<when-type-is class="com.googlecode.gwtphonegap.client.camera.Camera" />
-		<all>
-			<when-property-is name="phonegap.env" value="no" />
-		</all>
-	</replace-with>
+	
     
     
     <!-- Capture -->
+    <replace-with class="com.googlecode.gwtphonegap.client.capture.browser.CaptureBrowserImpl">
+		<when-type-is class="com.googlecode.gwtphonegap.client.capture.Capture" />
+	</replace-with>
+    
 	<replace-with class="com.googlecode.gwtphonegap.client.capture.js.CaptureJsImpl">
 		<when-type-is class="com.googlecode.gwtphonegap.client.capture.Capture" />
 		<all>
 			<when-property-is name="phonegap.env" value="yes" />
 		</all>
 	</replace-with>
-	<replace-with
-		class="com.googlecode.gwtphonegap.client.capture.browser.CaptureBrowserImpl">
-		<when-type-is class="com.googlecode.gwtphonegap.client.capture.Capture" />
-		<all>
-			<when-property-is name="phonegap.env" value="no" />
-		</all>
-	</replace-with>
+	
     
      <!-- Compass -->
+     <replace-with class="com.googlecode.gwtphonegap.client.compass.browser.CompassBrowserImpl">
+		<when-type-is class="com.googlecode.gwtphonegap.client.compass.Compass" />
+	</replace-with>
 	<replace-with class="com.googlecode.gwtphonegap.client.compass.js.CompassJsImpl">
 		<when-type-is class="com.googlecode.gwtphonegap.client.compass.Compass" />
 		<all>
 			<when-property-is name="phonegap.env" value="yes" />
 		</all>
 	</replace-with>
-	<replace-with
-		class="com.googlecode.gwtphonegap.client.compass.browser.CompassBrowserImpl">
-		<when-type-is class="com.googlecode.gwtphonegap.client.compass.Compass" />
-		<all>
-			<when-property-is name="phonegap.env" value="no" />
-		</all>
-	</replace-with>
+	
     
     <!-- Contacts -->
+    <replace-with class="com.googlecode.gwtphonegap.client.contacts.browser.ContactsBrowserImpl">
+		<when-type-is class="com.googlecode.gwtphonegap.client.contacts.Contacts" />
+	</replace-with>
 	<replace-with class="com.googlecode.gwtphonegap.client.contacts.js.ContactsJsoImpl">
 		<when-type-is class="com.googlecode.gwtphonegap.client.contacts.Contacts" />
 		<all>
@@ -122,62 +114,52 @@
 		</all>
 	</replace-with>
 	
-	<replace-with class="com.googlecode.gwtphonegap.client.contacts.browser.ContactsBrowserImpl">
-		<when-type-is class="com.googlecode.gwtphonegap.client.contacts.Contacts" />
-		<all>
-			<when-property-is name="phonegap.env" value="no" />
-		</all>
-	</replace-with>
+	
     
     <!-- Device -->
+    <replace-with class="com.googlecode.gwtphonegap.client.device.DeviceBrowserImpl">
+		<when-type-is class="com.googlecode.gwtphonegap.client.device.Device" />
+	</replace-with>
 	<replace-with class="com.googlecode.gwtphonegap.client.device.DeviceMobileImpl">
 		<when-type-is class="com.googlecode.gwtphonegap.client.device.Device" />
 		<all>
 			<when-property-is name="phonegap.env" value="yes" />
 		</all>
 	</replace-with>
-	<replace-with class="com.googlecode.gwtphonegap.client.device.DeviceBrowserImpl">
-		<when-type-is class="com.googlecode.gwtphonegap.client.device.Device" />
-		<all>
-			<when-property-is name="phonegap.env" value="no" />
-		</all>
-	</replace-with>
+	
     
     <!-- Event -->
+    <replace-with class="com.googlecode.gwtphonegap.client.event.browser.EventBrowserImpl">
+		<when-type-is class="com.googlecode.gwtphonegap.client.event.Event" />
+	</replace-with>
 	<replace-with class="com.googlecode.gwtphonegap.client.event.js.EventJsImpl">
 		<when-type-is class="com.googlecode.gwtphonegap.client.event.Event" />
 		<all>
 			<when-property-is name="phonegap.env" value="yes" />
 		</all>
 	</replace-with>
-	<replace-with class="com.googlecode.gwtphonegap.client.event.browser.EventBrowserImpl">
-		<when-type-is class="com.googlecode.gwtphonegap.client.event.Event" />
-		<all>
-			<when-property-is name="phonegap.env" value="no" />
-		</all>
-	</replace-with>
+	
     
     <!-- Geolocation -->
-	<replace-with
-		class="com.googlecode.gwtphonegap.client.geolocation.js.GeolocationMobileImpl">
+    <replace-with class="com.googlecode.gwtphonegap.client.geolocation.browser.GeolocationBrowserEmptyImpl">
+		<when-type-is class="com.googlecode.gwtphonegap.client.geolocation.Geolocation" />
+	</replace-with>
+	<replace-with class="com.googlecode.gwtphonegap.client.geolocation.js.GeolocationMobileImpl">
 		<when-type-is class="com.googlecode.gwtphonegap.client.geolocation.Geolocation" />
 		<all>
 			<when-property-is name="phonegap.env" value="yes" />
 		</all>
 	</replace-with>
-	<replace-with
-		class="com.googlecode.gwtphonegap.client.geolocation.browser.GeolocationBrowserEmptyImpl">
-		<when-type-is class="com.googlecode.gwtphonegap.client.geolocation.Geolocation" />
-		<all>
-			<when-property-is name="phonegap.env" value="no" />
-		</all>
-	</replace-with>
+	
 
 	<replace-with class="com.googlecode.gwtphonegap.client.log.DebugLoggerMobileImpl">
 		<when-type-is class="com.googlecode.gwtphonegap.client.log.DebugLogger" />
 	</replace-with>
       
      <!-- Connection -->
+     <replace-with class="com.googlecode.gwtphonegap.client.connection.ConnectionBrowserImpl">
+		<when-type-is class="com.googlecode.gwtphonegap.client.connection.Connection" />
+	</replace-with>
 	<replace-with
 		class="com.googlecode.gwtphonegap.client.connection.ConnectionMobileImpl">
 		<when-type-is class="com.googlecode.gwtphonegap.client.connection.Connection" />
@@ -185,53 +167,37 @@
 			<when-property-is name="phonegap.env" value="yes" />
 		</all>
 	</replace-with>
-	<replace-with
-		class="com.googlecode.gwtphonegap.client.connection.ConnectionBrowserImpl">
-		<when-type-is class="com.googlecode.gwtphonegap.client.connection.Connection" />
-		<all>
-			<when-property-is name="phonegap.env" value="no" />
-		</all>
-	</replace-with>
+	
     
     <!-- Media -->
+    <replace-with class="com.googlecode.gwtphonegap.client.media.browser.MediaModuleBrowserImpl">
+		<when-type-is class="com.googlecode.gwtphonegap.client.media.MediaModule" />
+	</replace-with>
 	<replace-with class="com.googlecode.gwtphonegap.client.media.js.MediaModuleJsImpl">
 		<when-type-is class="com.googlecode.gwtphonegap.client.media.MediaModule" />
 		<all>
 			<when-property-is name="phonegap.env" value="yes" />
 		</all>
 	</replace-with>
-	<replace-with
-		class="com.googlecode.gwtphonegap.client.media.browser.MediaModuleBrowserImpl">
-		<when-type-is class="com.googlecode.gwtphonegap.client.media.MediaModule" />
-		<all>
-			<when-property-is name="phonegap.env" value="no" />
-		</all>
-	</replace-with>
+	
     
     <!-- Notification -->
-	<replace-with
-		class="com.googlecode.gwtphonegap.client.notification.NotificationMobileImpl">
+    <replace-with class="com.googlecode.gwtphonegap.client.notification.NotificationBrowserImpl">
+		<when-type-is class="com.googlecode.gwtphonegap.client.notification.Notification" />
+	</replace-with>
+	<replace-with class="com.googlecode.gwtphonegap.client.notification.NotificationMobileImpl">
 		<when-type-is class="com.googlecode.gwtphonegap.client.notification.Notification" />
 		<all>
 			<when-property-is name="phonegap.env" value="yes" />
 		</all>
 	</replace-with>
-	<replace-with
-		class="com.googlecode.gwtphonegap.client.notification.NotificationBrowserImpl">
-		<when-type-is class="com.googlecode.gwtphonegap.client.notification.Notification" />
-		<all>
-			<when-property-is name="phonegap.env" value="no" />
-		</all>
-	</replace-with>
+	
     
     
     
     <!-- File -->
 	<replace-with class="com.googlecode.gwtphonegap.client.file.browser.FileBrowserImpl">
 		<when-type-is class="com.googlecode.gwtphonegap.client.file.File" />
-		<all>
-			<when-property-is name="phonegap.env" value="no" />
-		</all>
 	</replace-with>
 
 	<replace-with class="com.googlecode.gwtphonegap.client.file.js.FileJsImpl">
@@ -243,6 +209,11 @@
     
     <!-- Plugins -->
     <!-- Childbrowser -->
+    
+    <replace-with class="com.googlecode.gwtphonegap.client.plugins.childbrowser.ChildBrowserBrowserImpl">
+		<when-type-is class="com.googlecode.gwtphonegap.client.plugins.childbrowser.ChildBrowser" />
+	</replace-with>
+	
 	<replace-with
 		class="com.googlecode.gwtphonegap.client.plugins.childbrowser.ChildBrowserPhoneGapImpl">
 		<when-type-is
@@ -251,15 +222,11 @@
 			<when-property-is name="phonegap.env" value="yes" />
 		</all>
 	</replace-with>
-	<replace-with
-		class="com.googlecode.gwtphonegap.client.plugins.childbrowser.ChildBrowserBrowserImpl">
-		<when-type-is
-			class="com.googlecode.gwtphonegap.client.plugins.childbrowser.ChildBrowser" />
-		<all>
-			<when-property-is name="phonegap.env" value="no" />
-		</all>
-	</replace-with>
+	
     <!-- Badge -->
+    <replace-with class="com.googlecode.gwtphonegap.client.plugins.badge.BadgeBrowserImpl">
+		<when-type-is class="com.googlecode.gwtphonegap.client.plugins.badge.Badge" />
+	</replace-with>
 	<replace-with
 		class="com.googlecode.gwtphonegap.client.plugins.badge.BadgePhoneGapImpl">
 		<when-type-is class="com.googlecode.gwtphonegap.client.plugins.badge.Badge" />
@@ -267,12 +234,7 @@
 			<when-property-is name="phonegap.env" value="yes" />
 		</all>
 	</replace-with>
-	<replace-with class="com.googlecode.gwtphonegap.client.plugins.badge.BadgeBrowserImpl">
-		<when-type-is class="com.googlecode.gwtphonegap.client.plugins.badge.Badge" />
-		<all>
-			<when-property-is name="phonegap.env" value="no" />
-		</all>
-	</replace-with>
+	
     
     
     <!-- Log -->
