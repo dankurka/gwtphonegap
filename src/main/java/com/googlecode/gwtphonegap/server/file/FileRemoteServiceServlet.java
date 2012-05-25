@@ -413,7 +413,7 @@ public class FileRemoteServiceServlet extends RemoteServiceServlet implements Fi
 		File oldFile = new File(basePath, fileFullPath);
 		ensureLocalRoot(basePath, oldFile);
 
-		File newFile = new File(basePath, fileFullPath);
+		File newFile = new File(directory, newName);
 		ensureLocalRoot(basePath, newFile);
 
 		if (newFile.exists()) {
