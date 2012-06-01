@@ -50,12 +50,17 @@ public class CameraMobileImpl implements Camera {
 		var g_allowEdit = options.@com.googlecode.gwtphonegap.client.camera.PictureOptions::isAllowEdit()();
 		var mediaType = options.@com.googlecode.gwtphonegap.client.camera.PictureOptions::getMediaType()();
 
+		var g_photo_al = options.@com.googlecode.gwtphonegap.client.camera.PictureOptions::isSaveToPhotoAlbum()();
+		var g_correct_o = options.@com.googlecode.gwtphonegap.client.camera.PictureOptions::isCorrectorientation()();
+
 		var localOptions = {
 			quality : qual,
 			destinationType : dt,
 			sourceType : st,
 			allowEdit : g_allowEdit,
-			encodingType : encoding
+			encodingType : encoding,
+			saveToPhotoAlbum : g_photo_al,
+			correctOrientation : g_correct_o
 		};
 
 		var th = options.@com.googlecode.gwtphonegap.client.camera.PictureOptions::getTargetHeightInPx()();

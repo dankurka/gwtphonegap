@@ -42,6 +42,8 @@ public class PictureOptions {
 	private int mediaType;
 
 	private boolean allowEdit;
+	private boolean saveToPhotoAlbum;
+	private boolean correctorientation;
 
 	public PictureOptions() {
 		quality = 75;
@@ -56,6 +58,9 @@ public class PictureOptions {
 		mediaType = CAMERA_MEDIA_TYPE_PICTURE;
 
 		allowEdit = true;
+
+		correctorientation = false;
+		saveToPhotoAlbum = false;
 	}
 
 	public PictureOptions(int quality) {
@@ -125,6 +130,22 @@ public class PictureOptions {
 
 	public boolean isAllowEdit() {
 		return allowEdit;
+	}
+
+	public void setCorrectOrientation(boolean correctorientation) {
+		this.correctorientation = correctorientation;
+	}
+
+	public boolean isCorrectorientation() {
+		return correctorientation;
+	}
+
+	public void setSaveToPhotoAlbum(boolean saveToPhotoAlbum) {
+		this.saveToPhotoAlbum = saveToPhotoAlbum;
+	}
+
+	public boolean isSaveToPhotoAlbum() {
+		return saveToPhotoAlbum;
 	}
 
 }
