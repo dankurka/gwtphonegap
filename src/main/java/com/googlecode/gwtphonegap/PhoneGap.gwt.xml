@@ -7,7 +7,7 @@
 	<property-provider name="phonegap.env"><![CDATA[
   	{
 	    var ua = window.navigator.userAgent.toLowerCase();
-	    if (ua.indexOf('android') != -1 || ua.indexOf('ipad') != -1 || ua.indexOf('iphone') != -1 || ua.indexOf('blackberry') != -1) 
+	    if (ua.indexOf('android') != -1 || ua.indexOf('ipad') != -1 || ua.indexOf('ipod') != -1  || ua.indexOf('iphone') != -1 || ua.indexOf('blackberry') != -1) 
 	    { 
 	    	var url = document.location.href;
 	    	if(url.indexOf("file://") === 0)
