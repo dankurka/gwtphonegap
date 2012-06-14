@@ -98,8 +98,7 @@ public class GeolocationMobileImpl implements Geolocation {
 			return localOptions;
 
 		localOptions.frequency = options.@com.googlecode.gwtphonegap.client.geolocation.GeolocationOptions::getFrequency()();
-		localOptions.enableHighAccuracy = options
-				.@com.googlecode.gwtphonegap.client.geolocation.GeolocationOptions::isEnableHighAccuracy();
+		localOptions.enableHighAccuracy = options.@com.googlecode.gwtphonegap.client.geolocation.GeolocationOptions::isEnableHighAccuracy()();
 		var maxage = options.@com.googlecode.gwtphonegap.client.geolocation.GeolocationOptions::getMaximumAge()();
 		if (maxage > 0) {
 			localOptions.maximumAge = maxage;
