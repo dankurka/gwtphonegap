@@ -47,6 +47,11 @@
 			<when-property-is name="phonegap.env" value="yes" />
 		</all>
 	</replace-with>
+	
+	<!-- rpc rebinding -->
+	<generate-with class="com.googlecode.gwtphonegap.rebind.PhoneGapServiceInterfaceProxyGenerator">
+		<when-type-assignable class="com.google.gwt.user.client.rpc.RemoteService"/>
+	</generate-with>
 
 	
     
