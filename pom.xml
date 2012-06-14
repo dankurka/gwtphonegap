@@ -11,7 +11,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.googlecode.gwtphonegap</groupId>
 	<artifactId>gwtphonegap</artifactId>
-	<version>1.7.0.1-SNAPSHOT</version>
+	<version>1.8.1.0</version>
 	<packaging>jar</packaging>
 	<name>GWT PhoneGap</name>
 
