@@ -76,7 +76,8 @@ public final class FileTransferJsImpl extends JavaScriptObject implements FileTr
 	private native void download0(String sourceUrl, String filePath, FileDownloadCallback callback)/*-{
 
 		var suc = function(result) {
-			callback.@com.googlecode.gwtphonegap.client.file.FileDownloadCallback::onSuccess(Lcom/googlecode/gwtphonegap/client/file/FileEntry;)(result);
+			var en = @com.googlecode.gwtphonegap.client.file.js.FileEntryJsImpl::new(Lcom/google/gwt/core/client/JavaScriptObject;)(result);
+			callback.@com.googlecode.gwtphonegap.client.file.FileDownloadCallback::onSuccess(Lcom/googlecode/gwtphonegap/client/file/FileEntry;)(en);
 		};
 
 		var fail = function(error) {
