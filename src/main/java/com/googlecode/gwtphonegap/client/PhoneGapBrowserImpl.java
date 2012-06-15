@@ -23,11 +23,6 @@ public class PhoneGapBrowserImpl extends PhoneGapStandardImpl {
 	}
 
 	@Override
-	public boolean isDevMode() {
-		return true;
-	}
-
-	@Override
 	public boolean isPhoneGapDevice() {
 		return false;
 	}

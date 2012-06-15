@@ -72,15 +72,6 @@ public class PhoneGapStandardImpl implements PhoneGap {
 		setupReadyHook();
 	}
 
-	private native void setupReadyHook() /*-{
-		var that = this;
-		var f = function() {
-			that.@com.googlecode.gwtphonegap.client.PhoneGapStandardImpl::nativeDeviceReady()();
-		};
-		$doc.addEventListener("deviceready", $entry(f), false);
-
-	}-*/;
-
 	public PhoneGapLog getLog() {
 		if (phoneGapLog == null) {
 			phoneGapLog = new PhoneGapLogStandardImpl();
@@ -140,35 +131,135 @@ public class PhoneGapStandardImpl implements PhoneGap {
 
 	@Override
 	public Device getDevice() {
+		if (device == null) {
+			device = constructDevice();
+		}
 		return device;
 	}
 
 	@Override
 	public Accelerometer getAccelerometer() {
+		if (accelerometer == null) {
+			accelerometer = constructAccelerometer();
+		}
 		return accelerometer;
 	}
 
 	@Override
 	public Camera getCamera() {
+		if (camera == null) {
+			camera = constructCamera();
+		}
 		return camera;
 	}
 
 	@Override
 	public Geolocation getGeolocation() {
+		if (geolocation == null) {
+			geolocation = constructGeolocation();
+		}
 		return geolocation;
 	}
 
 	@Override
 	public Notification getNotification() {
+		if (notification == null) {
+			notification = constructNotification();
+		}
 		return notification;
 	}
 
 	private void firePhoneGapAvailable() {
-
-		constructModules();
 		phoneGapLog.setClientId(getDevice().getUuid());
 
 		handlerManager.fireEvent(new PhoneGapAvailableEvent());
+	}
+
+	@Override
+	public Contacts getContacts() {
+		if (contacts == null) {
+			contacts = constructContacts();
+		}
+		return contacts;
+	}
+
+	@Override
+	public PhoneGapPlugin getPluginById(String id) {
+		return plugins.get(id);
+	}
+
+	@Override
+	public void loadPlugin(String id, PhoneGapPlugin instance) {
+		if (plugins.containsKey(id)) {
+			throw new IllegalStateException("id is already in use");
+		}
+
+		plugins.put(id, instance);
+	}
+
+	@Override
+	public File getFile() {
+		if (file == null) {
+			file = constructFile();
+		}
+		return file;
+	}
+
+	@Override
+	public Connection getConnection() {
+		if (connection == null) {
+			connection = constructConnection();
+		}
+		return connection;
+	}
+
+	@Override
+	public Event getEvent() {
+		if (event == null) {
+			event = constructEvent();
+		}
+		return event;
+	}
+
+	@Override
+	public native boolean exitApp() /*-{
+		if ($wnd.navigator.app != null) {
+			if ($wnd.navigator.app.exitApp != null) {
+				$wnd.navigator.app.exitApp();
+				return true;
+			}
+		}
+		return false;
+
+	}-*/;
+
+	@Override
+	public MediaModule getMedia() {
+		if (mediaModule == null) {
+			mediaModule = constructMediaModule();
+		}
+		return mediaModule;
+	}
+
+	@Override
+	public Compass getCompass() {
+		if (compass == null) {
+			compass = constructCompass();
+		}
+		return compass;
+	}
+
+	@Override
+	public Capture getCapture() {
+		if (capture == null) {
+			capture = constructCapture();
+		}
+		return capture;
+	}
+
+	@Override
+	public boolean isPhoneGapDevice() {
+		return true;
 	}
 
 	protected Device constructDevice() {
@@ -189,22 +280,6 @@ public class PhoneGapStandardImpl implements PhoneGap {
 
 	protected Notification constructNotification() {
 		return GWT.create(Notification.class);
-	}
-
-	protected void constructModules() {
-		device = constructDevice();
-		accelerometer = constructAccelerometer();
-		camera = constructCamera();
-		geolocation = constructGeolocation();
-		notification = constructNotification();
-		contacts = constructContacts();
-		file = constructFile();
-		connection = constructConnection();
-		event = constructEvent();
-		mediaModule = constructMediaModule();
-		compass = constructCompass();
-		capture = constructCapture();
-
 	}
 
 	protected Capture constructCapture() {
@@ -235,83 +310,18 @@ public class PhoneGapStandardImpl implements PhoneGap {
 		return GWT.create(Contacts.class);
 	}
 
-	@Override
-	public Contacts getContacts() {
-		return contacts;
-	}
-
-	@Override
-	public PhoneGapPlugin getPluginById(String id) {
-		return plugins.get(id);
-	}
-
-	@Override
-	public void loadPlugin(String id, PhoneGapPlugin instance) {
-		if (plugins.containsKey(id)) {
-			throw new IllegalStateException("id is already in use");
-		}
-
-		plugins.put(id, instance);
-	}
-
-	@Override
-	public File getFile() {
-		return file;
-	}
-
-	@Override
-	public Connection getConnection() {
-		return connection;
-	}
-
-	@Override
-	public Event getEvent() {
-		return event;
-	}
-
-	@Override
-	public native boolean exitApp() /*-{
-		if ($wnd.navigator.app != null) {
-			if ($wnd.navigator.app.exitApp != null) {
-				$wnd.navigator.app.exitApp();
-				return true;
-			}
-		}
-		return false;
-
-	}-*/;
-
-	@Override
-	public MediaModule getMedia() {
-		return mediaModule;
-	}
-
-	@Override
-	public Compass getCompass() {
-		return compass;
-	}
-
-	@Override
-	public Capture getCapture() {
-		return capture;
-	}
-
-	/* (non-Javadoc)
-	 * @see com.googlecode.gwtphonegap.client.PhoneGap#isDevMode()
-	 */
-	@Override
-	public boolean isDevMode() {
-		return !GWT.isScript();
-	}
-
 	protected void nativeDeviceReady() {
 		deviceReady = true;
 		firePhoneGapAvailable();
 	}
 
-	@Override
-	public boolean isPhoneGapDevice() {
-		return true;
-	}
+	private native void setupReadyHook() /*-{
+		var that = this;
+		var f = function() {
+			that.@com.googlecode.gwtphonegap.client.PhoneGapStandardImpl::nativeDeviceReady()();
+		};
+		$doc.addEventListener("deviceready", $entry(f), false);
+
+	}-*/;
 
 }

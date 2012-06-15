@@ -158,8 +158,6 @@ public interface PhoneGap {
 
 	public PhoneGapLog getLog();
 
-	public boolean isDevMode();
-
 	public boolean isPhoneGapDevice();
 
 }
