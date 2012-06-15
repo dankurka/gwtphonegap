@@ -21,10 +21,9 @@ import com.googlecode.gwtphonegap.collection.client.JsLightMap;
 import com.googlecode.gwtphonegap.collection.shared.java.JavaLightArray;
 import com.googlecode.gwtphonegap.collection.shared.java.JavaLightMap;
 
-
 public class CollectionFactory {
 	public static <V> LightMap<V> constructMap() {
-		if (GWT.isClient()) {
+		if (GWT.isProdMode()) {
 			return new JsLightMap<V>();
 		} else {
 			return new JavaLightMap<V>();
@@ -32,7 +31,7 @@ public class CollectionFactory {
 	}
 
 	public static <V> LightArray<V> constructArray() {
-		if (GWT.isClient()) {
+		if (GWT.isProdMode()) {
 			return new JsLightArray<V>();
 		} else {
 			return new JavaLightArray<V>();
