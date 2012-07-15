@@ -15,6 +15,8 @@
  */
 package com.googlecode.gwtphonegap.client.event;
 
+import com.google.web.bindery.event.shared.EventBus;
+
 /**
  * PhoneGap lifecycle events.
  * 
@@ -50,5 +52,6 @@ public interface Event {
 	public HasVolumneDownButtonPressedHandler getVolumneDownButtonPressedHandler();
 
 	public HasVolumneUpButtonPressedHandler getVolumneUpButtonPressedHandler();
-
+	
+	void setEventBus(EventBus eventBus);
 }
