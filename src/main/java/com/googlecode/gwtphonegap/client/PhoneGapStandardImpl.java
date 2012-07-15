@@ -19,10 +19,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.shared.EventBus;
-import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.user.client.Timer;
+import com.google.web.bindery.event.shared.EventBus;
+import com.google.web.bindery.event.shared.HandlerRegistration;
+import com.google.web.bindery.event.shared.SimpleEventBus;
 import com.googlecode.gwtphonegap.client.accelerometer.Accelerometer;
 import com.googlecode.gwtphonegap.client.camera.Camera;
 import com.googlecode.gwtphonegap.client.capture.Capture;
@@ -59,6 +59,7 @@ public class PhoneGapStandardImpl implements PhoneGap {
 
 	private Map<String, PhoneGapPlugin> plugins = new HashMap<String, PhoneGapPlugin>();
 
+	private boolean hasHandlers = false;
 	private EventBus handlerManager = new SimpleEventBus();
 
 	private PhoneGapLogStandardImpl phoneGapLog;
@@ -121,11 +122,13 @@ public class PhoneGapStandardImpl implements PhoneGap {
 
 	@Override
 	public HandlerRegistration addHandler(PhoneGapAvailableHandler handler) {
+    hasHandlers = true;
 		return handlerManager.addHandler(PhoneGapAvailableEvent.TYPE, handler);
 	}
 
 	@Override
 	public HandlerRegistration addHandler(PhoneGapTimeoutHandler handler) {
+    hasHandlers = true;
 		return handlerManager.addHandler(PhoneGapTimeoutEvent.TYPE, handler);
 	}
 
@@ -215,6 +218,7 @@ public class PhoneGapStandardImpl implements PhoneGap {
 
 	@Override
 	public Event getEvent() {
+	  hasHandlers = true;
 		if (event == null) {
 			event = constructEvent();
 		}
@@ -295,7 +299,9 @@ public class PhoneGapStandardImpl implements PhoneGap {
 	}
 
 	protected Event constructEvent() {
-		return GWT.create(Event.class);
+	  Event event = GWT.create(Event.class);
+	  event.setEventBus(handlerManager);
+	  return event;
 	}
 
 	protected Connection constructConnection() {
@@ -323,5 +329,14 @@ public class PhoneGapStandardImpl implements PhoneGap {
 		$doc.addEventListener("deviceready", $entry(f), false);
 
 	}-*/;
+
+  @Override
+  public void setEventBus(EventBus eventBus) {
+    assert !hasHandlers : "The handlerManager can not be replaced because it has got handlers";
+    handlerManager = eventBus;
+    // We force the event construction so as the app can add events directly 
+    // to the eventBus instead of through the phoneGap.getEvent() method;
+    event = constructEvent();
+  }
 
 }

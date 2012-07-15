@@ -15,7 +15,8 @@
  */
 package com.googlecode.gwtphonegap.client;
 
-import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.web.bindery.event.shared.EventBus;
+import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.googlecode.gwtphonegap.client.accelerometer.Accelerometer;
 import com.googlecode.gwtphonegap.client.camera.Camera;
 import com.googlecode.gwtphonegap.client.capture.Capture;
@@ -159,5 +160,15 @@ public interface PhoneGap {
 	public PhoneGapLog getLog();
 
 	public boolean isPhoneGapDevice();
+	
+	/**
+	 * Allows to replace the default handlerManager used in PhoneGap 
+	 * by your own one so as you can share it in your application.
+	 * 
+	 * You should change it before adding any handler to PhoneGap.
+	 * 
+	 * @param handlerManager your EventBus instance
+	 */
+	public void setEventBus(EventBus handlerManager);
 
 }
