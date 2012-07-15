@@ -18,17 +18,14 @@ package com.googlecode.gwtphonegap.client.event;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.web.bindery.event.shared.HandlerRegistration;
-import com.google.web.bindery.event.shared.SimpleEventBus;
 
 public abstract class EventBaseImpl implements Event, EventMock {
 
 	protected final PhoneGapEventHandlerImpl pgImpl;
-	private final EventBus eventBus;
+	private EventBus eventBus;
 
 	public EventBaseImpl() {
-		eventBus = new SimpleEventBus();
 		pgImpl = new PhoneGapEventHandlerImpl();
-
 	}
 
 	public HasBackButtonPressedHandlers getBackButton() {
@@ -260,4 +257,8 @@ public abstract class EventBaseImpl implements Event, EventMock {
 		eventBus.fireEvent(new VolumeUpButtonPressedEvent());
 	}
 
+  @Override
+  public void setEventBus(EventBus eventBus) {
+    this.eventBus = eventBus;
+  }
 }
