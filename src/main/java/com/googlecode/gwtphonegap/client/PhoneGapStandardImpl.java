@@ -104,7 +104,8 @@ public class PhoneGapStandardImpl implements PhoneGap {
 				@Override
 				public void run() {
 					if (isPhoneGapInitialized()) {
-						return;
+					  firePhoneGapAvailable();
+					  return;
 					}
 
 					if (System.currentTimeMillis() - end > 0) {
@@ -318,7 +319,6 @@ public class PhoneGapStandardImpl implements PhoneGap {
 
 	protected void nativeDeviceReady() {
 		deviceReady = true;
-		firePhoneGapAvailable();
 	}
 
 	private native void setupReadyHook() /*-{
