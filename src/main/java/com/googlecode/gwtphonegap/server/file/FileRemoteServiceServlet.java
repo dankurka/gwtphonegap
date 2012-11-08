@@ -490,7 +490,7 @@ public class FileRemoteServiceServlet extends RemoteServiceServlet implements Fi
 		dto.setLastModified(new Date(file.lastModified()));
 		dto.setName(file.getName());
 		dto.setSize(file.length());
-		dto.setName(guessMimeType(file));
+		dto.setType(guessMimeType(file));
 		return dto;
 
 	}
