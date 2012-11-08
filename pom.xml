@@ -19,7 +19,7 @@
 	<description>A GWT Wrapper for the PhoneGap Javascript Library</description>
 
 	<properties>
-		<gwtversion>2.4.0</gwtversion>
+		<gwtversion>2.5.0</gwtversion>
 	</properties>
 
 	<licenses>
