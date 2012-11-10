@@ -31,7 +31,7 @@ import com.googlecode.gwtphonegap.client.log.PhoneGapLog;
 import com.googlecode.gwtphonegap.client.media.MediaModule;
 import com.googlecode.gwtphonegap.client.notification.Notification;
 import com.googlecode.gwtphonegap.client.plugins.PhoneGapPlugin;
-import com.googlecode.gwtphonegap.client.splashscreen.Splashscreen;
+import com.googlecode.gwtphonegap.client.splashscreen.SplashScreen;
 
 /**
  * This class is a wrapper class for phonegap.js
@@ -175,6 +175,6 @@ public interface PhoneGap {
 	/**
 	 * Get the application splash-screen object.
 	 */
-  Splashscreen getSplashscreen();
+  SplashScreen getSplashscreen();
 
 }

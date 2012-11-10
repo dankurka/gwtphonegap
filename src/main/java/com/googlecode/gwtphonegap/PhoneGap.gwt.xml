@@ -218,8 +218,12 @@
 	</replace-with>
   
     <!-- Splashscreen -->
+    <replace-with class="com.googlecode.gwtphonegap.client.splashscreen.SplashScreenBrowserImpl">
+      <when-type-is class="com.googlecode.gwtphonegap.client.splashscreen.SplashScreen" />
+    </replace-with>
+    
     <replace-with class="com.googlecode.gwtphonegap.client.splashscreen.SplashScreenMobileImpl">
-      <when-type-is class="com.googlecode.gwtphonegap.client.splashscreen.Splashscreen" />
+      <when-type-is class="com.googlecode.gwtphonegap.client.splashscreen.SplashScreen" />
       <all>
         <when-property-is name="phonegap.env" value="yes" />
       </all>

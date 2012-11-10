@@ -14,25 +14,30 @@
 package com.googlecode.gwtphonegap.client.splashscreen;
 
 /**
- * The SplashScreen object allows to hide the splash screen.
  * 
- * You have to setup correctly the app so as it shows the splash screen earlier when the app is
- * started.
- * 
- * @see http://docs.phonegap.com/en/2.2.0/cordova_splashscreen_splashscreen.md.html
- * 
- * @author Manuel Carrasco
+ * @author Daniel Kurka
  * 
  */
-public interface SplashScreen {
+public class SplashScreenBrowserImpl implements SplashScreen {
 
-  /**
-   * Hide the application splash screen.
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.googlecode.gwtphonegap.client.splashscreen.SplashScreen#hide()
    */
-  public void hide();
+  @Override
+  public void hide() {
 
-  /**
-   * Display the application splash screen.
+  }
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.googlecode.gwtphonegap.client.splashscreen.SplashScreen#show()
    */
-  public void show();
+  @Override
+  public void show() {
+
+  }
+
 }

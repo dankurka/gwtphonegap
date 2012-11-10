@@ -1,16 +1,14 @@
 /*
  * Copyright 2012 Daniel Kurka
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
  * 
  * http://www.apache.org/licenses/LICENSE-2.0
  * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
 package com.googlecode.gwtphonegap.client.splashscreen;
@@ -20,15 +18,25 @@ package com.googlecode.gwtphonegap.client.splashscreen;
  * @author Manuel Carrasco
  * 
  */
-public class SplashScreenMobileImpl extends Splashscreen {
-  
+public class SplashScreenMobileImpl implements SplashScreen {
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.googlecode.gwtphonegap.client.splashscreen.SplashScreen#hide()
+   */
   @Override
   public native void hide() /*-{
-    $wnd.navigator.splashscreen.hide();
+		$wnd.navigator.splashscreen.hide();
   }-*/;
 
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.googlecode.gwtphonegap.client.splashscreen.SplashScreen#show()
+   */
   @Override
   public native void show() /*-{
-    $wnd.navigator.splashscreen.show();
+		$wnd.navigator.splashscreen.show();
   }-*/;
 }

@@ -38,7 +38,7 @@ import com.googlecode.gwtphonegap.client.log.PhoneGapLogStandardImpl;
 import com.googlecode.gwtphonegap.client.media.MediaModule;
 import com.googlecode.gwtphonegap.client.notification.Notification;
 import com.googlecode.gwtphonegap.client.plugins.PhoneGapPlugin;
-import com.googlecode.gwtphonegap.client.splashscreen.Splashscreen;
+import com.googlecode.gwtphonegap.client.splashscreen.SplashScreen;
 
 public class PhoneGapStandardImpl implements PhoneGap {
 
@@ -57,7 +57,7 @@ public class PhoneGapStandardImpl implements PhoneGap {
 	private MediaModule mediaModule;
 	private Compass compass;
 	private Capture capture;
-	private Splashscreen splashscreen;
+	private SplashScreen splashScreen;
 
 	private Map<String, PhoneGapPlugin> plugins = new HashMap<String, PhoneGapPlugin>();
 
@@ -265,11 +265,11 @@ public class PhoneGapStandardImpl implements PhoneGap {
 	}
 	
 	@Override
-	public Splashscreen getSplashscreen() {
-	  if (splashscreen == null) {
-	    splashscreen = constructSplashscreen();
+	public SplashScreen getSplashscreen() {
+	  if (splashScreen == null) {
+	    splashScreen = constructSplashscreen();
 	  }
-	  return splashscreen;
+	  return splashScreen;
 	}
 
 	@Override
@@ -301,8 +301,8 @@ public class PhoneGapStandardImpl implements PhoneGap {
 		return GWT.create(Capture.class);
 	}
 	
-  protected Splashscreen constructSplashscreen() {
-    return GWT.create(Splashscreen.class);
+  protected SplashScreen constructSplashscreen() {
+    return GWT.create(SplashScreen.class);
   }	
 
 	protected Compass constructCompass() {
