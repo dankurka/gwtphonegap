@@ -38,6 +38,7 @@ import com.googlecode.gwtphonegap.client.log.PhoneGapLogStandardImpl;
 import com.googlecode.gwtphonegap.client.media.MediaModule;
 import com.googlecode.gwtphonegap.client.notification.Notification;
 import com.googlecode.gwtphonegap.client.plugins.PhoneGapPlugin;
+import com.googlecode.gwtphonegap.client.splashscreen.Splashscreen;
 
 public class PhoneGapStandardImpl implements PhoneGap {
 
@@ -56,6 +57,7 @@ public class PhoneGapStandardImpl implements PhoneGap {
 	private MediaModule mediaModule;
 	private Compass compass;
 	private Capture capture;
+	private Splashscreen splashscreen;
 
 	private Map<String, PhoneGapPlugin> plugins = new HashMap<String, PhoneGapPlugin>();
 
@@ -261,6 +263,14 @@ public class PhoneGapStandardImpl implements PhoneGap {
 		}
 		return capture;
 	}
+	
+	@Override
+	public Splashscreen getSplashscreen() {
+	  if (splashscreen == null) {
+	    splashscreen = constructSplashscreen();
+	  }
+	  return splashscreen;
+	}
 
 	@Override
 	public boolean isPhoneGapDevice() {
@@ -290,6 +300,10 @@ public class PhoneGapStandardImpl implements PhoneGap {
 	protected Capture constructCapture() {
 		return GWT.create(Capture.class);
 	}
+	
+  protected Splashscreen constructSplashscreen() {
+    return GWT.create(Splashscreen.class);
+  }	
 
 	protected Compass constructCompass() {
 		return GWT.create(Compass.class);

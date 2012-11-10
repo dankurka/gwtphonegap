@@ -31,6 +31,7 @@ import com.googlecode.gwtphonegap.client.log.PhoneGapLog;
 import com.googlecode.gwtphonegap.client.media.MediaModule;
 import com.googlecode.gwtphonegap.client.notification.Notification;
 import com.googlecode.gwtphonegap.client.plugins.PhoneGapPlugin;
+import com.googlecode.gwtphonegap.client.splashscreen.Splashscreen;
 
 /**
  * This class is a wrapper class for phonegap.js
@@ -170,5 +171,10 @@ public interface PhoneGap {
 	 * @param handlerManager your EventBus instance
 	 */
 	public void setEventBus(EventBus handlerManager);
+
+	/**
+	 * Get the application splash-screen object.
+	 */
+  Splashscreen getSplashscreen();
 
 }
