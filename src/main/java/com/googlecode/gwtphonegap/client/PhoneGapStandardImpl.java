@@ -265,7 +265,7 @@ public class PhoneGapStandardImpl implements PhoneGap {
 	}
 	
 	@Override
-	public SplashScreen getSplashscreen() {
+	public SplashScreen getSplashScreen() {
 	  if (splashScreen == null) {
 	    splashScreen = constructSplashscreen();
 	  }
