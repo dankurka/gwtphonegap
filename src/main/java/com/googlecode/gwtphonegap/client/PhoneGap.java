@@ -175,6 +175,6 @@ public interface PhoneGap {
 	/**
 	 * Get the application splash-screen object.
 	 */
-  SplashScreen getSplashscreen();
+  SplashScreen getSplashScreen();
 
 }
