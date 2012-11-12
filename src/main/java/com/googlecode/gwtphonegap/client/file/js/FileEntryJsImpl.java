@@ -156,7 +156,7 @@ public class FileEntryJsImpl implements FileEntry {
 			that.@com.googlecode.gwtphonegap.client.file.js.FileEntryJsImpl::onRemoveSuccess(Lcom/googlecode/gwtphonegap/client/file/FileCallback;)(callback);
 		};
 
-		var entry = (this.@com.googlecode.gwtphonegap.client.file.js.DirectoryEntryJsImpl::entry);
+		var entry = (this.@com.googlecode.gwtphonegap.client.file.js.FileEntryJsImpl::entry);
 
 		entry.remove($entry(suc), $entry(fail));
 
