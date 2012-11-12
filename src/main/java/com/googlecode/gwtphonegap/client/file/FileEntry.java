@@ -56,11 +56,17 @@ public interface FileEntry {
 	 */
 	public void copyTo(DirectoryEntry parent, String newName, FileCallback<FileEntry, FileError> callback);
 
+  /**
+   * Return a URI that can be used to locate a file.
+   * 
+   * @return
+   */
+  public String toURL();
+  
 	/**
-	 * Return a URI that can be used to locate a file.
-	 * 
-	 * @return
+	 * @deprecated use toURL instead 
 	 */
+  @Deprecated
 	public String toURI();
 
 	public void remove(FileCallback<Boolean, FileError> callback);
