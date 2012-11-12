@@ -19,7 +19,10 @@ import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.googlecode.gwtphonegap.client.plugins.PhoneGapPlugin;
 
 public interface ChildBrowser extends PhoneGapPlugin {
-	public void showWebPage(String url);
+
+  public void showWebPage(String url);
+  
+  public void showWebPage(String url, boolean showLocationBar);
 
 	public void close();
 
