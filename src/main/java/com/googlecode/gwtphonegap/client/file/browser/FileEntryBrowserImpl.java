@@ -68,9 +68,15 @@ public class FileEntryBrowserImpl implements FileEntry, EntryBase {
 	}
 
 	@Override
+	@Deprecated
 	public String toURI() {
-		return controller.toURI(getFullPath());
+	  return toURL();
 	}
+	
+  @Override
+  public String toURL() {
+    return controller.toURI(getFullPath());
+  }
 
 	@Override
 	public void remove(FileCallback<Boolean, FileError> callback) {
