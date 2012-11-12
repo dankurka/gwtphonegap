@@ -132,10 +132,16 @@ public class FileEntryJsImpl implements FileEntry {
 		callback.onSuccess(new FileEntryJsImpl(entry));
 	}
 
+  @Override
+  @Deprecated
+  public String toURI() {
+    return toURL();
+  }
+  
 	@Override
-	public native String toURI() /*-{
+	public native String toURL() /*-{
 		var entry = (this.@com.googlecode.gwtphonegap.client.file.js.FileEntryJsImpl::entry);
-		return entry.toURI();
+		return entry.toURL();
 	}-*/;
 
 	@Override
