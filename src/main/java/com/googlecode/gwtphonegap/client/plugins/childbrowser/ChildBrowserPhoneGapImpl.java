@@ -34,7 +34,7 @@ public class ChildBrowserPhoneGapImpl implements ChildBrowser {
 			cb = initializeNative();
 			initialized = true;
 		} catch (JavaScriptException e) {
-			throw new IllegalStateException("could not initialize Childbrowser plugin");
+			throw new IllegalStateException("could not initialize Childbrowser plugin: " + e.getMessage());
 		}
 
 	}
@@ -96,6 +96,19 @@ public class ChildBrowserPhoneGapImpl implements ChildBrowser {
 	private native void showWebPageNative(JavaScriptObject cb, String url, boolean showLocationBar)/*-{
 		cb.showWebPage(url, {showLocationBar: showLocationBar});
 	}-*/;
+
+  @Override
+  public void openExternal(String url, boolean usecordova) {
+    if (!initialized) {
+      throw new IllegalStateException("you have to initialize Childbrowser before using it");
+    }
+
+    openExternalNative(cb, url, usecordova);
+  }
+
+  private native void openExternalNative(JavaScriptObject cb, String url, boolean usecordova)/*-{
+    cb.openExternal(url, usecordova);
+  }-*/;
 
 	@Override
 	public void close() {
