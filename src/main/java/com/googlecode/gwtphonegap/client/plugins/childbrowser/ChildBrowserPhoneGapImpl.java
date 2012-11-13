@@ -81,16 +81,20 @@ public class ChildBrowserPhoneGapImpl implements ChildBrowser {
 
 	@Override
 	public void showWebPage(String url) {
-		if (!initialized) {
-			throw new IllegalStateException("you have to initialize Childbrowser before using it");
-		}
-
-		showWebPageNative(cb, url);
-
+	  showWebPage(url, true);
 	}
+	
+  @Override
+  public void showWebPage(String url, boolean showLocationBar) {
+    if (!initialized) {
+      throw new IllegalStateException("you have to initialize Childbrowser before using it");
+    }
 
-	private native void showWebPageNative(JavaScriptObject cb, String url)/*-{
-		cb.showWebPage(url);
+    showWebPageNative(cb, url, showLocationBar);
+  }
+
+	private native void showWebPageNative(JavaScriptObject cb, String url, boolean showLocationBar)/*-{
+		cb.showWebPage(url, {showLocationBar: showLocationBar});
 	}-*/;
 
 	@Override

@@ -71,6 +71,11 @@ public class ChildBrowserBrowserImpl implements ChildBrowser {
 		browser.navigate(url);
 
 	}
+	
+  @Override
+  public void showWebPage(String url, boolean showLocationBar) {
+    showWebPage(url);
+  }
 
 	private class Browser extends Composite {
 		private Frame frame;
