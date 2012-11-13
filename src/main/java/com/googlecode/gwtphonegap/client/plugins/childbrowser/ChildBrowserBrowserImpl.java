@@ -26,6 +26,7 @@ import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.HandlerRegistration;
 import com.google.web.bindery.event.shared.SimpleEventBus;
 import com.google.gwt.user.client.Element;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
@@ -199,5 +200,10 @@ public class ChildBrowserBrowserImpl implements ChildBrowser {
 	private void onLocationChange(String url) {
 		handlerManager.fireEvent(new ChildBrowserLocationChangedEvent(url));
 	}
+
+  @Override
+  public void openExternal(String url, boolean usecordova) {
+    Window.open(url, "_blank", "");
+  }
 
 }
