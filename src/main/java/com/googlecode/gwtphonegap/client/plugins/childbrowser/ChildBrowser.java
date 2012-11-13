@@ -20,10 +20,36 @@ import com.googlecode.gwtphonegap.client.plugins.PhoneGapPlugin;
 
 public interface ChildBrowser extends PhoneGapPlugin {
 
+  /**
+   * Display a new browser with the specified URL.
+   * This method loads up a new web view in a dialog which
+   * shows a location bar.
+   *
+   * @param url
+   */
   public void showWebPage(String url);
   
+  /**
+   * Display a new browser with the specified URL.
+   * This method loads up a new web view in a dialog.
+   *
+   * @param url
+   * @param showLocationBar show the location bar
+   */
   public void showWebPage(String url, boolean showLocationBar);
 
+  /**
+   * Display a new browser with the specified URL.
+   * This method starts a new web browser activity.
+   *
+   * @param url
+   * @param usecordova whether load url in cordova webview
+   */
+  public void openExternal(String url, boolean usecordova);
+
+  /**
+   * Close the browser opened by showWebPage.
+   */
 	public void close();
 
 	public HandlerRegistration addLocationChangeHandler(ChildBrowserLocationChangedHandler handler);
