@@ -19,4 +19,6 @@ public interface FileUploadCallback {
 	public void onSuccess(FileUploadResult result);
 
 	public void onFailure(FileTransferError error);
+
+	public void onProgress(FileTransferProgressEvent event);
 }
