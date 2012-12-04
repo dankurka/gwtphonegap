@@ -21,4 +21,6 @@ public interface FileDownloadCallback {
 	public void onSuccess(FileEntry result);
 
 	public void onFailure(FileTransferError error);
+
+	public void onProgress(FileTransferProgressEvent event);
 }

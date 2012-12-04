@@ -63,6 +63,10 @@ public final class FileTransferJsImpl extends JavaScriptObject implements FileTr
 			callback.@com.googlecode.gwtphonegap.client.file.FileUploadCallback::onFailure(Lcom/googlecode/gwtphonegap/client/file/FileTransferError;)(error);
 		};
 
+		this.onprogress = $entry(function(progressEvent) {
+			callback.@com.googlecode.gwtphonegap.client.file.FileUploadCallback::onProgress(Lcom/googlecode/gwtphonegap/client/file/FileTransferProgressEvent;)(progressEvent);
+		});
+
 		var fop = new $wnd.FileUploadOptions();
 
 		fop.fileKey = options.@com.googlecode.gwtphonegap.client.file.FileUploadOptions::getFileKey()();
@@ -83,7 +87,9 @@ public final class FileTransferJsImpl extends JavaScriptObject implements FileTr
 		var fail = function(error) {
 			callback.@com.googlecode.gwtphonegap.client.file.FileDownloadCallback::onFailure(Lcom/googlecode/gwtphonegap/client/file/FileTransferError;)(error);
 		};
-
+		this.onprogress = $entry(function(progressEvent) {
+			callback.@com.googlecode.gwtphonegap.client.file.FileDownloadCallback::onProgress(Lcom/googlecode/gwtphonegap/client/file/FileTransferProgressEvent;)(progressEvent);
+		});
 		this.download(sourceUrl, filePath, $entry(suc), $entry(fail));
 	}-*/;
 
