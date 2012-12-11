@@ -40,7 +40,7 @@ import com.googlecode.gwtphonegap.collection.shared.LightArray;
  */
 public class FileBrowserImpl implements File {
 
-	private FileSystemController fileController;
+	private final FileSystemController fileController;
 
 	public FileBrowserImpl() {
 		fileController = new FileSystemController();
@@ -94,6 +94,11 @@ public class FileBrowserImpl implements File {
 				};
 
 				callback.onFailure(fileTransferError);
+
+			}
+
+			@Override
+			public void abort() {
 
 			}
 		};
