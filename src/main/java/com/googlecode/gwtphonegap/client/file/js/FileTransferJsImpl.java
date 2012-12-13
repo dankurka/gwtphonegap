@@ -33,6 +33,11 @@ public final class FileTransferJsImpl extends JavaScriptObject implements FileTr
 	}
 
 	@Override
+	public native void abort()/*-{
+		this.abort();
+	}-*/;
+
+	@Override
 	public void download(String sourceUrl, String filePath, FileDownloadCallback callback) {
 		download0(sourceUrl, filePath, callback);
 	}

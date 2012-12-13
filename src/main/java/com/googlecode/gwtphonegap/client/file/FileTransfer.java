@@ -19,4 +19,6 @@ public interface FileTransfer {
 	public void upload(String fileUri, String serverUrl, FileUploadOptions options, FileUploadCallback callback);
 
 	public void download(String sourceUrl, String filePath, FileDownloadCallback callback);
+
+	public void abort();
 }
