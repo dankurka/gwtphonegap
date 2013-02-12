@@ -209,17 +209,57 @@ public class GlobalizationJsImpl implements Globalization {
    */
   @Override
   public void getDatePattern(GlobalizationCallback<DatePattern, GlobalizationError> callback) {
-    // TODO Auto-generated method stub
+    getDatePattern(new DateOptions(DateOptions.LENGTH_SHORT, DateOptions.SELECTOR_DATE_AND_TIME),
+        callback);
 
   }
 
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.googlecode.gwtphonegap.client.globalization.Globalization#getDatePattern(com.googlecode
+   * .gwtphonegap.client.globalization.DateOptions,
+   * com.googlecode.gwtphonegap.client.globalization.GlobalizationCallback)
+   */
   @Override
   public void getDatePattern(DateOptions options,
       GlobalizationCallback<DatePattern, GlobalizationError> callback) {
-    // TODO Auto-generated method stub
-
+    if (options == null)
+      throw new IllegalArgumentException();
+    getDatePattern0(options.getFormatLength(), options.getSelector(), callback);
   }
 
+  private static void onGetDatePatternSuccess(DatePatternJsImpl datePattern,
+      GlobalizationCallback<DatePattern, ?> callback) {
+    callback.onSuccess(datePattern);
+  }
+
+  private native void getDatePattern0(String formatLength, String selector,
+      GlobalizationCallback<DatePattern, GlobalizationError> callback) /*-{
+
+		var win = function(date) {
+			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::onGetDatePatternSuccess(Lcom/googlecode/gwtphonegap/client/globalization/js/DatePatternJsImpl;Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;)(date, callback);
+		};
+
+		var fail = function(error) {
+			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::failureCallback(Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;Lcom/googlecode/gwtphonegap/client/globalization/js/GlobalizationErrorJsImpl;)(callback, error);
+		};
+
+		$wnd.navigator.globalization.getDatePattern($entry(win), $entry(fail),
+				{
+					formatLength : formatLength,
+					selector : selector
+				});
+
+  }-*/;
+
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.googlecode.gwtphonegap.client.globalization.Globalization#getDateNames(com.googlecode.
+   * gwtphonegap.client.globalization.GlobalizationCallback)
+   */
   @Override
   public void getDateNames(GlobalizationCallback<LightArray<String>, GlobalizationError> callback) {
     // TODO Auto-generated method stub

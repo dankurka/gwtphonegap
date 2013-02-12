@@ -13,8 +13,21 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.gwtphonegap.client.globalization;
+package com.googlecode.gwtphonegap.client.globalization.js;
 
-public interface DatePattern {
-  public String getPattern();
+import com.google.gwt.core.client.JavaScriptObject;
+
+import com.googlecode.gwtphonegap.client.globalization.DatePattern;
+
+public final class DatePatternJsImpl extends JavaScriptObject implements DatePattern {
+
+  protected DatePatternJsImpl() {
+
+  }
+
+  @Override
+  public native String getPattern() /*-{
+		return this.pattern;
+  }-*/;
+
 }
