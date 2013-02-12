@@ -244,26 +244,24 @@ public interface Globalization {
    */
   public void getNumberPattern(GlobalizationCallback<CNumberPattern, GlobalizationError> callback);
 
-  
   /**
-  * Returns a pattern string for formatting and parsing currency values according to the client's
-  * user preferences and ISO 4217 currency code. It returns the pattern to the successCB callback with a
-  * properties object as a parameter. If there is an error obtaining the pattern, then the errorCB
-  * callback is invoked.
-  *
-  * @return    Object.pattern {String}: The currency pattern for formatting and parsing currency values.
-  *                                    The patterns follow Unicode Technical Standard #35
-  *                                    http://unicode.org/reports/tr35/tr35-4.html
-  *            Object.code {String}: The ISO 4217 currency code for the pattern.
-  *            Object.fraction {Number}: The number of fractional digits to use when parsing and
-  *                                    formatting currency.
-  *            Object.rounding {Number}: The rounding increment to use when parsing and formatting.
-  *            Object.decimal: {String}: The decimal symbol to use for parsing and formatting.
-  *            Object.grouping: {String}: The grouping symbol to use for parsing and formatting.
-  *
-  * @error GlobalizationError.FORMATTING_ERROR
-  *
-  */
+   * Returns a pattern string for formatting and parsing currency values according to the client's
+   * user preferences and ISO 4217 currency code. It returns the pattern to the successCB callback
+   * with a properties object as a parameter. If there is an error obtaining the pattern, then the
+   * errorCB callback is invoked.
+   * 
+   * @return Object.pattern {String}: The currency pattern for formatting and parsing currency
+   *         values. The patterns follow Unicode Technical Standard #35
+   *         http://unicode.org/reports/tr35/tr35-4.html Object.code {String}: The ISO 4217 currency
+   *         code for the pattern. Object.fraction {Number}: The number of fractional digits to use
+   *         when parsing and formatting currency. Object.rounding {Number}: The rounding increment
+   *         to use when parsing and formatting. Object.decimal: {String}: The decimal symbol to use
+   *         for parsing and formatting. Object.grouping: {String}: The grouping symbol to use for
+   *         parsing and formatting.
+   * 
+   * @error GlobalizationError.FORMATTING_ERROR
+   * 
+   */
   public void getCurrencyPattern(String currencyCode,
       GlobalizationCallback<CNumberPattern, GlobalizationError> callback);
 }
