@@ -13,6 +13,7 @@
  */
 package com.googlecode.gwtphonegap.client.globalization.js;
 
+
 import com.google.gwt.core.client.JsDate;
 
 import com.googlecode.gwtphonegap.client.globalization.CLocale;
@@ -46,6 +47,7 @@ public class GlobalizationJsImpl implements Globalization {
     callback.onFailure(error);
   }
 
+
   /*
    * (non-Javadoc)
    * 
@@ -53,6 +55,7 @@ public class GlobalizationJsImpl implements Globalization {
    * com.googlecode.gwtphonegap.client.globalization.Globalization#getPreferredLanguage(com.googlecode
    * .gwtphonegap.client.globalization.GlobalizationCallback)
    */
+
   @Override
   public native void getPreferredLanguage(
       GlobalizationCallback<Language, GlobalizationError> callback)/*-{
@@ -68,6 +71,7 @@ public class GlobalizationJsImpl implements Globalization {
 		$doc.navigator.globalization.getPreferredLanguage($entry(win),
 				$entry(fail));
   }-*/;
+
 
   /*
    * (non-Javadoc)
@@ -90,6 +94,7 @@ public class GlobalizationJsImpl implements Globalization {
 
   }-*/;
 
+
   /*
    * (non-Javadoc)
    * 
@@ -97,6 +102,7 @@ public class GlobalizationJsImpl implements Globalization {
    * com.googlecode.gwtphonegap.client.globalization.Globalization#convertDateToString(java.util
    * .Date, com.googlecode.gwtphonegap.client.globalization.GlobalizationCallback)
    */
+
   @Override
   public void convertDateToString(Date date,
       GlobalizationCallback<DateValue, GlobalizationError> callback) {
@@ -104,6 +110,7 @@ public class GlobalizationJsImpl implements Globalization {
         DateOptions.SELECTOR_DATE_AND_TIME), callback);
 
   }
+
 
   /*
    * (non-Javadoc)
@@ -124,7 +131,7 @@ public class GlobalizationJsImpl implements Globalization {
     convertDateToString0(jsDate, options.getFormatLength(), options.getSelector(), callback);
   }
 
-  private native void convertDateToString0(JsDate date, String formatLength, String selector,
+  private native void convertDateToString0 (JsDate date, String formatLength, String selector,
       GlobalizationCallback<DateValue, GlobalizationError> callback)/*-{
 
 		var win = function(dateValue) {
@@ -193,6 +200,13 @@ public class GlobalizationJsImpl implements Globalization {
 				});
   }-*/;
 
+  /*
+   * (non-Javadoc)
+   * 
+   * @see
+   * com.googlecode.gwtphonegap.client.globalization.Globalization#getDatePattern(com.googlecode
+   * .gwtphonegap.client.globalization.GlobalizationCallback)
+   */
   @Override
   public void getDatePattern(GlobalizationCallback<DatePattern, GlobalizationError> callback) {
     // TODO Auto-generated method stub
@@ -289,6 +303,7 @@ public class GlobalizationJsImpl implements Globalization {
   @Override
   public void getCurrencyPattern(String currencyCode,
       GlobalizationCallback<CNumberPattern, GlobalizationError> callback) {
+
     // TODO Auto-generated method stub
 
   }
