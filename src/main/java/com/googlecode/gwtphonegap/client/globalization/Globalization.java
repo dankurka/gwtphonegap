@@ -13,7 +13,6 @@
  */
 package com.googlecode.gwtphonegap.client.globalization;
 
-import com.googlecode.gwtphonegap.client.globalization.js.DateNameOptions;
 import com.googlecode.gwtphonegap.collection.shared.LightArray;
 
 import java.util.Date;
@@ -175,17 +174,6 @@ public interface Globalization {
    * @see #numberToString(double, NumberOptions, GlobalizationCallback)
    */
   public void numberToString(double number,
-      GlobalizationCallback<String, GlobalizationError> callback);
-
-  /**
-   * @see #numberToString(double, NumberOptions, GlobalizationCallback)
-   */
-  public void numberToString(int number, GlobalizationCallback<String, GlobalizationError> callback);
-
-  /**
-   * @see #numberToString(double, NumberOptions, GlobalizationCallback)
-   */
-  public void numberToString(int number, NumberOptions options,
       GlobalizationCallback<String, GlobalizationError> callback);
 
   /**

@@ -19,6 +19,7 @@ import com.google.gwt.core.client.JsDate;
 
 import com.googlecode.gwtphonegap.client.globalization.CLocale;
 import com.googlecode.gwtphonegap.client.globalization.CNumberPattern;
+import com.googlecode.gwtphonegap.client.globalization.DateNameOptions;
 import com.googlecode.gwtphonegap.client.globalization.DateOptions;
 import com.googlecode.gwtphonegap.client.globalization.DatePattern;
 import com.googlecode.gwtphonegap.client.globalization.DateValue;
@@ -360,63 +361,137 @@ public class GlobalizationJsImpl implements Globalization {
   @Override
   public void numberToString(double number, NumberOptions options,
       GlobalizationCallback<String, GlobalizationError> callback) {
-    // TODO Auto-generated method stub
+    if (options == null) {
+      throw new IllegalArgumentException();
+    }
+
+    numberToString0(number, options.getType(), callback);
 
   }
+
+  private static void onNumberToString(String formattedNumber,
+      GlobalizationCallback<String, GlobalizationError> callback) {
+    callback.onSuccess(formattedNumber);
+  }
+
+  private native void numberToString0(double number, String type,
+      GlobalizationCallback<String, GlobalizationError> callback) /*-{
+
+		var win = function(number) {
+			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::onNumberToString(Ljava/lang/String;Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;)(number.value, callback);
+		};
+
+		var fail = function(error) {
+			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::failureCallback(Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;Lcom/googlecode/gwtphonegap/client/globalization/js/GlobalizationErrorJsImpl;)(callback, error);
+		};
+
+		$wnd.navigator.globalization.numberToString(number, $entry(win),
+				$entry(fail), {
+					type : type
+				});
+  }-*/;
 
   @Override
   public void numberToString(double number,
       GlobalizationCallback<String, GlobalizationError> callback) {
-    // TODO Auto-generated method stub
-
-  }
-
-  @Override
-  public void numberToString(int number, GlobalizationCallback<String, GlobalizationError> callback) {
-    // TODO Auto-generated method stub
-
-  }
-
-  @Override
-  public void numberToString(int number, NumberOptions options,
-      GlobalizationCallback<String, GlobalizationError> callback) {
-    // TODO Auto-generated method stub
+    numberToString(number, new NumberOptions(NumberOptions.DECIMAL), callback);
 
   }
 
   @Override
   public void stringToNumber(String stringToFormat, NumberOptions options,
       GlobalizationCallback<Number, GlobalizationError> callback) {
-    // TODO Auto-generated method stub
+    if (options == null) {
+      throw new IllegalArgumentException();
+    }
+
+    stringToNumber0(stringToFormat, options.getType(), callback);
 
   }
+
+  private static void onStringToNumber(Number number,
+      GlobalizationCallback<Number, GlobalizationError> callback) {
+    callback.onSuccess(number);
+  }
+
+  private native void stringToNumber0(String stringToFormat, String type,
+      GlobalizationCallback<Number, GlobalizationError> callback) /*-{
+		var win = function(number) {
+			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::onStringToNumber(Ljava/lang/Number;Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;)(number.value, callback);
+		};
+
+		var fail = function(error) {
+			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::failureCallback(Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;Lcom/googlecode/gwtphonegap/client/globalization/js/GlobalizationErrorJsImpl;)(callback, error);
+		};
+
+		$wnd.navigator.globalization.stringToNumber(stringToFormat,
+				$entry(win), $entry(fail), {
+					type : type
+				});
+
+  }-*/;
 
   @Override
   public void stringToNumber(String stringToFormat,
       GlobalizationCallback<Number, GlobalizationError> callback) {
-    // TODO Auto-generated method stub
+    stringToNumber(stringToFormat, new NumberOptions(NumberOptions.DECIMAL), callback);
 
   }
 
   @Override
   public void getNumberPattern(NumberOptions options,
       GlobalizationCallback<CNumberPattern, GlobalizationError> callback) {
-    // TODO Auto-generated method stub
+    if (options == null) {
+      throw new IllegalArgumentException();
+    }
+
+    getNumberPattern(options.getType(), callback);
 
   }
+
+  private static void onGetNumberPattern(CNumberPatternJsImpl numberPattern,
+      GlobalizationCallback<CNumberPattern, GlobalizationError> callback) {
+    callback.onSuccess(numberPattern);
+  }
+
+  private native void getNumberPattern(String type,
+      GlobalizationCallback<CNumberPattern, GlobalizationError> callback) /*-{
+		var win = function(pattern) {
+			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::onGetNumberPattern(Lcom/googlecode/gwtphonegap/client/globalization/js/CNumberPatternJsImpl;Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;)(pattern, callback);
+		};
+
+		var fail = function(error) {
+			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::failureCallback(Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;Lcom/googlecode/gwtphonegap/client/globalization/js/GlobalizationErrorJsImpl;)(callback, error);
+		};
+
+		$wnd.navigator.globalization.getNumberPattern($entry(win),
+				$entry(fail), {
+					type : type
+				});
+
+  }-*/;
 
   @Override
   public void getNumberPattern(GlobalizationCallback<CNumberPattern, GlobalizationError> callback) {
-    // TODO Auto-generated method stub
+    getNumberPattern(new NumberOptions(NumberOptions.DECIMAL), callback);
 
   }
 
   @Override
-  public void getCurrencyPattern(String currencyCode,
-      GlobalizationCallback<CNumberPattern, GlobalizationError> callback) {
+  public native void getCurrencyPattern(String currencyCode,
+      GlobalizationCallback<CNumberPattern, GlobalizationError> callback) /*-{
 
-    // TODO Auto-generated method stub
+		var win = function(pattern) {
+			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::onGetNumberPattern(Lcom/googlecode/gwtphonegap/client/globalization/js/CNumberPatternJsImpl;Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;)(pattern, callback);
+		};
 
-  }
+		var fail = function(error) {
+			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::failureCallback(Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;Lcom/googlecode/gwtphonegap/client/globalization/js/GlobalizationErrorJsImpl;)(callback, error);
+		};
+
+		$wnd.navigator.globalization.getCurrencyPattern(currencyCode,
+				$entry(win), $entry(fail));
+
+  }-*/;
 
 }

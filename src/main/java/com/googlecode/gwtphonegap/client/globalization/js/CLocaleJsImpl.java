@@ -4,7 +4,11 @@ import com.google.gwt.core.client.JavaScriptObject;
 
 import com.googlecode.gwtphonegap.client.globalization.CLocale;
 
-public class CLocaleJsImpl extends JavaScriptObject implements CLocale {
+public final class CLocaleJsImpl extends JavaScriptObject implements CLocale {
+
+  protected CLocaleJsImpl() {
+
+  }
 
   @Override
   public native String getValue() /*-{
