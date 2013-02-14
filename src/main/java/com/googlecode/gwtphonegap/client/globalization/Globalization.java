@@ -13,6 +13,7 @@
  */
 package com.googlecode.gwtphonegap.client.globalization;
 
+import com.googlecode.gwtphonegap.client.globalization.js.DateNameOptions;
 import com.googlecode.gwtphonegap.collection.shared.LightArray;
 
 import java.util.Date;
@@ -121,7 +122,7 @@ public interface Globalization {
    *         in the year or the first day of the week.
    * @error GlobalizationError.UNKNOWN_ERROR
    */
-  public void getDateNames(DateOptions options,
+  public void getDateNames(DateNameOptions options,
       GlobalizationCallback<LightArray<String>, GlobalizationError> callback);
 
   /**

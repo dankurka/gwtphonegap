@@ -14,6 +14,7 @@
 package com.googlecode.gwtphonegap.client.globalization.js;
 
 
+import com.google.gwt.core.client.JsArrayString;
 import com.google.gwt.core.client.JsDate;
 
 import com.googlecode.gwtphonegap.client.globalization.CLocale;
@@ -26,6 +27,7 @@ import com.googlecode.gwtphonegap.client.globalization.GlobalizationCallback;
 import com.googlecode.gwtphonegap.client.globalization.GlobalizationError;
 import com.googlecode.gwtphonegap.client.globalization.Language;
 import com.googlecode.gwtphonegap.client.globalization.NumberOptions;
+import com.googlecode.gwtphonegap.collection.client.JsLightArray;
 import com.googlecode.gwtphonegap.collection.shared.LightArray;
 
 import java.util.Date;
@@ -262,29 +264,98 @@ public class GlobalizationJsImpl implements Globalization {
    */
   @Override
   public void getDateNames(GlobalizationCallback<LightArray<String>, GlobalizationError> callback) {
-    // TODO Auto-generated method stub
-
+    getDateNames(new DateNameOptions(DateNameOptions.TYPE_WIDE, DateNameOptions.ITEM_MONTHS),
+        callback);
   }
 
+  /*
+   * (non-Javadoc)
+   * 
+   * @see com.googlecode.gwtphonegap.client.globalization.Globalization#getDateNames(com.googlecode.
+   * gwtphonegap.client.globalization.js.DateNameOptions,
+   * com.googlecode.gwtphonegap.client.globalization.GlobalizationCallback)
+   */
   @Override
-  public void getDateNames(DateOptions options,
+  public void getDateNames(DateNameOptions options,
       GlobalizationCallback<LightArray<String>, GlobalizationError> callback) {
-    // TODO Auto-generated method stub
+    if (options == null)
+      throw new IllegalArgumentException();
+
+    getDateNames0(options.getType(), options.getItem(), callback);
 
   }
+
+  private static void onGetDateNames(JsArrayString dateNames,
+      GlobalizationCallback<LightArray<String>, GlobalizationError> callback) {
+
+    callback.onSuccess(new JsLightArray<String>(dateNames));
+  }
+
+  private native void getDateNames0(String type, String item,
+      GlobalizationCallback<LightArray<String>, GlobalizationError> callback) /*-{
+		var win = function(names) {
+			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::onGetDateNames(Lcom/google/gwt/core/client/JsArrayString;Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;)(names, callback);
+		};
+
+		var fail = function(error) {
+			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::failureCallback(Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;Lcom/googlecode/gwtphonegap/client/globalization/js/GlobalizationErrorJsImpl;)(callback, error);
+		};
+
+		$wnd.navigator.globalization.getDateNames($entry(win), $entry(fail), {
+			type : type,
+			item : item
+		});
+  }-*/;
 
   @Override
   public void isDayLightSavingsTime(Date date,
       GlobalizationCallback<Boolean, GlobalizationError> callback) {
-    // TODO Auto-generated method stub
+    JsDate jsDate = JsDate.create(date.getTime());
+    isDayLightSavingsTime0(jsDate, callback);
 
+  }
+
+  private static void onIsDayLightSavingsTime(Boolean bool,
+      GlobalizationCallback<Boolean, GlobalizationError> callback) {
+    callback.onSuccess(bool);
+  }
+
+  private native void isDayLightSavingsTime0(JsDate jsDate,
+      GlobalizationCallback<Boolean, GlobalizationError> callback) /*-{
+
+		var win = function(is) {
+			var bool = @java.lang.Boolean::valueOf(Z)(is);
+			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::onIsDayLightSavingsTime(Ljava/lang/Boolean;Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;)(bool, callback);
+		};
+
+		var fail = function(error) {
+			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::failureCallback(Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;Lcom/googlecode/gwtphonegap/client/globalization/js/GlobalizationErrorJsImpl;)(callback, error);
+		};
+
+		$wnd.navigator.globalization.isDayLightSavingsTime(jsDate, $entry(win),
+				$entry(fail));
+  }-*/;
+
+  private static void onGetFirstDayOfWeek(Integer value,
+      GlobalizationCallback<Integer, GlobalizationError> callback) {
+    callback.onSuccess(value);
   }
 
   @Override
-  public void getFirstDayOfWeek(GlobalizationCallback<Integer, GlobalizationError> callback) {
-    // TODO Auto-generated method stub
+  public native void getFirstDayOfWeek(GlobalizationCallback<Integer, GlobalizationError> callback) /*-{
+		var win = function(number) {
+			var intValue = @java.lang.Integer::valueOf(I)(number);
+			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::onGetFirstDayOfWeek(Ljava/lang/Integer;Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;)(intValue, callback);
+		};
 
-  }
+		var fail = function(error) {
+			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::failureCallback(Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;Lcom/googlecode/gwtphonegap/client/globalization/js/GlobalizationErrorJsImpl;)(callback, error);
+		};
+
+		$wnd.navigator.globalization.getFirstDayOfWeek($entry(win),
+				$entry(fail));
+
+  }-*/;
 
   @Override
   public void numberToString(double number, NumberOptions options,
