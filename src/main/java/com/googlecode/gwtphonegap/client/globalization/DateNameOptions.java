@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.gwtphonegap.client.globalization.js;
+package com.googlecode.gwtphonegap.client.globalization;
 
 public class DateNameOptions {
   

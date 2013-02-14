@@ -19,6 +19,10 @@ import com.googlecode.gwtphonegap.client.globalization.Language;
 
 public class LanguageJsImpl extends JavaScriptObject implements Language {
 
+  protected LanguageJsImpl() {
+
+  }
+
   @Override
   public native String getValue() /*-{
 		return this.value;

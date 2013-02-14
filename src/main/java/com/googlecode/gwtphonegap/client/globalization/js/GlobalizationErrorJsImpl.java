@@ -19,6 +19,10 @@ import com.googlecode.gwtphonegap.client.globalization.GlobalizationError;
 
 public final class GlobalizationErrorJsImpl extends JavaScriptObject implements GlobalizationError {
 
+  protected GlobalizationErrorJsImpl() {
+
+  }
+
   @Override
   public native int getCode() /*-{
 		return this.code;

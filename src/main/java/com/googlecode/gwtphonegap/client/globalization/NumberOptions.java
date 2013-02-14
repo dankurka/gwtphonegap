@@ -15,6 +15,20 @@
  */
 package com.googlecode.gwtphonegap.client.globalization;
 
-public enum NumberOptions {
-  DECIMAL, PERCENT, CURRENCY
+public class NumberOptions {
+
+  public static final String DECIMAL = "decimal";
+
+  public static final String PERCENT = "percent";
+  public static final String CURRENCY = "currency";
+
+  private final String type;
+
+  public NumberOptions(String type) {
+    this.type = type;
+  }
+
+  public String getType() {
+    return type;
+  }
 }
