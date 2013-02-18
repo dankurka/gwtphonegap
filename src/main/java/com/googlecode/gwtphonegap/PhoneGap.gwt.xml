@@ -229,21 +229,19 @@
       </all>
     </replace-with>
     
-    <!-- Plugins -->
-    <!-- Childbrowser -->
+    <!-- InAppBrowser -->
+    <replace-with class="com.googlecode.gwtphonegap.client.inappbrowser.browser.InAppBrowserBrowserImpl">
+      <when-type-is class="com.googlecode.gwtphonegap.client.inappbrowser.InAppBrowser" />
+    </replace-with>
     
-    <replace-with class="com.googlecode.gwtphonegap.client.plugins.childbrowser.ChildBrowserBrowserImpl">
-		<when-type-is class="com.googlecode.gwtphonegap.client.plugins.childbrowser.ChildBrowser" />
-	</replace-with>
-	
-	<replace-with
-		class="com.googlecode.gwtphonegap.client.plugins.childbrowser.ChildBrowserPhoneGapImpl">
-		<when-type-is
-			class="com.googlecode.gwtphonegap.client.plugins.childbrowser.ChildBrowser" />
-		<all>
-			<when-property-is name="phonegap.env" value="yes" />
-		</all>
-	</replace-with>
+    <replace-with class="com.googlecode.gwtphonegap.client.inappbrowser.js.InAppBrowserJsImpl">
+      <when-type-is class="com.googlecode.gwtphonegap.client.inappbrowser.InAppBrowser" />
+      <all>
+        <when-property-is name="phonegap.env" value="yes" />
+      </all>
+    </replace-with>
+    
+    <!-- Plugins -->
 	
     <!-- Badge -->
     <replace-with class="com.googlecode.gwtphonegap.client.plugins.badge.BadgeBrowserImpl">
