@@ -1,16 +1,14 @@
 /*
  * Copyright 2010 Daniel Kurka
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
  * 
  * http://www.apache.org/licenses/LICENSE-2.0
  * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
 package com.googlecode.gwtphonegap.client.camera;
@@ -21,64 +19,71 @@ import com.google.gwt.resources.client.DataResource;
 
 public class CameraBrowserImpl implements CameraMock {
 
-	public interface CameraBundle extends ClientBundle {
+  public interface CameraBundle extends ClientBundle {
 
-		@Source("resources/camera_success.jpg")
-		public DataResource getSuccessPicture();
-	}
+    @Source("resources/camera_success.jpg")
+    public DataResource getSuccessPicture();
+  }
 
-	public CameraBrowserImpl() {
-		setPictureUrl(GWT.getModuleBaseURL() + "resources/camera_success.jpg");
-	}
+  public CameraBrowserImpl() {
+    setPictureUrl(GWT.getModuleBaseURL() + "resources/camera_success.jpg");
+  }
 
-	protected CameraBundle bundle;
-	private String pictureUrl;
+  protected CameraBundle bundle;
+  private String pictureUrl;
 
-	protected CameraBundle getBundle() {
-		if (bundle == null) {
-			bundle = GWT.create(CameraBundle.class);
-		}
-		return bundle;
-	}
+  protected CameraBundle getBundle() {
+    if (bundle == null) {
+      bundle = GWT.create(CameraBundle.class);
+    }
+    return bundle;
+  }
 
-	@Override
-	public void getPicture(PictureOptions options, PictureCallback callback) {
-		if (shouldFail) {
-			callback.onFailure("should fail");
-			return;
-		}
+  @Override
+  public void getPicture(PictureOptions options, PictureCallback callback) {
+    if (shouldFail) {
+      callback.onFailure("should fail");
+      return;
+    }
 
-		if (options.getDestinationType() == PictureOptions.DESTINATION_TYPE_DATA_URL) {
-			callback.onSuccess(getBundle().getSuccessPicture().getSafeUri().asString().substring("data:image/jpeg;base64,".length()));
-		} else {
-			if (options.getDestinationType() == PictureOptions.DESTINATION_TYPE_FILE_URI) {
+    if (options.getDestinationType() == PictureOptions.DESTINATION_TYPE_DATA_URL) {
+      callback.onSuccess(getBundle().getSuccessPicture().getSafeUri().asString().substring(
+          "data:image/jpeg;base64,".length()));
+    } else {
+      if (options.getDestinationType() == PictureOptions.DESTINATION_TYPE_FILE_URI) {
 
-				callback.onSuccess(this.pictureUrl);
+        callback.onSuccess(this.pictureUrl);
 
-			} else {
-				callback.onFailure("wrong type");
-			}
+      } else {
+        callback.onFailure("wrong type");
+      }
 
-		}
+    }
 
-	}
+  }
 
-	@Override
-	public void setCameraBundle(CameraBundle bundle) {
-		this.bundle = bundle;
-	}
+  @Override
+  public void setCameraBundle(CameraBundle bundle) {
+    this.bundle = bundle;
+  }
 
-	@Override
-	public void setPictureUrl(String url) {
-		this.pictureUrl = url;
-	}
+  @Override
+  public void setPictureUrl(String url) {
+    this.pictureUrl = url;
+  }
 
-	private boolean shouldFail;
+  private boolean shouldFail;
 
-	@Override
-	public void setShouldFail(boolean fail) {
-		this.shouldFail = fail;
+  @Override
+  public void setShouldFail(boolean fail) {
+    this.shouldFail = fail;
 
-	}
+  }
+
+  @Override
+  public void cleanUp(CameraCallback callback) {
+    callback.onSuccess();
+
+  }
 
 }

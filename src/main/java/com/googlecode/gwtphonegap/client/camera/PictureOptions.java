@@ -1,151 +1,159 @@
 /*
  * Copyright 2010 Daniel Kurka
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
  * 
  * http://www.apache.org/licenses/LICENSE-2.0
  * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
 package com.googlecode.gwtphonegap.client.camera;
 
 public class PictureOptions {
 
-	public static final int DESTINATION_TYPE_DATA_URL = 0;
-	public static final int DESTINATION_TYPE_FILE_URI = 1;
+  public static final int DESTINATION_TYPE_DATA_URL = 0;
+  public static final int DESTINATION_TYPE_FILE_URI = 1;
 
-	public static final int PICTURE_SOURCE_TYPE_PHOTO_LIBRARY = 0;
-	public static final int PICTURE_SOURCE_TYPE_CAMERA = 1;
-	public static final int PICTURE_SOURCE_TYPE_SAVED_PHOTO_ALBUM = 2;
+  public static final int PICTURE_SOURCE_TYPE_PHOTO_LIBRARY = 0;
+  public static final int PICTURE_SOURCE_TYPE_CAMERA = 1;
+  public static final int PICTURE_SOURCE_TYPE_SAVED_PHOTO_ALBUM = 2;
 
-	public static final int CAMERA_ENCODING_TYPE_JPEG = 0;
-	public static final int CAMERA_ENCODING_TYPE_PNG = 1;
+  public static final int CAMERA_ENCODING_TYPE_JPEG = 0;
+  public static final int CAMERA_ENCODING_TYPE_PNG = 1;
 
-	public static final int CAMERA_MEDIA_TYPE_PICTURE = 0;
-	public static final int CAMERA_MEDIA_TYPE_VIDEO = 1;
-	public static final int CAMERA_MEDIA_TYPE_ALL = 2;
+  public static final int CAMERA_MEDIA_TYPE_PICTURE = 0;
+  public static final int CAMERA_MEDIA_TYPE_VIDEO = 1;
+  public static final int CAMERA_MEDIA_TYPE_ALL = 2;
 
-	private int quality;
+  private int quality;
 
-	private int destinationType;
-	private int sourceType;
-	private int encoding;
+  private int destinationType;
+  private int sourceType;
+  private int encoding;
 
-	private int targetHeightInPx;
-	private int targetWidthInPx;
-	private int mediaType;
+  private int targetHeightInPx;
+  private int targetWidthInPx;
+  private int mediaType;
 
-	private boolean allowEdit;
-	private boolean saveToPhotoAlbum;
-	private boolean correctorientation;
+  private boolean allowEdit;
+  private boolean saveToPhotoAlbum;
+  private boolean correctorientation;
 
-	public PictureOptions() {
-		quality = 75;
-		destinationType = DESTINATION_TYPE_DATA_URL;
-		sourceType = PICTURE_SOURCE_TYPE_CAMERA;
-		encoding = CAMERA_ENCODING_TYPE_JPEG;
+  private PopOverOptions popOverOptions;
 
-		// no sizing by default...
-		targetHeightInPx = -1;
-		targetWidthInPx = -1;
+  public PictureOptions() {
+    quality = 75;
+    destinationType = DESTINATION_TYPE_DATA_URL;
+    sourceType = PICTURE_SOURCE_TYPE_CAMERA;
+    encoding = CAMERA_ENCODING_TYPE_JPEG;
 
-		mediaType = CAMERA_MEDIA_TYPE_PICTURE;
+    // no sizing by default...
+    targetHeightInPx = -1;
+    targetWidthInPx = -1;
 
-		allowEdit = true;
+    mediaType = CAMERA_MEDIA_TYPE_PICTURE;
 
-		correctorientation = false;
-		saveToPhotoAlbum = false;
-	}
+    allowEdit = true;
 
-	public PictureOptions(int quality) {
-		this();
-		this.quality = quality;
-	}
+    correctorientation = false;
+    saveToPhotoAlbum = false;
+  }
 
-	public int getQuality() {
-		return quality;
-	}
+  public PictureOptions(int quality) {
+    this();
+    this.quality = quality;
+  }
 
-	public void setQuality(int quality) {
-		this.quality = quality;
-	}
+  public int getQuality() {
+    return quality;
+  }
 
-	public int getSourceType() {
-		return sourceType;
-	}
+  public void setQuality(int quality) {
+    this.quality = quality;
+  }
 
-	public int getDestinationType() {
-		return destinationType;
-	}
+  public int getSourceType() {
+    return sourceType;
+  }
 
-	public void setDestinationType(int destinationType) {
-		this.destinationType = destinationType;
-	}
+  public int getDestinationType() {
+    return destinationType;
+  }
 
-	public void setSourceType(int sourceType) {
-		this.sourceType = sourceType;
-	}
+  public void setDestinationType(int destinationType) {
+    this.destinationType = destinationType;
+  }
 
-	public int getEncoding() {
-		return encoding;
-	}
+  public void setSourceType(int sourceType) {
+    this.sourceType = sourceType;
+  }
 
-	public void setEncoding(int encoding) {
-		this.encoding = encoding;
-	}
+  public int getEncoding() {
+    return encoding;
+  }
 
-	public void setTargetHeightInPx(int targetHeightInPx) {
-		this.targetHeightInPx = targetHeightInPx;
-	}
+  public void setEncoding(int encoding) {
+    this.encoding = encoding;
+  }
 
-	public int getTargetHeightInPx() {
-		return targetHeightInPx;
-	}
+  public void setTargetHeightInPx(int targetHeightInPx) {
+    this.targetHeightInPx = targetHeightInPx;
+  }
 
-	public int getTargetWidthInPx() {
-		return targetWidthInPx;
-	}
+  public int getTargetHeightInPx() {
+    return targetHeightInPx;
+  }
 
-	public void setTargetWidthInPx(int targetWidthInPx) {
-		this.targetWidthInPx = targetWidthInPx;
-	}
+  public int getTargetWidthInPx() {
+    return targetWidthInPx;
+  }
 
-	public void setMediaType(int mediaType) {
-		this.mediaType = mediaType;
-	}
+  public void setTargetWidthInPx(int targetWidthInPx) {
+    this.targetWidthInPx = targetWidthInPx;
+  }
 
-	public int getMediaType() {
-		return mediaType;
-	}
+  public void setMediaType(int mediaType) {
+    this.mediaType = mediaType;
+  }
 
-	public void setAllowEdit(boolean allowEdit) {
-		this.allowEdit = allowEdit;
-	}
+  public int getMediaType() {
+    return mediaType;
+  }
 
-	public boolean isAllowEdit() {
-		return allowEdit;
-	}
+  public void setAllowEdit(boolean allowEdit) {
+    this.allowEdit = allowEdit;
+  }
 
-	public void setCorrectOrientation(boolean correctorientation) {
-		this.correctorientation = correctorientation;
-	}
+  public boolean isAllowEdit() {
+    return allowEdit;
+  }
 
-	public boolean isCorrectorientation() {
-		return correctorientation;
-	}
+  public void setCorrectOrientation(boolean correctorientation) {
+    this.correctorientation = correctorientation;
+  }
 
-	public void setSaveToPhotoAlbum(boolean saveToPhotoAlbum) {
-		this.saveToPhotoAlbum = saveToPhotoAlbum;
-	}
+  public boolean isCorrectorientation() {
+    return correctorientation;
+  }
 
-	public boolean isSaveToPhotoAlbum() {
-		return saveToPhotoAlbum;
-	}
+  public void setSaveToPhotoAlbum(boolean saveToPhotoAlbum) {
+    this.saveToPhotoAlbum = saveToPhotoAlbum;
+  }
+
+  public boolean isSaveToPhotoAlbum() {
+    return saveToPhotoAlbum;
+  }
+
+  public void setPopOverOptions(PopOverOptions popOverOptions) {
+    this.popOverOptions = popOverOptions;
+  }
+
+  public PopOverOptions getPopOverOptions() {
+    return popOverOptions;
+  }
 
 }
