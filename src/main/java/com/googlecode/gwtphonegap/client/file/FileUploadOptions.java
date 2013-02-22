@@ -1,16 +1,14 @@
 /*
  * Copyright 2011 Daniel Kurka
  * 
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
  * 
  * http://www.apache.org/licenses/LICENSE-2.0
  * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
 package com.googlecode.gwtphonegap.client.file;
@@ -18,55 +16,72 @@ package com.googlecode.gwtphonegap.client.file;
 import java.util.Map;
 
 public class FileUploadOptions {
-	private String fileKey;
+  private String fileKey;
 
-	private String fileName;
+  private String fileName;
 
-	private String mimeType;
+  private String mimeType;
 
-	private Map<String, String> params;
+  private Map<String, String> params;
 
-	public FileUploadOptions() {
+  private Map<String, String> headers;
 
-	}
+  public FileUploadOptions() {
 
-	public FileUploadOptions(String fileKey, String fileName, String mimeType, Map<String, String> params) {
-		this.fileKey = fileKey;
-		this.fileName = fileName;
-		this.mimeType = mimeType;
-		this.params = params;
-	}
+  }
 
-	public String getFileKey() {
-		return fileKey;
-	}
+  public FileUploadOptions(String fileKey, String fileName, String mimeType,
+      Map<String, String> params) {
+    this(fileKey, fileName, mimeType, params, null);
+  }
 
-	public void setFileKey(String fileKey) {
-		this.fileKey = fileKey;
-	}
+  public FileUploadOptions(String fileKey, String fileName, String mimeType,
+      Map<String, String> params, Map<String, String> headers) {
+    this.fileKey = fileKey;
+    this.fileName = fileName;
+    this.mimeType = mimeType;
+    this.params = params;
+    this.headers = headers;
+  }
 
-	public String getFileName() {
-		return fileName;
-	}
+  public String getFileKey() {
+    return fileKey;
+  }
 
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
+  public void setFileKey(String fileKey) {
+    this.fileKey = fileKey;
+  }
 
-	public String getMimeType() {
-		return mimeType;
-	}
+  public String getFileName() {
+    return fileName;
+  }
 
-	public void setMimeType(String mimeType) {
-		this.mimeType = mimeType;
-	}
+  public void setFileName(String fileName) {
+    this.fileName = fileName;
+  }
 
-	public Map<String, String> getParams() {
-		return params;
-	}
+  public String getMimeType() {
+    return mimeType;
+  }
 
-	public void setParams(Map<String, String> params) {
-		this.params = params;
-	}
+  public void setMimeType(String mimeType) {
+    this.mimeType = mimeType;
+  }
+
+  public Map<String, String> getParams() {
+    return params;
+  }
+
+  public void setParams(Map<String, String> params) {
+    this.params = params;
+  }
+
+  public void setHeaders(Map<String, String> headers) {
+    this.headers = headers;
+  }
+
+  public Map<String, String> getHeaders() {
+    return headers;
+  }
 
 }
