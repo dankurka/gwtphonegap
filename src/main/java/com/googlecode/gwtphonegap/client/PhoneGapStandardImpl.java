@@ -29,6 +29,7 @@ import com.googlecode.gwtphonegap.client.device.Device;
 import com.googlecode.gwtphonegap.client.event.Event;
 import com.googlecode.gwtphonegap.client.file.File;
 import com.googlecode.gwtphonegap.client.geolocation.Geolocation;
+import com.googlecode.gwtphonegap.client.globalization.Globalization;
 import com.googlecode.gwtphonegap.client.inappbrowser.InAppBrowser;
 import com.googlecode.gwtphonegap.client.log.PhoneGapLog;
 import com.googlecode.gwtphonegap.client.log.PhoneGapLogStandardImpl;
@@ -68,6 +69,8 @@ public class PhoneGapStandardImpl implements PhoneGap {
   private PhoneGapLogStandardImpl phoneGapLog;
 
   private boolean deviceReady;
+
+  private Globalization globalization;
 
   public PhoneGapStandardImpl() {
     // log configures it self
@@ -364,6 +367,18 @@ public class PhoneGapStandardImpl implements PhoneGap {
 
   protected InAppBrowser constructInAppBrowser() {
     return GWT.create(InAppBrowser.class);
+  }
+
+  @Override
+  public Globalization getGlobalization() {
+    if (globalization == null) {
+      globalization = constructGlobalization();
+    }
+    return globalization;
+  }
+
+  protected Globalization constructGlobalization() {
+    return GWT.create(Globalization.class);
   }
 
 }

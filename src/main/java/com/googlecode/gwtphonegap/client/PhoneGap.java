@@ -26,6 +26,7 @@ import com.googlecode.gwtphonegap.client.device.Device;
 import com.googlecode.gwtphonegap.client.event.Event;
 import com.googlecode.gwtphonegap.client.file.File;
 import com.googlecode.gwtphonegap.client.geolocation.Geolocation;
+import com.googlecode.gwtphonegap.client.globalization.Globalization;
 import com.googlecode.gwtphonegap.client.inappbrowser.InAppBrowser;
 import com.googlecode.gwtphonegap.client.log.PhoneGapLog;
 import com.googlecode.gwtphonegap.client.media.MediaModule;
@@ -178,5 +179,7 @@ public interface PhoneGap {
    * Get the application splash-screen object.
    */
   SplashScreen getSplashScreen();
+
+  public Globalization getGlobalization();
 
 }
