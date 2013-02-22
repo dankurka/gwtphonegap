@@ -135,6 +135,12 @@ public class DirectoryEntryJsImpl implements DirectoryEntry {
 		var entry = (this.@com.googlecode.gwtphonegap.client.file.js.DirectoryEntryJsImpl::entry);
 		return entry.toURI();
 	}-*/;
+	
+	@Override
+  public native String toURL() /*-{
+    var entry = (this.@com.googlecode.gwtphonegap.client.file.js.DirectoryEntryJsImpl::entry);
+    return entry.toURL();
+  }-*/;
 
 	@Override
 	public native void remove(FileCallback<Boolean, FileError> callback) /*-{

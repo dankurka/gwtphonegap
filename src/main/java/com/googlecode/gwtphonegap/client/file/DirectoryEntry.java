@@ -27,7 +27,14 @@ public interface DirectoryEntry {
 
 	public void copyTo(DirectoryEntry parent, String newName, FileCallback<DirectoryEntry, FileError> callback);
 
+	/**
+	 * use {@link #toURL()}
+	 * 
+	 */
+	@Deprecated
 	public String toURI();
+	
+	public String toURL();
 
 	public void remove(FileCallback<Boolean, FileError> callback);
 
