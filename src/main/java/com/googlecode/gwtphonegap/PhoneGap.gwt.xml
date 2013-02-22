@@ -229,7 +229,20 @@
       </all>
     </replace-with>
     
-    <!-- InAppBrowser -->
+   
+
+    <!-- Globalization -->
+    <replace-with class="com.googlecode.gwtphonegap.client.globalization.browser.GlobalizationBrowserImpl">
+		<when-type-is class="com.googlecode.gwtphonegap.client.globalization.Globalization" />
+	</replace-with>
+	<replace-with class="com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl">
+		<when-type-is class="com.googlecode.gwtphonegap.client.globalization.Globalization" />
+		<all>
+			<when-property-is name="phonegap.env" value="yes" />
+		</all>
+	</replace-with>
+
+ 	<!-- InAppBrowser -->
     <replace-with class="com.googlecode.gwtphonegap.client.inappbrowser.browser.InAppBrowserBrowserImpl">
       <when-type-is class="com.googlecode.gwtphonegap.client.inappbrowser.InAppBrowser" />
     </replace-with>
