@@ -31,7 +31,7 @@ public class DeviceMobileImpl implements Device {
 	@Override
 	public native String getName()/*-{
 		return $wnd.device.name;
-	}-*/;
+  }-*/;
 
 	/* (non-Javadoc) 
 	 * @see com.googlecode.gwtphonegap.client.device.Device#getPhoneGapVersion()
@@ -39,7 +39,7 @@ public class DeviceMobileImpl implements Device {
 	@Override
 	public native String getPhoneGapVersion()/*-{
 		return $wnd.device.cordova;
-	}-*/;
+  }-*/;
 
 	/* (non-Javadoc)
 	 * @see com.googlecode.gwtphonegap.client.device.Device#getPlatform()
@@ -47,7 +47,7 @@ public class DeviceMobileImpl implements Device {
 	@Override
 	public native String getPlatform()/*-{
 		return $wnd.device.platform;
-	}-*/;
+  }-*/;
 
 	/* (non-Javadoc)
 	 * @see com.googlecode.gwtphonegap.client.device.Device#getUuid()
@@ -55,7 +55,7 @@ public class DeviceMobileImpl implements Device {
 	@Override
 	public native String getUuid()/*-{
 		return $wnd.device.uuid;
-	}-*/;
+  }-*/;
 
 	/* (non-Javadoc) 
 	 * @see com.googlecode.gwtphonegap.client.device.Device#getVersion()
@@ -63,6 +63,11 @@ public class DeviceMobileImpl implements Device {
 	@Override
 	public native String getVersion()/*-{
 		return $wnd.device.version;
-	}-*/;
+  }-*/;
+
+  @Override
+  public native String getModel() /*-{
+		return $wnd.device.model;
+  }-*/;
 
 }

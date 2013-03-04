@@ -76,4 +76,9 @@ public class DeviceBrowserImpl implements Device {
     return "none";
   }
 
+  @Override
+  public String getModel() {
+    return "";
+  }
+
 }
