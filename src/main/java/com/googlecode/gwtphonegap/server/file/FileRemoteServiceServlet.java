@@ -15,6 +15,21 @@
  */
 package com.googlecode.gwtphonegap.server.file;
 
+import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+
+import com.googlecode.gwtphonegap.client.file.FileError;
+import com.googlecode.gwtphonegap.client.file.browser.FileErrorException;
+import com.googlecode.gwtphonegap.client.file.browser.dto.FileObjectDTO;
+import com.googlecode.gwtphonegap.client.file.browser.dto.FileSystemDTO;
+import com.googlecode.gwtphonegap.client.file.browser.dto.FileSystemEntryDTO;
+import com.googlecode.gwtphonegap.client.file.browser.dto.FileWriterDTO;
+import com.googlecode.gwtphonegap.client.file.browser.dto.FlagsDTO;
+import com.googlecode.gwtphonegap.client.file.browser.dto.MetaDataDTO;
+import com.googlecode.gwtphonegap.client.file.browser.service.FileRemoteService;
+
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.io.FileUtils;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -26,20 +41,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
-import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.io.FileUtils;
-
-import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.googlecode.gwtphonegap.client.file.FileError;
-import com.googlecode.gwtphonegap.client.file.browser.FileErrorException;
-import com.googlecode.gwtphonegap.client.file.browser.dto.FileObjectDTO;
-import com.googlecode.gwtphonegap.client.file.browser.dto.FileSystemDTO;
-import com.googlecode.gwtphonegap.client.file.browser.dto.FileSystemEntryDTO;
-import com.googlecode.gwtphonegap.client.file.browser.dto.FileWriterDTO;
-import com.googlecode.gwtphonegap.client.file.browser.dto.FlagsDTO;
-import com.googlecode.gwtphonegap.client.file.browser.dto.MetaDataDTO;
-import com.googlecode.gwtphonegap.client.file.browser.service.FileRemoteService;
 
 /**
  * This remote servlet simulates the file API of phonegap in dev mode
@@ -301,7 +302,7 @@ public class FileRemoteServiceServlet extends RemoteServiceServlet implements Fi
 			}
 
 			FileWriter fileWriter = new FileWriter(file);
-			fileWriter.write(content);
+      fileWriter.write(buffer.toString());
 			fileWriter.close();
 
 			fileWriterDTO.setPosition(position);
