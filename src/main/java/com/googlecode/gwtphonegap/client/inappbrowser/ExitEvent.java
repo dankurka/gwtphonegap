@@ -23,10 +23,7 @@ public class ExitEvent extends GwtEvent<ExitHandler> {
     return TYPE;
   }
 
-  private final String url;
-
-  public ExitEvent(String url) {
-    this.url = url;
+  public ExitEvent() {
 
   }
 
@@ -40,9 +37,4 @@ public class ExitEvent extends GwtEvent<ExitHandler> {
     handler.onExit(this);
 
   }
-
-  public String getUrl() {
-    return url;
-  }
-
 }

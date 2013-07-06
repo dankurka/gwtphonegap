@@ -55,15 +55,21 @@ public abstract class InAppBrowserReferenceBaseImpl implements InAppBrowserRefer
   protected abstract void addJavaScriptHandlers();
 
   protected void fireLoadStartEvent(String url) {
-
+    if (handlerManager != null) {
+      handlerManager.fireEvent(new LoadStartEvent(url));
+    }
   }
 
   protected void fireLoadStopEvent(String url) {
-
+    if (handlerManager != null) {
+      handlerManager.fireEvent(new LoadStopEvent(url));
+    }
   }
 
   protected void fireExitEvent() {
-
+    if (handlerManager != null) {
+      handlerManager.fireEvent(new ExitEvent());
+    }
   }
 
 }
