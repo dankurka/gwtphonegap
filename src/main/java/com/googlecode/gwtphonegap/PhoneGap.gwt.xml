@@ -10,7 +10,7 @@
 	    if (ua.indexOf('android') != -1 || ua.indexOf('ipad') != -1 || ua.indexOf('ipod') != -1  || ua.indexOf('iphone') != -1 || ua.indexOf('blackberry') != -1) 
 	    { 
 	    	var url = document.location.href;
-	    	if(url.indexOf("file://") === 0)
+	    	if(url.indexOf("file://") === 0 || url.indexOf("local://") === 0)
 	    	{
 	    		return "yes";
 	    	}
