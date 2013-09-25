@@ -23,4 +23,14 @@ public interface InAppBrowserReference {
   public HandlerRegistration addExitHandler(ExitHandler handler);
 
   public void close();
+
+  void show();
+
+  void executeScript(String code, InAppBrowserCallback  callback);
+
+  void executeScriptFromUrl(String url, InAppBrowserCallback  callback);
+
+  void injectCss(String css, InAppBrowserCallback  callback);
+
+  void injectCssFromUrl(String u  rl, InAppBrowserCallback  callback);
 }
