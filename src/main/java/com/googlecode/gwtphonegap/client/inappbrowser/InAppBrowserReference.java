@@ -32,5 +32,5 @@ public interface InAppBrowserReference {
 
   void injectCss(String css, InAppBrowserCallback  callback);
 
-  void injectCssFromUrl(String u  rl, InAppBrowserCallback  callback);
+  void injectCssFromUrl(String url, InAppBrowserCallback  callback);
 }
