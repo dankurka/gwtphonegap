@@ -15,6 +15,7 @@ package com.googlecode.gwtphonegap.client.inappbrowser.js;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
+import com.googlecode.gwtphonegap.client.inappbrowser.InAppBrowserCallback;
 import com.googlecode.gwtphonegap.client.inappbrowser.InAppBrowserReferenceBaseImpl;
 
 public class InAppBrowserReferenceJsImpl extends InAppBrowserReferenceBaseImpl {
@@ -56,6 +57,61 @@ public class InAppBrowserReferenceJsImpl extends InAppBrowserReferenceBaseImpl {
 		ref.addEventListener("loadstop", loadStop);
 		ref.addEventListener("exit", exit);
 
+  }-*/;
+
+  @Override
+  public native void show() /*-{
+    var ref = this.@com.googlecode.gwtphonegap.client.inappbrowser.js.InAppBrowserReferenceJsImpl::jsWindowRef;
+    ref.show();
+  }-*/;
+
+  @Override
+  public native void executeScript(String code, InAppBrowserCallback callback) /*-{
+    var ref = this.@com.googlecode.gwtphonegap.client.inappbrowser.js.InAppBrowserReferenceJsImpl::jsWindowRef;
+
+    var script = {code: code};
+    var c = function(){
+      callback.@com.googlecode.gwtphonegap.client.inappbrowser.InAppBrowserCallback::done()();
+    };
+
+    ref.executeScript(script, $entry(c));
+  }-*/;
+
+
+  @Override
+  public native void executeScriptFromUrl(String url, InAppBrowserCallback callback) /*-{
+    var ref = this.@com.googlecode.gwtphonegap.client.inappbrowser.js.InAppBrowserReferenceJsImpl::jsWindowRef;
+
+    var script = {file: url};
+    var c = function(){
+      callback.@com.googlecode.gwtphonegap.client.inappbrowser.InAppBrowserCallback::done()();
+    };
+
+    ref.executeScript(script, $entry(c));
+}-*/;
+
+  @Override
+  public native void injectCss(String css, InAppBrowserCallback callback) /*-{
+    var ref = this.@com.googlecode.gwtphonegap.client.inappbrowser.js.InAppBrowserReferenceJsImpl::jsWindowRef;
+
+    var script = {code: css};
+    var c = function(){
+      callback.@com.googlecode.gwtphonegap.client.inappbrowser.InAppBrowserCallback::done()();
+    };
+
+    ref.insertCSS(script, $entry(c));
+  }-*/;
+
+  @Override
+  public native void injectCssFromUrl(String url, InAppBrowserCallback callback) /*-{
+    var ref = this.@com.googlecode.gwtphonegap.client.inappbrowser.js.InAppBrowserReferenceJsImpl::jsWindowRef;
+
+    var script = {file: url};
+    var c = function(){
+      callback.@com.googlecode.gwtphonegap.client.inappbrowser.InAppBrowserCallback::done()();
+    };
+
+    ref.insertCSS(script, $entry(c));
   }-*/;
 
 }

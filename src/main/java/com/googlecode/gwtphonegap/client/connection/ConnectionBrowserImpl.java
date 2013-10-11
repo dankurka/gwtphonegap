@@ -38,7 +38,7 @@ public class ConnectionBrowserImpl implements ConnectionMock {
 			throw new IllegalArgumentException("type can not be null");
 		}
 		if (!Connection.CELL_2G.equals(type) && !Connection.CELL_3G.equals(type) && !Connection.CELL_4G.equals(type) && !Connection.ETHERNET.equals(type) && !Connection.NONE.equals(type)
-				&& !Connection.UNKNOWN.equals(type) && !Connection.WIFI.equals(type)) {
+				&& !Connection.UNKNOWN.equals(type) && !Connection.WIFI.equals(type) && !Connection.CELL.equals(type)) {
 			throw new IllegalArgumentException("unknown type");
 		}
 

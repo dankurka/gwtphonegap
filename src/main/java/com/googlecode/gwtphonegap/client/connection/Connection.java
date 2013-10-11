@@ -30,7 +30,10 @@ public interface Connection {
 	public static String CELL_2G = "2g";
 	public static String CELL_3G = "3g";
 	public static String CELL_4G = "4g";
+	public static String CELL = "cell";
 	public static String NONE = "none";
+
+
 
 	/**
 	 * This is a fast way to determine the device's network connection state,

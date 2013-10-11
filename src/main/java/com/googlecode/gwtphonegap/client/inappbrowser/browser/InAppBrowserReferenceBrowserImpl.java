@@ -15,6 +15,7 @@ package com.googlecode.gwtphonegap.client.inappbrowser.browser;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
+import com.googlecode.gwtphonegap.client.inappbrowser.InAppBrowserCallback;
 import com.googlecode.gwtphonegap.client.inappbrowser.InAppBrowserReferenceBaseImpl;
 
 public class InAppBrowserReferenceBrowserImpl extends InAppBrowserReferenceBaseImpl {
@@ -36,5 +37,77 @@ public class InAppBrowserReferenceBrowserImpl extends InAppBrowserReferenceBaseI
   protected void addJavaScriptHandlers() {
 
   }
+
+  @Override
+  public native void show() /*-{
+    var ref = this.@com.googlecode.gwtphonegap.client.inappbrowser.browser.InAppBrowserReferenceBrowserImpl::windowRef;
+    ref.show();
+  }-*/;
+
+  @Override
+  public native void executeScript(String code, InAppBrowserCallback callback) /*-{
+    var ref = this.@com.googlecode.gwtphonegap.client.inappbrowser.browser.InAppBrowserReferenceBrowserImpl::windowRef;
+
+    var script = ref.document.createElement('script');
+    script.type = 'text/javascript';
+    script.innerText = code;
+    ref.document.head.appendChild(script);
+    
+    var c = function(){
+      callback.@com.googlecode.gwtphonegap.client.inappbrowser.InAppBrowserCallback::done()();
+    };
+    
+    setTimeout($entry(c), 1);
+  }-*/;
+
+  @Override
+  public native void executeScriptFromUrl(String url, InAppBrowserCallback callback) /*-{
+    var ref = this.@com.googlecode.gwtphonegap.client.inappbrowser.browser.InAppBrowserReferenceBrowserImpl::windowRef;
+
+    var script = ref.document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url;
+    ref.document.head.appendChild(script);
+
+    var c = function(){
+      callback.@com.googlecode.gwtphonegap.client.inappbrowser.InAppBrowserCallback::done()();
+    };
+
+    setTimeout($entry(c), 1);
+  }-*/;
+
+  @Override
+  public native void injectCss(String css, InAppBrowserCallback callback) /*-{
+    var ref = this.@com.googlecode.gwtphonegap.client.inappbrowser.browser.InAppBrowserReferenceBrowserImpl::windowRef;
+
+    var link = ref.document.createElement('style');
+    link.type = 'text/css';
+    link.innertText = css;
+    ref.document.head.appendChild(link);
+
+    var c = function(){
+      callback.@com.googlecode.gwtphonegap.client.inappbrowser.InAppBrowserCallback::done()();
+    };
+
+    setTimeout($entry(c), 1);
+  }-*/;
+
+  //<link rel="stylesheet" type="text/css" href="themes/euroPort/master/styles.css">
+  @Override
+  public native void injectCssFromUrl(String url, InAppBrowserCallback callback) /*-{
+    var ref = this.@com.googlecode.gwtphonegap.client.inappbrowser.browser.InAppBrowserReferenceBrowserImpl::windowRef;
+
+    var link = ref.document.createElement('link');
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = url;
+    ref.document.head.appendChild(link);
+
+    var c = function(){
+      callback.@com.googlecode.gwtphonegap.client.inappbrowser.InAppBrowserCallback::done()();
+    };
+
+    setTimeout($entry(c), 1);
+}-*/;
 
 }
