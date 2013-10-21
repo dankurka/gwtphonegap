@@ -267,8 +267,18 @@
 			<when-property-is name="phonegap.env" value="yes" />
 		</all>
 	</replace-with>
-	
-    
+
+    <!-- Facebook -->
+    <replace-with
+            class="com.googlecode.gwtphonegap.client.plugins.facebook.impl.FacebookBrowserImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.plugins.facebook.Facebook" />
+    </replace-with>
+    <replace-with class="com.googlecode.gwtphonegap.client.plugins.facebook.impl.FacebookJsImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.plugins.facebook.Facebook" />
+        <all>
+            <when-property-is name="phonegap.env" value="yes" />
+        </all>
+    </replace-with>
     
     <!-- Log -->
      <inherits name="com.google.gwt.logging.Logging"/>
