@@ -19,7 +19,7 @@ package com.googlecode.gwtphonegap.client.splashscreen;
  * You have to setup correctly the app so as it shows the splash screen earlier when the app is
  * started.
  * 
- * @see http://docs.phonegap.com/en/2.2.0/cordova_splashscreen_splashscreen.md.html
+ * @see http://cordova.apache.org/docs/en/3.1.0/cordova_splashscreen_splashscreen.md.html#Splashscreen
  * 
  * @author Manuel Carrasco
  * 
