@@ -71,7 +71,19 @@ public class MediaModuleBrowserImpl implements MediaModule {
 			public void stop() {
 
 			}
-		};
+
+            /**
+             * Set the volume for audio playback.This is an asynchronous function that sets the volume during audio playback.
+             *
+             * @param volume : The volume to set for playback. The value must be within the range of 0.0 to 1.0.
+             */
+            @Override
+            public void setVolume(double volume) {
+
+            }
+
+
+        };
 	}
 
 }
