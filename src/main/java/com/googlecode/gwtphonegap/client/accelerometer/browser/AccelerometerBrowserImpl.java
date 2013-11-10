@@ -29,7 +29,7 @@ import com.googlecode.gwtphonegap.client.accelerometer.AccelerometerWatcher;
 public class AccelerometerBrowserImpl implements Accelerometer, AccelermeterMock {
 
 	@Override
-	public void getCurrentAcceleration(AccelerationCallback accelerationCallback, AccelerationOptions options) {
+	public void getCurrentAcceleration(AccelerationCallback accelerationCallback) {
 		accelerationCallback.onSuccess(new AccelerationBrowserImpl(0, 0, 0));
 	}
 

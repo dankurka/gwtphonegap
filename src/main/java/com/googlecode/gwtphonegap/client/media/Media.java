@@ -16,21 +16,58 @@
 package com.googlecode.gwtphonegap.client.media;
 
 public interface Media {
+
+    /**
+     * Returns the current position within an audio file.
+     * @param callback
+     */
 	public void getCurrentPosition(MediaPositionCallback callback);
 
+    /**
+     * Returns the duration of an audio file.
+     * @return
+     */
 	public long getDuration();
 
+    /**
+     * Start or resume playing an audio file.
+     */
 	public void play();
 
+    /**
+     *  Pause playback of an audio file.
+     */
 	public void pause();
 
+    /**
+     * Releases the underlying operating system's audio resources.
+     */
 	public void release();
 
+    /**
+     * Moves the position within the audio file.
+     * @param position
+     */
 	public void seekTo(long position);
 
+    /**
+     * Start recording an audio file.
+     */
 	public void startRecord();
 
+    /**
+     * Stop recording an audio file.
+     */
 	public void stopRecord();
 
+    /**
+     * Stop playing an audio file.
+     */
 	public void stop();
+
+    /**
+     * Set the volume for audio playback.This is an asynchronous function that sets the volume during audio playback.
+     * @param volume : The volume to set for playback. The value must be within the range of 0.0 to 1.0.
+     */
+    public void setVolume(double volume);
 }

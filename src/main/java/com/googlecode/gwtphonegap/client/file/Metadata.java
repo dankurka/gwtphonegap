@@ -17,6 +17,9 @@ package com.googlecode.gwtphonegap.client.file;
 
 import java.util.Date;
 
+/**
+ * An interface that supplies information about the state of a file or directory.
+ */
 public interface Metadata {
 	public Date getModificationTime();
 }
