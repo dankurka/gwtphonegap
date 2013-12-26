@@ -61,17 +61,11 @@ public class ContactsJsoImpl implements Contacts {
 		};
 
 		var lfilter = contactFindOptions.@com.googlecode.gwtphonegap.client.contacts.ContactFindOptions::getFilter()();
-		var lmultiple = contactFindOptions.@com.googlecode.gwtphonegap.client.contacts.ContactFindOptions::isMutiple()();
-		var gwtDate = contactFindOptions.@com.googlecode.gwtphonegap.client.contacts.ContactFindOptions::getUpdatedSince()();
-		var ldate = "";
-		if (gwtDate != null) {
-			ldate = this.@com.googlecode.gwtphonegap.client.contacts.js.ContactsJsoImpl::createJsDate(Ljava/util/Date;)(gwtDate);
-		}
+		var lmultiple = contactFindOptions.@com.googlecode.gwtphonegap.client.contacts.ContactFindOptions::isMultiple()();
 
 		var options = {
 			filter : lfilter,
-			multiple : lmultiple,
-			updatedSince : ldate
+			multiple : lmultiple
 		};
 
 		$wnd.navigator.contacts.find(fields, $entry(sC), $entry(eC), options);

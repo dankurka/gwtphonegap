@@ -49,9 +49,9 @@ public interface Event {
 
 	public HasEndCallButtonHandler getEndCallButtonHandler();
 
-	public HasVolumneDownButtonPressedHandler getVolumneDownButtonPressedHandler();
+	public HasVolumeDownButtonPressedHandler getVolumeDownButtonPressedHandler();
 
-	public HasVolumneUpButtonPressedHandler getVolumneUpButtonPressedHandler();
+	public HasVolumeUpButtonPressedHandler getVolumeUpButtonPressedHandler();
 	
 	void setEventBus(EventBus eventBus);
 }

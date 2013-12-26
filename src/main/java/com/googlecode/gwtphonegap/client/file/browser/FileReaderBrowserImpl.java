@@ -69,7 +69,7 @@ public class FileReaderBrowserImpl implements FileReader {
 	}
 
 	@Override
-	public void setOnloadCallback(ReaderCallback<FileReader> callback) {
+	public void setOnLoadCallback(ReaderCallback<FileReader> callback) {
 		this.onloadCallback = callback;
 
 	}
@@ -155,7 +155,7 @@ public class FileReaderBrowserImpl implements FileReader {
 	}
 
 	@Override
-	public void readAsText(FileEntry entry) {
+	public void readAsText(FileEntry entry,String encoding) {
 		if (this.state == FileReader.LOADING)
 			throw new RuntimeException("this loader is loading, cant do two things at once");
 		this.state = FileReader.LOADING;
@@ -207,5 +207,15 @@ public class FileReaderBrowserImpl implements FileReader {
 		});
 
 	}
+
+    @Override
+    public void readAsBinaryString(FileEntry entry) {
+
+    }
+
+    @Override
+    public void readAsArrayBuffer(FileEntry entry) {
+
+    }
 
 }

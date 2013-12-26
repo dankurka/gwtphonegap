@@ -15,6 +15,9 @@
  */
 package com.googlecode.gwtphonegap.client.notification;
 
+import com.google.gwt.user.client.Window;
+import org.mortbay.util.ajax.JSON;
+
 /**
  * Visual, audible, and tactile device notifications.
  * 
@@ -46,7 +49,36 @@ public class NotificationMobileImpl implements Notification {
 		$wnd.navigator.notification.vibrate(milliseconds);
 	}-*/;
 
-	@Override
+    @Override
+    public void prompt(String message, PromptCallback callback) {
+        prompt(message, callback,"Prompt");
+    }
+
+    @Override
+    public void prompt(String message, PromptCallback callback, String title) {
+        prompt(message, callback, title,"");
+    }
+
+    @Override
+    public void prompt(String message, PromptCallback callback, String title, String defaultText) {
+        prompt(message, callback, title, defaultText,defaultLabels);
+    }
+
+    @Override
+    public void prompt(String message, PromptCallback callback, String title, String defaultText, String[] buttonLabels) {
+        if (buttonLabels == null)
+            buttonLabels = defaultLabels;
+        prompt0(message, callback, title, buttonLabels, defaultText);
+    }
+
+    private native void prompt0(String message, PromptCallback callback, String title, String[] buttonLabels, String text)/*-{
+        var cal = function(results){
+            callback.@com.googlecode.gwtphonegap.client.notification.PromptCallback::onPrompt(Lcom/googlecode/gwtphonegap/client/notification/PromptResults;)(results);
+        };
+        $wnd.navigator.notification.prompt(message,$entry(cal),title,buttonLabels,text);
+    }-*/;
+
+    @Override
 	public void alert(String message) {
 		alert(message, emptyCallback);
 
@@ -119,4 +151,5 @@ public class NotificationMobileImpl implements Notification {
 		$wnd.navigator.notification.confirm(message, $entry(cal), title,
 				buttonLabels);
 	}-*/;
+
 }

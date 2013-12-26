@@ -33,8 +33,8 @@ public class MediaModuleJsImpl implements MediaModule {
 			callback.@com.googlecode.gwtphonegap.client.media.MediaCallback::onError(Lcom/googlecode/gwtphonegap/client/media/MediaError;)(error);
 		};
 
-		var status = function() {
-			callback.@com.googlecode.gwtphonegap.client.media.MediaCallback::onStatusChange()();
+		var status = function(mediaStatus) {
+			callback.@com.googlecode.gwtphonegap.client.media.MediaCallback::onStatusChange(I)(mediaStatus);
 		};
 
 		return new $wnd.Media(src, $entry(suc), $entry(fail), $entry(status));

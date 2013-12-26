@@ -15,10 +15,36 @@
  */
 package com.googlecode.gwtphonegap.client.file;
 
+/**
+ * The FileTransferError object is passed to the error callback when an error occurs when uploading or downloading a file.
+ */
 public interface FileTransferError {
 	public static final int FILE_NOT_FOUND_ERR = 1;
 	public static final int INVALID_URL_ERR = 2;
 	public static final int CONNECTION_ERR = 3;
+    public static final int ABORT_ERR = 4;
 
+    /**
+     *  One of the predefined error codes listed. (Number)
+     * @return
+     */
 	public int getCode();
+
+    /**
+     * URI to the source. (String)
+     * @return
+     */
+    public String getSource();
+
+    /**
+     *  URI to the target. (String)
+     * @return
+     */
+    public String getTarget();
+
+    /**
+     * HTTP status code. This attribute is only available when a response code is received from the HTTP connection. (Number)
+     * @return
+     */
+    public int getHttp_Status();
 }

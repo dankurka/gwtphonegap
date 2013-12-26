@@ -16,5 +16,28 @@
 package com.googlecode.gwtphonegap.client.globalization;
 
 public interface DatePattern {
+    /**
+     * The date and time pattern to format and parse dates. The patterns follow Unicode Technical Standard #35. (String)
+     * @return
+     */
   public String getPattern();
+
+    /**
+     * The abbreviated name of the time zone on the client. (String)
+     * @return
+     */
+    public String getTimeZone();
+
+    /**
+     * The current difference in seconds between the client's time zone and coordinated universal time. (Number)
+     * @return
+     */
+    public int getUtc_offset();
+
+    /**
+     *  The current daylight saving time offset in seconds between the client's non-daylight saving's time zone
+     *  and the client's daylight saving's time zone. (Number)
+     * @return
+     */
+    public int getDst_offset();
 }

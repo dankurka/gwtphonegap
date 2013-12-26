@@ -35,7 +35,34 @@ public class NotificationBrowserImpl implements Notification {
 
 	}
 
-	@Override
+    @Override
+    public void prompt(String message, PromptCallback callback) {
+        prompt(message,callback);
+    }
+
+    @Override
+    public void prompt(String message, PromptCallback callback, String title) {
+        prompt(message,callback);
+    }
+
+    @Override
+    public void prompt(String message, PromptCallback callback, String title, String defaultText) {
+        prompt(message,callback);
+    }
+
+    @Override
+    public void prompt(String message, PromptCallback callback, String title, String defaultText, String[] buttonLabels) {
+        String enteredValue =  Window.prompt(message, "OK");
+        PromptResults results;
+      if(enteredValue == null)
+           results = new PromptResultsBrowserImpl(1,null);
+        else
+          results = new PromptResultsBrowserImpl(0,enteredValue);
+        callback.onPrompt(results);
+    }
+
+
+    @Override
 	public void alert(String message, AlertCallback callback) {
 		Window.alert(message);
 		callback.onOkButtonClicked();

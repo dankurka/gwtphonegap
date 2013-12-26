@@ -29,4 +29,19 @@ public final class FileTransferErrorJsImpl extends JavaScriptObject implements F
 		return this.code;
 	}-*/;
 
+    @Override
+    public native String getSource() /*-{
+        return this.source;
+    }-*/;
+
+    @Override
+    public native String getTarget() /*-{
+        return this.target;
+    }-*/;
+
+    @Override
+    public native int getHttp_Status() /*-{
+        return this.http_status;
+    }-*/;
+
 }

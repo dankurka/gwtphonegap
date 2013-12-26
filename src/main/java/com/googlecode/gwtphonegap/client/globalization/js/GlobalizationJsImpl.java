@@ -17,34 +17,29 @@ package com.googlecode.gwtphonegap.client.globalization.js;
 import com.google.gwt.core.client.JsArrayString;
 import com.google.gwt.core.client.JsDate;
 
-import com.googlecode.gwtphonegap.client.globalization.CLocale;
-import com.googlecode.gwtphonegap.client.globalization.CNumberPattern;
-import com.googlecode.gwtphonegap.client.globalization.DateNameOptions;
-import com.googlecode.gwtphonegap.client.globalization.DateOptions;
-import com.googlecode.gwtphonegap.client.globalization.DatePattern;
-import com.googlecode.gwtphonegap.client.globalization.DateValue;
-import com.googlecode.gwtphonegap.client.globalization.Globalization;
-import com.googlecode.gwtphonegap.client.globalization.GlobalizationCallback;
-import com.googlecode.gwtphonegap.client.globalization.GlobalizationError;
-import com.googlecode.gwtphonegap.client.globalization.Language;
-import com.googlecode.gwtphonegap.client.globalization.NumberOptions;
+import com.google.gwt.user.datepicker.client.CalendarUtil;
+import com.googlecode.gwtphonegap.client.globalization.*;
 import com.googlecode.gwtphonegap.collection.client.JsLightArray;
 import com.googlecode.gwtphonegap.collection.shared.LightArray;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class GlobalizationJsImpl implements Globalization {
 
-  private static void getPreferredLanguageSuccess(
-      GlobalizationCallback<Language, GlobalizationError> callback, LanguageJsImpl language) {
-    callback.onSuccess(language);
-  }
 
-  private static void getLocalNameSuccess(
-      GlobalizationCallback<CLocale, GlobalizationError> callback, CLocaleJsImpl language) {
-    callback.onSuccess(language);
-  }
-
+    private static void getGlobalizationStringSuccess(
+            GlobalizationCallback<GlobalizationStringValue, GlobalizationError> callback, GlobalizationStringValueJsImpl locale) {
+        callback.onSuccess(locale);
+    }
+    private static void getGlobalizationIntSuccess(
+            GlobalizationCallback<GlobalizationIntValue, GlobalizationError> callback, GlobalizationIntValueJsImpl locale) {
+        callback.onSuccess(locale);
+    }
+    private static void getGlobalizationDoubleSuccess(
+            GlobalizationCallback<GlobalizationDoubleValue, GlobalizationError> callback, GlobalizationDoubleValueJsImpl locale) {
+        callback.onSuccess(locale);
+    }
   private static void failureCallback(GlobalizationCallback<?, GlobalizationError> callback,
       GlobalizationErrorJsImpl error) {
     callback.onFailure(error);
@@ -61,17 +56,17 @@ public class GlobalizationJsImpl implements Globalization {
 
   @Override
   public native void getPreferredLanguage(
-      GlobalizationCallback<Language, GlobalizationError> callback)/*-{
+      GlobalizationCallback<GlobalizationStringValue, GlobalizationError> callback)/*-{
 
 		var win = function(language) {
-			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::getPreferredLanguageSuccess(Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;Lcom/googlecode/gwtphonegap/client/globalization/js/LanguageJsImpl;)(callback, language);
-		};
+			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::getGlobalizationStringSuccess(Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;Lcom/googlecode/gwtphonegap/client/globalization/js/GlobalizationStringValueJsImpl;)(callback,language);
+        };
 
 		var fail = function(error) {
 			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::failureCallback(Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;Lcom/googlecode/gwtphonegap/client/globalization/js/GlobalizationErrorJsImpl;)(callback, error);
 		};
 
-		$doc.navigator.globalization.getPreferredLanguage($entry(win),
+      $wnd.navigator.globalization.getPreferredLanguage($entry(win),
 				$entry(fail));
   }-*/;
 
@@ -84,16 +79,16 @@ public class GlobalizationJsImpl implements Globalization {
    * gwtphonegap.client.globalization.GlobalizationCallback)
    */
   @Override
-  public native void getLocaleName(GlobalizationCallback<CLocale, GlobalizationError> callback) /*-{
+  public native void getLocaleName(GlobalizationCallback<GlobalizationStringValue, GlobalizationError> callback) /*-{
 		var win = function(locale) {
-			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::getLocalNameSuccess(Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;Lcom/googlecode/gwtphonegap/client/globalization/js/CLocaleJsImpl;)(callback, locale);
+			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::getGlobalizationStringSuccess(Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;Lcom/googlecode/gwtphonegap/client/globalization/js/GlobalizationStringValueJsImpl;)(callback,locale);
 		};
 
 		var fail = function(error) {
 			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::failureCallback(Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;Lcom/googlecode/gwtphonegap/client/globalization/js/GlobalizationErrorJsImpl;)(callback, error);
 		};
 
-		$doc.navigator.globalization.getLocaleName($entry(win), $entry(fail));
+      $wnd.navigator.globalization.getLocaleName($entry(win), $entry(fail));
 
   }-*/;
 
@@ -108,7 +103,7 @@ public class GlobalizationJsImpl implements Globalization {
 
   @Override
   public void convertDateToString(Date date,
-      GlobalizationCallback<DateValue, GlobalizationError> callback) {
+      GlobalizationCallback<GlobalizationStringValue, GlobalizationError> callback) {
     convertDateToString(date, new DateOptions(DateOptions.LENGTH_SHORT,
         DateOptions.SELECTOR_DATE_AND_TIME), callback);
 
@@ -125,7 +120,7 @@ public class GlobalizationJsImpl implements Globalization {
    */
   @Override
   public void convertDateToString(Date date, DateOptions options,
-      GlobalizationCallback<DateValue, GlobalizationError> callback) {
+      GlobalizationCallback<GlobalizationStringValue, GlobalizationError> callback) {
     if(options == null){
       throw new IllegalArgumentException("options can not be null");
     }
@@ -135,10 +130,11 @@ public class GlobalizationJsImpl implements Globalization {
   }
 
   private native void convertDateToString0 (JsDate date, String formatLength, String selector,
-      GlobalizationCallback<DateValue, GlobalizationError> callback)/*-{
+      GlobalizationCallback<GlobalizationStringValue, GlobalizationError> callback)/*-{
 
 		var win = function(dateValue) {
-			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::onConvertDateToStringSuccess(Lcom/googlecode/gwtphonegap/client/globalization/js/DateValueJsImpl;Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;)(dateValue, callback);
+			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::getGlobalizationStringSuccess(Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;Lcom/googlecode/gwtphonegap/client/globalization/js/GlobalizationStringValueJsImpl;)(callback,dateValue)
+
 		};
 
 		var fail = function(error) {
@@ -152,10 +148,6 @@ public class GlobalizationJsImpl implements Globalization {
 				});
   }-*/;
 
-  private static void onConvertDateToStringSuccess(DateValueJsImpl dateValue,
-      GlobalizationCallback<DateValue, GlobalizationError> callback) {
-    callback.onSuccess(dateValue);
-  }
 
   @Override
   public void convertStringToDate(String dateString,
@@ -178,10 +170,12 @@ public class GlobalizationJsImpl implements Globalization {
 
 
 
-  private static void onConvertStringToDateSuccess(JsDate date,
+  private static void onConvertStringToDateSuccess(DateFieldsJsImpl jsDate,
       GlobalizationCallback<Date, GlobalizationError> callback) {
-    long time = Math.round(date.getTime());
-    Date d = new Date(time);
+      Date d = new Date(jsDate.getYear(), jsDate.getMonth(),jsDate.getDay(), jsDate.getHour(),jsDate.getMinute(), jsDate.getSecond());
+      //TODO: Ideally the below lines should be uncommented to add the ms to give the exact output. But these lines are throwing some errors.
+   // Long actualTime = d.getTime()+jsDate.getMillisecond();
+    //  d.setTime(actualTime);
     callback.onSuccess(d);
   }
 
@@ -189,14 +183,14 @@ public class GlobalizationJsImpl implements Globalization {
       GlobalizationCallback<Date, GlobalizationError> callback) /*-{
 
 		var win = function(jsDate) {
-			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::onConvertStringToDateSuccess(Lcom/google/gwt/core/client/JsDate;Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;)(jsDate, callback);
+			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::onConvertStringToDateSuccess(Lcom/googlecode/gwtphonegap/client/globalization/js/DateFieldsJsImpl;Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;)(jsDate, callback);
 		};
 
 		var fail = function(error) {
 			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::failureCallback(Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;Lcom/googlecode/gwtphonegap/client/globalization/js/GlobalizationErrorJsImpl;)(callback, error);
 		};
 
-		$wnd.navigator.globalization.stringToDate(date, $entry(win),
+		$wnd.navigator.globalization.stringToDate(dateString, $entry(win),
 				$entry(fail), {
 					formatLength : formatLength,
 					selector : selector
@@ -264,7 +258,7 @@ public class GlobalizationJsImpl implements Globalization {
    * gwtphonegap.client.globalization.GlobalizationCallback)
    */
   @Override
-  public void getDateNames(GlobalizationCallback<LightArray<String>, GlobalizationError> callback) {
+  public void getDateNames(GlobalizationCallback<GlobalizationArrayValue, GlobalizationError> callback) {
     getDateNames(new DateNameOptions(DateNameOptions.TYPE_WIDE, DateNameOptions.ITEM_MONTHS),
         callback);
   }
@@ -278,7 +272,7 @@ public class GlobalizationJsImpl implements Globalization {
    */
   @Override
   public void getDateNames(DateNameOptions options,
-      GlobalizationCallback<LightArray<String>, GlobalizationError> callback) {
+      GlobalizationCallback<GlobalizationArrayValue, GlobalizationError> callback) {
     if (options == null)
       throw new IllegalArgumentException();
 
@@ -286,16 +280,16 @@ public class GlobalizationJsImpl implements Globalization {
 
   }
 
-  private static void onGetDateNames(JsArrayString dateNames,
-      GlobalizationCallback<LightArray<String>, GlobalizationError> callback) {
+  private static void onGetDateNames(GlobalizationArrayValueJsImpl arrayJSImpl,
+      GlobalizationCallback<GlobalizationArrayValue, GlobalizationError> callback) {
 
-    callback.onSuccess(new JsLightArray<String>(dateNames));
+    callback.onSuccess(arrayJSImpl);
   }
 
   private native void getDateNames0(String type, String item,
-      GlobalizationCallback<LightArray<String>, GlobalizationError> callback) /*-{
+      GlobalizationCallback<GlobalizationArrayValue, GlobalizationError> callback) /*-{
 		var win = function(names) {
-			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::onGetDateNames(Lcom/google/gwt/core/client/JsArrayString;Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;)(names, callback);
+			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::onGetDateNames(Lcom/googlecode/gwtphonegap/client/globalization/js/GlobalizationArrayValueJsImpl;Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;)(names,callback);
 		};
 
 		var fail = function(error) {
@@ -310,24 +304,23 @@ public class GlobalizationJsImpl implements Globalization {
 
   @Override
   public void isDayLightSavingsTime(Date date,
-      GlobalizationCallback<Boolean, GlobalizationError> callback) {
+      GlobalizationCallback<DayLightSavings, GlobalizationError> callback) {
     JsDate jsDate = JsDate.create(date.getTime());
     isDayLightSavingsTime0(jsDate, callback);
 
   }
 
-  private static void onIsDayLightSavingsTime(Boolean bool,
-      GlobalizationCallback<Boolean, GlobalizationError> callback) {
-    callback.onSuccess(bool);
+  private static void onIsDayLightSavingsTime(DayLightSavingsJsImpl dayLightSavings,
+      GlobalizationCallback<DayLightSavings, GlobalizationError> callback) {
+    callback.onSuccess(dayLightSavings);
   }
 
   private native void isDayLightSavingsTime0(JsDate jsDate,
-      GlobalizationCallback<Boolean, GlobalizationError> callback) /*-{
+      GlobalizationCallback<DayLightSavings, GlobalizationError> callback) /*-{
 
 		var win = function(is) {
-			var bool = @java.lang.Boolean::valueOf(Z)(is);
-			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::onIsDayLightSavingsTime(Ljava/lang/Boolean;Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;)(bool, callback);
-		};
+			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::onIsDayLightSavingsTime(Lcom/googlecode/gwtphonegap/client/globalization/js/DayLightSavingsJsImpl;Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;)(is,callback);
+    	};
 
 		var fail = function(error) {
 			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::failureCallback(Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;Lcom/googlecode/gwtphonegap/client/globalization/js/GlobalizationErrorJsImpl;)(callback, error);
@@ -337,16 +330,11 @@ public class GlobalizationJsImpl implements Globalization {
 				$entry(fail));
   }-*/;
 
-  private static void onGetFirstDayOfWeek(Integer value,
-      GlobalizationCallback<Integer, GlobalizationError> callback) {
-    callback.onSuccess(value);
-  }
 
   @Override
-  public native void getFirstDayOfWeek(GlobalizationCallback<Integer, GlobalizationError> callback) /*-{
-		var win = function(number) {
-			var intValue = @java.lang.Integer::valueOf(I)(number);
-			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::onGetFirstDayOfWeek(Ljava/lang/Integer;Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;)(intValue, callback);
+  public native void getFirstDayOfWeek(GlobalizationCallback<GlobalizationIntValue, GlobalizationError> callback) /*-{
+		var win = function(success) {
+			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::getGlobalizationIntSuccess(Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;Lcom/googlecode/gwtphonegap/client/globalization/js/GlobalizationIntValueJsImpl;)(callback,success);
 		};
 
 		var fail = function(error) {
@@ -360,7 +348,7 @@ public class GlobalizationJsImpl implements Globalization {
 
   @Override
   public void numberToString(double number, NumberOptions options,
-      GlobalizationCallback<String, GlobalizationError> callback) {
+      GlobalizationCallback<GlobalizationStringValue, GlobalizationError> callback) {
     if (options == null) {
       throw new IllegalArgumentException();
     }
@@ -369,16 +357,12 @@ public class GlobalizationJsImpl implements Globalization {
 
   }
 
-  private static void onNumberToString(String formattedNumber,
-      GlobalizationCallback<String, GlobalizationError> callback) {
-    callback.onSuccess(formattedNumber);
-  }
 
   private native void numberToString0(double number, String type,
-      GlobalizationCallback<String, GlobalizationError> callback) /*-{
+      GlobalizationCallback<GlobalizationStringValue, GlobalizationError> callback) /*-{
 
-		var win = function(number) {
-			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::onNumberToString(Ljava/lang/String;Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;)(number.value, callback);
+		var win = function(success) {
+			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::getGlobalizationStringSuccess(Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;Lcom/googlecode/gwtphonegap/client/globalization/js/GlobalizationStringValueJsImpl;)(callback,success);
 		};
 
 		var fail = function(error) {
@@ -393,14 +377,14 @@ public class GlobalizationJsImpl implements Globalization {
 
   @Override
   public void numberToString(double number,
-      GlobalizationCallback<String, GlobalizationError> callback) {
+      GlobalizationCallback<GlobalizationStringValue, GlobalizationError> callback) {
     numberToString(number, new NumberOptions(NumberOptions.DECIMAL), callback);
 
   }
 
   @Override
   public void stringToNumber(String stringToFormat, NumberOptions options,
-      GlobalizationCallback<Number, GlobalizationError> callback) {
+      GlobalizationCallback<GlobalizationDoubleValue, GlobalizationError> callback) {
     if (options == null) {
       throw new IllegalArgumentException();
     }
@@ -409,15 +393,11 @@ public class GlobalizationJsImpl implements Globalization {
 
   }
 
-  private static void onStringToNumber(Number number,
-      GlobalizationCallback<Number, GlobalizationError> callback) {
-    callback.onSuccess(number);
-  }
-
   private native void stringToNumber0(String stringToFormat, String type,
-      GlobalizationCallback<Number, GlobalizationError> callback) /*-{
-		var win = function(number) {
-			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::onStringToNumber(Ljava/lang/Number;Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;)(number.value, callback);
+      GlobalizationCallback<GlobalizationDoubleValue, GlobalizationError> callback) /*-{
+		var win = function(success) {
+			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::getGlobalizationDoubleSuccess(Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;Lcom/googlecode/gwtphonegap/client/globalization/js/GlobalizationDoubleValueJsImpl;)(callback,success);
+
 		};
 
 		var fail = function(error) {
@@ -433,7 +413,7 @@ public class GlobalizationJsImpl implements Globalization {
 
   @Override
   public void stringToNumber(String stringToFormat,
-      GlobalizationCallback<Number, GlobalizationError> callback) {
+      GlobalizationCallback<GlobalizationDoubleValue, GlobalizationError> callback) {
     stringToNumber(stringToFormat, new NumberOptions(NumberOptions.DECIMAL), callback);
 
   }
@@ -479,10 +459,10 @@ public class GlobalizationJsImpl implements Globalization {
 
   @Override
   public native void getCurrencyPattern(String currencyCode,
-      GlobalizationCallback<CNumberPattern, GlobalizationError> callback) /*-{
+      GlobalizationCallback<CurrencyPattern, GlobalizationError> callback) /*-{
 
 		var win = function(pattern) {
-			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::onGetNumberPattern(Lcom/googlecode/gwtphonegap/client/globalization/js/CNumberPatternJsImpl;Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;)(pattern, callback);
+			@com.googlecode.gwtphonegap.client.globalization.js.GlobalizationJsImpl::onGetCurrencyPattern(Lcom/googlecode/gwtphonegap/client/globalization/js/CurrencyPatternJsImpl;Lcom/googlecode/gwtphonegap/client/globalization/GlobalizationCallback;)(pattern,callback);
 		};
 
 		var fail = function(error) {
@@ -493,5 +473,8 @@ public class GlobalizationJsImpl implements Globalization {
 				$entry(win), $entry(fail));
 
   }-*/;
-
+    private static void onGetCurrencyPattern(CurrencyPatternJsImpl currencyPattern,
+                                           GlobalizationCallback<CurrencyPattern, GlobalizationError> callback) {
+        callback.onSuccess(currencyPattern);
+    }
 }

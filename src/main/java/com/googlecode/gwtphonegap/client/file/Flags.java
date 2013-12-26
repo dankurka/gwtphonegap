@@ -15,9 +15,21 @@
  */
 package com.googlecode.gwtphonegap.client.file;
 
+/**
+ * Supplies arguments to the DirectoryEntry object's getFile() and getDirectory() methods,
+ * which look up or create files and directories, respectively.
+ */
 public class Flags {
+
+    /**
+     * Indicates that the file or directory should be created if it does not already exist. (boolean)
+     */
 	private boolean create;
 
+    /**
+     * Has has no effect by itself, but when used with create causes the file or directory creation
+     * to fail if the target path already exists. (boolean)
+     */
 	private boolean exclusive;
 
 	public Flags() {

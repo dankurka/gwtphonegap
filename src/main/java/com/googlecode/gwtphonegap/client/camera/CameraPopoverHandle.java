@@ -1,31 +1,26 @@
 /*
- * Copyright 2013 Daniel Kurka
- * 
+ * Copyright 2013 vkiran
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
  * the License.
  */
-package com.googlecode.gwtphonegap.client.globalization.js;
+package com.googlecode.gwtphonegap.client.camera;
 
-import com.google.gwt.core.client.JavaScriptObject;
+/**
+ * A handle to the popover dialog created by camera.getPicture.
+ */
+public interface CameraPopoverHandle {
 
-import com.googlecode.gwtphonegap.client.globalization.DateValue;
-
-public final class DateValueJsImpl extends JavaScriptObject implements DateValue {
-
-  protected DateValueJsImpl() {
-
-  }
-
-  @Override
-  public native String getValue() /*-{
-		return this.value;
-  }-*/;
-
+    /**
+     * Set the position of the popover.
+     * @param popOverOptions :  the CameraPopoverOptions that specify the new position
+     */
+    public void setPosition(PopOverOptions popOverOptions);
 }

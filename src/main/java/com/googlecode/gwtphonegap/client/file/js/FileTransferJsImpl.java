@@ -27,7 +27,8 @@ import java.util.Set;
 
 public final class FileTransferJsImpl extends JavaScriptObject implements FileTransfer {
 
-  protected FileTransferJsImpl() {
+
+    protected FileTransferJsImpl() {
 
   }
 
@@ -37,12 +38,12 @@ public final class FileTransferJsImpl extends JavaScriptObject implements FileTr
   }-*/;
 
   @Override
-  public void download(String sourceUrl, String filePath, FileDownloadCallback callback) {
-    download0(sourceUrl, filePath, callback);
+  public void download(String sourceUrl, String filePath, boolean trustAllHosts, Map<String, String> options, FileDownloadCallback callback) {
+    download0(sourceUrl, filePath, callback,trustAllHosts,options);
   }
 
   @Override
-  public void upload(String fileUri, String serverUrl, FileUploadOptions options,
+  public void upload(String fileUri, String serverUrl, boolean trustAllHosts,FileUploadOptions options,
       FileUploadCallback callback) {
     Map<String, String> params = options.getParams();
     JsLightMap<String> map = new JsLightMap<String>();
@@ -62,12 +63,12 @@ public final class FileTransferJsImpl extends JavaScriptObject implements FileTr
       }
     }
 
-    upload0(fileUri, serverUrl, options, map.getMap(), headers.getMap(), callback);
+    upload0(fileUri, serverUrl, options, map.getMap(), headers.getMap(), callback,trustAllHosts);
 
   }
 
   private native void upload0(String fileUri, String serverUrl, FileUploadOptions options,
-      JavaScriptObject map, JavaScriptObject headers, FileUploadCallback callback)/*-{
+      JavaScriptObject map, JavaScriptObject headers, FileUploadCallback callback, boolean trustAllHosts)/*-{
 		var that = this;
 
 		var suc = function(result) {
@@ -88,12 +89,12 @@ public final class FileTransferJsImpl extends JavaScriptObject implements FileTr
 		fop.fileName = options.@com.googlecode.gwtphonegap.client.file.FileUploadOptions::getFileName()();
 		fop.mimeType = options.@com.googlecode.gwtphonegap.client.file.FileUploadOptions::getMimeType()();
 		fop.params = map;
-		fop.heaaders = headers;
+		fop.headers = headers;
 
-		this.upload(fileUri, serverUrl, $entry(suc), $entry(fail), fop);
+		this.upload(fileUri, serverUrl, $entry(suc), $entry(fail), fop,trustAllHosts);
   }-*/;
 
-  private native void download0(String sourceUrl, String filePath, FileDownloadCallback callback)/*-{
+  private native void download0(String sourceUrl, String filePath, FileDownloadCallback callback, boolean trustAllHosts, Map<String, String> options)/*-{
 
 		var suc = function(result) {
 			var en = @com.googlecode.gwtphonegap.client.file.js.FileEntryJsImpl::new(Lcom/google/gwt/core/client/JavaScriptObject;)(result);
@@ -106,7 +107,7 @@ public final class FileTransferJsImpl extends JavaScriptObject implements FileTr
 		this.onprogress = $entry(function(progressEvent) {
 			callback.@com.googlecode.gwtphonegap.client.file.FileDownloadCallback::onProgress(Lcom/googlecode/gwtphonegap/client/file/FileTransferProgressEvent;)(progressEvent);
 		});
-		this.download(sourceUrl, filePath, $entry(suc), $entry(fail));
+		this.download(sourceUrl, filePath, $entry(suc), $entry(fail),trustAllHosts, options);
   }-*/;
 
 }

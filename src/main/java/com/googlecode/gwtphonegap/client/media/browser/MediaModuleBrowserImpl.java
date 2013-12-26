@@ -82,7 +82,6 @@ public class MediaModuleBrowserImpl implements MediaModule {
 
             }
 
-
         };
 	}
 

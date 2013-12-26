@@ -52,11 +52,16 @@ public final class FileObjectJsImpl extends JavaScriptObject implements FileObje
 	}
 
 	@Override
-	public long size() {
+	public Long size() {
 		return Math.round(size0());
 	}
 
-	public native double size0() /*-{
+    @Override
+    public native FileObject slice(Long start, Long end) /*-{
+        return this.slice(start,end);
+    }-*/;
+
+    public native double size0() /*-{
 		return this.size;
 	}-*/;
 

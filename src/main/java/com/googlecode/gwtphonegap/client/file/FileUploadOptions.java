@@ -15,16 +15,41 @@ package com.googlecode.gwtphonegap.client.file;
 
 import java.util.Map;
 
+/**
+ * A FileUploadOptions object can be passed to the FileTransfer object's upload() method to
+ * specify additional parameters to the upload script.
+ */
 public class FileUploadOptions {
+
+    /**
+     * The name of the form element. Defaults to file. (DOMString)
+     */
   private String fileKey;
 
+    /**
+     * The file name to use when saving the file on the server. Defaults to image.jpg. (DOMString)
+     */
   private String fileName;
 
+    /**
+     * The mime type of the data to upload. Defaults to image/jpeg. (DOMString)
+     */
   private String mimeType;
 
+    /**
+     *  A set of optional key/value pairs to pass in the HTTP request. (Object)
+     */
   private Map<String, String> params;
 
+    /**
+     *  A map of header name/header values. Use an array to specify more than one value. (Object)
+     */
   private Map<String, String> headers;
+
+    /**
+     * Whether to upload the data in chunked streaming mode. Defaults to true. (Boolean)
+     */
+    private boolean chunkedMode = true;
 
   public FileUploadOptions() {
 
@@ -37,13 +62,18 @@ public class FileUploadOptions {
 
   public FileUploadOptions(String fileKey, String fileName, String mimeType,
       Map<String, String> params, Map<String, String> headers) {
-    this.fileKey = fileKey;
-    this.fileName = fileName;
-    this.mimeType = mimeType;
-    this.params = params;
-    this.headers = headers;
+      this(fileKey, fileName, mimeType, params, headers,true);
   }
 
+    public FileUploadOptions(String fileKey, String fileName, String mimeType,
+                             Map<String, String> params, Map<String, String> headers,boolean chunkedMode) {
+        this.fileKey = fileKey;
+        this.fileName = fileName;
+        this.mimeType = mimeType;
+        this.params = params;
+        this.headers = headers;
+        this.chunkedMode = chunkedMode;
+    }
   public String getFileKey() {
     return fileKey;
   }
@@ -84,4 +114,14 @@ public class FileUploadOptions {
     return headers;
   }
 
+    /**
+     * Whether to upload the data in chunked streaming mode. Defaults to true. (Boolean)
+     */
+    public boolean isChunkedMode() {
+        return chunkedMode;
+    }
+
+    public void setChunkedMode(boolean chunkedMode) {
+        this.chunkedMode = chunkedMode;
+    }
 }

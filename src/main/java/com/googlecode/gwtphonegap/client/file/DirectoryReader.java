@@ -17,7 +17,15 @@ package com.googlecode.gwtphonegap.client.file;
 
 import com.googlecode.gwtphonegap.collection.shared.LightArray;
 
+/**
+ * An object that lists files and directories within a directory,
+ * as defined in the W3C Directories and Systems specification.
+ */
 public interface DirectoryReader {
+    /**
+     * Read the entries in this directory.
+     * @param callback
+     */
 	public void readEntries(FileCallback<LightArray<EntryBase>, FileError> callback);
 
 }

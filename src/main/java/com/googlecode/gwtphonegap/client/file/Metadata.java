@@ -19,7 +19,14 @@ import java.util.Date;
 
 /**
  * An interface that supplies information about the state of a file or directory.
+ * The Metadata object represents information about the state of a file or directory.
+ * Calling a DirectoryEntry or FileEntry object's getMetadata() method results in a Metadata instance.
  */
 public interface Metadata {
+
+    /**
+     * The time when the file or directory was last modified. (Date)
+     * @return
+     */
 	public Date getModificationTime();
 }

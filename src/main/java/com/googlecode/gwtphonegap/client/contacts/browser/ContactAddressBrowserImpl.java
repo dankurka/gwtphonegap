@@ -20,7 +20,7 @@ import com.googlecode.gwtphonegap.client.contacts.ContactAddress;
 public class ContactAddressBrowserImpl implements ContactAddress {
 
 	private String formatted;
-	private String streedAddress;
+	private String streetAddress;
 	private String locality;
 	private String region;
 	private String postalCode;
@@ -41,13 +41,13 @@ public class ContactAddressBrowserImpl implements ContactAddress {
 
 	@Override
 	public void setStreetAddress(String address) {
-		this.streedAddress = address;
+		this.streetAddress = address;
 
 	}
 
 	@Override
 	public String getStreetAddress() {
-		return streedAddress;
+		return streetAddress;
 	}
 
 	@Override

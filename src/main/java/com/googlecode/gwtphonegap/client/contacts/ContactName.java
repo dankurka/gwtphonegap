@@ -59,8 +59,7 @@ public interface ContactName {
 
 	/**
 	 * The contacts given name. (DOMString)
-	 * 
-	 * @param name
+	 *
 	 * @return
 	 */
 	public String getGivenName();
@@ -84,26 +83,26 @@ public interface ContactName {
 	 * 
 	 * @param prefix
 	 */
-	public void setHonoricfPrefix(String prefix);
+	public void setHonorificPrefix(String prefix);
 
 	/**
 	 * The contacts prefix (example Mr. or Dr.) (DOMString)
 	 * 
 	 * @return
 	 */
-	public String getHonoricPrefix();
+	public String getHonorificPrefix();
 
 	/**
 	 * The contacts suffix (example Esq.). (DOMString)
 	 * 
 	 * @param suffix
 	 */
-	public void setHonoricfSuffix(String suffix);
+	public void setHonorificSuffix(String suffix);
 
 	/**
 	 * The contacts suffix (example Esq.). (DOMString)
 	 * 
 	 * @return
 	 */
-	public String getHonoricSuffix();
+	public String getHonorificSuffix();
 }

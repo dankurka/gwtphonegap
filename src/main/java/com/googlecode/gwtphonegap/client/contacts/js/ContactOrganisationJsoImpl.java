@@ -47,12 +47,52 @@ public final class ContactOrganisationJsoImpl extends JavaScriptObject implement
 
 	@Override
 	public native void setTitle(String title) /*-{
-		return this.title;
+		 this.title = title;
 	}-*/;
 
 	@Override
 	public native String getTitle() /*-{
 		return this.title;
 	}-*/;
+
+    /**
+     * Set to true if this ContactOrganization contains the user's preferred value. (boolean)
+     *
+     * @param pref
+     */
+    @Override
+    public native void setPref(boolean pref) /*-{
+        this.pref = pref;
+    }-*/;
+
+    /**
+     * Set to true if this ContactOrganization contains the user's preferred value. (boolean)
+     *
+     * @return
+     */
+    @Override
+    public native boolean isPref() /*-{
+        return this.pref;
+    }-*/;
+
+    /**
+     * The department the contract works for. (DOMString)
+     *
+     * @param type
+     */
+    @Override
+    public native void setType(String type) /*-{
+        this.type = type;
+    }-*/;
+
+    /**
+     * The department the contract works for. (DOMString)
+     *
+     * @return
+     */
+    @Override
+    public native String getType()/*-{
+        return this.type;
+    }-*/;
 
 }

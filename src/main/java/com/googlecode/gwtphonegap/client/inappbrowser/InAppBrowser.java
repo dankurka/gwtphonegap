@@ -13,6 +13,10 @@
  */
 package com.googlecode.gwtphonegap.client.inappbrowser;
 
+/**
+ * The InAppBrowser is a web browser view that displays when calling window.open(),
+ * or when opening a link formed as <a target="_blank">.
+ */
 public interface InAppBrowser {
   public InAppBrowserReference open(String url, String windowName, String windowFeatures);
 }

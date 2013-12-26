@@ -42,4 +42,22 @@ public interface Notification {
 
 	public void vibrate(int milliseconds);
 
+    public void prompt(String message, PromptCallback callback);
+
+    public void prompt(String message, PromptCallback callback, String title);
+
+    public void prompt(String message, PromptCallback callback, String title, String defaultText);
+
+    /**
+     * Shows a customizable prompt dialog box.
+     * The notification.prompt method displays a native dialog box that is more customizable than the browser's prompt function.
+     * @param message
+     * @param callback
+     * @param title
+     * @param defaultText
+     * @param buttonLabels
+     */
+    public void prompt(String message, PromptCallback callback, String title, String defaultText, String[] buttonLabels);
+
+
 }

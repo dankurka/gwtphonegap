@@ -45,7 +45,7 @@ import com.googlecode.gwtphonegap.client.splashscreen.SplashScreen;
  * <li>Camera</li>
  * <li>Capture</li>
  * <li>Compass</li>
- * <li>Conntection</li>
+ * <li>Connection</li>
  * <li>Contacts</li>
  * <li>Device</li>
  * <li>Events</li>

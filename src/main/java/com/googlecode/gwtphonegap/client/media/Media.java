@@ -70,4 +70,5 @@ public interface Media {
      * @param volume : The volume to set for playback. The value must be within the range of 0.0 to 1.0.
      */
     public void setVolume(double volume);
+
 }

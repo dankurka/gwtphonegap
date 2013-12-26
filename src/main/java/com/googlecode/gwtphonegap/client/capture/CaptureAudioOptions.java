@@ -26,13 +26,7 @@ public class CaptureAudioOptions {
 
 	private long duration;
 
-	private ConfigurationData mode;
-
-	public CaptureAudioOptions(ConfigurationData mode) {
-		if (mode == null) {
-			throw new IllegalArgumentException("mode can not be null");
-		}
-		this.mode = mode;
+	public CaptureAudioOptions( ) {
 		this.limit = 1;
 		this.duration = -1;
 	}
@@ -82,12 +76,4 @@ public class CaptureAudioOptions {
 		return duration;
 	}
 
-	/**
-	 * Get the selected mode
-	 * 
-	 * @return
-	 */
-	public ConfigurationData getMode() {
-		return mode;
-	}
 }

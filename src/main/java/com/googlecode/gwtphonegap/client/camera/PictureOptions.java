@@ -15,34 +15,117 @@ package com.googlecode.gwtphonegap.client.camera;
 
 public class PictureOptions {
 
-  public static final int DESTINATION_TYPE_DATA_URL = 0;
-  public static final int DESTINATION_TYPE_FILE_URI = 1;
+    /**
+     * Return image as base64-encoded string
+     */
+    public static final int DESTINATION_TYPE_DATA_URL = 0;
+    /**
+     * Return image file URI
+     */
+    public static final int DESTINATION_TYPE_FILE_URI = 1;
+    /**
+     * Return image native URI (e.g., assets-library:// on iOS or content:// on Android)
+     */
+    public static final int DESTINATION_TYPE_NATIVE_URI = 2;
+    /**
+     * Use the front-facing camera
+     */
+    private static final int FRONT_CAMERA = 1;
+    /**
+     * Use the back-facing camera
+     */
+    private static final int BACK_CAMERA = 0;
+    /**
+     * Return JPEG encoded image
+     */
+    public static final int CAMERA_ENCODING_TYPE_JPEG = 0;
+    /**
+     * Return PNG encoded image
+     */
+    public static final int CAMERA_ENCODING_TYPE_PNG = 1;
+    /**
+     * allow selection of still pictures only. DEFAULT. Will return format specified via DestinationType
+     */
+    public static final int CAMERA_MEDIA_TYPE_PICTURE = 0;
 
-  public static final int PICTURE_SOURCE_TYPE_PHOTO_LIBRARY = 0;
-  public static final int PICTURE_SOURCE_TYPE_CAMERA = 1;
-  public static final int PICTURE_SOURCE_TYPE_SAVED_PHOTO_ALBUM = 2;
+    /**
+     *allow selection of video only, WILL ALWAYS RETURN FILE_URI
+     */
+    public static final int CAMERA_MEDIA_TYPE_VIDEO = 1;
 
-  public static final int CAMERA_ENCODING_TYPE_JPEG = 0;
-  public static final int CAMERA_ENCODING_TYPE_PNG = 1;
+    /**
+     * allow selection from all media types
+     */
+    public static final int CAMERA_MEDIA_TYPE_ALL = 2;
 
-  public static final int CAMERA_MEDIA_TYPE_PICTURE = 0;
-  public static final int CAMERA_MEDIA_TYPE_VIDEO = 1;
-  public static final int CAMERA_MEDIA_TYPE_ALL = 2;
+    /**
+     *
+     */
+    public static final int PICTURE_SOURCE_TYPE_PHOTO_LIBRARY = 0;
+    /**
+     *
+      */
+    public static final int PICTURE_SOURCE_TYPE_CAMERA = 1;
+    /**
+     *
+      */
+    public static final int PICTURE_SOURCE_TYPE_SAVED_PHOTO_ALBUM = 2;
 
+    /**
+     * Quality of the saved image, expressed as a range of 0-100,
+     * where 100 is typically full resolution with no loss from file compression. (Number)
+     * (Note that information about the camera's resolution is unavailable.)
+     */
   private int quality;
 
+    /**
+     * Choose the format of the return value. Defined in navigator.camera.DestinationType (Number)
+     */
   private int destinationType;
+    /**
+     * Set the source of the picture. Defined in navigator.camera.PictureSourceType (Number)
+     */
   private int sourceType;
+    /**
+     * Choose the returned image file's encoding. Defined in navigator.camera.EncodingType (Number)
+     */
   private int encoding;
-
+    /**
+     * Height in pixels to scale image.
+     * Must be used with targetWidth. Aspect ratio remains constant. (Number)
+     */
   private int targetHeightInPx;
+    /**
+     * Width in pixels to scale image. Must be used with targetHeight.
+     * Aspect ratio remains constant. (Number)
+     */
   private int targetWidthInPx;
+    /**
+     * Set the type of media to select from.
+     * Only works when PictureSourceType is PHOTOLIBRARY or SAVEDPHOTOALBUM.
+     * Defined in nagivator.camera.MediaType (Number)
+     */
   private int mediaType;
-
+    /**
+     * Choose the camera to use (front- or back-facing).
+     * Defined in navigator.camera.Direction (Number)
+     */
+  private int direction;
+    /**
+     * Allow simple editing of image before selection. (Boolean)
+     */
   private boolean allowEdit;
+    /**
+     * Save the image to the photo album on the device after capture. (Boolean)
+     */
   private boolean saveToPhotoAlbum;
-  private boolean correctorientation;
-
+    /**
+     * Rotate the image to correct for the orientation of the device during capture. (Boolean)
+     */
+  private boolean correctOrientation;
+    /**
+     * iOS-only options that specify popover location in iPad. Defined in CameraPopoverOptions.
+     */
   private PopOverOptions popOverOptions;
 
   public PictureOptions() {
@@ -59,7 +142,7 @@ public class PictureOptions {
 
     allowEdit = true;
 
-    correctorientation = false;
+    correctOrientation = false;
     saveToPhotoAlbum = false;
   }
 
@@ -132,12 +215,12 @@ public class PictureOptions {
     return allowEdit;
   }
 
-  public void setCorrectOrientation(boolean correctorientation) {
-    this.correctorientation = correctorientation;
+  public void setCorrectOrientation(boolean correctOrientation) {
+    this.correctOrientation = correctOrientation;
   }
 
-  public boolean isCorrectorientation() {
-    return correctorientation;
+  public boolean isCorrectOrientation() {
+    return correctOrientation;
   }
 
   public void setSaveToPhotoAlbum(boolean saveToPhotoAlbum) {
@@ -155,5 +238,12 @@ public class PictureOptions {
   public PopOverOptions getPopOverOptions() {
     return popOverOptions;
   }
+    public int getDirection() {
+        return direction;
+    }
+
+    public void setDirection(int direction) {
+        this.direction = direction;
+    }
 
 }
