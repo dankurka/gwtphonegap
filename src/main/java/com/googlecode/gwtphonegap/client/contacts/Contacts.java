@@ -52,7 +52,7 @@ public interface Contacts {
 	 * [Optional] contactFindOptions: Search options to filter contacts.
 	 * [Optional]
 	 * 
-	 * @param field
+	 * @param fields
 	 * @param callback
 	 * @param contactFindOptions
 	 */

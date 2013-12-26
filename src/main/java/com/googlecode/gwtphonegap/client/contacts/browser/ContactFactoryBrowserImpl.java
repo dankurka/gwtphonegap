@@ -32,23 +32,26 @@ public class ContactFactoryBrowserImpl implements ContactFactory {
 	}
 
 	@Override
-	public ContactOrganisation createContactOrganisation(String name, String department, String title) {
+	public ContactOrganisation createContactOrganisation(String name, String department, String title,boolean pref,String type) {
 		ContactOrganisationBrowserImpl contact = new ContactOrganisationBrowserImpl();
 		contact.setName(name);
 		contact.setDepartment(department);
 		contact.setTitle(title);
+        contact.setPref(pref);
+        contact.setType(type);
 		return contact;
 	}
 
 	@Override
-	public ContactAddress createContactAddress(String formatted, String streetAddress, String locality, String region, String postalCode, String country) {
+	public ContactAddress createContactAddress(String type,boolean isPref, String streetAddress, String locality, String region, String postalCode, String country) {
 		ContactAddressBrowserImpl ca = new ContactAddressBrowserImpl();
 		ca.setCountry(country);
-		ca.setFormatted(formatted);
 		ca.setLocality(locality);
 		ca.setPostalCode(postalCode);
 		ca.setRegion(region);
 		ca.setStreetAddress(streetAddress);
+        ca.setType(type);
+        ca.setPref(isPref);
 		return ca;
 	}
 

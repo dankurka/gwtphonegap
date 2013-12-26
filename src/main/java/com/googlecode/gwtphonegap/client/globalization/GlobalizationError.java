@@ -13,6 +13,10 @@
  */
 package com.googlecode.gwtphonegap.client.globalization;
 
+/**
+ * An object representing a error from the Globalization API.
+ * This object is created and populated by Cordova, and returned to a callback in the case of an error.
+ */
 public interface GlobalizationError {
 
   public static final int UNKNOWN_ERROR = 0;
@@ -20,7 +24,15 @@ public interface GlobalizationError {
   public static final int PARSING_ERROR = 2;
   public static final int PATTERN_ERROR = 3;
 
+    /**
+     * One of the error codes representing the error type (Number)
+     * @return
+     */
   public int getCode();
 
+    /**
+     * A text message that includes the error's explanation and/or details (String)
+     * @return
+     */
   public String getMessage();
 }

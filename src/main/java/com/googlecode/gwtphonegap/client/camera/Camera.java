@@ -30,7 +30,15 @@ public interface Camera {
    * @param options
    * @param callback
    */
-  public void getPicture(PictureOptions options, PictureCallback callback);
+  public CameraPopoverHandle getPicture(PictureOptions options, PictureCallback callback);
 
+    /**
+     * Removes intermediate image files that are kept in temporary storage after calling
+     * camera.getPicture. Applies only when the value of Camera.sourceType equals
+     * Camera.PictureSourceType.CAMERA and the Camera.destinationType equals
+     * Camera.DestinationType.FILE_URI.
+     * Supported only by iOS
+     * @param callback
+     */
   public void cleanUp(CameraCallback callback);
 }

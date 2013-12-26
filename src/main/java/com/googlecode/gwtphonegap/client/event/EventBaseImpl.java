@@ -82,18 +82,18 @@ public abstract class EventBaseImpl implements Event, EventMock {
 	}
 
 	@Override
-	public HasVolumneDownButtonPressedHandler getVolumneDownButtonPressedHandler() {
+	public HasVolumeDownButtonPressedHandler getVolumeDownButtonPressedHandler() {
 		return pgImpl;
 	}
 
 	@Override
-	public HasVolumneUpButtonPressedHandler getVolumneUpButtonPressedHandler() {
+	public HasVolumeUpButtonPressedHandler getVolumeUpButtonPressedHandler() {
 		return pgImpl;
 	}
 
 	private class PhoneGapEventHandlerImpl implements HasOfflineHandler, HasOnlineHandler, HasResumeHandlers, HasPauseHandlers, HasBackButtonPressedHandlers, HasSearchButtonHandlers,
 			HasMenuButtonPressedHandlers, HasBatteryCriticalHandler, HasBatteryLowHandler, HasBatteryStatusHandler, HasStartCallButtonHandler, HasEndCallButtonHandler,
-			HasVolumneDownButtonPressedHandler, HasVolumneUpButtonPressedHandler {
+			HasVolumeDownButtonPressedHandler, HasVolumeUpButtonPressedHandler {
 
 		@Override
 		public void fireEvent(GwtEvent<?> event) {
@@ -165,12 +165,12 @@ public abstract class EventBaseImpl implements Event, EventMock {
 		}
 
 		@Override
-		public HandlerRegistration addVolumneDownButtonPressedHandler(VolumeDownButtonPressedHandler handler) {
+		public HandlerRegistration addVolumeDownButtonPressedHandler(VolumeDownButtonPressedHandler handler) {
 			return eventBus.addHandler(VolumeDownButtonPressedEvent.getType(), handler);
 		}
 
 		@Override
-		public HandlerRegistration addVolumneUpButtonPressedHandler(VolumeUpButtonPressedHandler handler) {
+		public HandlerRegistration addVolumeUpButtonPressedHandler(VolumeUpButtonPressedHandler handler) {
 			return eventBus.addHandler(VolumeUpButtonPressedEvent.getType(), handler);
 		}
 
@@ -233,7 +233,7 @@ public abstract class EventBaseImpl implements Event, EventMock {
 	}
 
 	@Override
-	public void fireBatteryStatusvent(int level, boolean plugged) {
+	public void fireBatteryStatusEvent(int level, boolean plugged) {
 		eventBus.fireEvent(new BatteryStatusEvent(level, plugged));
 	}
 
@@ -248,12 +248,12 @@ public abstract class EventBaseImpl implements Event, EventMock {
 	}
 
 	@Override
-	public void fireVolumneButtonDownPressedEvent() {
+	public void fireVolumeButtonDownPressedEvent() {
 		eventBus.fireEvent(new VolumeDownButtonPressedEvent());
 	}
 
 	@Override
-	public void fireVolumneButtonUpPressedEvent() {
+	public void fireVolumeButtonUpPressedEvent() {
 		eventBus.fireEvent(new VolumeUpButtonPressedEvent());
 	}
 

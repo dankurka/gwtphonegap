@@ -30,4 +30,19 @@ public final class DatePatternJsImpl extends JavaScriptObject implements DatePat
 		return this.pattern;
   }-*/;
 
+    @Override
+    public native String getTimeZone() /*-{
+        return this.timezone;
+    }-*/;
+
+    @Override
+    public native int getUtc_offset() /*-{
+        return this.utc_offset;
+    }-*/;
+
+    @Override
+    public native int getDst_offset() /*-{
+        return this.dst_offset;
+    }-*/;
+
 }

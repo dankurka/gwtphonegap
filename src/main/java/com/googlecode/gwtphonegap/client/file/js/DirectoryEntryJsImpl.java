@@ -16,13 +16,9 @@
 package com.googlecode.gwtphonegap.client.file.js;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.googlecode.gwtphonegap.client.file.DirectoryEntry;
-import com.googlecode.gwtphonegap.client.file.DirectoryReader;
-import com.googlecode.gwtphonegap.client.file.FileCallback;
-import com.googlecode.gwtphonegap.client.file.FileEntry;
-import com.googlecode.gwtphonegap.client.file.FileError;
-import com.googlecode.gwtphonegap.client.file.Flags;
-import com.googlecode.gwtphonegap.client.file.Metadata;
+import com.googlecode.gwtphonegap.client.file.*;
+
+import java.util.*;
 
 public class DirectoryEntryJsImpl implements DirectoryEntry {
 
@@ -130,12 +126,6 @@ public class DirectoryEntryJsImpl implements DirectoryEntry {
 		callback.onSuccess(new DirectoryEntryJsImpl(entry));
 	}
 
-	@Override
-	public native String toURI() /*-{
-		var entry = (this.@com.googlecode.gwtphonegap.client.file.js.DirectoryEntryJsImpl::entry);
-		return entry.toURI();
-	}-*/;
-	
 	@Override
   public native String toURL() /*-{
     var entry = (this.@com.googlecode.gwtphonegap.client.file.js.DirectoryEntryJsImpl::entry);
@@ -282,7 +272,68 @@ public class DirectoryEntryJsImpl implements DirectoryEntry {
 		entry.removeRecursively($entry(suc), $entry(fail));
 	}-*/;
 
-	private void onRemoveRecursivelyFailure(FileCallback<Boolean, FileError> callback, FileError error) {
+    @Override
+    public void setMetadata(MetaDataCallback callback,Map<String,String> mapMetaData) {
+    Set<String> setMetaData = mapMetaData.keySet();
+    int i = 0;
+        StringBuffer buffer = new StringBuffer();
+
+        if(mapMetaData != null && mapMetaData.size() > 0){
+            Iterator<String> itMetaData = setMetaData.iterator();
+            while(itMetaData.hasNext()){
+                String key = itMetaData.next();
+                String value = mapMetaData.get(key);
+            if(i == 0 ){
+                buffer.append(key);
+                buffer.append(":");
+                buffer.append(value);
+            }else{
+                buffer.append(",");
+                buffer.append(key);
+                buffer.append(":");
+                buffer.append(value);
+            }
+                i++;
+            }
+        }
+        setMetaData0(callback,buffer.toString());
+    }
+
+    public native void setMetaData0(MetaDataCallback callback,String options)/*-{
+        var that = this;
+
+        var fail = function(error) {
+            that.@com.googlecode.gwtphonegap.client.file.MetaDataCallback::onFailure()();
+        };
+
+        var suc = function(entry) {
+            that.@com.googlecode.gwtphonegap.client.file.MetaDataCallback::onSuccess()();
+
+        };
+
+        var entry = (this.@com.googlecode.gwtphonegap.client.file.js.DirectoryEntryJsImpl::entry);
+
+        entry.setMetadata($entry(suc), $entry(fail),options);
+    }-*/;
+
+
+    @Override
+    public FileSystem filesystem() {
+        //TODO: This method is not supported but is defined by w3c spec.
+      return null;
+    }
+
+    @Override
+    public boolean isFile() {
+        return false;
+    }
+
+    @Override
+    public boolean isDirectory() {
+        return true;
+    }
+
+    private void onRemoveRecursivelyFailure(FileCallback<Boolean, FileError> callback, FileError error) {
 		callback.onFailure(error);
 	}
 

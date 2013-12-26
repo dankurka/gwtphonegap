@@ -13,17 +13,13 @@
  */
 package com.googlecode.gwtphonegap.client.file.browser;
 
-import com.googlecode.gwtphonegap.client.file.DirectoryEntry;
-import com.googlecode.gwtphonegap.client.file.DirectoryReader;
-import com.googlecode.gwtphonegap.client.file.EntryBase;
-import com.googlecode.gwtphonegap.client.file.FileCallback;
-import com.googlecode.gwtphonegap.client.file.FileEntry;
-import com.googlecode.gwtphonegap.client.file.FileError;
-import com.googlecode.gwtphonegap.client.file.Flags;
-import com.googlecode.gwtphonegap.client.file.Metadata;
+import com.googlecode.gwtphonegap.client.file.*;
 import com.googlecode.gwtphonegap.client.file.browser.dto.FileSystemEntryDTO;
 import com.googlecode.gwtphonegap.client.file.browser.service.FileSystemController;
 import com.googlecode.gwtphonegap.collection.shared.LightArray;
+
+import java.util.Hashtable;
+import java.util.Map;
 
 public class DirectoryEntryBrowserImpl implements DirectoryEntry, EntryBase {
 
@@ -63,11 +59,6 @@ public class DirectoryEntryBrowserImpl implements DirectoryEntry, EntryBase {
       FileCallback<DirectoryEntry, FileError> callback) {
     controller.copyDirectory(getFullPath(), parent.getFullPath(), newName, callback);
 
-  }
-
-  @Override
-  public String toURI() {
-    return controller.toURI(getFullPath());
   }
 
   @Override
@@ -130,7 +121,22 @@ public class DirectoryEntryBrowserImpl implements DirectoryEntry, EntryBase {
 
   }
 
-  @Override
+    @Override
+    public void setMetadata(MetaDataCallback callback, Map<String, String> mapMetaInfo) {
+
+    }
+
+  /*  @Override
+    public void setMetadata(FileCallback<Boolean, Boolean> callback, Hashtable<?, ?> htMetadata) {
+
+    }*/
+
+    @Override
+    public FileSystem filesystem() {
+        return null;
+    }
+
+    @Override
   public boolean isFile() {
     return false;
   }

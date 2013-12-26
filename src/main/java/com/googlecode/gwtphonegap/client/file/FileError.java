@@ -15,6 +15,11 @@
  */
 package com.googlecode.gwtphonegap.client.file;
 
+/**
+ * A FileError object is set when an error occurs in any of the File API methods.
+ * The FileError object is the only parameter provided to any of the File API's error callbacks.
+ * To determine the type of error, compare its code property to any of the listings provided.
+ */
 public interface FileError {
 
 	public static final int NOT_FOUND_ERR = 1;
@@ -30,5 +35,9 @@ public interface FileError {
 	public static final int TYPE_MISMATCH_ERR = 11;
 	public static final int PATH_EXISTS_ERR = 12;
 
+    /**
+     *  Returns one of the predefined error codes listed.
+     * @return
+     */
 	public int getErrorCode();
 }

@@ -201,8 +201,16 @@
 			<when-property-is name="phonegap.env" value="yes" />
 		</all>
 	</replace-with>
-	
-    
+
+    <replace-with class="com.googlecode.gwtphonegap.client.notification.PromptResultsBrowserImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.notification.PromptResults" />
+    </replace-with>
+    <replace-with class="com.googlecode.gwtphonegap.client.notification.PromptResultsJsImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.notification.PromptResults" />
+        <all>
+            <when-property-is name="phonegap.env" value="yes" />
+        </all>
+    </replace-with>
     
     
     <!-- File -->
@@ -216,7 +224,174 @@
 			<when-property-is name="phonegap.env" value="yes" />
 		</all>
 	</replace-with>
-  
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.browser.DirectoryEntryBrowserImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.DirectoryEntry" />
+    </replace-with>
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.js.DirectoryEntryJsImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.DirectoryEntry" />
+        <all>
+            <when-property-is name="phonegap.env" value="yes" />
+        </all>
+    </replace-with>
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.browser.DirectoryReaderBrowserImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.DirectoryReader" />
+    </replace-with>
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.js.DirectoryReaderJsImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.DirectoryReader" />
+        <all>
+            <when-property-is name="phonegap.env" value="yes" />
+        </all>
+    </replace-with>
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.browser.MetaDataBrowserImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.Metadata" />
+    </replace-with>
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.js.MetaDataJsImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.Metadata" />
+        <all>
+            <when-property-is name="phonegap.env" value="yes" />
+        </all>
+    </replace-with>
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.browser.LocalFileSystemBrowserImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.LocalFileSystem" />
+    </replace-with>
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.js.LocalFileSystemJsImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.LocalFileSystem" />
+        <all>
+            <when-property-is name="phonegap.env" value="yes" />
+        </all>
+    </replace-with>
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.browser.FileWriterBrowserImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.FileWriter" />
+    </replace-with>
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.js.FileWriterJsImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.FileWriter" />
+        <all>
+            <when-property-is name="phonegap.env" value="yes" />
+        </all>
+    </replace-with>
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.browser.FileUploadResultBrowserImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.FileUploadResult" />
+    </replace-with>
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.js.FileUploadResultJsImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.FileUploadResult" />
+        <all>
+            <when-property-is name="phonegap.env" value="yes" />
+        </all>
+    </replace-with>
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.browser.FileTransferProgressEventBrowserImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.FileTransferProgressEvent" />
+    </replace-with>
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.js.FileTransferProgressEventJsImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.FileTransferProgressEvent" />
+        <all>
+            <when-property-is name="phonegap.env" value="yes" />
+        </all>
+    </replace-with>
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.browser.FileTransferBrowserImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.FileTransfer" />
+    </replace-with>
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.js.FileTransferJsImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.FileTransfer" />
+        <all>
+            <when-property-is name="phonegap.env" value="yes" />
+        </all>
+    </replace-with>
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.browser.FileTransferErrorBrowserImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.FileTransferError" />
+    </replace-with>
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.js.FileTransferErrorJsImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.FileTransferError" />
+        <all>
+            <when-property-is name="phonegap.env" value="yes" />
+        </all>
+    </replace-with>
+
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.browser.FileSystemBrowserImpl">
+    <when-type-is class="com.googlecode.gwtphonegap.client.file.FileSystem" />
+</replace-with>
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.js.FileSystemJsImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.FileSystem" />
+        <all>
+            <when-property-is name="phonegap.env" value="yes" />
+        </all>
+    </replace-with>
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.browser.FileReaderBrowserImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.FileReader" />
+    </replace-with>
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.js.FileReaderJsImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.FileReader" />
+        <all>
+            <when-property-is name="phonegap.env" value="yes" />
+        </all>
+    </replace-with>
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.browser.FileObjectBrowserImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.FileObject" />
+    </replace-with>
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.js.FileObjectJsImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.FileObject" />
+        <all>
+            <when-property-is name="phonegap.env" value="yes" />
+        </all>
+    </replace-with>
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.browser.FileErrorBrowserImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.FileError" />
+    </replace-with>
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.js.FileErrorJsImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.FileError" />
+        <all>
+            <when-property-is name="phonegap.env" value="yes" />
+        </all>
+    </replace-with>
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.browser.FileEntryBrowserImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.FileEntry" />
+    </replace-with>
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.js.FileEntryJsImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.FileEntry" />
+        <all>
+            <when-property-is name="phonegap.env" value="yes" />
+        </all>
+    </replace-with>
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.browser.EntryBaseBrowserImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.EntryBase" />
+    </replace-with>
+
+    <replace-with class="com.googlecode.gwtphonegap.client.file.js.EntryBaseJsImpl">
+        <when-type-is class="com.googlecode.gwtphonegap.client.file.EntryBase" />
+        <all>
+            <when-property-is name="phonegap.env" value="yes" />
+        </all>
+    </replace-with>
+
+
     <!-- Splashscreen -->
     <replace-with class="com.googlecode.gwtphonegap.client.splashscreen.SplashScreenBrowserImpl">
       <when-type-is class="com.googlecode.gwtphonegap.client.splashscreen.SplashScreen" />

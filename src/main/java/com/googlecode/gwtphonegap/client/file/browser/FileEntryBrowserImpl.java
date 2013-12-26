@@ -15,14 +15,7 @@
  */
 package com.googlecode.gwtphonegap.client.file.browser;
 
-import com.googlecode.gwtphonegap.client.file.DirectoryEntry;
-import com.googlecode.gwtphonegap.client.file.EntryBase;
-import com.googlecode.gwtphonegap.client.file.FileCallback;
-import com.googlecode.gwtphonegap.client.file.FileEntry;
-import com.googlecode.gwtphonegap.client.file.FileError;
-import com.googlecode.gwtphonegap.client.file.FileObject;
-import com.googlecode.gwtphonegap.client.file.FileWriter;
-import com.googlecode.gwtphonegap.client.file.Metadata;
+import com.googlecode.gwtphonegap.client.file.*;
 import com.googlecode.gwtphonegap.client.file.browser.dto.FileSystemEntryDTO;
 import com.googlecode.gwtphonegap.client.file.browser.service.FileSystemController;
 
@@ -66,12 +59,6 @@ public class FileEntryBrowserImpl implements FileEntry, EntryBase {
 		controller.copyFile(getFullPath(), parent.getFullPath(), newName, callback);
 
 	}
-
-	@Override
-	@Deprecated
-	public String toURI() {
-	  return toURL();
-	}
 	
   @Override
   public String toURL() {
@@ -112,7 +99,17 @@ public class FileEntryBrowserImpl implements FileEntry, EntryBase {
 		return false;
 	}
 
-	@Override
+    /*@Override
+    public void setMetadata(FileCallback<Boolean, Boolean> callback, Metadata metadata) {
+
+    }*/
+
+    @Override
+    public FileSystem filesystem() {
+        return null;
+    }
+
+    @Override
 	public FileEntry getAsFileEntry() {
 		return this;
 	}

@@ -16,7 +16,17 @@
 package com.googlecode.gwtphonegap.client.camera;
 
 public interface PictureCallback {
+
+    /**
+     * onSuccess callback function that provides the image data.
+     * @param data : Base64 encoding of the image data, or the image file URI,
+     *             depending on cameraOptions in effect. (String)
+     */
 	public void onSuccess(String data);
 
+    /**
+     * onError callback function that provides an error message.
+     * @param message :The message is provided by the device's native code. (String)
+     */
 	public void onFailure(String message);
 }

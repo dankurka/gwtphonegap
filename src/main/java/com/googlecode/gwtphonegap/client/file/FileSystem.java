@@ -15,6 +15,11 @@
  */
 package com.googlecode.gwtphonegap.client.file;
 
+/**
+ * The FileSystem object represents information about the file system.
+ * The name of the file system is unique across the list of exposed file systems.
+ * The root property contains a DirectoryEntry object that represents the file system's root directory.
+ */
 public interface FileSystem {
 
 	public static final int LocalFileSystem_TEMPORARY = 0;
@@ -22,7 +27,15 @@ public interface FileSystem {
 	public static final int LocalFileSystem_RESOURCE = 2;
 	public static final int LocalFileSystem_APPLICATION = 3;
 
+    /**
+     * The name of the file system. (DOMString)
+     * @return
+     */
 	public String getName();
 
+    /**
+     * The root directory of the file system.
+     * @return
+     */
 	public DirectoryEntry getRoot();
 }

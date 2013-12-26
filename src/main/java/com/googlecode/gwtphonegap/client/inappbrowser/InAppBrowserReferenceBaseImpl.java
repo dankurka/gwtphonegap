@@ -41,6 +41,11 @@ public abstract class InAppBrowserReferenceBaseImpl implements InAppBrowserRefer
     return handlerManager.addHandler(LoadStopEvent.getType(), handler);
   }
 
+    @Override
+    public HandlerRegistration addLoadErrorHandler(LoadErrorHandler handler){
+    addJavaScriptHandlers();
+    return handlerManager.addHandler(LoadErrorEvent.getType(),handler);
+    }
   protected HandlerManager createHandlerManager() {
     return new HandlerManager(this);
   }
@@ -72,4 +77,9 @@ public abstract class InAppBrowserReferenceBaseImpl implements InAppBrowserRefer
     }
   }
 
+    protected  void fireLoadErrorEvent(String url){
+        if(handlerManager != null){
+            handlerManager.fireEvent(new LoadErrorEvent(url));
+        }
+    }
 }

@@ -18,7 +18,6 @@ package com.googlecode.gwtphonegap.client.globalization;
 public class NumberOptions {
 
   public static final String DECIMAL = "decimal";
-
   public static final String PERCENT = "percent";
   public static final String CURRENCY = "currency";
 

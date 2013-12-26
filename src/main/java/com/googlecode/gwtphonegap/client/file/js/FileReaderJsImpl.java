@@ -16,10 +16,8 @@
 package com.googlecode.gwtphonegap.client.file.js;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.googlecode.gwtphonegap.client.file.FileEntry;
-import com.googlecode.gwtphonegap.client.file.FileError;
-import com.googlecode.gwtphonegap.client.file.FileReader;
-import com.googlecode.gwtphonegap.client.file.ReaderCallback;
+import com.google.gwt.thirdparty.streamhtmlparser.JavascriptParser;
+import com.googlecode.gwtphonegap.client.file.*;
 
 public final class FileReaderJsImpl extends JavaScriptObject implements FileReader {
 
@@ -65,7 +63,7 @@ public final class FileReaderJsImpl extends JavaScriptObject implements FileRead
 	}-*/;
 
 	@Override
-	public native void setOnloadCallback(ReaderCallback<FileReader> callback) /*-{
+	public native void setOnLoadCallback(ReaderCallback<FileReader> callback) /*-{
 		var that = this;
 		var func = function() {
 			@com.googlecode.gwtphonegap.client.file.js.FileReaderJsImpl::onCallback(Lcom/googlecode/gwtphonegap/client/file/ReaderCallback;Lcom/googlecode/gwtphonegap/client/file/js/FileReaderJsImpl;)(callback, that);
@@ -129,13 +127,42 @@ public final class FileReaderJsImpl extends JavaScriptObject implements FileRead
 	}-*/;
 
 	@Override
-	public void readAsText(FileEntry entry) {
+	public void readAsText(FileEntry entry,final String encoding) {
 		FileEntryJsImpl entryJs = (FileEntryJsImpl) entry;
-		readAsText0(entryJs.getEntry());
+		entryJs.getFile(new FileCallback<FileObject, FileError>() {
+            @Override
+            public void onSuccess(FileObject entry) {
+                readAsText0(entry,encoding);
+            }
+            @Override
+            public void onFailure(FileError error) {
+
+            }
+        });
 	}
 
-	private native void readAsText0(JavaScriptObject entry)/*-{
+    private native void readAsText0(FileObject entry,String encoding)/*-{
 		this.readAsText(entry);
 	}-*/;
+
+    @Override
+    public void readAsBinaryString(FileEntry entry) {
+        FileEntryJsImpl entryJs = (FileEntryJsImpl)entry;
+        readAsBinaryString0(entryJs.getEntry());
+    }
+
+    private native void readAsBinaryString0(JavaScriptObject entry)/*-{
+        this.readAsBinaryString(entry);
+    }-*/;
+
+    @Override
+    public void readAsArrayBuffer(FileEntry entry) {
+        FileEntryJsImpl entryJs = (FileEntryJsImpl)entry;
+        readAsBinaryString0(entryJs.getEntry());
+    }
+
+    private native void readAsArrayBuffer0(JavascriptParser entry)/*-{
+    this.readAsArrayBuffer(entry);
+    }-*/;
 
 }

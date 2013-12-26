@@ -21,7 +21,7 @@ import com.googlecode.gwtphonegap.client.compass.CompassError;
 public final class CompassErrorJsImpl extends JavaScriptObject implements CompassError {
 
 	protected CompassErrorJsImpl() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	@Override

@@ -28,28 +28,30 @@ public class ContactFactoryJsoImpl implements ContactFactory {
 	}-*/;
 
 	@Override
-	public native ContactOrganisation createContactOrganisation(String name, String department, String title) /*-{
+	public native ContactOrganisation createContactOrganisation(String name, String department, String title,boolean pref,String type) /*-{
 		var co = new $wnd.ContactOrganization();
 
 		co.name = name;
 		co.department = department;
 		co.title = title;
-
+        co.type = type;
+        co.pref = pref;
 		return co;
 
 	}-*/;
 
 	@Override
-	public native ContactAddress createContactAddress(String formatted, String streetAddress, String locality, String region, String postalCode, String country) /*-{
+	public native ContactAddress createContactAddress(String type,boolean isPref, String streetAddress, String locality, String region, String postalCode, String country) /*-{
 		var ca = new $wnd.ContactAddress();
 
-		ca.formatted = formatted;
 		ca.streetAddress = streetAddress;
 		ca.locality = locality;
 		ca.region = region;
 		ca.postalCode = postalCode;
 		ca.country = country;
-		return ca;
+        ca.type = type;
+        ca.pref = isPref;
+        return ca;
 	}-*/;
 
 }

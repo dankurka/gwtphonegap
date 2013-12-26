@@ -148,7 +148,6 @@ public class ContactsBrowserImpl implements Contacts {
 		contact.setContactAddresses(toClone.getContactAddresses());
 		contact.setDisplayName(toClone.getDisplayName());
 		contact.setEmails(toClone.getEmails());
-		contact.setGender(toClone.getGender());
 		contact.setIms(toClone.getIms());
 		contact.setName(toClone.getName());
 		contact.setNickName(toClone.getNickName());
@@ -156,8 +155,6 @@ public class ContactsBrowserImpl implements Contacts {
 		contact.setOrganisations(toClone.getOrganisations());
 		contact.setPhoneNumbers(toClone.getPhoneNumbers());
 		contact.setPhotos(toClone.getPhotos());
-		contact.setRevision(toClone.getRevision());
-		contact.setTimeZone(toClone.getTimeZone());
 		contact.setUrls(toClone.getUrls());
 
 		return contact;

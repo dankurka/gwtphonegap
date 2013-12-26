@@ -15,6 +15,9 @@
  */
 package com.googlecode.gwtphonegap.client.file;
 
+/**
+ * Represents a file on a file system, as defined in the W3C Directories and Systems specification.
+ */
 public interface FileEntry {
 
 	/**
@@ -57,17 +60,11 @@ public interface FileEntry {
 	public void copyTo(DirectoryEntry parent, String newName, FileCallback<FileEntry, FileError> callback);
 
   /**
-   * Return a URI that can be used to locate a file.
+   * Return a URL that can be used to locate a file.
    * 
    * @return
    */
   public String toURL();
-  
-	/**
-	 * @deprecated use toURL instead 
-	 */
-  @Deprecated
-	public String toURI();
 
 	public void remove(FileCallback<Boolean, FileError> callback);
 
@@ -77,4 +74,29 @@ public interface FileEntry {
 
 	public void getFile(FileCallback<FileObject, FileError> callback);
 
+    /**
+     * Always false. (boolean)
+     * @return
+     */
+    public boolean isFile();
+
+    /**
+     * Always true. (boolean)
+     * @return
+     */
+    public boolean isDirectory();
+
+    /**
+     * This sets the extended attributes of a file, or metadata. Currently works only on iOS.
+     * Only the com.apple.MobileBackup extended attribute is supported.
+     * Set the value to 1 to prevent the file from being backed up to iCloud.
+     * Set the value to 0 to re-enable the file to be backed up to iCloud.
+     */
+    //public void setMetadata(FileCallback<Boolean, Boolean> callback,Metadata metadata);
+
+    /**
+     * The file system on which the DirectoryEntry resides. (FileSystem)
+     * This attribute is defined by the W3C specification, but is not supported:
+     */
+    public FileSystem filesystem();
 }

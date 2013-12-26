@@ -29,6 +29,8 @@ import com.googlecode.gwtphonegap.client.file.FileUploadOptions;
 import com.googlecode.gwtphonegap.client.file.browser.service.FileSystemController;
 import com.googlecode.gwtphonegap.collection.shared.LightArray;
 
+import java.util.Map;
+
 /**
  * Experimental
  * 
@@ -70,28 +72,58 @@ public class FileBrowserImpl implements File {
 		return new FileTransfer() {
 
 			@Override
-			public void upload(String fileUri, String serverUrl, FileUploadOptions options, FileUploadCallback callback) {
+			public void upload(String fileUri, String serverUrl, boolean trustAllHosts,FileUploadOptions options, FileUploadCallback callback) {
 				FileTransferError fileTransferError = new FileTransferError() {
 
 					@Override
 					public int getCode() {
 						return FileTransferError.FILE_NOT_FOUND_ERR;
 					}
-				};
+
+                    @Override
+                    public String getSource() {
+                        return null;
+                    }
+
+                    @Override
+                    public String getTarget() {
+                        return null;
+                    }
+
+                    @Override
+                    public int getHttp_Status() {
+                        return 0;
+                    }
+                };
 
 				callback.onFailure(fileTransferError);
 
 			}
 
 			@Override
-			public void download(String sourceUrl, String filePath, FileDownloadCallback callback) {
+			public void download(String sourceUrl, String filePath, boolean trustAllHosts, Map<String, String> options,FileDownloadCallback callback) {
 				FileTransferError fileTransferError = new FileTransferError() {
 
 					@Override
 					public int getCode() {
 						return FileTransferError.FILE_NOT_FOUND_ERR;
 					}
-				};
+
+                    @Override
+                    public String getSource() {
+                        return null;
+                    }
+
+                    @Override
+                    public String getTarget() {
+                        return null;
+                    }
+
+                    @Override
+                    public int getHttp_Status() {
+                        return 0;
+                    }
+                };
 
 				callback.onFailure(fileTransferError);
 

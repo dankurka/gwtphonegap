@@ -16,13 +16,7 @@
 package com.googlecode.gwtphonegap.client.file.js;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.googlecode.gwtphonegap.client.file.DirectoryEntry;
-import com.googlecode.gwtphonegap.client.file.FileCallback;
-import com.googlecode.gwtphonegap.client.file.FileEntry;
-import com.googlecode.gwtphonegap.client.file.FileError;
-import com.googlecode.gwtphonegap.client.file.FileObject;
-import com.googlecode.gwtphonegap.client.file.FileWriter;
-import com.googlecode.gwtphonegap.client.file.Metadata;
+import com.googlecode.gwtphonegap.client.file.*;
 
 public class FileEntryJsImpl implements FileEntry {
 
@@ -58,7 +52,7 @@ public class FileEntryJsImpl implements FileEntry {
 			that.@com.googlecode.gwtphonegap.client.file.js.FileEntryJsImpl::onGetMetaDataSuccess(Lcom/googlecode/gwtphonegap/client/file/FileCallback;Lcom/googlecode/gwtphonegap/client/file/js/MetaDataJsImpl;)(callback, meta);
 		};
 
-		var entry = (this.@com.googlecode.gwtphonegap.client.file.js.DirectoryEntryJsImpl::entry);
+		var entry = (this.@com.googlecode.gwtphonegap.client.file.js.FileEntryJsImpl::entry);
 		entry.getMetadata($entry(suc), $entry(fail));
 
 	}-*/;
@@ -118,7 +112,7 @@ public class FileEntryJsImpl implements FileEntry {
 			that.@com.googlecode.gwtphonegap.client.file.js.FileEntryJsImpl::onCopyToSuccess(Lcom/googlecode/gwtphonegap/client/file/FileCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, entry);
 		};
 
-		var entry = (this.@com.googlecode.gwtphonegap.client.file.js.DirectoryEntryJsImpl::entry);
+		var entry = (this.@com.googlecode.gwtphonegap.client.file.js.FileEntryJsImpl::entry);
 
 		entry.copyTo(parent, newName, $entry(suc), $entry(fail));
 
@@ -131,12 +125,6 @@ public class FileEntryJsImpl implements FileEntry {
 	private void onCopyToSuccess(FileCallback<FileEntry, FileError> callback, JavaScriptObject entry) {
 		callback.onSuccess(new FileEntryJsImpl(entry));
 	}
-
-  @Override
-  @Deprecated
-  public String toURI() {
-    return toURL();
-  }
   
 	@Override
 	public native String toURL() /*-{
@@ -181,7 +169,7 @@ public class FileEntryJsImpl implements FileEntry {
 			that.@com.googlecode.gwtphonegap.client.file.js.FileEntryJsImpl::onGetParentSuccess(Lcom/googlecode/gwtphonegap/client/file/FileCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, entry);
 		};
 
-		var entry = (this.@com.googlecode.gwtphonegap.client.file.js.DirectoryEntryJsImpl::entry);
+		var entry = (this.@com.googlecode.gwtphonegap.client.file.js.FileEntryJsImpl::entry);
 
 		entry.getParent($entry(suc), $entry(fail));
 
@@ -238,7 +226,32 @@ public class FileEntryJsImpl implements FileEntry {
 
 	}-*/;
 
-	private void onGetFileFailure(FileCallback<FileObject, FileError> callback, FileError error) {
+    @Override
+    public boolean isFile() {
+        return true;
+    }
+
+    @Override
+    public boolean isDirectory() {
+        return false;
+    }
+
+  /*  @Override
+    public void setMetadata(FileCallback<Boolean, Boolean> callback, Metadata metadata) {
+
+    }
+*/
+
+    /**
+     * The following method is defined by the W3C specification, but is not supported
+     * @return
+     */
+    @Override
+    public FileSystem filesystem() {
+        return null;
+    }
+
+    private void onGetFileFailure(FileCallback<FileObject, FileError> callback, FileError error) {
 		callback.onFailure(error);
 	}
 

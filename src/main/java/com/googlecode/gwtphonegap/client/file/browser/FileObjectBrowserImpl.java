@@ -55,8 +55,13 @@ public class FileObjectBrowserImpl implements FileObject {
 	}
 
 	@Override
-	public long size() {
+	public Long size() {
 		return dto.getSize();
 	}
+
+    @Override
+    public FileObject slice(Long start, Long end) {
+        return null;
+    }
 
 }
