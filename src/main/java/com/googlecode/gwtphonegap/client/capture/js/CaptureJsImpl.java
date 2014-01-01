@@ -57,20 +57,18 @@ public class CaptureJsImpl implements Capture {
 		return $wnd.navigator.device.capture.supportedVideoModes;
 	}-*/;
 
-	private native JavaScriptObject createOptions(int limit, double duration, String mode)/*-{
+	private native JavaScriptObject createOptions(int limit, double duration)/*-{
 		var o = {};
 		o.limit = limit;
 		if (duration > 0)
 			o.duration = duration;
-		o.mode = mode;
-
 		return o;
 	}-*/;
 
 	@Override
 	public void captureAudio(CaptureAudioOptions options, CaptureCallback callback) {
 
-		JavaScriptObject gapOptions = createOptions(options.getLimit(), options.getDuration(), options.getMode().getType());
+		JavaScriptObject gapOptions = createOptions(options.getLimit(), options.getDuration());
 		captureAudio0(gapOptions, callback);
 
 	}
@@ -98,7 +96,7 @@ public class CaptureJsImpl implements Capture {
 
 	@Override
 	public void captureImage(CaptureImageOptions options, CaptureCallback callback) {
-		JavaScriptObject gap_options = createOptions(options.getLimit(), -1, options.getMode());
+		JavaScriptObject gap_options = createOptions(options.getLimit(), -1);
 		captureImage0(gap_options, callback);
 	}
 
@@ -118,7 +116,7 @@ public class CaptureJsImpl implements Capture {
 
 	@Override
 	public void captureVideo(CaptureVideoOptions options, CaptureCallback callback) {
-		JavaScriptObject gapOptions = createOptions(options.getLimit(), options.getDuration(), options.getMode());
+		JavaScriptObject gapOptions = createOptions(options.getLimit(), options.getDuration());
 		captureVideo0(gapOptions, callback);
 
 	}
