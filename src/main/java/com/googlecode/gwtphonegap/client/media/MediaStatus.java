@@ -1,5 +1,5 @@
 /*
- * Copyright 2011 Daniel Kurka
+ * Copyright 2014 Daniel Kurka
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -15,10 +15,15 @@
  */
 package com.googlecode.gwtphonegap.client.media;
 
-public interface MediaCallback {
-	public void onSuccess();
+/**
+ * @author vkiran
+ */
+public class MediaStatus {
 
-	public void onError(MediaError error);
+    public static final int MEDIA_NONE = 0;
+    public static final int MEDIA_STARTING = 1;
+    public static final int MEDIA_RUNNING = 2;
+    public static final int MEDIA_PAUSED = 3;
+    public static final int MEDIA_STOPPED = 4;
 
-	public void onStatusChange(int mediaStatus);
 }
