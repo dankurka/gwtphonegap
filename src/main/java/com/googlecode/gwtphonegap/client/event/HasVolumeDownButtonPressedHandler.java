@@ -17,6 +17,6 @@ package com.googlecode.gwtphonegap.client.event;
 
 import com.google.web.bindery.event.shared.HandlerRegistration;
 
-public interface HasVolumneDownButtonPressedHandler {
-	public HandlerRegistration addVolumneDownButtonPressedHandler(VolumeDownButtonPressedHandler handler);
+public interface HasVolumeDownButtonPressedHandler {
+	public HandlerRegistration addVolumeDownButtonPressedHandler(VolumeDownButtonPressedHandler handler);
 }
