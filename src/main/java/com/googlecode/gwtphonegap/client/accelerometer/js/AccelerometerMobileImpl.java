@@ -29,10 +29,10 @@ import com.googlecode.gwtphonegap.client.accelerometer.AccelerometerWatcher;
 public class AccelerometerMobileImpl implements Accelerometer {
 
 	/* (non-Javadoc)
-	 * @see com.googlecode.gwtphonegap.client.accelerometer.Accelerometer#getCurrentAcceleration(com.googlecode.gwtphonegap.client.accelerometer.AccelerationCallback, com.googlecode.gwtphonegap.client.accelerometer.AccelerationOptions)
+	 * @see com.googlecode.gwtphonegap.client.accelerometer.Accelerometer#getCurrentAcceleration(com.googlecode.gwtphonegap.client.accelerometer.AccelerationCallback)
 	 */
 	@Override
-	public native void getCurrentAcceleration(AccelerationCallback accelerationCallback, AccelerationOptions options) /*-{
+	public native void getCurrentAcceleration(AccelerationCallback accelerationCallback) /*-{
 		var successCallback = function(data) {
 			accelerationCallback.@com.googlecode.gwtphonegap.client.accelerometer.AccelerationCallback::onSuccess(Lcom/googlecode/gwtphonegap/client/accelerometer/Acceleration;)(data);
 		};
@@ -41,14 +41,8 @@ public class AccelerometerMobileImpl implements Accelerometer {
 			accelerationCallback.@com.googlecode.gwtphonegap.client.accelerometer.AccelerationCallback::onFailure()();
 		};
 
-		var freq = options.@com.googlecode.gwtphonegap.client.accelerometer.AccelerationOptions::getFrequency()();
-
-		var localOptions = {
-			frequency : freq
-		}
-
 		$wnd.navigator.accelerometer.getCurrentAcceleration(
-				$entry(successCallback), $entry(errorCallback), localOptions);
+				$entry(successCallback), $entry(errorCallback));
 	}-*/;
 
 	@Override
