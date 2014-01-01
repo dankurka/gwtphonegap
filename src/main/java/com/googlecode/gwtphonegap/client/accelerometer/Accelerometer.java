@@ -36,9 +36,8 @@ public interface Accelerometer {
 	 * </ul>
 	 * 
 	 * @param accelerationCallback
-	 * @param options
 	 */
-	public void getCurrentAcceleration(AccelerationCallback accelerationCallback, AccelerationOptions options);
+	public void getCurrentAcceleration(AccelerationCallback accelerationCallback);
 
 	/**
 	 * At a regular interval, get the acceleration along the x, y, and z axis.
