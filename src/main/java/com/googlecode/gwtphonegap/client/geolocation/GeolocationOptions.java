@@ -21,7 +21,6 @@ package com.googlecode.gwtphonegap.client.geolocation;
  *
  */
 public class GeolocationOptions {
-	private int frequency;
 
 	private boolean enableHighAccuracy;
 
@@ -30,11 +29,6 @@ public class GeolocationOptions {
 	private int maximumAge;
 
 	public GeolocationOptions() {
-		this.frequency = 10000;
-	}
-
-	public int getFrequency() {
-		return frequency;
 	}
 
 	public int getMaximumAge() {
@@ -58,14 +52,6 @@ public class GeolocationOptions {
 	}
 
 	/**
-	 *  How often to retrieve the position in milliseconds. This option is not part of the W3C spec and will be removed in the future. maximumAge should be used instead. (Number) (Default: 10000)
-	 * @param frequency
-	 */
-	public void setFrequency(int frequency) {
-		this.frequency = frequency;
-	}
-
-	/**
 	 * Accept a cached position whose age is no greater than the specified time in milliseconds. (Number)
 	 * @param maximumAge
 	 */
@@ -74,7 +60,9 @@ public class GeolocationOptions {
 	}
 
 	/**
-	 * The maximum length of time (msec) that is allowed to pass from the call to geolocation.getCurrentPosition or geolocation.watchPosition until the corresponding geolocationSuccess callback is invoked. (Number)
+	 * The maximum length of time (msec) that is allowed to pass from the call to
+     * geolocation.getCurrentPosition or geolocation.watchPosition until the corresponding
+     * geolocationSuccess callback is invoked. (Number)
 	 * @param timeout
 	 */
 	public void setTimeout(int timeout) {

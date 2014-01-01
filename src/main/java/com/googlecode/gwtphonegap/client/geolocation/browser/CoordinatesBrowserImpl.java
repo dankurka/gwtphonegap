@@ -19,7 +19,7 @@ import com.googlecode.gwtphonegap.client.geolocation.Coordinates;
 
 public class CoordinatesBrowserImpl implements Coordinates {
 
-	private double latidue;
+	private double latitude;
 	private double longitude;
 	private double altitude;
 	private double accuracy;
@@ -29,11 +29,11 @@ public class CoordinatesBrowserImpl implements Coordinates {
 
 	@Override
 	public double getLatitude() {
-		return latidue;
+		return latitude;
 	}
 
-	public void setLatidue(double latidue) {
-		this.latidue = latidue;
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
 	}
 
 	@Override
