@@ -51,7 +51,7 @@ public class InAppBrowserReferenceJsImpl extends InAppBrowserReferenceBaseImpl {
 		var exit = function(event) {
 			ref.removeEventListener("loadstart", loadStart);
 			ref.removeEventListener("loadstop", loadStop);
-            ref.removeEventListener("loaderror",loadError);
+                        ref.removeEventListener("loaderror",loadError);
 			ref.removeEventListener("exit", exit);
 
 			that.@com.googlecode.gwtphonegap.client.inappbrowser.js.InAppBrowserReferenceJsImpl::fireExitEvent()();
@@ -59,7 +59,7 @@ public class InAppBrowserReferenceJsImpl extends InAppBrowserReferenceBaseImpl {
 
 		ref.addEventListener("loadstart", loadStart);
 		ref.addEventListener("loadstop", loadStop);
-      ref.addEventListener("loaderror",loadError);
+                ref.addEventListener("loaderror",loadError);
 		ref.addEventListener("exit", exit);
 
   }-*/;
