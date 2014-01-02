@@ -42,7 +42,7 @@ public interface Geolocation {
 
 	public void getCurrentPosition(GeolocationCallback callback, GeolocationOptions options);
 
-    public void getCurrentPosition(GeolocationCallback callback);
+        public void getCurrentPosition(GeolocationCallback callback);
 	/**
 	 * Watches for changes to the device's current position.
 	 * 

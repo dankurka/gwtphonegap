@@ -74,22 +74,22 @@ public class GeolocationBrowserEmptyImpl implements Geolocation {
 			opt.setMaximumAge(options.getMaximumAge());
 			opt.setTimeout(options.getTimeout());
 
-            int watchPosition = gwtGeoLocation.watchPosition(new Callback<com.google.gwt.geolocation.client.Position, com.google.gwt.geolocation.client.PositionError>() {
+                        int watchPosition = gwtGeoLocation.watchPosition(new Callback<com.google.gwt.geolocation.client.Position, com.google.gwt.geolocation.client.PositionError>() {
 
-                @Override
-                public void onSuccess(com.google.gwt.geolocation.client.Position result) {
-                    PositionBrowserImpl positionBrowserImpl = createPosition(result);
-                    callback.onSuccess(positionBrowserImpl);
+                                @Override
+                                public void onSuccess(com.google.gwt.geolocation.client.Position result) {
+                                PositionBrowserImpl positionBrowserImpl = createPosition(result);
+                                callback.onSuccess(positionBrowserImpl);
 
-                }
+                                }
 
-                @Override
-                public void onFailure(com.google.gwt.geolocation.client.PositionError reason) {
+                                @Override
+                                public void onFailure(com.google.gwt.geolocation.client.PositionError reason) {
 
-                    callback.onFailure(new PositionErrorJavaImpl(reason.getCode(), reason.getMessage()));
+                                callback.onFailure(new PositionErrorJavaImpl(reason.getCode(), reason.getMessage()));
 
-                }
-            },opt);
+                                }
+                        },opt);
 			return new GwtLocationWatcher(watchPosition);
 		}
 
@@ -152,14 +152,12 @@ public class GeolocationBrowserEmptyImpl implements Geolocation {
 
 			this.callback = callback;
 			this.options = options;
-			//schedule((int) options.getFrequency());
+                        
 		}
 
 		@Override
 		public void run() {
-
-			//schedule((int) options.getFrequency());
-
+                    
 			callback.onFailure(new PositionErrorJavaImpl(PositionError.PERMISSION_DENIED, ""));
 
 		}
