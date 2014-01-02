@@ -17,12 +17,12 @@ package com.googlecode.gwtphonegap.client.geolocation.browser;
 
 import com.googlecode.gwtphonegap.client.geolocation.PositionError;
 
-public class PostionErrorJavaImpl implements PositionError {
+public class PositionErrorJavaImpl implements PositionError {
 
 	private final String message;
 	private final int code;
 
-	public PostionErrorJavaImpl(int code, String message) {
+	public PositionErrorJavaImpl(int code, String message) {
 		this.code = code;
 		this.message = message;
 	}

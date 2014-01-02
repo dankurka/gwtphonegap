@@ -17,9 +17,9 @@ package com.googlecode.gwtphonegap.client.geolocation;
 
 public interface PositionError {
 
-	public static final int PERMISSION_DENIED = 0;
-	public static final int POSITION_UNAVAILABLE = 1;
-	public static final int TIMEOUT = 2;
+	public static final int PERMISSION_DENIED = 1;
+	public static final int POSITION_UNAVAILABLE = 2;
+	public static final int TIMEOUT = 3;
 
 	/**
 	 * One of the predefined error codes listed in this class.

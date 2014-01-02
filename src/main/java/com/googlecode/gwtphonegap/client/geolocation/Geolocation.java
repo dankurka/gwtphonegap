@@ -22,7 +22,7 @@ public interface Geolocation {
 	/**
 	 * calculates the device's current position as a PositionJsImpl object.
 	 * 
-	 * Function geolocation.getCurrentPositon is an asynchronous function. It
+	 * Function geolocation.getCurrentPosition is an asynchronous function. It
 	 * returns the device's current position to the geolocationSuccess callback
 	 * with a PositionJsImpl object as the parameter. If there is an error, the
 	 * geolocationError callback is invoked with a PositionError object.
@@ -39,10 +39,10 @@ public interface Geolocation {
 	 * @param options
 	 * @param callback
 	 */
-	public void getCurrentPosition(GeolocationCallback callback);
 
 	public void getCurrentPosition(GeolocationCallback callback, GeolocationOptions options);
 
+        public void getCurrentPosition(GeolocationCallback callback);
 	/**
 	 * Watches for changes to the device's current position.
 	 * 

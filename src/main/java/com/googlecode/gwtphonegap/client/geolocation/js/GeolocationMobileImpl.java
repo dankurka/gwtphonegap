@@ -82,8 +82,8 @@ public class GeolocationMobileImpl implements Geolocation {
 		callback.onFailure(error);
 	}
 
-	private static void onSuccess(GeolocationCallback callback, PositionJsImpl posision) {
-		callback.onSuccess(posision);
+	private static void onSuccess(GeolocationCallback callback, PositionJsImpl position) {
+		callback.onSuccess(position);
 	}
 
 	private native void clearWatch0(String watcher) /*-{
@@ -97,7 +97,6 @@ public class GeolocationMobileImpl implements Geolocation {
 		if (options == null)
 			return localOptions;
 
-		localOptions.frequency = options.@com.googlecode.gwtphonegap.client.geolocation.GeolocationOptions::getFrequency()();
 		localOptions.enableHighAccuracy = options.@com.googlecode.gwtphonegap.client.geolocation.GeolocationOptions::isEnableHighAccuracy()();
 		var maxage = options.@com.googlecode.gwtphonegap.client.geolocation.GeolocationOptions::getMaximumAge()();
 		if (maxage > 0) {

@@ -41,7 +41,7 @@ public class GeolocationBrowserEmptyImpl implements Geolocation {
 	@Override
 	public void getCurrentPosition(final GeolocationCallback callback, GeolocationOptions options) {
 		if (gwtGeoLocation == null) {
-			callback.onFailure(new PostionErrorJavaImpl(PositionError.PERMISSION_DENIED, ""));
+			callback.onFailure(new PositionErrorJavaImpl(PositionError.PERMISSION_DENIED, ""));
 		} else {
 			gwtGeoLocation.getCurrentPosition(new Callback<com.google.gwt.geolocation.client.Position, com.google.gwt.geolocation.client.PositionError>() {
 
@@ -55,7 +55,7 @@ public class GeolocationBrowserEmptyImpl implements Geolocation {
 				@Override
 				public void onFailure(com.google.gwt.geolocation.client.PositionError reason) {
 
-					callback.onFailure(new PostionErrorJavaImpl(reason.getCode(), reason.getMessage()));
+					callback.onFailure(new PositionErrorJavaImpl(reason.getCode(), reason.getMessage()));
 
 				}
 			});
@@ -73,51 +73,27 @@ public class GeolocationBrowserEmptyImpl implements Geolocation {
 			opt.setHighAccuracyEnabled(true);
 			opt.setMaximumAge(options.getMaximumAge());
 			opt.setTimeout(options.getTimeout());
-			int watchPosition = fixGwtGeoLocation(new Callback<com.google.gwt.geolocation.client.Position, com.google.gwt.geolocation.client.PositionError>() {
 
-				@Override
-				public void onSuccess(com.google.gwt.geolocation.client.Position result) {
-					PositionBrowserImpl positionBrowserImpl = createPosition(result);
-					callback.onSuccess(positionBrowserImpl);
+                        int watchPosition = gwtGeoLocation.watchPosition(new Callback<com.google.gwt.geolocation.client.Position, com.google.gwt.geolocation.client.PositionError>() {
 
-				}
+                                @Override
+                                public void onSuccess(com.google.gwt.geolocation.client.Position result) {
+                                PositionBrowserImpl positionBrowserImpl = createPosition(result);
+                                callback.onSuccess(positionBrowserImpl);
 
-				@Override
-				public void onFailure(com.google.gwt.geolocation.client.PositionError reason) {
+                                }
 
-					callback.onFailure(new PostionErrorJavaImpl(reason.getCode(), reason.getMessage()));
+                                @Override
+                                public void onFailure(com.google.gwt.geolocation.client.PositionError reason) {
 
-				}
-			}, opt);
+                                callback.onFailure(new PositionErrorJavaImpl(reason.getCode(), reason.getMessage()));
 
+                                }
+                        },opt);
 			return new GwtLocationWatcher(watchPosition);
 		}
 
 	}
-
-	/**
-	 * See issue
-	 * http://code.google.com/p/google-web-toolkit/issues/detail?id=6834
-	 */
-	// TODO remove this once gwt fixes the bug
-	private native int fixGwtGeoLocation(Callback<com.google.gwt.geolocation.client.Position, com.google.gwt.geolocation.client.PositionError> callback, PositionOptions options) /*-{
-		var opt = @com.google.gwt.geolocation.client.Geolocation::toJso(*)(options);
-
-		var success = $entry(function(pos) {
-			@com.google.gwt.geolocation.client.Geolocation::handleSuccess(*)(callback, pos);
-		});
-
-		var failure = $entry(function(err) {
-			@com.google.gwt.geolocation.client.Geolocation::handleFailure(*)(callback, err.code, err.message);
-		});
-
-		var id = -1;
-		if (@com.google.gwt.geolocation.client.Geolocation::isSupported()) {
-			id = $wnd.navigator.geolocation
-					.watchPosition(success, failure, opt);
-		}
-		return id;
-	}-*/;
 
 	@Override
 	public void clearWatch(GeolocationWatcher watcher) {
@@ -147,7 +123,7 @@ public class GeolocationBrowserEmptyImpl implements Geolocation {
 		co.setAltitudeAccuracy(result.getCoordinates().getAltitudeAccuracy() != null ? result.getCoordinates().getAltitudeAccuracy() : 0);
 		co.setHeading(result.getCoordinates().getHeading() != null ? result.getCoordinates().getHeading() : 0);
 		co.setAccuracy(result.getCoordinates().getAccuracy());
-		co.setLatidue(result.getCoordinates().getLatitude());
+		co.setLatitude(result.getCoordinates().getLatitude());
 		co.setLongitude(result.getCoordinates().getLongitude());
 		co.setSpeed(result.getCoordinates().getSpeed() != null ? result.getCoordinates().getSpeed() : 0);
 		PositionBrowserImpl positionBrowserImpl = new PositionBrowserImpl(co, Math.round(result.getTimestamp()));
@@ -176,15 +152,13 @@ public class GeolocationBrowserEmptyImpl implements Geolocation {
 
 			this.callback = callback;
 			this.options = options;
-			schedule((int) options.getFrequency());
+                        
 		}
 
 		@Override
 		public void run() {
-
-			schedule((int) options.getFrequency());
-
-			callback.onFailure(new PostionErrorJavaImpl(PositionError.PERMISSION_DENIED, ""));
+                    
+			callback.onFailure(new PositionErrorJavaImpl(PositionError.PERMISSION_DENIED, ""));
 
 		}
 
