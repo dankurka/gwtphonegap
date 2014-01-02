@@ -203,14 +203,6 @@ public final class ContactJsoImpl extends JavaScriptObject implements Contact {
 		return new JsLightArray<ContactOrganisation>(organisationsJso);
 	}
 
-	@Override
-	public native String getRevision() /*-{
-		return this.revision;
-	}-*/;
-
-	private static Date createDate(double time) {
-		return new Date((long) time);
-	}
 
 	@Override
 	public native Date getBirthDay() /*-{
@@ -227,17 +219,7 @@ public final class ContactJsoImpl extends JavaScriptObject implements Contact {
 	private native void setBirthDayJso(double time)/*-{
 		this.birthday = new Date(time);
 	}-*/;
-
-	@Override
-	public native void setGender(String gender) /*-{
-		this.gender = gender;
-	}-*/;
-
-	@Override
-	public native String getGender() /*-{
-		return this.gender;
-	}-*/;
-
+        
 	@Override
 	public native void setNote(String note) /*-{
 		this.note = note;
@@ -330,16 +312,6 @@ public final class ContactJsoImpl extends JavaScriptObject implements Contact {
 	}
 
 	@Override
-	public native void setTimeZone(String zone) /*-{
-		this.timezone = zone;
-	}-*/;
-
-	@Override
-	public native String getTimeZone() /*-{
-		return this.timezone;
-	}-*/;
-
-	@Override
 	public native void remove() /*-{
 		this.remove();
 	}-*/;
@@ -349,6 +321,7 @@ public final class ContactJsoImpl extends JavaScriptObject implements Contact {
 		this.save();
 	}-*/;
 
+        @Override
 	public native Contact cloneContact()/*-{
 		return this.clone();
 	}-*/;

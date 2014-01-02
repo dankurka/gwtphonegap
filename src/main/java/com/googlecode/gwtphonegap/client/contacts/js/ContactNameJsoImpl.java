@@ -70,24 +70,24 @@ public final class ContactNameJsoImpl extends JavaScriptObject implements Contac
 	}-*/;
 
 	@Override
-	public native void setHonoricfPrefix(String prefix) /*-{
+	public native void setHonorificPrefix(String prefix) /*-{
 		this.honorificPrefix = prefix;
 
 	}-*/;
 
 	@Override
-	public native String getHonoricPrefix() /*-{
+	public native String getHonorificPrefix() /*-{
 		return this.honorificPrefix;
 	}-*/;
 
 	@Override
-	public native void setHonoricfSuffix(String suffix) /*-{
+	public native void setHonorificSuffix(String suffix) /*-{
 		this.honorificSuffix = suffix;
 
 	}-*/;
 
 	@Override
-	public native String getHonoricSuffix() /*-{
+	public native String getHonorificSuffix() /*-{
 		return this.honorificSuffix;
 	}-*/;
 

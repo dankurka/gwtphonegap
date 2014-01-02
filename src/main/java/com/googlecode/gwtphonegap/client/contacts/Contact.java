@@ -149,13 +149,6 @@ public interface Contact {
 	public LightArray<ContactOrganisation> getOrganisations();
 
 	/**
-	 * he last date the contact was revised. (DOMString)
-	 * 
-	 * @return
-	 */
-	public String getRevision();
-
-	/**
 	 * The birthday of the contact. (Date)
 	 * 
 	 * @return
@@ -168,20 +161,6 @@ public interface Contact {
 	 * @param birthday
 	 */
 	public void setBirthDay(Date birthday);
-
-	/**
-	 * The gender of the contact. (DOMString)
-	 * 
-	 * @param gender
-	 */
-	public void setGender(String gender);
-
-	/**
-	 * The gender of the contact. (DOMString)
-	 * 
-	 * @return
-	 */
-	public String getGender();
 
 	/**
 	 * A note about the contact. (DOMString)
@@ -238,20 +217,6 @@ public interface Contact {
 	 * @return
 	 */
 	public LightArray<ContactField> getUrls();
-
-	/**
-	 * The timezone of the conact. (DOMString)
-	 * 
-	 * @param zone
-	 */
-	public void setTimeZone(String zone);
-
-	/**
-	 * The timezone of the conact. (DOMString)
-	 * 
-	 * @return
-	 */
-	public String getTimeZone();
 
 	/**
 	 * 

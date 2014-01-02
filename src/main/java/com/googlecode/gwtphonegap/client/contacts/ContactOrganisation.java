@@ -63,4 +63,29 @@ public interface ContactOrganisation {
 	 * @return
 	 */
 	public String getTitle();
+
+    /**
+     * Set to true if this ContactOrganization contains the user's preferred value. (boolean)
+     * @param pref
+     */
+    public void setPref(boolean pref);
+
+    /**
+     * Set to true if this ContactOrganization contains the user's preferred value. (boolean)
+     * @return
+     */
+    public boolean isPref();
+
+    /**
+     * The department the contract works for. (DOMString)
+     * @param type
+     */
+    public void setType(String type);
+
+    /**
+     * The department the contract works for. (DOMString)
+     * @return
+     */
+    public String getType();
+
 }

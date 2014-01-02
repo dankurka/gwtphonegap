@@ -18,7 +18,7 @@ package com.googlecode.gwtphonegap.client.contacts;
 public interface ContactFactory {
 	public ContactField createContactField(String type, String value, boolean pref);
 
-	public ContactOrganisation createContactOrganisation(String name, String department, String title);
+	public ContactOrganisation createContactOrganisation(String name, String department, String title,boolean pref, String type);
 
-	public ContactAddress createContactAddress(String formatted, String streetAddress, String locality, String region, String postalCode, String country);
+	public ContactAddress createContactAddress( String type, boolean pref,String streetAddress, String locality, String region, String postalCode, String country);
 }

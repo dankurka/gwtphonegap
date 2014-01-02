@@ -15,12 +15,9 @@
  */
 package com.googlecode.gwtphonegap.client.contacts;
 
-import java.util.Date;
-
 public class ContactFindOptions {
 	private String filter;
-	private boolean mutiple;
-	private Date updatedSince;
+	private boolean multiple;
 
 	public ContactFindOptions() {
 		this("");
@@ -30,39 +27,25 @@ public class ContactFindOptions {
 		this(filter, true);
 	}
 
-	public ContactFindOptions(String filter, boolean mutiple) {
-		this(filter, mutiple, null);
-	}
-
-	public ContactFindOptions(String filter, boolean mutiple, Date updatedSince) {
+	public ContactFindOptions(String filter, boolean multiple) {
 		this.filter = filter;
-		this.mutiple = mutiple;
-		this.updatedSince = updatedSince;
-
-	}
-
-	public Date getUpdatedSince() {
-		return updatedSince;
+                this.multiple = multiple;
 	}
 
 	public void setFilter(String filter) {
 		this.filter = filter;
 	}
 
-	public void setUpdatedSince(Date updatedSince) {
-		this.updatedSince = updatedSince;
-	}
-
-	public void setMutiple(boolean mutiple) {
-		this.mutiple = mutiple;
+	public void setMultiple(boolean multiple) {
+		this.multiple = multiple;
 	}
 
 	public String getFilter() {
 		return filter;
 	}
 
-	public boolean isMutiple() {
-		return mutiple;
+	public boolean isMultiple() {
+		return multiple;
 	}
 
 }
