@@ -20,5 +20,5 @@ public interface MediaCallback {
 
 	public void onError(MediaError error);
 
-	public void onStatusChange();
+	public void onStatusChange(int mediaStatus);
 }

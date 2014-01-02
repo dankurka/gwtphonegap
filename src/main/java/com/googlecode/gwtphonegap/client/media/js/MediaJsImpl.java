@@ -40,8 +40,8 @@ public final class MediaJsImpl extends JavaScriptObject implements Media {
 
 	}-*/;
 
-	private static void onSuccess(MediaPositionCallback callback, double postion) {
-		callback.onSuccess(Math.round(postion));
+	private static void onSuccess(MediaPositionCallback callback, double position) {
+		callback.onSuccess(Math.round(position));
 	}
 
 	@Override
@@ -93,4 +93,17 @@ public final class MediaJsImpl extends JavaScriptObject implements Media {
 		return this.stop();
 	}-*/;
 
+    /**
+     * Set the volume for audio playback.This is an asynchronous function that sets the volume during audio playback.
+     *
+     * @param volume : The volume to set for playback. The value must be within the range of 0.0 to 1.0.
+     */
+    @Override
+    public void setVolume(double volume) {
+        setVolume0(volume);
+    }
+
+    public native void setVolume0(double volume)/*-{
+        this.setVolume(volume);
+    }-*/;
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011 Daniel Kurka
+ * Copyright 2014 Daniel Kurka
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -15,17 +15,15 @@
  */
 package com.googlecode.gwtphonegap.client.media;
 
-public interface MediaError {
+/**
+ * @author vkiran
+ */
+public class MediaStatus {
 
-    public static final int MEDIA_ERR_NONE_ACTIVE = 0;
-    public static final int MEDIA_ERR_ABORTED = 1;
-    public static final int MEDIA_ERR_NETWORK = 2;
-    public static final int MEDIA_ERR_DECODE = 3;
-    public static final int MEDIA_ERR_NONE_SUPPORTED = 4;
-    public static final int MEDIA_ERR_SRC_NOT_SUPPORTED = 4;
-
-    public int getErrorCode();
-
-    public String getErrorMessage();
+    public static final int MEDIA_NONE = 0;
+    public static final int MEDIA_STARTING = 1;
+    public static final int MEDIA_RUNNING = 2;
+    public static final int MEDIA_PAUSED = 3;
+    public static final int MEDIA_STOPPED = 4;
 
 }
