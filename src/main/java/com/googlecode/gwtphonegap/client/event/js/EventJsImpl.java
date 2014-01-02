@@ -98,7 +98,7 @@ public class EventJsImpl extends EventBaseImpl {
 
 		//battery status event
 		var bse = function(info) {
-			that.@com.googlecode.gwtphonegap.client.event.js.EventJsImpl::fireBatteryStatusvent(IZ)(info.level, info.isPlugged);
+			that.@com.googlecode.gwtphonegap.client.event.js.EventJsImpl::fireBatteryStatusEvent(IZ)(info.level, info.isPlugged);
 		};
 		$wnd.addEventListener("batterystatus", $entry(bse), false);
 
@@ -114,15 +114,15 @@ public class EventJsImpl extends EventBaseImpl {
 		};
 		$doc.addEventListener("endcallbutton", $entry(ece), false);
 
-		//volumne down button event
+		//volume down button event
 		var vdbe = function() {
-			that.@com.googlecode.gwtphonegap.client.event.js.EventJsImpl::fireVolumneButtonDownPressedEvent()();
+			that.@com.googlecode.gwtphonegap.client.event.js.EventJsImpl::fireVolumeButtonDownPressedEvent()();
 		};
 		$doc.addEventListener("volumedownbutton", $entry(vdbe), false);
 
-		//volumne up button event
+		//volume up button event
 		var vube = function() {
-			that.@com.googlecode.gwtphonegap.client.event.js.EventJsImpl::fireVolumneButtonUpPressedEvent()();
+			that.@com.googlecode.gwtphonegap.client.event.js.EventJsImpl::fireVolumeButtonUpPressedEvent()();
 		};
 		$doc.addEventListener("volumeupbutton", $entry(vube), false);
 

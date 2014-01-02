@@ -17,6 +17,6 @@ package com.googlecode.gwtphonegap.client.event;
 
 import com.google.web.bindery.event.shared.HandlerRegistration;
 
-public interface HasVolumneUpButtonPressedHandler {
-	public HandlerRegistration addVolumneUpButtonPressedHandler(VolumeUpButtonPressedHandler handler);
+public interface HasVolumeUpButtonPressedHandler {
+	public HandlerRegistration addVolumeUpButtonPressedHandler(VolumeUpButtonPressedHandler handler);
 }

@@ -34,13 +34,13 @@ public interface EventMock {
 
 	public void fireBatteryLowEvent(int level, boolean plugged);
 
-	public void fireBatteryStatusvent(int level, boolean plugged);
+	public void fireBatteryStatusEvent(int level, boolean plugged);
 
 	public void fireStartCallButtonPressedEvent();
 
 	public void fireEndCallButtonPressedEvent();
 
-	public void fireVolumneButtonDownPressedEvent();
+	public void fireVolumeButtonDownPressedEvent();
 
-	public void fireVolumneButtonUpPressedEvent();
+	public void fireVolumeButtonUpPressedEvent();
 }
