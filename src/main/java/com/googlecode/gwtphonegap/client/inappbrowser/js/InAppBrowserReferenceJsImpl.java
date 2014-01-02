@@ -45,9 +45,13 @@ public class InAppBrowserReferenceJsImpl extends InAppBrowserReferenceBaseImpl {
 			that.@com.googlecode.gwtphonegap.client.inappbrowser.js.InAppBrowserReferenceJsImpl::fireLoadStopEvent(Ljava/lang/String;)(event.url);
 		};
 
+      var loadError = function(event){
+          that.@com.googlecode.gwtphonegap.client.inappbrowser.js.InAppBrowserReferenceJsImpl::fireLoadErrorEvent(Ljava/lang/String;)(event.url);
+      }
 		var exit = function(event) {
 			ref.removeEventListener("loadstart", loadStart);
 			ref.removeEventListener("loadstop", loadStop);
+                        ref.removeEventListener("loaderror",loadError);
 			ref.removeEventListener("exit", exit);
 
 			that.@com.googlecode.gwtphonegap.client.inappbrowser.js.InAppBrowserReferenceJsImpl::fireExitEvent()();
@@ -55,6 +59,7 @@ public class InAppBrowserReferenceJsImpl extends InAppBrowserReferenceBaseImpl {
 
 		ref.addEventListener("loadstart", loadStart);
 		ref.addEventListener("loadstop", loadStop);
+                ref.addEventListener("loaderror",loadError);
 		ref.addEventListener("exit", exit);
 
   }-*/;

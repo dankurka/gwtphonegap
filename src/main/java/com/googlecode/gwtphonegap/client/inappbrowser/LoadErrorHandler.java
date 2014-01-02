@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Daniel Kurka
+ * Copyright 2014 Daniel Kurka
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
@@ -13,10 +13,12 @@
  */
 package com.googlecode.gwtphonegap.client.inappbrowser;
 
+import com.google.gwt.event.shared.EventHandler;
+
 /**
- * The InAppBrowser is a web browser view that displays when calling window.open(),
- * or when opening a link formed as <a target="_blank">.
+ * @author vkiran.
  */
-public interface InAppBrowser {
-  public InAppBrowserReference open(String url, String windowName, String windowFeatures);
+public interface LoadErrorHandler  extends EventHandler {
+
+    public void onLoadError(LoadErrorEvent event);
 }
