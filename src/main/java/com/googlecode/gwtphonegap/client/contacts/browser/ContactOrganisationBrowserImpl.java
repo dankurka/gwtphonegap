@@ -22,6 +22,8 @@ public class ContactOrganisationBrowserImpl implements ContactOrganisation {
 	private String name;
 	private String department;
 	private String title;
+        private String type;
+        private boolean pref;
 
 	@Override
 	public void setName(String name) {
@@ -55,5 +57,45 @@ public class ContactOrganisationBrowserImpl implements ContactOrganisation {
 	public String getTitle() {
 		return title;
 	}
+
+        /**
+         * Set to true if this ContactOrganization contains the user's preferred value. (boolean)
+         *
+         * @param pref
+         */
+        @Override
+        public void setPref(boolean pref) {
+                this.pref = pref;
+        }
+
+        /**
+         * Set to true if this ContactOrganization contains the user's preferred value. (boolean)
+         *
+         * @return
+         */
+        @Override
+        public boolean isPref() {
+                return pref;
+        }
+
+        /**
+         * The department the contract works for. (DOMString)
+         *
+         * @param type
+         */
+        @Override
+        public void setType(String type) {
+                this.type = type;
+        }
+
+        /**
+         * The department the contract works for. (DOMString)
+         *
+         * @return
+         */
+        @Override
+        public String getType() {
+                return type;
+        }
 
 }

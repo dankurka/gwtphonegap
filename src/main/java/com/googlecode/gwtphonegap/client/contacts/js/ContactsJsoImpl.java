@@ -15,10 +15,7 @@
  */
 package com.googlecode.gwtphonegap.client.contacts.js;
 
-import java.util.Date;
-
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.core.client.JsDate;
 import com.googlecode.gwtphonegap.client.contacts.Contact;
 import com.googlecode.gwtphonegap.client.contacts.ContactFactory;
 import com.googlecode.gwtphonegap.client.contacts.ContactFindCallback;
@@ -61,25 +58,16 @@ public class ContactsJsoImpl implements Contacts {
 		};
 
 		var lfilter = contactFindOptions.@com.googlecode.gwtphonegap.client.contacts.ContactFindOptions::getFilter()();
-		var lmultiple = contactFindOptions.@com.googlecode.gwtphonegap.client.contacts.ContactFindOptions::isMutiple()();
-		var gwtDate = contactFindOptions.@com.googlecode.gwtphonegap.client.contacts.ContactFindOptions::getUpdatedSince()();
-		var ldate = "";
-		if (gwtDate != null) {
-			ldate = this.@com.googlecode.gwtphonegap.client.contacts.js.ContactsJsoImpl::createJsDate(Ljava/util/Date;)(gwtDate);
-		}
+		var lmultiple = contactFindOptions.@com.googlecode.gwtphonegap.client.contacts.ContactFindOptions::isMultiple()();
 
 		var options = {
 			filter : lfilter,
-			multiple : lmultiple,
-			updatedSince : ldate
+			multiple : lmultiple
 		};
 
 		$wnd.navigator.contacts.find(fields, $entry(sC), $entry(eC), options);
 	}-*/;
 
-	private JsDate createJsDate(Date date) {
-		return JsDate.create(date.getTime());
-	}
 
 	@Override
 	public ContactFactory getFactory() {

@@ -70,26 +70,47 @@ public class ContactNameBrowserImpl implements ContactName {
 		return middleName;
 	}
 
-	@Override
-	public void setHonoricfPrefix(String prefix) {
-		this.prefix = prefix;
 
-	}
+        /**
+         * The contacts prefix (example Mr. or Dr.) (DOMString)
+         *
+         * @param prefix
+         */
+        @Override
+        public void setHonorificPrefix(String prefix) {
+                this.prefix = prefix;
 
-	@Override
-	public String getHonoricPrefix() {
-		return prefix;
-	}
+        }
 
-	@Override
-	public void setHonoricfSuffix(String suffix) {
-		this.suffix = suffix;
+        /**
+         * The contacts prefix (example Mr. or Dr.) (DOMString)
+         *
+         * @return
+         */
+         @Override
+         public String getHonorificPrefix() {
+                return prefix;
+         }
 
-	}
+        /**
+         * The contacts suffix (example Esq.). (DOMString)
+         *
+         * @param suffix
+         */
+         @Override
+         public void setHonorificSuffix(String suffix) {
+                this.suffix = suffix;
 
-	@Override
-	public String getHonoricSuffix() {
-		return suffix;
-	}
+         }
+
+        /**
+         * The contacts suffix (example Esq.). (DOMString)
+         *
+         * @return
+         */
+         @Override
+         public String getHonorificSuffix() {
+                return suffix;
+         }
 
 }

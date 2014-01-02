@@ -18,12 +18,11 @@ package com.googlecode.gwtphonegap.client.contacts;
 public interface ContactError {
 	public static final int UNKNOWN_ERROR = 0;
 	public static final int INVALID_ARGUMENT_ERROR = 1;
-	public static final int NOT_FOUND_ERROR = 2;
-	public static final int TIMEOUT_ERROR = 3;
-	public static final int PENDING_OPERATION_ERROR = 4;
-	public static final int IO_ERROR = 5;
-	public static final int NOT_SUPPORTED_ERROR = 6;
-	public static final int PERMISSION_DENIED_ERROR = 7;
+	public static final int TIMEOUT_ERROR = 2;
+	public static final int PENDING_OPERATION_ERROR = 3;
+	public static final int IO_ERROR = 4;
+	public static final int NOT_SUPPORTED_ERROR = 5;
+	public static final int PERMISSION_DENIED_ERROR = 20;
 
 	public int getCode();
 }
