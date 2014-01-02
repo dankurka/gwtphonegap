@@ -20,8 +20,6 @@ public class CaptureVideoOptions {
 
 	private long duration;
 
-	private String mode;
-
 	public CaptureVideoOptions() {
 		this.limit = 1;
 		this.duration = -1;
@@ -41,14 +39,6 @@ public class CaptureVideoOptions {
 
 	public void setDuration(long duration) {
 		this.duration = duration;
-	}
-
-	public void setMode(String mode) {
-		this.mode = mode;
-	}
-
-	public String getMode() {
-		return mode;
 	}
 
 }
