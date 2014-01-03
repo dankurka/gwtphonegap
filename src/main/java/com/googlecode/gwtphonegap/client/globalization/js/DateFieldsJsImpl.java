@@ -14,35 +14,52 @@
  * the License.
  */
 package com.googlecode.gwtphonegap.client.globalization.js;
-
 import com.google.gwt.core.client.JavaScriptObject;
 
-import com.googlecode.gwtphonegap.client.globalization.DatePattern;
+import com.googlecode.gwtphonegap.client.globalization.DateFields;
 
-public final class DatePatternJsImpl extends JavaScriptObject implements DatePattern {
+/**
+ * @author vkiran
+ */
+public final class DateFieldsJsImpl extends JavaScriptObject implements DateFields {
 
-  protected DatePatternJsImpl() {
+    protected DateFieldsJsImpl() {
 
-  }
+    }
 
     @Override
-    public native String getPattern() /*-{
-        return this.pattern;
+    public native int getYear()/*-{
+        return this.year;
     }-*/;
 
     @Override
-    public native String getTimeZone() /*-{
-        return this.timezone;
+    public native int getMonth() /*-{
+        return this.month;
     }-*/;
 
     @Override
-    public native int getUtc_offset() /*-{
-        return this.utc_offset;
+    public native int getDay() /*-{
+        return this.day;
     }-*/;
 
     @Override
-    public native int getDst_offset() /*-{
-        return this.dst_offset;
+    public native int getHour() /*-{
+        return this.hour;
+    }-*/;
+
+    @Override
+    public native int getMinute() /*-{
+        return this.minute;
+    }-*/;
+
+    @Override
+    public native int getSecond() /*-{
+        return this.second;
+    }-*/;
+
+    @Override
+    public native Long getMillisecond() /*-{
+        return this.millisecond;
     }-*/;
 
 }

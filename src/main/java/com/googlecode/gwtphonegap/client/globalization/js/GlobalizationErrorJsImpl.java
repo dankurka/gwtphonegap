@@ -25,12 +25,12 @@ public final class GlobalizationErrorJsImpl extends JavaScriptObject implements 
 
   @Override
   public native int getCode() /*-{
-		return this.code;
+         return this.code;
   }-*/;
 
   @Override
   public native String getMessage() /*-{
-		return this.message;
+         return this.message;
   }-*/;
 
 }
