@@ -16,70 +16,72 @@ package com.googlecode.gwtphonegap.client.inappbrowser;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.web.bindery.event.shared.HandlerRegistration;
 
-public abstract class InAppBrowserReferenceBaseImpl implements InAppBrowserReference {
+public abstract class InAppBrowserReferenceBaseImpl implements
+		InAppBrowserReference {
 
-  private HandlerManager handlerManager;
+	private HandlerManager handlerManager;
 
-  @Override
-  public abstract void close();
+	@Override
+	public abstract void close();
 
-  @Override
-  public HandlerRegistration addExitHandler(ExitHandler handler) {
-    addJavaScriptHandlers();
-    return handlerManager.addHandler(ExitEvent.getType(), handler);
-  }
+	@Override
+	public HandlerRegistration addExitHandler(ExitHandler handler) {
+		ensureHandlers();
+		return handlerManager.addHandler(ExitEvent.getType(), handler);
+	}
 
-  @Override
-  public HandlerRegistration addLoadStartHandler(LoadStartHandler handler) {
-    addJavaScriptHandlers();
-    return handlerManager.addHandler(LoadStartEvent.getType(), handler);
-  }
+	@Override
+	public HandlerRegistration addLoadStartHandler(LoadStartHandler handler) {
+		ensureHandlers();
+		return handlerManager.addHandler(LoadStartEvent.getType(), handler);
+	}
 
-  @Override
-  public HandlerRegistration addLoadStopHandler(LoadStopHandler handler) {
-    addJavaScriptHandlers();
-    return handlerManager.addHandler(LoadStopEvent.getType(), handler);
-  }
+	@Override
+	public HandlerRegistration addLoadStopHandler(LoadStopHandler handler) {
+		ensureHandlers();
+		return handlerManager.addHandler(LoadStopEvent.getType(), handler);
+	}
 
-    @Override
-    public HandlerRegistration addLoadErrorHandler(LoadErrorHandler handler){
-    addJavaScriptHandlers();
-    return handlerManager.addHandler(LoadErrorEvent.getType(),handler);
-    }
-  protected HandlerManager createHandlerManager() {
-    return new HandlerManager(this);
-  }
+	@Override
+	public HandlerRegistration addLoadErrorHandler(LoadErrorHandler handler) {
+		ensureHandlers();
+		return handlerManager.addHandler(LoadErrorEvent.getType(), handler);
+	}
 
-  protected void ensureHandlers() {
-    if (handlerManager == null) {
-      handlerManager = createHandlerManager();
-      addJavaScriptHandlers();
-    }
-  }
+	protected HandlerManager createHandlerManager() {
+		return new HandlerManager(this);
+	}
 
-  protected abstract void addJavaScriptHandlers();
+	protected void ensureHandlers() {
+		if (handlerManager == null) {
+			handlerManager = createHandlerManager();
+			addJavaScriptHandlers();
+		}
+	}
 
-  protected void fireLoadStartEvent(String url) {
-    if (handlerManager != null) {
-      handlerManager.fireEvent(new LoadStartEvent(url));
-    }
-  }
+	protected abstract void addJavaScriptHandlers();
 
-  protected void fireLoadStopEvent(String url) {
-    if (handlerManager != null) {
-      handlerManager.fireEvent(new LoadStopEvent(url));
-    }
-  }
+	protected void fireLoadStartEvent(String url) {
+		if (handlerManager != null) {
+			handlerManager.fireEvent(new LoadStartEvent(url));
+		}
+	}
 
-  protected void fireExitEvent() {
-    if (handlerManager != null) {
-      handlerManager.fireEvent(new ExitEvent());
-    }
-  }
+	protected void fireLoadStopEvent(String url) {
+		if (handlerManager != null) {
+			handlerManager.fireEvent(new LoadStopEvent(url));
+		}
+	}
 
-    protected  void fireLoadErrorEvent(String url){
-        if(handlerManager != null){
-            handlerManager.fireEvent(new LoadErrorEvent(url));
-        }
-    }
+	protected void fireExitEvent() {
+		if (handlerManager != null) {
+			handlerManager.fireEvent(new ExitEvent());
+		}
+	}
+
+	protected void fireLoadErrorEvent(String url) {
+		if (handlerManager != null) {
+			handlerManager.fireEvent(new LoadErrorEvent(url));
+		}
+	}
 }
