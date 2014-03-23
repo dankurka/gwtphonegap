@@ -28,9 +28,9 @@ public class BadgePhoneGapImpl implements Badge {
 	}
 
 	private native boolean testForPlugin()/*-{
-		if (!$wnd.plugins)
+		if (!$wnd.plugin)
 			return false;
-		if (!$wnd.plugins.badge)
+		if (!$wnd.plugin.notification.badge)
 			return false;
 		return true;
 	}-*/;
@@ -44,7 +44,7 @@ public class BadgePhoneGapImpl implements Badge {
 	}
 
 	private native void setBadgeNative(int number)/*-{
-		$wnd.plugins.badge.set(number);
+		$wnd.plugin.notification.badge.set(number);
 	}-*/;
 
 	@Override
