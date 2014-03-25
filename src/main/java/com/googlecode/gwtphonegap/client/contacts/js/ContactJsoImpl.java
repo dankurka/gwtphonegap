@@ -203,14 +203,14 @@ public final class ContactJsoImpl extends JavaScriptObject implements Contact {
 		return new JsLightArray<ContactOrganisation>(organisationsJso);
 	}
 	
-	public Date createDate(long time) {
-		return new Date(time);
+	public static Date createDate(double date) {
+		return new Date((long)date);
 	}
 	
 	@Override
 	public native Date getBirthDay() /*-{
 		var time = this.birthday.getTime();
-		return @com.googlecode.gwtphonegap.client.contacts.js.ContactJsoImpl::createDate(J)(time);
+		return @com.googlecode.gwtphonegap.client.contacts.js.ContactJsoImpl::createDate(D)(time);
 	}-*/;
 
 	@Override
