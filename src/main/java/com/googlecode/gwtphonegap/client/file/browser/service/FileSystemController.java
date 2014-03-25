@@ -140,7 +140,7 @@ public class FileSystemController {
 	 * @param entry
 	 * @param asyncCallback
 	 */
-	public void readAsText(FileEntry entry, AsyncCallback<String> callback) {
+	public void readAsText(FileObject entry, AsyncCallback<String> callback) {
 		service.readAsText(entry.getFullPath(), callback);
 
 	}
@@ -464,7 +464,7 @@ public class FileSystemController {
 	 * @param entry
 	 * @param asyncCallback
 	 */
-	public void readAsDataUrl(FileEntry entry, AsyncCallback<String> callback) {
+	public void readAsDataUrl(FileObject entry, AsyncCallback<String> callback) {
 		service.readAsDataUrl(entry.getFullPath(), callback);
 
 	}

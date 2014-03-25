@@ -16,8 +16,8 @@
 package com.googlecode.gwtphonegap.client.file.js;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.googlecode.gwtphonegap.client.file.FileEntry;
 import com.googlecode.gwtphonegap.client.file.FileError;
+import com.googlecode.gwtphonegap.client.file.FileObject;
 import com.googlecode.gwtphonegap.client.file.FileReader;
 import com.googlecode.gwtphonegap.client.file.ReaderCallback;
 
@@ -118,9 +118,9 @@ public final class FileReaderJsImpl extends JavaScriptObject implements FileRead
 	}-*/;
 
 	@Override
-	public void readAsDataUrl(FileEntry entry) {
-		FileEntryJsImpl entryJs = (FileEntryJsImpl) entry;
-		readAsDataUrl0(entryJs.getEntry());
+	public void readAsDataUrl(FileObject entry) {
+		FileObjectJsImpl entryJs = (FileObjectJsImpl) entry;
+		readAsDataUrl0(entryJs);
 
 	}
 
@@ -129,9 +129,9 @@ public final class FileReaderJsImpl extends JavaScriptObject implements FileRead
 	}-*/;
 
 	@Override
-	public void readAsText(FileEntry entry) {
-		FileEntryJsImpl entryJs = (FileEntryJsImpl) entry;
-		readAsText0(entryJs.getEntry());
+	public void readAsText(FileObject entry) {
+		FileObjectJsImpl entryJs = (FileObjectJsImpl) entry;
+		readAsText0(entryJs);
 	}
 
 	private native void readAsText0(JavaScriptObject entry)/*-{
