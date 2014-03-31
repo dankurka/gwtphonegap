@@ -25,25 +25,25 @@ public abstract class InAppBrowserReferenceBaseImpl implements InAppBrowserRefer
 
   @Override
   public HandlerRegistration addExitHandler(ExitHandler handler) {
-    addJavaScriptHandlers();
+	ensureHandlers();
     return handlerManager.addHandler(ExitEvent.getType(), handler);
   }
 
   @Override
   public HandlerRegistration addLoadStartHandler(LoadStartHandler handler) {
-    addJavaScriptHandlers();
+    ensureHandlers();
     return handlerManager.addHandler(LoadStartEvent.getType(), handler);
   }
 
   @Override
   public HandlerRegistration addLoadStopHandler(LoadStopHandler handler) {
-    addJavaScriptHandlers();
+	ensureHandlers();
     return handlerManager.addHandler(LoadStopEvent.getType(), handler);
   }
 
     @Override
     public HandlerRegistration addLoadErrorHandler(LoadErrorHandler handler){
-    addJavaScriptHandlers();
+    ensureHandlers();
     return handlerManager.addHandler(LoadErrorEvent.getType(),handler);
     }
   protected HandlerManager createHandlerManager() {
