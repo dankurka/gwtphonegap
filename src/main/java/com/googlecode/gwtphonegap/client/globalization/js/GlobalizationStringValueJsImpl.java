@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Daniel Kurka
+ * Copyright 2014 Daniel Kurka
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -16,33 +16,19 @@
 package com.googlecode.gwtphonegap.client.globalization.js;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.googlecode.gwtphonegap.client.globalization.GlobalizationStringValue;
 
-import com.googlecode.gwtphonegap.client.globalization.DatePattern;
+/**
+ * @author vkiran
+ */
+public final class GlobalizationStringValueJsImpl extends JavaScriptObject implements GlobalizationStringValue {
 
-public final class DatePatternJsImpl extends JavaScriptObject implements DatePattern {
+    protected GlobalizationStringValueJsImpl(){
 
-  protected DatePatternJsImpl() {
-
-  }
-
+    }
+    
     @Override
-    public native String getPattern() /*-{
-        return this.pattern;
+    public native String getValue() /*-{
+        return this.value;
     }-*/;
-
-    @Override
-    public native String getTimeZone() /*-{
-        return this.timezone;
-    }-*/;
-
-    @Override
-    public native int getUtc_offset() /*-{
-        return this.utc_offset;
-    }-*/;
-
-    @Override
-    public native int getDst_offset() /*-{
-        return this.dst_offset;
-    }-*/;
-
 }

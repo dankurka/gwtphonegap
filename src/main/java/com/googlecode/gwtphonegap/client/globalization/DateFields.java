@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 Daniel Kurka
+ * Copyright 2014 Daniel Kurka
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -15,29 +15,50 @@
  */
 package com.googlecode.gwtphonegap.client.globalization;
 
-public interface DatePattern {
-    /**
-     * The date and time pattern to format and parse dates. The patterns follow Unicode Technical Standard #35. (String)
-     * @return
-     */
-    public String getPattern();
+/**
+ * @author vkiran
+ */
+public interface DateFields {
 
     /**
-     * The abbreviated name of the time zone on the client. (String)
+     * The four digit year. (Number)
      * @return
      */
-    public String getTimeZone();
+    public int getYear();
 
     /**
-     * The current difference in seconds between the client's time zone and coordinated universal time. (Number)
+     * The month from (0-11). (Number)
      * @return
      */
-    public int getUtc_offset();
+    public int getMonth();
 
     /**
-     *  The current daylight saving time offset in seconds between the client's non-daylight saving's time zone
-     *  and the client's daylight saving's time zone. (Number)
+     * The day from (1-31). (Number)
      * @return
      */
-    public int getDst_offset();
+    public int getDay() ;
+
+    /**
+     * The hour from (0-23). (Number)
+     * @return
+     */
+    public int getHour();
+
+    /**
+     * The minute from (0-59). (Number)
+     * @return
+     */
+    public int getMinute();
+
+    /**
+     * The second from (0-59). (Number)
+     * @return
+     */
+    public int getSecond();
+
+    /**
+     *  The milliseconds (from 0-999), not available on all platforms. (Number)
+     * @return
+     */
+    public Long getMillisecond();
 }

@@ -15,16 +15,19 @@
  */
 package com.googlecode.gwtphonegap.client.globalization.browser;
 
-import com.googlecode.gwtphonegap.client.globalization.CLocale;
 import com.googlecode.gwtphonegap.client.globalization.CNumberPattern;
+import com.googlecode.gwtphonegap.client.globalization.CurrencyPattern;
 import com.googlecode.gwtphonegap.client.globalization.DateNameOptions;
 import com.googlecode.gwtphonegap.client.globalization.DateOptions;
 import com.googlecode.gwtphonegap.client.globalization.DatePattern;
-import com.googlecode.gwtphonegap.client.globalization.DateValue;
+import com.googlecode.gwtphonegap.client.globalization.DayLightSavings;
 import com.googlecode.gwtphonegap.client.globalization.Globalization;
+import com.googlecode.gwtphonegap.client.globalization.GlobalizationArrayValue;
 import com.googlecode.gwtphonegap.client.globalization.GlobalizationCallback;
+import com.googlecode.gwtphonegap.client.globalization.GlobalizationDoubleValue;
 import com.googlecode.gwtphonegap.client.globalization.GlobalizationError;
-import com.googlecode.gwtphonegap.client.globalization.Language;
+import com.googlecode.gwtphonegap.client.globalization.GlobalizationIntValue;
+import com.googlecode.gwtphonegap.client.globalization.GlobalizationStringValue;
 import com.googlecode.gwtphonegap.client.globalization.NumberOptions;
 import com.googlecode.gwtphonegap.collection.shared.CollectionFactory;
 import com.googlecode.gwtphonegap.collection.shared.LightArray;
@@ -34,8 +37,8 @@ import java.util.Date;
 public class GlobalizationBrowserImpl implements Globalization {
 
   @Override
-  public void getPreferredLanguage(GlobalizationCallback<Language, GlobalizationError> callback) {
-    callback.onSuccess(new Language() {
+  public void getPreferredLanguage(GlobalizationCallback<GlobalizationStringValue, GlobalizationError> callback) {
+    callback.onSuccess(new GlobalizationStringValue() {
 
       @Override
       public String getValue() {
@@ -46,8 +49,8 @@ public class GlobalizationBrowserImpl implements Globalization {
   }
 
   @Override
-  public void getLocaleName(GlobalizationCallback<CLocale, GlobalizationError> callback) {
-    callback.onSuccess(new CLocale() {
+  public void getLocaleName(GlobalizationCallback<GlobalizationStringValue, GlobalizationError> callback) {
+    callback.onSuccess(new GlobalizationStringValue() {
 
       @Override
       public String getValue() {
@@ -59,7 +62,7 @@ public class GlobalizationBrowserImpl implements Globalization {
 
   @Override
   public void convertDateToString(Date date,
-      GlobalizationCallback<DateValue, GlobalizationError> callback) {
+      GlobalizationCallback<GlobalizationStringValue, GlobalizationError> callback) {
     convertDateToString(date, new DateOptions(DateOptions.LENGTH_SHORT,
         DateOptions.SELECTOR_DATE_AND_TIME), callback);
 
@@ -67,7 +70,7 @@ public class GlobalizationBrowserImpl implements Globalization {
 
   @Override
   public void convertDateToString(Date date, DateOptions options,
-      GlobalizationCallback<DateValue, GlobalizationError> callback) {
+      GlobalizationCallback<GlobalizationStringValue, GlobalizationError> callback) {
 
     callback.onFailure(new GlobalizationError() {
 
@@ -118,6 +121,22 @@ public class GlobalizationBrowserImpl implements Globalization {
       public String getPattern() {
         return "MM/dd/yyyy";
       }
+
+        @Override
+        public String getTimeZone() {
+            return "";
+        }
+
+        @Override
+        public int getUtc_offset() {
+           Date d = new Date();
+           return d.getTimezoneOffset();
+        }
+
+        @Override
+        public int getDst_offset() {
+            return 0;
+        }
     });
 
   }
@@ -131,13 +150,29 @@ public class GlobalizationBrowserImpl implements Globalization {
       public String getPattern() {
         return "MM/dd/yyyy";
       }
+
+        @Override
+        public String getTimeZone() {
+            return "";
+        }
+
+        @Override
+        public int getUtc_offset() {
+           Date d = new Date();
+           return d.getTimezoneOffset();
+        }
+
+        @Override
+        public int getDst_offset() {
+            return 0;
+        }
     });
 
   }
 
   @Override
-  public void getDateNames(GlobalizationCallback<LightArray<String>, GlobalizationError> callback) {
-    LightArray<String> months = CollectionFactory.constructArray();
+  public void getDateNames(GlobalizationCallback<GlobalizationArrayValue, GlobalizationError> callback) {
+    final LightArray<String> months = CollectionFactory.constructArray();
     months.push("Jan");
     months.push("Feb");
     months.push("Mar");
@@ -151,56 +186,100 @@ public class GlobalizationBrowserImpl implements Globalization {
     months.push("Nov");
     months.push("Dec");
 
-    callback.onSuccess(months);
+    callback.onSuccess(new GlobalizationArrayValue() {
+
+         @Override
+         public LightArray<String> getValue() {
+             return months;
+         }
+     });
 
   }
 
   @Override
   public void getDateNames(DateNameOptions options,
-      GlobalizationCallback<LightArray<String>, GlobalizationError> callback) {
+      GlobalizationCallback<GlobalizationArrayValue, GlobalizationError> callback) {
     getDateNames(callback);
 
   }
 
   @Override
   public void isDayLightSavingsTime(Date date,
-      GlobalizationCallback<Boolean, GlobalizationError> callback) {
-    callback.onSuccess(true);
+      GlobalizationCallback<DayLightSavings, GlobalizationError> callback) {
+    callback.onSuccess(new DayLightSavings() {
+        @Override
+        public boolean getDst() {
+            return false;
+        }
+    });
 
   }
 
   @Override
-  public void getFirstDayOfWeek(GlobalizationCallback<Integer, GlobalizationError> callback) {
-    callback.onSuccess(1);
+  public void getFirstDayOfWeek(GlobalizationCallback<GlobalizationIntValue, GlobalizationError> callback) {
+    callback.onSuccess(new GlobalizationIntValue() {
+        @Override
+        public int getValue() {
+            return 1;
+        }
+    });
 
   }
 
   @Override
-  public void numberToString(double number, NumberOptions options,
-      GlobalizationCallback<String, GlobalizationError> callback) {
-    callback.onSuccess("" + number);
+  public void numberToString(final double number, NumberOptions options,
+      GlobalizationCallback<GlobalizationStringValue, GlobalizationError> callback) {
+      callback.onSuccess(new GlobalizationStringValue() {
+          @Override
+          public String getValue() {
+              return ""+number;
+          }
+      });
+  }
+
+  @Override
+  public void numberToString(final double number,
+      GlobalizationCallback<GlobalizationStringValue, GlobalizationError> callback) {
+    callback.onSuccess(new GlobalizationStringValue() {
+        @Override
+        public String getValue() {
+            return ""+number;
+        }
+    });
 
   }
 
   @Override
-  public void numberToString(double number,
-      GlobalizationCallback<String, GlobalizationError> callback) {
-    callback.onSuccess("" + number);
+  public void stringToNumber(final String stringToFormat, NumberOptions options,
+      GlobalizationCallback<GlobalizationDoubleValue, GlobalizationError> callback) {
+    callback.onSuccess(new GlobalizationDoubleValue() {
+        @Override
+        public double getValue() {
+            try{
+            double curNumber = Double.parseDouble(stringToFormat);
+            return curNumber;
+            }catch (NumberFormatException e){
+                return 0;
+            }
+        }
+    });
 
   }
 
   @Override
-  public void stringToNumber(String stringToFormat, NumberOptions options,
-      GlobalizationCallback<Number, GlobalizationError> callback) {
-    callback.onSuccess(Double.parseDouble(stringToFormat));
-
-  }
-
-  @Override
-  public void stringToNumber(String stringToFormat,
-      GlobalizationCallback<Number, GlobalizationError> callback) {
-    callback.onSuccess(Double.parseDouble(stringToFormat));
-
+  public void stringToNumber(final String stringToFormat,
+      GlobalizationCallback<GlobalizationDoubleValue, GlobalizationError> callback) {
+      callback.onSuccess(new GlobalizationDoubleValue() {
+          @Override
+          public double getValue() {
+              try{
+                  double curNumber = Double.parseDouble(stringToFormat);
+                  return curNumber;
+              }catch (Exception e){
+                  return 0;
+              }
+          }
+      });
   }
 
   @Override
@@ -240,7 +319,7 @@ public class GlobalizationBrowserImpl implements Globalization {
 
   @Override
   public void getCurrencyPattern(String currencyCode,
-      GlobalizationCallback<CNumberPattern, GlobalizationError> callback) {
+      GlobalizationCallback<CurrencyPattern, GlobalizationError> callback) {
     callback.onFailure(new GlobalizationError() {
 
       @Override

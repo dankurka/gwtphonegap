@@ -13,7 +13,6 @@
  */
 package com.googlecode.gwtphonegap.client.globalization;
 
-import com.googlecode.gwtphonegap.collection.shared.LightArray;
 
 import java.util.Date;
 
@@ -25,7 +24,7 @@ public interface Globalization {
    * 
    * @param callback the callback that is invoked after data is ready
    */
-  public void getPreferredLanguage(GlobalizationCallback<Language, GlobalizationError> callback);
+  public void getPreferredLanguage(GlobalizationCallback<GlobalizationStringValue, GlobalizationError> callback);
 
   /**
    * Returns the string identifier for the client's current locale setting. It returns the locale
@@ -34,13 +33,15 @@ public interface Globalization {
    * 
    * @param callback the callback that is invoked after data is ready
    */
-  public void getLocaleName(GlobalizationCallback<CLocale, GlobalizationError> callback);
+  public void getLocaleName(GlobalizationCallback<GlobalizationStringValue, GlobalizationError> callback);
 
   /**
    * @see #convertDateToString(Date, DateOptions, GlobalizationCallback)
+   * @param date
+   * @param callback
    */
   public void convertDateToString(Date date,
-      GlobalizationCallback<DateValue, GlobalizationError> callback);
+      GlobalizationCallback<GlobalizationStringValue, GlobalizationError> callback);
 
   /**
    * Returns a date formatted as a string according to the client's user preferences and calendar
@@ -48,14 +49,19 @@ public interface Globalization {
    * callback with a properties object as a parameter. If there is an error formatting the date,
    * then the errorCB callback is invoked.
    * 
-   * The defaults are: formatLenght="short" and selector="date and time"
+   * The defaults are: formatLength="short" and selector="date and time"
    * 
+   * @param date
+   * @param options
+   * @param callback
    */
 
   public void convertDateToString(Date date, DateOptions options,
-      GlobalizationCallback<DateValue, GlobalizationError> callback);
+      GlobalizationCallback<GlobalizationStringValue, GlobalizationError> callback);
 
   /**
+   * @param dateString
+   * @param callback
    * @see #convertStringToDate(String, DateOptions, GlobalizationCallback)
    */
   public void convertStringToDate(String dateString,
@@ -75,6 +81,9 @@ public interface Globalization {
    */
 
   /**
+     * @param dateString
+     * @param options
+     * @param callback
    * @see #getDatePattern(DateOptions, GlobalizationCallback)
    */
   public void convertStringToDate(String dateString, DateOptions options,
@@ -90,6 +99,8 @@ public interface Globalization {
    * The defaults are: formatLength="short" and selector="date and time"
    * 
    * 
+     * @param options
+     * @param callback
    * @return Object.pattern {String}: The date and time pattern for formatting and parsing dates.
    *         The patterns follow Unicode Technical Standard #35
    *         http://unicode.org/reports/tr35/tr35-4.html Object.timezone {String}: The abbreviated
@@ -105,9 +116,10 @@ public interface Globalization {
       GlobalizationCallback<DatePattern, GlobalizationError> callback);
 
   /**
-   * @see #getDateNames(DateOptions, GlobalizationCallback)
+     * @param callback
+   * @see #getDateNames( GlobalizationCallback)
    */
-  public void getDateNames(GlobalizationCallback<LightArray<String>, GlobalizationError> callback);
+  public void getDateNames(GlobalizationCallback<GlobalizationArrayValue, GlobalizationError> callback);
 
   /**
    * Returns an array of either the names of the months or days of the week according to the
@@ -117,12 +129,14 @@ public interface Globalization {
    * 
    * The defaults are: type="wide" and item="months"
    * 
+     * @param options
+     * @param callback
    * @return Object.value {Array{String}}: The array of names starting from either the first month
    *         in the year or the first day of the week.
    * @error GlobalizationError.UNKNOWN_ERROR
    */
   public void getDateNames(DateNameOptions options,
-      GlobalizationCallback<LightArray<String>, GlobalizationError> callback);
+      GlobalizationCallback<GlobalizationArrayValue, GlobalizationError> callback);
 
   /**
    * Returns whether daylight savings time is in effect for a given date using the client's time
@@ -131,13 +145,15 @@ public interface Globalization {
    * date, then the errorCB callback is invoked.
    * 
    * 
+     * @param date
+     * @param callback
    * @return The value "true" indicates that daylight savings time is in effect for the given date
    *         and "false" indicate that it is not.
    * 
    * @error GlobalizationError.UNKNOWN_ERROR
    */
   public void isDayLightSavingsTime(Date date,
-      GlobalizationCallback<Boolean, GlobalizationError> callback);
+      GlobalizationCallback<DayLightSavings, GlobalizationError> callback);
 
   /**
    * Returns the first day of the week according to the client's user preferences and calendar. The
@@ -146,9 +162,10 @@ public interface Globalization {
    * obtaining the pattern, then the errorCB callback is invoked.
    * 
    * 
+     * @param callback
    * @return The number of the first day of the week.
    */
-  public void getFirstDayOfWeek(GlobalizationCallback<Integer, GlobalizationError> callback);
+  public void getFirstDayOfWeek(GlobalizationCallback<GlobalizationIntValue, GlobalizationError> callback);
 
   /**
    * Returns a number formatted as a string according to the client's user preferences. It returns
@@ -157,24 +174,25 @@ public interface Globalization {
    * 
    * The defaults are: type="decimal"
    * 
-   * @param {Number} number
-   * @param {Function} successCB
-   * @param {Function} errorCB
-   * @param {Object} options {optional} type {String}: 'decimal', "percent", or 'currency'
-   * 
+     * @param number
+     * @param options
+     * @param callback
+    * 
    * @return Object.value {String}: The formatted number string.
    * 
    * @error GlobalizationError.FORMATTING_ERROR
    * 
    */
   public void numberToString(double number, NumberOptions options,
-      GlobalizationCallback<String, GlobalizationError> callback);
+      GlobalizationCallback<GlobalizationStringValue, GlobalizationError> callback);
 
   /**
+     * @param number
+     * @param callback
    * @see #numberToString(double, NumberOptions, GlobalizationCallback)
    */
   public void numberToString(double number,
-      GlobalizationCallback<String, GlobalizationError> callback);
+      GlobalizationCallback<GlobalizationStringValue, GlobalizationError> callback);
 
   /**
    * Parses a number formatted as a string according to the client's user preferences and returns
@@ -185,6 +203,9 @@ public interface Globalization {
    * The defaults are: type="decimal"
    * 
    * 
+     * @param stringToFormat
+     * @param options
+     * @param callback
    * @return Object.value {Number}: The parsed number.
    * 
    * @error GlobalizationError.PARSING_ERROR
@@ -193,13 +214,15 @@ public interface Globalization {
    *        number.value + '\n');}, function () { alert('Error parsing number');});
    */
   public void stringToNumber(String stringToFormat, NumberOptions options,
-      GlobalizationCallback<Number, GlobalizationError> callback);
+      GlobalizationCallback<GlobalizationDoubleValue, GlobalizationError> callback);
 
   /**
+     * @param stringToFormat
+     * @param callback
    * @see #stringToNumber(String, NumberOptions, GlobalizationCallback)
    */
   public void stringToNumber(String stringToFormat,
-      GlobalizationCallback<Number, GlobalizationError> callback);
+      GlobalizationCallback<GlobalizationDoubleValue, GlobalizationError> callback);
 
   /**
    * Returns a pattern string for formatting and parsing numbers according to the client's user
@@ -209,6 +232,8 @@ public interface Globalization {
    * The defaults are: type="decimal"
    * 
    * 
+     * @param options
+     * @param callback
    * @return Object.pattern {String}: The number pattern for formatting and parsing numbers. The
    *         patterns follow Unicode Technical Standard #35.
    *         http://unicode.org/reports/tr35/tr35-4.html
@@ -229,6 +254,7 @@ public interface Globalization {
       GlobalizationCallback<CNumberPattern, GlobalizationError> callback);
 
   /**
+     * @param callback
    * @see #getNumberPattern(NumberOptions, GlobalizationCallback)
    */
   public void getNumberPattern(GlobalizationCallback<CNumberPattern, GlobalizationError> callback);
@@ -239,6 +265,8 @@ public interface Globalization {
    * with a properties object as a parameter. If there is an error obtaining the pattern, then the
    * errorCB callback is invoked.
    * 
+     * @param currencyCode
+     * @param callback
    * @return Object.pattern {String}: The currency pattern for formatting and parsing currency
    *         values. The patterns follow Unicode Technical Standard #35
    *         http://unicode.org/reports/tr35/tr35-4.html Object.code {String}: The ISO 4217 currency
@@ -252,5 +280,5 @@ public interface Globalization {
    * 
    */
   public void getCurrencyPattern(String currencyCode,
-      GlobalizationCallback<CNumberPattern, GlobalizationError> callback);
+      GlobalizationCallback<CurrencyPattern, GlobalizationError> callback);
 }
