@@ -16,8 +16,8 @@
 package com.googlecode.gwtphonegap.client.file.browser;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.googlecode.gwtphonegap.client.file.FileEntry;
 import com.googlecode.gwtphonegap.client.file.FileError;
+import com.googlecode.gwtphonegap.client.file.FileObject;
 import com.googlecode.gwtphonegap.client.file.FileReader;
 import com.googlecode.gwtphonegap.client.file.ReaderCallback;
 import com.googlecode.gwtphonegap.client.file.browser.service.FileSystemController;
@@ -101,7 +101,7 @@ public class FileReaderBrowserImpl implements FileReader {
 	}
 
 	@Override
-	public void readAsDataUrl(FileEntry entry) {
+	public void readAsDataUrl(FileObject entry) {
 		if (this.state == FileReader.LOADING)
 			throw new RuntimeException("this loader is loading, cant do two things at once");
 		this.state = FileReader.LOADING;
@@ -155,7 +155,7 @@ public class FileReaderBrowserImpl implements FileReader {
 	}
 
 	@Override
-	public void readAsText(FileEntry entry) {
+	public void readAsText(FileObject entry) {
 		if (this.state == FileReader.LOADING)
 			throw new RuntimeException("this loader is loading, cant do two things at once");
 		this.state = FileReader.LOADING;

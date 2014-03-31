@@ -41,8 +41,8 @@ public interface FileReader {
 
 	public void abort();
 
-	public void readAsDataUrl(FileEntry entry);
+	public void readAsDataUrl(FileObject file);
 
-	public void readAsText(FileEntry entry);
+	public void readAsText(FileObject file);
 
 }
