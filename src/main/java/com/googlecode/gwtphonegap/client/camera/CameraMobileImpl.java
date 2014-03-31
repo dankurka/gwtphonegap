@@ -16,7 +16,7 @@ package com.googlecode.gwtphonegap.client.camera;
 public class CameraMobileImpl implements Camera {
 
   @Override
-  public void getPicture(PictureOptions options, PictureCallback callback) {
+  public CameraPopoverHandle getPicture(PictureOptions options, PictureCallback callback) {
     if (options == null) {
       throw new IllegalArgumentException("options can not be null");
     }
@@ -24,10 +24,10 @@ public class CameraMobileImpl implements Camera {
     if (callback == null) {
       throw new IllegalArgumentException("callback can not be null");
     }
-    getPicture0(options, callback);
+    return getPicture0(options, callback);
   }
 
-  private native void getPicture0(PictureOptions options, PictureCallback callback)/*-{
+  private native CameraPopoverHandle getPicture0(PictureOptions options, PictureCallback callback)/*-{
 		var successCallback = function(data) {
 			callback.@com.googlecode.gwtphonegap.client.camera.PictureCallback::onSuccess(Ljava/lang/String;)(data);
 		};
@@ -40,16 +40,13 @@ public class CameraMobileImpl implements Camera {
 		var dt = options.@com.googlecode.gwtphonegap.client.camera.PictureOptions::getDestinationType()();
 		var st = options.@com.googlecode.gwtphonegap.client.camera.PictureOptions::getSourceType()();
 
-		//private int encoding;
-
-		//private int mediaType;
-
 		var encoding = options.@com.googlecode.gwtphonegap.client.camera.PictureOptions::getEncoding()();
 		var g_allowEdit = options.@com.googlecode.gwtphonegap.client.camera.PictureOptions::isAllowEdit()();
 		var mediaType = options.@com.googlecode.gwtphonegap.client.camera.PictureOptions::getMediaType()();
 
 		var g_photo_al = options.@com.googlecode.gwtphonegap.client.camera.PictureOptions::isSaveToPhotoAlbum()();
-		var g_correct_o = options.@com.googlecode.gwtphonegap.client.camera.PictureOptions::isCorrectorientation()();
+		var g_correct_o = options.@com.googlecode.gwtphonegap.client.camera.PictureOptions::isCorrectOrientation()();
+                var cd = options.@com.googlecode.gwtphonegap.client.camera.PictureOptions::getDirection()();
 
 		var localOptions = {
 			quality : qual,
@@ -58,7 +55,9 @@ public class CameraMobileImpl implements Camera {
 			allowEdit : g_allowEdit,
 			encodingType : encoding,
 			saveToPhotoAlbum : g_photo_al,
-			correctOrientation : g_correct_o
+			correctOrientation : g_correct_o,
+                        cameraDirection : cd,
+                        mediaType : mediaType
 		};
 
 		var jpop = options.@com.googlecode.gwtphonegap.client.camera.PictureOptions::getPopOverOptions()();
@@ -86,8 +85,10 @@ public class CameraMobileImpl implements Camera {
 			localOptions["targetWidth"] = tw;
 		}
 
-		$wnd.navigator.camera.getPicture($entry(successCallback),
-				$entry(errorCallback), localOptions);
+                var cameraPop = $wnd.navigator.camera.getPicture($entry(successCallback),
+                $entry(errorCallback), localOptions);
+
+		return cameraPop;
   }-*/;
 
   @Override

@@ -40,10 +40,10 @@ public class CameraBrowserImpl implements CameraMock {
   }
 
   @Override
-  public void getPicture(PictureOptions options, PictureCallback callback) {
+  public CameraPopoverHandle getPicture(PictureOptions options, PictureCallback callback) {
     if (shouldFail) {
       callback.onFailure("should fail");
-      return;
+      return null;
     }
 
     if (options.getDestinationType() == PictureOptions.DESTINATION_TYPE_DATA_URL) {
@@ -59,7 +59,8 @@ public class CameraBrowserImpl implements CameraMock {
       }
 
     }
-
+   //TODO: Find a way to mock handle object and return it.
+    return null;
   }
 
   @Override
