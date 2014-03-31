@@ -202,8 +202,11 @@ public final class ContactJsoImpl extends JavaScriptObject implements Contact {
 		JsArray<ContactOrganisationJsoImpl> organisationsJso = getOrganisationsJso();
 		return new JsLightArray<ContactOrganisation>(organisationsJso);
 	}
-
-
+	
+	public static Date createDate(double date) {
+		return new Date((long)date);
+	}
+	
 	@Override
 	public native Date getBirthDay() /*-{
 		var time = this.birthday.getTime();
@@ -213,7 +216,6 @@ public final class ContactJsoImpl extends JavaScriptObject implements Contact {
 	@Override
 	public void setBirthDay(Date birthday) {
 		setBirthDayJso(birthday.getTime());
-
 	}
 
 	private native void setBirthDayJso(double time)/*-{
