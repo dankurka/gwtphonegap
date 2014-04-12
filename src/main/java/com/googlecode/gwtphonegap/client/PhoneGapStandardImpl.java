@@ -180,6 +180,7 @@ public class PhoneGapStandardImpl implements PhoneGap {
   }
 
   private void firePhoneGapAvailable() {
+    // TODO maybe getdevice is not avail?
     phoneGapLog.setClientId(getDevice().getUuid());
 
     handlerManager.fireEvent(new PhoneGapAvailableEvent());
