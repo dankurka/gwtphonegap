@@ -1,11 +1,11 @@
 /*
  * Copyright 2010 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -180,9 +180,12 @@ public class PhoneGapStandardImpl implements PhoneGap {
   }
 
   private void firePhoneGapAvailable() {
-    // TODO maybe getdevice is not avail?
-    phoneGapLog.setClientId(getDevice().getUuid());
-
+    if (!getDevice().isAvailable()) {
+      log("Device API is not available - logging will not work");
+      log("e.g.: plugman install --platform android  --project ./platforms/android/ --plugin org.apache.cordova.device");
+    } else {
+      phoneGapLog.setClientId(getDevice().getUuid());
+    }
     handlerManager.fireEvent(new PhoneGapAvailableEvent());
   }
 
@@ -381,5 +384,9 @@ public class PhoneGapStandardImpl implements PhoneGap {
   protected Globalization constructGlobalization() {
     return GWT.create(Globalization.class);
   }
+
+  protected native void log(String message) /*-{
+    $wnd.console.log(message);
+  }-*/;
 
 }
