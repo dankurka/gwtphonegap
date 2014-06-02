@@ -1,11 +1,11 @@
 /*
  * Copyright 2013 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -37,7 +37,7 @@ public class GlobalizationJsImpl implements Globalization {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see
    * com.googlecode.gwtphonegap.client.globalization.Globalization#getPreferredLanguage(com.googlecode
    * .gwtphonegap.client.globalization.GlobalizationCallback)
@@ -62,7 +62,7 @@ public class GlobalizationJsImpl implements Globalization {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see
    * com.googlecode.gwtphonegap.client.globalization.Globalization#getLocaleName(com.googlecode.
    * gwtphonegap.client.globalization.GlobalizationCallback)
@@ -84,7 +84,7 @@ public class GlobalizationJsImpl implements Globalization {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see
    * com.googlecode.gwtphonegap.client.globalization.Globalization#convertDateToString(java.util
    * .Date, com.googlecode.gwtphonegap.client.globalization.GlobalizationCallback)
@@ -101,7 +101,7 @@ public class GlobalizationJsImpl implements Globalization {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see
    * com.googlecode.gwtphonegap.client.globalization.Globalization#convertDateToString(java.util
    * .Date, com.googlecode.gwtphonegap.client.globalization.DateOptions,
@@ -114,10 +114,10 @@ public class GlobalizationJsImpl implements Globalization {
       throw new IllegalArgumentException("options can not be null");
     }
     JsDate jsDate = JsDate.create(date.getTime());
-    
+
     convertDateToString0(jsDate, options.getFormatLength(), options.getSelector(), callback);
   }
-  
+
   private native void convertDateToString0 (JsDate date, String formatLength, String selector,
       GlobalizationCallback<GlobalizationStringValue, GlobalizationError> callback)/*-{
 
@@ -150,19 +150,20 @@ public class GlobalizationJsImpl implements Globalization {
     if (options == null) {
       throw new IllegalArgumentException("options can not be null");
     }
-    
+
     convertStringToDate0(dateString, options.getFormatLength(), options.getSelector(), callback);
 
   }
 
   private static void onConvertStringToDateSuccess(DateFieldsJsImpl jsDate,
       GlobalizationCallback<Date, GlobalizationError> callback) {
+      @SuppressWarnings("deprecation")
       Date d = new Date(jsDate.getYear(), jsDate.getMonth(),jsDate.getDay(), jsDate.getHour(),jsDate.getMinute(), jsDate.getSecond());
       //TODO: Ideally the below lines should be uncommented to add the ms to
       //give the exact output. But these lines are throwing some errors.
       callback.onSuccess(d);
   }
-  
+
   private native void convertStringToDate0(String dateString, String formatLength, String selector,
       GlobalizationCallback<Date, GlobalizationError> callback) /*-{
 
@@ -183,7 +184,7 @@ public class GlobalizationJsImpl implements Globalization {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see
    * com.googlecode.gwtphonegap.client.globalization.Globalization#getDatePattern(com.googlecode
    * .gwtphonegap.client.globalization.GlobalizationCallback)
@@ -197,7 +198,7 @@ public class GlobalizationJsImpl implements Globalization {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see
    * com.googlecode.gwtphonegap.client.globalization.Globalization#getDatePattern(com.googlecode
    * .gwtphonegap.client.globalization.DateOptions,
@@ -237,7 +238,7 @@ public class GlobalizationJsImpl implements Globalization {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.googlecode.gwtphonegap.client.globalization.Globalization#getDateNames(com.googlecode.
    * gwtphonegap.client.globalization.GlobalizationCallback)
    */
@@ -249,7 +250,7 @@ public class GlobalizationJsImpl implements Globalization {
 
   /*
    * (non-Javadoc)
-   * 
+   *
    * @see com.googlecode.gwtphonegap.client.globalization.Globalization#getDateNames(com.googlecode.
    * gwtphonegap.client.globalization.js.DateNameOptions,
    * com.googlecode.gwtphonegap.client.globalization.GlobalizationCallback)
@@ -460,8 +461,8 @@ public class GlobalizationJsImpl implements Globalization {
                                            GlobalizationCallback<CurrencyPattern, GlobalizationError> callback) {
         callback.onSuccess(currencyPattern);
     }
-    
-    
+
+
 private static void getGlobalizationStringSuccess(
         GlobalizationCallback<GlobalizationStringValue, GlobalizationError> callback, GlobalizationStringValueJsImpl locale) {
     callback.onSuccess(locale);
@@ -479,5 +480,5 @@ private static void failureCallback(GlobalizationCallback<?, GlobalizationError>
   callback.onFailure(error);
 }
 
-  
+
 }

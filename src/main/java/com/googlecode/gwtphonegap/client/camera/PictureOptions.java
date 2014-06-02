@@ -1,11 +1,11 @@
 /*
  * Copyright 2010 Daniel Kurka
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  * in compliance with the License. You may obtain a copy of the License at
- * 
+ *
  * http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software distributed under the License
  * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
  * or implied. See the License for the specific language governing permissions and limitations under
@@ -30,11 +30,11 @@ public class PictureOptions {
     /**
      * Use the front-facing camera
      */
-    private static final int FRONT_CAMERA = 1;
+    public static final int FRONT_CAMERA = 1;
     /**
      * Use the back-facing camera
      */
-    private static final int BACK_CAMERA = 0;
+    public static final int BACK_CAMERA = 0;
     /**
      * Return JPEG encoded image
      */
@@ -62,7 +62,7 @@ public class PictureOptions {
      * Choose image from picture library (same as SAVEDPHOTOALBUM for Android)
      */
     public static final int PICTURE_SOURCE_TYPE_PHOTO_LIBRARY = 0;
-    
+
     /**
      * Take picture from camera
      */
@@ -239,7 +239,7 @@ public class PictureOptions {
   public PopOverOptions getPopOverOptions() {
     return popOverOptions;
   }
-  
+
   public int getDirection() {
     return direction;
   }

@@ -19,7 +19,7 @@
 	<description>A GWT Wrapper for the PhoneGap Javascript Library</description>
 
 	<properties>
-		<gwtversion>2.6.0</gwtversion>
+		<gwtversion>2.6.1</gwtversion>
 	</properties>
 
 	<licenses>
@@ -43,8 +43,6 @@
 		<connection>scm:git:https://code.google.com/p/gwt-phonegap/</connection>
 		<developerConnection>scm:git:https://code.google.com/p/gwt-phonegap/</developerConnection>
 	</scm>
-
-
 
 	<build>
 		<plugins>
