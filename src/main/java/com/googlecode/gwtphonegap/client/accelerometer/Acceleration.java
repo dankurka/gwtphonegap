@@ -27,22 +27,26 @@ public interface Acceleration {
 
 	/**
 	 * Amount of motion on the x-axis. Range [0, 1]
+         * @return 
 	 */
 	public double getX();
 
 	/**
 	 * Amount of motion on the y-axis. Range [0, 1]
+         * @return 
 	 */
 	public double getY();
-
+        
 	/**
 	 * Amount of motion on the z-axis. Range [0, 1]
+         * @return 
 	 */
 
 	public double getZ();
 
 	/**
 	 * Time of the Acceleration capture
+         * @return 
 	 */
 	public Date getTimeStamp();
 

@@ -95,7 +95,7 @@ public class AccelerometerBrowserImpl implements Accelerometer, AccelermeterMock
 			mockValues = null;
 			useMockValues = false;
 		} else {
-			if (values.size() == 0) {
+			if (values.isEmpty()) {
 				throw new IllegalArgumentException("no values provided");
 			}
 			this.mockValues = values;
