@@ -62,7 +62,7 @@ public interface Device {
    * @return the models device name
    */
   @Deprecated
-	public abstract String getName();
+  public abstract String getName();
 
   /**
    * device.model returns the name of the device's model or product. This value is set by the device
@@ -96,7 +96,7 @@ public interface Device {
 	 * <li>BlackBerry</li>
 	 * <li>BlackBerry Widgets (OS 5.0 and higher)</li>
 	 * <li>iPhone</li>
-	 * <ul>
+	 * </ul>
 	 *
 	 * <h1>iPhone Quirks</h1>
 	 * All devices return iPhone as the platform. This is inaccurate because
