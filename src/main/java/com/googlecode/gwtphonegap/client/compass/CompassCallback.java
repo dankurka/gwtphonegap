@@ -25,6 +25,7 @@ public interface CompassCallback {
 
 	/**
 	 * Called if an error occured
+         * @param error
 	 */
 	public void onError(CompassError error);
 
