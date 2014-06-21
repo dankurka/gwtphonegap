@@ -17,60 +17,60 @@ package com.googlecode.gwtphonegap.client.device;
 
 public interface Device {
 
-        /**
-         * Get the device's model name.
-         *
-         * device.name returns the name of the device's model or product. This value is set by the device
-         * manufacturer and may be different across versions of the same product.
-         *
-         * <h1>Supported Platforms</h1>
-         *
-         * <ul>
-         * <li>Android</li>
-         * <li>BlackBerry</li>
-         * <li>BlackBerry Widgets (OS 5.0 and higher)</li>
-         * <li>iPhone</li>
-         * </ul>
-         *
-         *
-         * <h1>Android Quirks</h1>
-         *
-         * <ul>
-         * <li>Gets the product name instead of the model name.
-         * <ul>
-         * <li>The product name is often the code name given during production.</li>
-         * <li>e.g. Nexus One returns "Passion", Motorola Droid returns "voles"</li>
-         * </ul>
-         * </li>
-         * </ul>
-         *
-         *
-         * <h1>iPhone Quirks</h1>
-         *
-         * <ul>
-         * <li>Gets the device's custom name instead of the device model name.
-         * <ul>
-         * <li>The custom name is set by the owner in iTunes.</li>
-         * <li>e.g. "Joe's iPhone"</li>
-         * </ul>
-         * </li>
-         * </ul>
-         *
-         * @deprecated use {@link #getName()}
-         *
-         *
-         * @return the models device name
-         */
-        @Deprecated
-        public abstract String getName();
+  /**
+   * Get the device's model name.
+   *
+   * device.name returns the name of the device's model or product. This value is set by the device
+   * manufacturer and may be different across versions of the same product.
+   *
+   * <h1>Supported Platforms</h1>
+   *
+   * <ul>
+   * <li>Android</li>
+   * <li>BlackBerry</li>
+   * <li>BlackBerry Widgets (OS 5.0 and higher)</li>
+   * <li>iPhone</li>
+   * </ul>
+   *
+   *
+   * <h1>Android Quirks</h1>
+   *
+   * <ul>
+   * <li>Gets the product name instead of the model name.
+   * <ul>
+   * <li>The product name is often the code name given during production.</li>
+   * <li>e.g. Nexus One returns "Passion", Motorola Droid returns "voles"</li>
+   * </ul>
+   * </li>
+   * </ul>
+   *
+   *
+   * <h1>iPhone Quirks</h1>
+   *
+   * <ul>
+   * <li>Gets the device's custom name instead of the device model name.
+   * <ul>
+   * <li>The custom name is set by the owner in iTunes.</li>
+   * <li>e.g. "Joe's iPhone"</li>
+   * </ul>
+   * </li>
+   * </ul>
+   *
+   * @deprecated use {@link #getName()}
+   *
+   *
+   * @return the models device name
+   */
+  @Deprecated
+  public abstract String getName();
 
-        /**
-         * device.model returns the name of the device's model or product. This value is set by the device
-         * manufacturer and may be different across versions of the same product.
-         *
-         * @return the device model
-         */
-        public abstract String getModel();
+  /**
+   * device.model returns the name of the device's model or product. This value is set by the device
+   * manufacturer and may be different across versions of the same product.
+   *
+   * @return the device model
+   */
+  public abstract String getModel();
 
 	/**
 	 * Get the version of phonegap running on the device.
@@ -81,7 +81,7 @@ public interface Device {
 	 * <li>BlackBerry</li>
 	 * <li>BlackBerry Widgets (OS 5.0 and higher)</li>
 	 * <li>iPhone</li>
-	 * </ul>
+	 * <ul>
 	 *
 	 * @return the version of phonegap running on the device
 	 */
