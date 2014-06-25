@@ -272,16 +272,15 @@ public class FileRemoteServiceServlet extends RemoteServiceServlet implements Fi
 
 		try {
 
-			StringBuffer buffer;
+			StringBuffer buffer = new StringBuffer();
 
 			int position;
 
 			if (fileWriterDTO.getPosition() == 0) {
-				buffer = new StringBuffer(content);
+				buffer.append(content);
 				position = content.length();
 			} else {
 				String fileInString = FileUtils.readFileToString(file);
-				buffer = new StringBuffer(fileInString);
 				int end = (int) fileWriterDTO.getPosition();
 				if (end > fileInString.length()) {
 					end = fileInString.length();
