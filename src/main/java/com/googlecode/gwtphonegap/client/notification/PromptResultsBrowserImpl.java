@@ -20,8 +20,8 @@ package com.googlecode.gwtphonegap.client.notification;
  */
 public class PromptResultsBrowserImpl implements PromptResults {
 
-    private int buttonIndex;
-    private String inputMessage;
+    private final int buttonIndex;
+    private final String inputMessage;
     
     public PromptResultsBrowserImpl(int buttonIndex, String inputMessage){
     this.buttonIndex = buttonIndex;
