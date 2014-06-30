@@ -15,6 +15,10 @@
  */
 package com.googlecode.gwtphonegap.client.notification;
 
+import com.google.gwt.core.client.JsArrayInteger;
+import com.google.gwt.core.client.JsArrayUtils;
+
+
 /**
  * Visual, audible, and tactile device notifications.
  * 
@@ -45,7 +49,27 @@ public class NotificationMobileImpl implements Notification {
 	public native void vibrate(int milliseconds)/*-{
 		$wnd.navigator.notification.vibrate(milliseconds);
 	}-*/;
+        
+        @Override
+        public void vibrateWithPattern(int[] pattern) {
+            vibrateWithPattern(pattern, -1);
+        }
 
+        @Override
+        public void vibrateWithPattern(int[] pattern, int repeat){
+            JsArrayInteger jsPattern =  JsArrayUtils.readOnlyJsArray(pattern);
+            vibrateWithPattern0(jsPattern, repeat);
+        }
+        
+        public native void vibrateWithPattern0(JsArrayInteger pattern, int repeat)/*-{
+		$wnd.navigator.notification.vibrateWithPattern(pattern,repeat);
+	}-*/;
+
+        @Override
+        public native void cancelVibrate() /*-{
+		$wnd.navigator.notification.cancelVibration();
+	}-*/;
+        
         @Override
         public void prompt(String message, PromptCallback callback) {
             prompt(message, callback, "Prompt");
@@ -108,7 +132,7 @@ public class NotificationMobileImpl implements Notification {
 
 	@Override
 	public void confirm(String message, ConfirmCallback callback) {
-		confirm(message, callback, "Title");
+		confirm(message, callback, "Confirm");
 
 	}
 

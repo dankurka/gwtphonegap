@@ -34,10 +34,31 @@ public class NotificationBrowserImpl implements Notification {
 	public void vibrate(int milliseconds) {
 
 	}
+        @Override
+        public void vibrateWithPattern(int[] pattern) {
+            
+        }
+
+        @Override
+        public void vibrateWithPattern(int[] pattern, int repeat) {
+           
+        }
+
+        @Override
+        public void cancelVibrate() {
+            
+        }
 
         @Override
         public void prompt(String message, PromptCallback callback) {
-                prompt(message,callback);
+                 String enteredValue = Window.prompt(message, "OK");
+                PromptResults results;
+                if (enteredValue == null) {
+                    results = new PromptResultsBrowserImpl(1, null);
+                } else {
+                    results = new PromptResultsBrowserImpl(0, enteredValue);
+                }
+                callback.onPrompt(results);
         }
 
         @Override
@@ -52,14 +73,7 @@ public class NotificationBrowserImpl implements Notification {
 
         @Override
         public void prompt(String message, PromptCallback callback, String title, String defaultText, String[] buttonLabels) {
-                String enteredValue = Window.prompt(message, "OK");
-                PromptResults results;
-                if (enteredValue == null) {
-                    results = new PromptResultsBrowserImpl(1, null);
-                } else {
-                    results = new PromptResultsBrowserImpl(0, enteredValue);
-                }
-                callback.onPrompt(results);
+               prompt(message, callback);
         }
 
 
