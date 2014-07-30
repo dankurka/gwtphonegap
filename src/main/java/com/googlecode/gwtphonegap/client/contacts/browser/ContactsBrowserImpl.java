@@ -25,6 +25,7 @@ import com.googlecode.gwtphonegap.client.contacts.Contact;
 import com.googlecode.gwtphonegap.client.contacts.ContactFactory;
 import com.googlecode.gwtphonegap.client.contacts.ContactFindCallback;
 import com.googlecode.gwtphonegap.client.contacts.ContactFindOptions;
+import com.googlecode.gwtphonegap.client.contacts.ContactPickCallback;
 import com.googlecode.gwtphonegap.client.contacts.Contacts;
 import com.googlecode.gwtphonegap.client.device.DeviceBrowserImpl;
 import com.googlecode.gwtphonegap.collection.shared.CollectionFactory;
@@ -192,5 +193,10 @@ public class ContactsBrowserImpl implements Contacts {
 		Contact contact = ContactBrowserImpl.fromJSON(this, jsonContact);
 		return contact;
 	}
+
+    @Override
+    public void pickContact(ContactPickCallback callback) {
+       //TODO: Display all the contacts from the storage and allow user to select one contact from the list of contacts displayed.
+    }
 
 }
