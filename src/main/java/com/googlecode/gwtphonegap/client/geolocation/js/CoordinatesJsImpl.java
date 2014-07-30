@@ -23,31 +23,39 @@ public final class CoordinatesJsImpl extends JavaScriptObject implements Coordin
 
 	}
 
-	public native double getLatitude()/*-{
+        
+	@Override
+        public native double getLatitude()/*-{
 		return this.latitude;
 	}-*/;
 
-	public native double getLongitude()/*-{
+	@Override
+        public native double getLongitude()/*-{
 		return this.longitude;
 	}-*/;
 
-	public native double getAltitude()/*-{
+	@Override
+        public native double getAltitude()/*-{
 		return this.altitude;
 	}-*/;
 
-	public native double getAccuracy()/*-{
+	@Override
+        public native double getAccuracy()/*-{
 		return this.accuracy;
 	}-*/;
 
 	// TODO this returns null on iPhone 4.1
-	public native double getAltitudeAccuracy()/*-{
+	@Override
+        public native double getAltitudeAccuracy()/*-{
 		return this.altitudeAccuracy;
 	}-*/;
 
+        @Override
 	public native double getHeading()/*-{
 		return this.heading;
 	}-*/;
-
+        
+        @Override
 	public native double getSpeed()/*-{
 		return this.speed;
 	}-*/;
