@@ -17,6 +17,11 @@ package com.googlecode.gwtphonegap.client.geolocation;
 
 import com.googlecode.gwtphonegap.client.geolocation.js.GeolocationMobileImpl;
 
+/**
+ * Add phonegap/Cordova geolocation plugin to the phonegap/Cordova project, 
+ * when using the Geolocation related features.
+ * @author Daniel Kurka
+ */
 public interface Geolocation {
 
 	/**
@@ -36,12 +41,16 @@ public interface Geolocation {
 	 * <li>iPhone</li>
 	 * </ul>
 	 * 
+         * @param callback
 	 * @param options
-	 * @param callback
 	 */
 
 	public void getCurrentPosition(GeolocationCallback callback, GeolocationOptions options);
 
+        /**
+         * 
+         * @param callback 
+         */
         public void getCurrentPosition(GeolocationCallback callback);
 	/**
 	 * Watches for changes to the device's current position.
