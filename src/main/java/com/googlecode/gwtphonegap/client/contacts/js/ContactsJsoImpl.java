@@ -75,8 +75,8 @@ public class ContactsJsoImpl implements Contacts {
 		return new ContactFactoryJsoImpl();
 	}
 
-        @Override
-        public native void pickContact(ContactPickCallback callback) /*-{
+    @Override
+    public native void pickContact(ContactPickCallback callback) /*-{
 		var sC = function(contact) {
 			callback.@com.googlecode.gwtphonegap.client.contacts.ContactPickCallback::onSuccess(Lcom/googlecode/gwtphonegap/client/contacts/Contact;)(contact);
 		};
