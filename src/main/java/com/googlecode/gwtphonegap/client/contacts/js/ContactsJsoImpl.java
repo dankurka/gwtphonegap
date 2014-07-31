@@ -78,13 +78,14 @@ public class ContactsJsoImpl implements Contacts {
     @Override
     public native void pickContact(ContactPickCallback callback) /*-{
 		var sC = function(contact) {
-			callback.@com.googlecode.gwtphonegap.client.contacts.ContactPickCallback::onSuccess(Lcom/googlecode/gwtphonegap/client/contacts/Contact;)(contact);
+			callback.@com.googlecode.gwtphonegap.client.contacts.ContactPickCallback::onSuccess(*)(contact);
 		};
 
 		var eC = function(error) {
-			callback.@com.googlecode.gwtphonegap.client.contacts.ContactPickCallback::onFailure(Lcom/googlecode/gwtphonegap/client/contacts/ContactError;)(error);
+			callback.@com.googlecode.gwtphonegap.client.contacts.ContactPickCallback::onFailure(*)(error);
 		};
-                $wnd.navigator.contacts.pickContact($entry(sC),$entry(eC));
+       
+       $wnd.navigator.contacts.pickContact($entry(sC),$entry(eC));
 	}-*/;
 
 }
