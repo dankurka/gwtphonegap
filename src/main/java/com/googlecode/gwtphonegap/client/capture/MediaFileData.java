@@ -15,14 +15,39 @@
  */
 package com.googlecode.gwtphonegap.client.capture;
 
+/**
+ * Encapsulates format information about a media file.
+ * @author Daniel Kurka
+ */
 public interface MediaFileData {
+    
+        /**
+         * The actual format of the audio and video content. 
+         * @return 
+         */
 	public String getCodecs();
 
+        /**
+         * The average bitrate of the content. The value is zero for images. 
+         * @return 
+         */
 	public long getBitRate();
 
+        /**
+         * The height of the image or video in pixels. The value is zero for audio clips. 
+         * @return 
+         */
 	public int getHeight();
 
+        /**
+         * The width of the image or video in pixels. The value is zero for audio clips.
+         * @return 
+         */
 	public int getWidth();
 
+        /**
+         * The length of the video or sound clip in seconds. The value is zero for images. 
+         * @return 
+         */
 	public long getDuration();
 }

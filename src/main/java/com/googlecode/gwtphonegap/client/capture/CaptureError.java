@@ -15,12 +15,31 @@
  */
 package com.googlecode.gwtphonegap.client.capture;
 
+/**
+ * Encapsulates the error code resulting from a failed media capture operation.
+ * @author Daniel Kurka
+ */
 public interface CaptureError {
 
+        /**
+         * The camera or microphone failed to capture image or sound.
+         */
 	public static final int CAPTURE_INTERNAL_ERR = 0;
+        /**
+         * The camera or audio capture application is currently serving another capture request.
+         */
 	public static final int CAPTURE_APPLICATION_BUSY = 1;
+        /**
+         * Invalid use of the API (e.g., the value of limit is less than one).
+         */
 	public static final int CAPTURE_INVALID_ARGUMENT = 2;
+        /**
+         * The user exits the camera or audio capture application before capturing anything.
+         */
 	public static final int CAPTURE_NO_MEDIA_FILES = 3;
+        /**
+         * The requested capture operation is not supported.
+         */
 	public static final int CAPTURE_NOT_SUPPORTED = 20;
 
 	public int getCode();
