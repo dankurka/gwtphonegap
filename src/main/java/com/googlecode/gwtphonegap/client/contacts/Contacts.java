@@ -60,5 +60,5 @@ public interface Contacts {
 
 	public ContactFactory getFactory();
         
-        public void pickContact(ContactPickCallback callback);
+	public void pickContact(ContactPickCallback callback);
 }
