@@ -15,10 +15,30 @@
  */
 package com.googlecode.gwtphonegap.client.capture;
 
+/**
+ * Encapsulates a set of media capture parameters that a device supports.
+ * Describes media capture modes supported by the device.
+ * The configuration data includes the MIME type, 
+ * and capture dimensions for video or image capture.
+ * @author Daniel Kurka
+ */
 public interface ConfigurationData {
+    
+        /**
+         * The ASCII-encoded lowercase string representing the media type.
+         * @return 
+         */
 	public String getType();
 
+        /**
+         * The height of the image or video in pixels. The value is zero for sound clips.
+         * @return 
+         */
 	public int getHeight();
 
+        /**
+         * The width of the image or video in pixels. The value is zero for sound clips. 
+         * @return 
+         */
 	public int getWidth();
 }

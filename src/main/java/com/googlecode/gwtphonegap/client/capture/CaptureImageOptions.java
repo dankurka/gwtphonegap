@@ -15,6 +15,10 @@
  */
 package com.googlecode.gwtphonegap.client.capture;
 
+/**
+ * Encapsulates image capture configuration options.
+ * @author Daniel Kurka
+ */
 public class CaptureImageOptions {
 	private int limit;
 
@@ -22,6 +26,11 @@ public class CaptureImageOptions {
 		this.limit = 1;
 	}
 
+        /**
+         * The maximum number of images the user can capture in a single capture
+         * operation. The value must be greater than or equal to 1 (defaults to 1).
+         * @param limit 
+         */
 	public void setLimit(int limit) {
 		this.limit = limit;
 	}

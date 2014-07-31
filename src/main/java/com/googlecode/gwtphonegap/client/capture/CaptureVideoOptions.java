@@ -15,6 +15,10 @@
  */
 package com.googlecode.gwtphonegap.client.capture;
 
+/**
+ * Encapsulates video capture configuration options.
+ * @author Daniel Kurka
+ */
 public class CaptureVideoOptions {
 	private int limit;
 
@@ -25,18 +29,36 @@ public class CaptureVideoOptions {
 		this.duration = -1;
 	}
 
+        /**
+         * returns the maximum number of video clips to capture.
+         * @return 
+         */
 	public int getLimit() {
 		return limit;
 	}
 
+        /**
+         * The maximum number of video clips the device's user can capture in a 
+         * single capture operation. The value must be greater than or equal to 
+         * 1 (defaults to 1).
+         * @param limit 
+         */
 	public void setLimit(int limit) {
 		this.limit = limit;
 	}
 
+        /**
+         * The maximum duration of a video clip, in seconds.
+         * @return 
+         */
 	public long getDuration() {
 		return duration;
 	}
 
+        /**
+         * The maximum duration of a video clip, in seconds.
+         * @param duration 
+         */
 	public void setDuration(long duration) {
 		this.duration = duration;
 	}
