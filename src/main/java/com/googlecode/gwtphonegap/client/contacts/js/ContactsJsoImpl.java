@@ -20,6 +20,7 @@ import com.googlecode.gwtphonegap.client.contacts.Contact;
 import com.googlecode.gwtphonegap.client.contacts.ContactFactory;
 import com.googlecode.gwtphonegap.client.contacts.ContactFindCallback;
 import com.googlecode.gwtphonegap.client.contacts.ContactFindOptions;
+import com.googlecode.gwtphonegap.client.contacts.ContactPickCallback;
 import com.googlecode.gwtphonegap.client.contacts.Contacts;
 import com.googlecode.gwtphonegap.collection.client.JsLightArray;
 import com.googlecode.gwtphonegap.collection.shared.LightArray;
@@ -73,5 +74,18 @@ public class ContactsJsoImpl implements Contacts {
 	public ContactFactory getFactory() {
 		return new ContactFactoryJsoImpl();
 	}
+
+    @Override
+    public native void pickContact(ContactPickCallback callback) /*-{
+		var sC = function(contact) {
+			callback.@com.googlecode.gwtphonegap.client.contacts.ContactPickCallback::onSuccess(*)(contact);
+		};
+
+		var eC = function(error) {
+			callback.@com.googlecode.gwtphonegap.client.contacts.ContactPickCallback::onFailure(*)(error);
+		};
+       
+       $wnd.navigator.contacts.pickContact($entry(sC),$entry(eC));
+	}-*/;
 
 }
