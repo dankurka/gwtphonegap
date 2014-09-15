@@ -99,9 +99,7 @@ public class NotificationBrowserImpl implements Notification {
 	@Override
 	public void confirm(String message, ConfirmCallback callback) {
 		boolean confirm = Window.confirm(message);
-		//TODO is this correct?
-		//take a look into at phonegap docs
-		callback.onConfirm(confirm ? 0 : 1);
+		callback.onConfirm(confirm ? 1 : 2);
 
 	}
 
