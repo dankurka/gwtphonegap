@@ -88,7 +88,7 @@ public final class FileTransferJsImpl extends JavaScriptObject implements FileTr
 		fop.fileName = options.@com.googlecode.gwtphonegap.client.file.FileUploadOptions::getFileName()();
 		fop.mimeType = options.@com.googlecode.gwtphonegap.client.file.FileUploadOptions::getMimeType()();
 		fop.params = map;
-		fop.heaaders = headers;
+		fop.headers = headers;
 
 		this.upload(fileUri, serverUrl, $entry(suc), $entry(fail), fop);
   }-*/;
