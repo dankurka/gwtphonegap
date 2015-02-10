@@ -88,7 +88,7 @@ public class FileEntryJsImpl implements FileEntry {
 			that.@com.googlecode.gwtphonegap.client.file.js.FileEntryJsImpl::onMoveToSuccess(Lcom/googlecode/gwtphonegap/client/file/FileCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, entry);
 		};
 
-		var entry = (this.@com.googlecode.gwtphonegap.client.file.js.DirectoryEntryJsImpl::entry);
+		var entry = (this.@com.googlecode.gwtphonegap.client.file.js.FileEntryJsImpl::entry);
 
 		entry.moveTo(parent, newName, $entry(suc), $entry(fail));
 
@@ -118,7 +118,7 @@ public class FileEntryJsImpl implements FileEntry {
 			that.@com.googlecode.gwtphonegap.client.file.js.FileEntryJsImpl::onCopyToSuccess(Lcom/googlecode/gwtphonegap/client/file/FileCallback;Lcom/google/gwt/core/client/JavaScriptObject;)(callback, entry);
 		};
 
-		var entry = (this.@com.googlecode.gwtphonegap.client.file.js.DirectoryEntryJsImpl::entry);
+		var entry = (this.@com.googlecode.gwtphonegap.client.file.js.FileEntryJsImpl::entry);
 
 		entry.copyTo(parent, newName, $entry(suc), $entry(fail));
 
