@@ -18,18 +18,20 @@ import java.util.Date;
 
 public interface Globalization {
   /**
-   * Returns the string identifier for the client's current language. It returns the language
-   * identifier string to the successCB callback with a properties object as a parameter. If there
-   * is an error getting the language, then the errorCB callback is invoked.
+   * Get the BCP 47 language tag for the client's current language. Returns the BCP-47 compliant language identifier tag 
+   * to the successCB callback with a properties object as a parameter. If there
+   * is an error getting the language, then the errorCB callback is invoked.The error's expected code is
+   * GlobalizationError.UNKNOWN_ERROR.
    * 
    * @param callback the callback that is invoked after data is ready
    */
   public void getPreferredLanguage(GlobalizationCallback<GlobalizationStringValue, GlobalizationError> callback);
 
   /**
-   * Returns the string identifier for the client's current locale setting. It returns the locale
-   * identifier string to the successCB callback with a properties object as a parameter. If there
-   * is an error getting the locale, then the errorCB callback is invoked.
+   * Returns the BCP 47 compliant tag for the client's current locale setting. Returns the BCP 47 compliant locale identifier string
+   * to the successCB callback with a properties object as a parameter. The locale tag will consist of a two-letter lower case 
+   * language code, two-letter upper case country code, and (unspecified) variant code, separated by a hyphen.If there
+   * is an error getting the locale, then the errorCB callback is invoked.The error's expected code is GlobalizationError.UNKNOWN_ERROR.
    * 
    * @param callback the callback that is invoked after data is ready
    */
@@ -71,20 +73,14 @@ public interface Globalization {
    * Parses a date formatted as a string according to the client's user preferences and calendar
    * using the time zone of the client and returns the corresponding date object. It returns the
    * date to the successCB callback with a properties object as a parameter. If there is an error
-   * parsing the date string, then the errorCB callback is invoked.
+   * parsing the date string, then the errorCB callback is invoked.The error's expected code 
+   * is GlobalizationError.PARSING_ERROR.
    * 
    * The defaults are: formatLength="short" and selector="date and time"
-   * 
-   * 
-   * @error GlobalizationError.PARSING_ERROR
-   * 
-   */
-
-  /**
-     * @param dateString
-     * @param options
-     * @param callback
-   * @see #getDatePattern(DateOptions, GlobalizationCallback)
+   * @param dateString
+   * @param options
+   * @param callback
+   *  
    */
   public void convertStringToDate(String dateString, DateOptions options,
       GlobalizationCallback<Date, GlobalizationError> callback);
@@ -94,23 +90,14 @@ public interface Globalization {
   /**
    * Returns a pattern string for formatting and parsing dates according to the client's user
    * preferences. It returns the pattern to the successCB callback with a properties object as a
-   * parameter. If there is an error obtaining the pattern, then the errorCB callback is invoked.
+   * parameter. If there is an error obtaining the pattern, the errorCallback executes with a 
+   * GlobalizationError object as a parameter. The error's expected code is GlobalizationError.PATTERN_ERROR.
+   * The default date options are: formatLength="short" and selector="date and time"
    * 
-   * The defaults are: formatLength="short" and selector="date and time"
    * 
+   * @param options
+   * @param callback
    * 
-     * @param options
-     * @param callback
-   * @return Object.pattern {String}: The date and time pattern for formatting and parsing dates.
-   *         The patterns follow Unicode Technical Standard #35
-   *         http://unicode.org/reports/tr35/tr35-4.html Object.timezone {String}: The abbreviated
-   *         name of the time zone on the client Object.utc_offset {Number}: The current difference
-   *         in seconds between the client's time zone and coordinated universal time.
-   *         Object.dst_offset {Number}: The current daylight saving time offset in seconds between
-   *         the client's non-daylight saving's time zone and the client's daylight saving's time
-   *         zone.
-   * 
-   * @error GlobalizationError.PATTERN_ERROR
    */
   public void getDatePattern(DateOptions options,
       GlobalizationCallback<DatePattern, GlobalizationError> callback);
@@ -129,11 +116,8 @@ public interface Globalization {
    * 
    * The defaults are: type="wide" and item="months"
    * 
-     * @param options
-     * @param callback
-   * @return Object.value {Array{String}}: The array of names starting from either the first month
-   *         in the year or the first day of the week.
-   * @error GlobalizationError.UNKNOWN_ERROR
+   * @param options
+   * @param callback
    */
   public void getDateNames(DateNameOptions options,
       GlobalizationCallback<GlobalizationArrayValue, GlobalizationError> callback);
@@ -142,13 +126,10 @@ public interface Globalization {
    * Returns whether daylight savings time is in effect for a given date using the client's time
    * zone and calendar. It returns whether or not daylight savings time is in effect to the
    * successCB callback with a properties object as a parameter. If there is an error reading the
-   * date, then the errorCB callback is invoked.
+   * date, then the errorCB callback is invoked. The error's expected code is GlobalizationError.UNKNOWN_ERROR.
    * 
-   * 
-     * @param date
-     * @param callback
-   * @return The value "true" indicates that daylight savings time is in effect for the given date
-   *         and "false" indicate that it is not.
+   * @param date
+   * @param callback
    * 
    * @error GlobalizationError.UNKNOWN_ERROR
    */
@@ -159,28 +140,25 @@ public interface Globalization {
    * Returns the first day of the week according to the client's user preferences and calendar. The
    * days of the week are numbered starting from 1 where 1 is considered to be Sunday. It returns
    * the day to the successCB callback with a properties object as a parameter. If there is an error
-   * obtaining the pattern, then the errorCB callback is invoked.
+   * obtaining the pattern, then the errorCB callback is invoked.The error's expected code is
+   * GlobalizationError.UNKNOWN_ERROR.
    * 
    * 
-     * @param callback
-   * @return The number of the first day of the week.
+   * @param callback
    */
   public void getFirstDayOfWeek(GlobalizationCallback<GlobalizationIntValue, GlobalizationError> callback);
 
   /**
    * Returns a number formatted as a string according to the client's user preferences. It returns
    * the formatted number string to the successCB callback with a properties object as a parameter.
-   * If there is an error formatting the number, then the errorCB callback is invoked.
+   * If there is an error formatting the number, then the errorCB callback is invoked.The error's 
+   * expected code is GlobalizationError.FORMATTING_ERROR.
    * 
-   * The defaults are: type="decimal"
+   * The options parameter is optional, and its default values are: "decimal"
    * 
-     * @param number
-     * @param options
-     * @param callback
-    * 
-   * @return Object.value {String}: The formatted number string.
-   * 
-   * @error GlobalizationError.FORMATTING_ERROR
+   * @param number
+   * @param options
+   * @param callback
    * 
    */
   public void numberToString(double number, NumberOptions options,
@@ -198,27 +176,21 @@ public interface Globalization {
    * Parses a number formatted as a string according to the client's user preferences and returns
    * the corresponding number. It returns the number to the successCB callback with a properties
    * object as a parameter. If there is an error parsing the number string, then the errorCB
-   * callback is invoked.
+   * callback is invoked. The error's expected code is GlobalizationError.PARSING_ERROR.
    * 
    * The defaults are: type="decimal"
    * 
    * 
-     * @param stringToFormat
-     * @param options
-     * @param callback
-   * @return Object.value {Number}: The parsed number.
-   * 
-   * @error GlobalizationError.PARSING_ERROR
-   * 
-   *        Example globalization.stringToNumber('1234.56', function (number) {alert('Number:' +
-   *        number.value + '\n');}, function () { alert('Error parsing number');});
+   * @param stringToFormat
+   * @param options
+   * @param callback
    */
   public void stringToNumber(String stringToFormat, NumberOptions options,
       GlobalizationCallback<GlobalizationDoubleValue, GlobalizationError> callback);
 
   /**
-     * @param stringToFormat
-     * @param callback
+   * @param stringToFormat
+   * @param callback
    * @see #stringToNumber(String, NumberOptions, GlobalizationCallback)
    */
   public void stringToNumber(String stringToFormat,
@@ -228,34 +200,20 @@ public interface Globalization {
    * Returns a pattern string for formatting and parsing numbers according to the client's user
    * preferences. It returns the pattern to the successCB callback with a properties object as a
    * parameter. If there is an error obtaining the pattern, then the errorCB callback is invoked.
+   * The error's expected code is GlobalizationError.PATTERN_ERROR.
+   * The options parameter is optional, and default values are:decimal
    * 
-   * The defaults are: type="decimal"
    * 
-   * 
-     * @param options
-     * @param callback
-   * @return Object.pattern {String}: The number pattern for formatting and parsing numbers. The
-   *         patterns follow Unicode Technical Standard #35.
-   *         http://unicode.org/reports/tr35/tr35-4.html
-   * 
-   *         Object.symbol {String}: The symbol to be used when formatting and parsing e.g., percent
-   *         or currency symbol. Object.fraction {Number}: The number of fractional digits to use
-   *         when parsing and formatting numbers. Object.rounding {Number}: The rounding increment
-   *         to use when parsing and formatting. Object.positive {String}: The symbol to use for
-   *         positive numbers when parsing and formatting. Object.negative: {String}: The symbol to
-   *         use for negative numbers when parsing and formatting. Object.decimal: {String}: The
-   *         decimal symbol to use for parsing and formatting. Object.grouping: {String}: The
-   *         grouping symbol to use for parsing and formatting.
-   * 
-   * @error GlobalizationError.PATTERN_ERROR
+   * @param options
+   * @param callback
    * 
    */
   public void getNumberPattern(NumberOptions options,
       GlobalizationCallback<CNumberPattern, GlobalizationError> callback);
 
   /**
-     * @param callback
    * @see #getNumberPattern(NumberOptions, GlobalizationCallback)
+   * @param callback
    */
   public void getNumberPattern(GlobalizationCallback<CNumberPattern, GlobalizationError> callback);
 
@@ -265,18 +223,8 @@ public interface Globalization {
    * with a properties object as a parameter. If there is an error obtaining the pattern, then the
    * errorCB callback is invoked.
    * 
-     * @param currencyCode
-     * @param callback
-   * @return Object.pattern {String}: The currency pattern for formatting and parsing currency
-   *         values. The patterns follow Unicode Technical Standard #35
-   *         http://unicode.org/reports/tr35/tr35-4.html Object.code {String}: The ISO 4217 currency
-   *         code for the pattern. Object.fraction {Number}: The number of fractional digits to use
-   *         when parsing and formatting currency. Object.rounding {Number}: The rounding increment
-   *         to use when parsing and formatting. Object.decimal: {String}: The decimal symbol to use
-   *         for parsing and formatting. Object.grouping: {String}: The grouping symbol to use for
-   *         parsing and formatting.
-   * 
-   * @error GlobalizationError.FORMATTING_ERROR
+   * @param currencyCode
+   * @param callback
    * 
    */
   public void getCurrencyPattern(String currencyCode,
