@@ -19,10 +19,6 @@ import java.util.Date;
 
 public class DeviceBrowserImpl implements Device {
 
-  @Override
-  public String getName() {
-    return "";
-  }
 
   @Override
   public String getPhoneGapVersion() {

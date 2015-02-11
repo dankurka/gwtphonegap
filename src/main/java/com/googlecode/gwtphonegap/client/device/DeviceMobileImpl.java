@@ -16,22 +16,14 @@
 package com.googlecode.gwtphonegap.client.device;
 
 /**
- * The Device class represents the Device from the phonegap API:
- *
- * http://docs.phonegap.com/phonegap_device_device.md.html
+ * This plugin defines a global device object, which describes the device's hardware and software. 
+ * Although the object is in the global scope, it is not available until after the deviceready event.
  *
  * @author Daniel Kurka
  *
  */
 public class DeviceMobileImpl implements Device {
 
-	/* (non-Javadoc)
-	 * @see com.googlecode.gwtphonegap.client.device.Device#getName()
-	 */
-	@Override
-	public native String getName()/*-{
-		return $wnd.device.name;
-  }-*/;
 
 	/* (non-Javadoc)
 	 * @see com.googlecode.gwtphonegap.client.device.Device#getPhoneGapVersion()
