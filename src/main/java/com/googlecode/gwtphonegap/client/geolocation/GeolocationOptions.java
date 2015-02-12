@@ -61,8 +61,8 @@ public class GeolocationOptions {
 
 	/**
 	 * The maximum length of time (msec) that is allowed to pass from the call to
-     * geolocation.getCurrentPosition or geolocation.watchPosition until the corresponding
-     * geolocationSuccess callback is invoked. (Number)
+         * geolocation.getCurrentPosition or geolocation.watchPosition until the corresponding
+         * geolocationSuccess callback is invoked. (Number)
 	 * @param timeout
 	 */
 	public void setTimeout(int timeout) {

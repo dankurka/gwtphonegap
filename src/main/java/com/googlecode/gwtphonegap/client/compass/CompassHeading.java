@@ -16,11 +16,30 @@
 package com.googlecode.gwtphonegap.client.compass;
 
 public interface CompassHeading {
+    
+        /**
+         * The heading in degrees from 0-359.99 at a single moment in time. 
+         * @return 
+         */
 	public double getMagneticHeading();
 
+        /**
+         * The heading relative to the geographic North Pole in degrees 0-359.99 
+         * at a single moment in time. A negative value indicates that the true 
+         * heading can't be determined. 
+         * @return 
+         */
 	public double getTrueHeading();
 
+        /**
+         * The deviation in degrees between the reported heading and the true heading. 
+         * @return 
+         */
 	public double getHeadingAccuracy();
 
+        /**
+         * The time at which this heading was determined. 
+         * @return 
+         */
 	public long getTimeStamp();
 }

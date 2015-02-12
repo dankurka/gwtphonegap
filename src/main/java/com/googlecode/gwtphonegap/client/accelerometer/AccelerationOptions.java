@@ -22,7 +22,10 @@ package com.googlecode.gwtphonegap.client.accelerometer;
  * 
  */
 public class AccelerationOptions {
-
+        
+        /**
+         *  Requested period of calls to accelerometerSuccess with acceleration data in Milliseconds. 
+         */
 	private double frequency;
 
 	public AccelerationOptions() {

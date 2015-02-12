@@ -22,8 +22,16 @@ package com.googlecode.gwtphonegap.client.compass;
  * 
  */
 public class CompassOptions {
+        
+        /**
+         *  How often to retrieve the compass heading in milliseconds. Default: 100
+         */
 	private int frequency;
 
+        /**
+         * The change in degrees required to initiate a watchHeading success callback. 
+         * When this value is set, frequency is ignored. 
+         */
 	private double filter;
 
 	public CompassOptions() {
