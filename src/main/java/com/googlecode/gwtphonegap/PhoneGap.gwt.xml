@@ -338,7 +338,6 @@
 	
 	<!-- disable default gwt Log handler -->
 	<set-property name="gwt.logging.consoleHandler" value="DISABLED"/> 
-	<set-property name="gwt.logging.popupHandler" value="DISABLED" />
 	
 	
 	
