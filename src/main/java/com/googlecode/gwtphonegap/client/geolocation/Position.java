@@ -16,7 +16,16 @@
 package com.googlecode.gwtphonegap.client.geolocation;
 
 public interface Position {
+    
+        /**
+         * A set of geographic coordinates. 
+         * @return 
+         */
 	public Coordinates getCoordinates();
 
+        /**
+         * Creation timestamp for coords. 
+         * @return 
+         */
 	public long getTimeStamp();
 }
