@@ -48,8 +48,16 @@ public interface Capture {
 	public LightArray<ConfigurationData> getSupportedVideoModes();
 
 	/**
-	 * Launch the device audio recording application for recording audio
-	 * clip(s).
+	 * Starts an asynchronous operation to capture audio recordings using the device's default 
+         * audio recording application. The operation allows the device user to capture multiple recordings 
+         * in a single session.The capture operation ends when either the user exits the audio recording 
+         * application, or the maximum number of recordings specified by CaptureAudioOptions.limit is reached.
+         * If no limit parameter value is specified, it defaults to one (1), and the capture operation 
+         * terminates after the user records a single audio clip.When the capture operation finishes, 
+         * the CaptureCallback executes with an array of MediaFile objects describing each captured audio 
+         * clip file. If the user terminates the operation before an audio clip is captured, the
+         * CaptureErrorCallback executes with a CaptureError object, featuring the 
+         * CaptureError.CAPTURE_NO_MEDIA_FILES error code.
 	 * 
 	 * @param options
 	 *            options to be used when capturing data
@@ -61,7 +69,15 @@ public interface Capture {
 	public void captureAudio(CaptureAudioOptions options, CaptureCallback callback);
 
 	/**
-	 * Launch the device camera application for taking image(s).
+	 * Starts an asynchronous operation to capture images using the device's camera application.
+         * The operation allows users to capture more than one image in a single session.The capture 
+         * operation ends either when the user closes the camera application, or the maximum number 
+         * of recordings specified by CaptureAudioOptions.limit is reached. If no limit value is specified, 
+         * it defaults to one (1), and the capture operation terminates after the user captures a single image.
+         * When the capture operation finishes, it invokes the CaptureCB callback with an array of MediaFile 
+         * objects describing each captured image file. If the user terminates the operation before capturing 
+         * an image, the CaptureErrorCB callback executes with a CaptureError object featuring a
+         * CaptureError.CAPTURE_NO_MEDIA_FILES error code.
 	 * 
 	 * @param options
 	 *            options to be used when capturing data
@@ -73,7 +89,15 @@ public interface Capture {
 	public void captureImage(CaptureImageOptions options, CaptureCallback callback);
 
 	/**
-	 * Launch the device video recorder application for recording video(s).
+	 * Starts an asynchronous operation to capture video recordings using the device's video recording 
+         * application. The operation allows the user to capture more than one recordings in a single session.
+         * The capture operation ends when either the user exits the video recording application, or the 
+         * maximum number of recordings specified by CaptureVideoOptions.limit is reached. If no limit 
+         * parameter value is specified, it defaults to one (1), and the capture operation terminates 
+         * after the user records a single video clip.When the capture operation finishes, it the CaptureCB 
+         * callback executes with an array of MediaFile objects describing each captured video clip file. 
+         * If the user terminates the operation before capturing a video clip, the CaptureErrorCB callback 
+         * executes with a CaptureError object featuring a CaptureError.CAPTURE_NO_MEDIA_FILES error code.
 	 * 
 	 * @param options
 	 *            options to be used when capturing data
