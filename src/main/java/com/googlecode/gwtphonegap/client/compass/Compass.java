@@ -40,7 +40,7 @@ public interface Compass {
 	 * 
 	 * 
 	 * @param options
-	 *            the options when capturing data
+	 *            the options when capturing data (Not used)
 	 * @param callback
 	 *            the callback to invoke when data is ready or operation has
 	 *            failed
