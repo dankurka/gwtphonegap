@@ -19,13 +19,13 @@ public interface Device {
 
 
 
-        /**
-         * device.model returns the name of the device's model or product. This value is set by the device
-         * manufacturer and may be different across versions of the same product.
-         *
-         * @return the device model
-         */
-        public abstract String getModel();
+    /**
+     * device.model returns the name of the device's model or product. This value is set by the device
+     * manufacturer and may be different across versions of the same product.
+     *
+     * @return the device model
+     */
+    public abstract String getModel();
 
 	/**
 	 * Get the version of phonegap running on the device.

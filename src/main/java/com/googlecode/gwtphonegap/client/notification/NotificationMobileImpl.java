@@ -181,5 +181,11 @@ public class NotificationMobileImpl implements Notification {
 				buttonLabels);
 	}-*/;
 
+	@Override
+	public void vibrate(int[] pattern) {
+        JsArrayInteger jsPattern =  JsArrayUtils.readOnlyJsArray(pattern);
+        vibrateWithPattern0(jsPattern);
+	}
+
 
 }

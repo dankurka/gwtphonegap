@@ -34,47 +34,47 @@ public class NotificationBrowserImpl implements Notification {
 	public void vibrate(int milliseconds) {
 
 	}
-        @Override
-        public void vibrateWithPattern(int[] pattern) {
-            
-        }
+    @Override
+    public void vibrateWithPattern(int[] pattern) {
+        
+    }
 
-        @Override
-        public void vibrateWithPattern(int[] pattern, int repeat) {
-           
-        }
+    @Override
+    public void vibrateWithPattern(int[] pattern, int repeat) {
+       
+    }
 
-        @Override
-        public void cancelVibrate() {
-            
-        }
+    @Override
+    public void cancelVibrate() {
+        
+    }
 
-        @Override
-        public void prompt(String message, PromptCallback callback) {
-                 String enteredValue = Window.prompt(message, "OK");
-                PromptResults results;
-                if (enteredValue == null) {
-                    results = new PromptResultsBrowserImpl(1, null);
-                } else {
-                    results = new PromptResultsBrowserImpl(0, enteredValue);
-                }
-                callback.onPrompt(results);
-        }
+    @Override
+    public void prompt(String message, PromptCallback callback) {
+             String enteredValue = Window.prompt(message, "OK");
+            PromptResults results;
+            if (enteredValue == null) {
+                results = new PromptResultsBrowserImpl(1, null);
+            } else {
+                results = new PromptResultsBrowserImpl(0, enteredValue);
+            }
+            callback.onPrompt(results);
+    }
 
-        @Override
-        public void prompt(String message, PromptCallback callback, String title) {
-                prompt(message,callback);
-        }
+    @Override
+    public void prompt(String message, PromptCallback callback, String title) {
+            prompt(message,callback);
+    }
 
-        @Override
-        public void prompt(String message, PromptCallback callback, String title, String defaultText) {
-                prompt(message,callback);
-        }
+    @Override
+    public void prompt(String message, PromptCallback callback, String title, String defaultText) {
+            prompt(message,callback);
+    }
 
-        @Override
-        public void prompt(String message, PromptCallback callback, String title, String defaultText, String[] buttonLabels) {
-               prompt(message, callback);
-        }
+    @Override
+    public void prompt(String message, PromptCallback callback, String title, String defaultText, String[] buttonLabels) {
+           prompt(message, callback);
+    }
 
 
         @Override
@@ -113,6 +113,10 @@ public class NotificationBrowserImpl implements Notification {
 	public void confirm(String message, ConfirmCallback callback, String title, String[] buttonLabels) {
 		confirm(message, callback);
 
+	}
+
+	@Override
+	public void vibrate(int[] pattern) {
 	}
 
 }
