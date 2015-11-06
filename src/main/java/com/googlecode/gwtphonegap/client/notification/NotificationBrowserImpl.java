@@ -40,11 +40,6 @@ public class NotificationBrowserImpl implements Notification {
         }
 
         @Override
-        public void vibrateWithPattern(int[] pattern, int repeat) {
-           
-        }
-
-        @Override
         public void cancelVibrate() {
             
         }

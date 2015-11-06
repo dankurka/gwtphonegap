@@ -40,26 +40,20 @@ public interface Notification {
 
 	public void beep(int count);
 
+        /**
+         * Vibrates the device for provided number of milliseconds.
+         * To cancel the vibration, pass 0 as parameter.
+         * @param milliseconds 
+         */ 
 	public void vibrate(int milliseconds);
         
         /**
-        * Vibrates the device with a given pattern. The pattern is not repeated.
+        * Vibrates the device with a given pattern.
         *
         * @param pattern :Sequence of durations (in milliseconds) for which to turn
         * on or off the vibrator. (Array of Numbers)
         */
         public void vibrateWithPattern(int[] pattern);
-
-       /**
-        * Vibrates the device with a given pattern.
-        *
-        * @param pattern:Sequence of durations (in milliseconds) for which to turn
-        * on or off the vibrator. (Array of Numbers)
-        * @param repeat :Optional index into the pattern array at which to start
-        * repeating (will repeat until canceled), or -1 for no repetition
-        * (default). (Number)
-        */
-        public void vibrateWithPattern(int[] pattern, int repeat);
 
        /**
         * Immediately cancels any currently running vibration.

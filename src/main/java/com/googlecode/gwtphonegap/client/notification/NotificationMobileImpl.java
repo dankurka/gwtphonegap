@@ -61,18 +61,6 @@ public class NotificationMobileImpl implements Notification {
         }-*/;
 
         @Override
-        @Deprecated
-        public void vibrateWithPattern(int[] pattern, int repeat){
-            JsArrayInteger jsPattern =  JsArrayUtils.readOnlyJsArray(pattern);
-            vibrateWithPattern0(jsPattern, repeat);
-        }
-        
-        @Deprecated
-        public native void vibrateWithPattern0(JsArrayInteger pattern, int repeat)/*-{
-		$wnd.navigator.notification.vibrateWithPattern(pattern,repeat);
-	}-*/;
-
-        @Override
         public native void cancelVibrate() /*-{
 		$wnd.navigator.vibrate(0);
 	}-*/;
