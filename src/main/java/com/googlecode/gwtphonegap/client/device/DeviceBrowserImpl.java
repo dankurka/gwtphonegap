@@ -14,6 +14,7 @@
 package com.googlecode.gwtphonegap.client.device;
 
 import com.google.gwt.user.client.Cookies;
+import com.google.gwt.user.client.Window;
 
 import java.util.Date;
 
@@ -81,4 +82,19 @@ public class DeviceBrowserImpl implements Device {
   public boolean isAvailable() {
     return true;
   }
+
+    @Override
+    public String getManufacturer() {
+      return "";
+    }
+
+    @Override
+    public boolean isVirtual() {
+        return false;
+    }
+
+    @Override
+    public String getSerial() {
+      return "";
+    }
 }

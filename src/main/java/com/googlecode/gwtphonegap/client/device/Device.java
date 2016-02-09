@@ -100,6 +100,24 @@ public interface Device {
 	 * @return the device's operating system version
 	 */
 	public abstract String getVersion();
+        
+        /**
+         * Get the device's manufacturer.
+         * @return 
+         */
+        public abstract String getManufacturer();
+        
+        /**
+         * Indicates whether the device is running on a simulator.
+         * @return 
+         */
+        public abstract boolean isVirtual();
+        
+        /**
+         * Get the device hardware serial number.
+         * @return 
+         */
+        public abstract String getSerial();
 
 	boolean isAvailable();
 

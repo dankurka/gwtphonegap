@@ -57,13 +57,28 @@ public class DeviceMobileImpl implements Device {
 		return $wnd.device.version;
   }-*/;
 
-  @Override
-  public native String getModel() /*-{
-		return $wnd.device.model;
-  }-*/;
+        @Override
+        public native String getModel() /*-{
+            return $wnd.device.model;
+        }-*/;
 
-  @Override
-  public native boolean isAvailable() /*-{
-    return $wnd.device != null;
-  }-*/;
+        @Override
+        public native boolean isAvailable() /*-{
+          return $wnd.device != null;
+        }-*/;
+
+        @Override
+        public native String getManufacturer() /*-{
+          return $wnd.device.manufacturer;
+        }-*/;
+
+        @Override
+        public native boolean isVirtual()  /*-{
+          return $wnd.device.isVirtual;
+        }-*/;
+
+        @Override
+        public native String getSerial()  /*-{
+          return $wnd.device.serial;
+        }-*/;
 }
